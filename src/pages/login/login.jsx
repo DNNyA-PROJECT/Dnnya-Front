@@ -24,7 +24,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('/login');
+      const response = await axios.post('http://localhost:8080/Auth/login');
 
       if (response.status === 200) {
        console.log('funciona')
