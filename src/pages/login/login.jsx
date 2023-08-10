@@ -11,8 +11,8 @@ window.themeColors = colors;
 
 function Login() {
   const [formData, setFormData] = useState({
-    Username: '',
-    Password: '',
+    username: '',
+    password: '',
   });
 
   const handleChange = (event) => {
@@ -24,10 +24,14 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/Auth/login');
+      const response = await axios.post('http://localhost:8080/Auth/login', {
+        username: formData.username,
+        password: formData.password,
+      });
 
       if (response.status === 200) {
-       console.log('funciona')
+       console.log('funciona');
+       window.location.href = 'http://localhost:5173';
       } else {
         console.log('Login failed');
       }
@@ -53,17 +57,17 @@ function Login() {
             <input
               type="text"
               className='form-inputs form-control md'
-              name='Username'
+              name='username'
               placeholder='Usuario'
-              value={formData.Username}
+              value={formData.username}
               onChange={handleChange}
             />
             <input
               type="password"
               className='form-inputs form-control md'
-              name='Password'
+              name='password'
               placeholder='Contraseña'
-              value={formData.Password}
+              value={formData.password}
               onChange={handleChange}
             />
           </div>
