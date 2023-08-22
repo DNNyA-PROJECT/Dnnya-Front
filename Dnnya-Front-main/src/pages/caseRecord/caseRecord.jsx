@@ -140,7 +140,7 @@ function CaseRecord() {
 
                         <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorBluSky }}>
                             <div className='d-flex justify-content-center'>
-                                <h1>Datos del Adulto</h1>
+                                <h1>Datos Del Adulto</h1>
                             </div>
 
                             <div className='d-flex justify-content-evenly mb-3  row' >
