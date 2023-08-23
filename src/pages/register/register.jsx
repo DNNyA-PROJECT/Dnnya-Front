@@ -87,7 +87,7 @@ function Register() {
               <input
                 type="text"
                 className='form-control md'
-                name="Name"
+                name="name"
                 value={formData.name}
                 onChange={handleChange}
                 placeholder='Nombre'
@@ -95,7 +95,7 @@ function Register() {
               <input
                 type="text"
                 className='form-control md'
-                name="LastName"
+                name="lastname"
                 value={formData.lastname}
                 onChange={handleChange}
                 placeholder='Apellido'
@@ -107,7 +107,7 @@ function Register() {
                 className='form-control md'
                 value={formData.username}
                 onChange={handleChange}
-                name="UserName"
+                name="username"
                 placeholder='Usuario'
               />
               <button className='button-select d-flex align-items-center justify-content-evenly'>
@@ -119,7 +119,7 @@ function Register() {
               <input
                 type="email"
                 className='form-control bg'
-                name="Email"
+                name="email"
                 value={formData.email}
                 onChange={handleChange}
                 placeholder='Correo Electrónico'
@@ -130,7 +130,7 @@ function Register() {
                 <input
                   type="password"
                   className='form-control md'
-                  name="Password"
+                  name="password"
                   value={formData.password}
                   onChange={handleChange}
                   placeholder='Contraseña'
@@ -139,7 +139,7 @@ function Register() {
               <input
                 type="password"
                 className='form-control md'
-                name="RepeatPassword"
+                name="repeatpassword"
                 value={formData.repeatpassword}
                 onChange={handleChange}
                 placeholder='Confirmar Contraseña'

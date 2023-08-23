@@ -115,14 +115,14 @@ function CaseRecord() {
                             </div>
 
                             <div className='row d-flex justify-content-evenly' >
-                                <div className='col-2  ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                <div className='col-3  ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                 <label htmlFor="Anonimus" class="custom-checkbox">
                                 Anonimo ?
                                             <input type="checkbox" id="Anonimus" class="checkbox" name="Relation" />
                                             <span class="checkmark"></span>
                                         </label>
                                 </div>
-                                <div className='col-2' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                 <label htmlFor="GrandMother" class="custom-checkbox">
                                 Abuela
                                             <input type="checkbox" id="GrandMother" class="checkbox" name="Relation" />
@@ -187,7 +187,7 @@ function CaseRecord() {
 
                         <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightBeige }}>
                             <div className='d-flex justify-content-center'>
-                                <h1>datos de la nnya</h1>
+                                <h1>Datos de la NNyA</h1>
                             </div>
                             <div className='d-flex justify-content-center'>
                                 <button>seleccionar nnya</button>
