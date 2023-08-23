@@ -45,48 +45,62 @@ function CaseRecord() {
 
                                 <div className='row d-flex justify-content-evenly' >
                                     <div className='col-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="TelAdvice">Asesoría Telefónica
-                                            <input type="checkbox" name="TelAdvice" id="" />
+                                    <label htmlFor="TelAdvice" class="custom-checkbox">
+                                            Asesoría Telefónica
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div className='col-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Asesoría Presencial
-                                            <input type="checkbox" name="" id="" />
+                                    <label htmlFor="Presence" class="custom-checkbox">
+                                            Asesoría Presencial
+                                            <input type="checkbox" id="Presence" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
                                         </label>
                                     </div>
                                 </div>
 
                                 <div className='row d-flex justify-content-evenly' >
                                     <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Intervención
-                                            <input type="checkbox" name="" id="" />
+                                    <label htmlFor="Intervention" class="custom-checkbox">
+                                    Intervención
+                                            <input type="checkbox" id="Intervention" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Consentimiento
-                                            <input type="checkbox" name="" id="" />
+                                    <label htmlFor="Consent" class="custom-checkbox">
+                                    Consentimiento
+                                            <input type="checkbox" id="Consent" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div className='row d-flex justify-content-evenly' >
+                                    <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                    <label htmlFor="Monitoring" class="custom-checkbox">
+                                    Monitoreo
+                                            <input type="checkbox" id="Monitoring" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                    <label htmlFor="Interview" class="custom-checkbox">
+                                    Entrevista a Domicilio
+                                            <input type="checkbox" id="Interview" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
                                         </label>
                                     </div>
                                 </div>
 
                                 <div className='row d-flex justify-content-evenly' >
                                     <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Monitoreo
+                                    <label htmlFor="SocialNetwork" class="custom-checkbox">
+                                    Redes Sociales
+                                            <input type="checkbox" id="SocialNetwork" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
                                         </label>
-                                        <input type="checkbox" name="" id="" />
-                                    </div>
-                                    <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Entrevista a Domicilio
-                                        </label>
-                                        <input type="checkbox" name="" id="" />
-                                    </div>
-                                </div>
-
-                                <div className='row d-flex justify-content-evenly' >
-                                    <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Redes Sociales
-                                        </label>
-                                        <input type="checkbox" name="" id="" />
                                     </div>
                                     <div className='col-3'>
                                         <button>agregar medio <i className="bi bi-plus-circle"></i> </button>
@@ -102,35 +116,45 @@ function CaseRecord() {
 
                             <div className='row d-flex justify-content-evenly' >
                                 <div className='col-2  ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label htmlFor="">Anonimo ?
-                                    </label>
-                                    <input type="checkbox" name="" id="" />
+                                <label htmlFor="Anonimus" class="custom-checkbox">
+                                Anonimo ?
+                                            <input type="checkbox" id="Anonimus" class="checkbox" name="Relation" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                 </div>
                                 <div className='col-2' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label htmlFor="">Abuela
-                                    </label>
-                                    <input type="checkbox" name="" id="" />
+                                <label htmlFor="GrandMother" class="custom-checkbox">
+                                Abuela
+                                            <input type="checkbox" id="GrandMother" class="checkbox" name="Relation" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                 </div>
                             </div>
 
                             <div className='row d-flex justify-content-evenly' >
                                 <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label htmlFor="">Padre
-                                    </label>
-                                    <input type="checkbox" name="" id="" />
+                                <label htmlFor="Father" class="custom-checkbox">
+                                Padre
+                                            <input type="checkbox" id="Father" class="checkbox" name="Relation" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                 </div>
                                 <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label htmlFor="">Abuelo
-                                    </label>
-                                    <input type="checkbox" name="" id="" />
+                                <label htmlFor="GrandFather" class="custom-checkbox">
+                                Abuelo
+                                            <input type="checkbox" id="GrandFather" class="checkbox" name="Relation" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                 </div>
                             </div>
 
                             <div className='row d-flex justify-content-evenly' >
                                 <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label htmlFor="">Madre
-                                    </label>
-                                    <input type="checkbox" name="" id="" />
+                                <label htmlFor="Mother" class="custom-checkbox">
+                                Madre
+                                            <input type="checkbox" id="Mother" class="checkbox" name="Relation" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                 </div>
                                 <div className='col-3'>
                                     <button>ingresar relacion con nnya <i className="bi bi-plus-circle"></i> </button>
@@ -191,38 +215,59 @@ function CaseRecord() {
 
                                 <div className='row d-flex justify-content-evenly' >
                                     <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Violencia Física </label>
-                                        <input type="checkbox" name="" id="" />
+                                    <label htmlFor="TelAdvice" class="custom-checkbox">
+                                    Violencia Fisica
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Relation" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                     </div>
                                     <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Abuso Sexual </label>
-                                        <input type="checkbox" name="" id="" />
-                                    </div>
-                                </div>
-                                <div className='row d-flex justify-content-evenly' >
-                                    <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Revinculación</label>
-                                        <input type="checkbox" name="" id="" />
-                                    </div>
-                                    <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Adoptibilidad</label>
-                                        <input type="checkbox" name="" id="" />
+                                    <label htmlFor="TelAdvice" class="custom-checkbox">
+                                    Abuso Sexual
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                     </div>
                                 </div>
                                 <div className='row d-flex justify-content-evenly' >
                                     <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Abandono</label>
-                                        <input type="checkbox" name="" id="" />
+                                    <label htmlFor="TelAdvice" class="custom-checkbox">
+                                    Revinculación
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                     </div>
                                     <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Ausencia a la Escuela</label>
-                                        <input type="checkbox" name="" id="" />
+                                    <label htmlFor="TelAdvice" class="custom-checkbox">
+                                    Adoptibilidad
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                     </div>
                                 </div>
                                 <div className='row d-flex justify-content-evenly' >
                                     <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        <label htmlFor="">Estado de Salud </label>
-                                        <input type="checkbox" name="" id="" />
+                                    <label htmlFor="TelAdvice" class="custom-checkbox">
+                                    Abandono
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                    <label htmlFor="TelAdvice" class="custom-checkbox">
+                                    Ausencia a la Escuela
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className='row d-flex justify-content-evenly' >
+                                    <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                    <label htmlFor="TelAdvice" class="custom-checkbox">
+                                    Estado de Salud
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                     </div>
                                     <div className='col-3'>
                                         <button>agregar motivo <i className="bi bi-plus-circle"></i>  </button>
@@ -269,14 +314,26 @@ function CaseRecord() {
 
                             <div className='row d-flex justify-content-evenly' >
                                 <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label htmlFor="">Todos</label>
-                                    <input type="checkbox" name="" id="" /></div>
+                                <label htmlFor="TelAdvice" class="custom-checkbox">
+                                Todos
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                </div>
                                 <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label htmlFor="">Juridica</label>
-                                    <input type="checkbox" name="" id="" /></div>
+                                <label htmlFor="TelAdvice" class="custom-checkbox">
+                                juridica
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                </div>
                                 <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label htmlFor="">Psicosocial</label>
-                                    <input type="checkbox" name="" id="" /></div>
+                                <label htmlFor="TelAdvice" class="custom-checkbox">
+                                Psicosocial
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                </div>
                             </div>
 
                             <div>
@@ -293,12 +350,18 @@ function CaseRecord() {
 
                             <div className='row d-flex  justify-content-evenly' >
                                 <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label className='d-flex' htmlFor="">Grave con Seguimiento
-                                        <input type="checkbox" name="" id="" /></label>
+                                <label htmlFor="TelAdvice" class="custom-checkbox">
+                                Grave con Seguimiento
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                 </div>
                                 <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label className='d-flex' htmlFor="">En Seguimiento
-                                        <input type="checkbox" name="" id="" /></label>
+                                <label htmlFor="TelAdvice" class="custom-checkbox">
+                                En Seguimiento
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                 </div>
                             </div>
                             <div className='d-flex justify-content-center'>
@@ -308,12 +371,18 @@ function CaseRecord() {
 
                             <div className='row d-flex  justify-content-evenly' >
                                 <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label className='d-flex' htmlFor="">Grave Sin Seguimiento
-                                        <input type="checkbox" name="" id="" /></label>
+                                <label htmlFor="TelAdvice" class="custom-checkbox">
+                                Grave sin Seguimiento
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                 </div>
                                 <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label className='d-flex' htmlFor="">Sin Seguimiento
-                                        <input type="checkbox" name="" id="" /></label>
+                                <label htmlFor="TelAdvice" class="custom-checkbox">
+                                Sin Seguimiento
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                 </div>
                             </div>
                             <div className='d-flex justify-content-center'>
@@ -322,12 +391,18 @@ function CaseRecord() {
 
                             <div className='row d-flex  justify-content-evenly' >
                                 <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label className='d-flex' htmlFor="">Cerrado
-                                        <input type="checkbox" name="" id="" /></label>
+                                <label htmlFor="TelAdvice" class="custom-checkbox">
+                                Cerrado
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                 </div>
                                 <div className='col-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                    <label className='d-flex' htmlFor="">Derivado
-                                        <input type="checkbox" name="" id="" /></label>
+                                <label htmlFor="TelAdvice" class="custom-checkbox">
+                                Derivado
+                                            <input type="checkbox" id="TelAdvice" class="checkbox" name="Atencion" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                 </div>
                             </div>
                         </div>

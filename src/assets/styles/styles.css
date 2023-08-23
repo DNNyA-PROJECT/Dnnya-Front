@@ -152,3 +152,35 @@ a{
 .text-link{
     color: var(--text-black)
 }
+
+.custom-checkbox {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px; /* Ajusta este valor para dar espacio al cuadrado */
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+  }
+  
+  .custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 1;
+    height: 20px;
+    width: 20px;
+    background-color: #eee; /* Color del checkbox sin seleccionar */
+    border: 2px solid #000; /* Borde del cuadrado */
+    transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
+  }
+  
+  .custom-checkbox input:checked ~ .checkmark {
+    background-color: #000; /* Color del cuadrado seleccionado */
+    border-color: #000; /* Color del borde del cuadrado seleccionado */
+  }
+  
