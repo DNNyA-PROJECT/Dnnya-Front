@@ -14,15 +14,15 @@ window.themeColors = colors;
 function home() {
   return (
     <>
-      <div className='box container-fluid ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+      <div className='box container-fluid row ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
 
 
-        <div className='row'>
-          <div className='col-md-3 menubox '>
+      
+          <div className='col-3 menubox '>
             <Menu />
           </div>
 
-          <div className='container-fluid d-flex align-items-center flex-column col-md-7 justify-content-between'>
+          <div className='container-fluid d-flex align-items-center flex-column col-9 justify-content-between'>
             <div className='homeHead '>
               <Header />
             </div>
@@ -33,7 +33,7 @@ function home() {
         </div>
 
        
-      </div>
+      
       <div className='container-fluid p-0 m-0'>
               <Footer />
             </div>

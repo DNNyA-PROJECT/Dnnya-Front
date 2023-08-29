@@ -93,7 +93,7 @@ i.bi.bi-person-fill.select {
 }
 
 .text-first,.text-second{
-    text-shadow: 1px 2px black;
+    font-size: 2.5vw;
 }
 
 .btn.register{
@@ -119,14 +119,14 @@ i.bi.bi-person-fill.select {
 }
 
 .box{
-    height: 82.7vh;
+    margin: 0px;
+    height: 79.9vh;
 }
 .menubox{
     padding-bottom: 10px;
 }
 
 .homeHead {
-    height: 15vw;
     width: 74vw;
 }
 
@@ -183,4 +183,11 @@ a{
     background-color: #000; /* Color del cuadrado seleccionado */
     border-color: #000; /* Color del borde del cuadrado seleccionado */
   }
-  
+
+  .letter{
+    font-size: 1rem;
+  }
+
+  .letter:hover{
+    background-color: #FA7330;
+  }
