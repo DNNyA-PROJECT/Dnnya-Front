@@ -9,6 +9,7 @@ export const colors = {
     footerColorText: '#FFFFFF',
     textColorBlack: '#000000',
     newColor:'#FBC73C66',
+    color: 'rgba(0, 0, 0, 20%)',
     
     
     // aside o dashboard

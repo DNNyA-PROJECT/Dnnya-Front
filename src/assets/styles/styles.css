@@ -43,6 +43,10 @@ i.bi.bi-person-fill.select {
     font-size: 39px;
 }
 
+.content{
+    padding-right: 20rem;
+}
+
 .DFLogo{
     width: 108px;
     border-radius: 50%;
@@ -60,7 +64,7 @@ i.bi.bi-person-fill.select {
 }
 
 .button-select{
-    padding: 0px 8vw 0px 7vw;
+    padding: 0px 6vw 0px 5vw;
     border-radius: 7px;
     background-color: white;
     border: none;
@@ -101,7 +105,7 @@ i.bi.bi-person-fill.select {
 }
 
 .box-Form {
-    padding-bottom: 7rem;
+    padding-bottom: 2.7rem;
 }
 /* login */
 
@@ -123,6 +127,7 @@ i.bi.bi-person-fill.select {
     height: 79.9vh;
 }
 .menubox{
+    padding-left: 0px;
     padding-bottom: 10px;
 }
 
@@ -191,3 +196,10 @@ a{
   .letter:hover{
     background-color: #FA7330;
   }
+
+ /*  caseRecord */
+
+
+ .text_left{
+    padding-left: 20rem;
+ }

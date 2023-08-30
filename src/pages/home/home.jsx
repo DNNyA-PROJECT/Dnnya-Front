@@ -14,11 +14,11 @@ window.themeColors = colors;
 function home() {
   return (
     <>
-      <div className='box container-fluid row ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+      <div className='box container-fluid row p-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
 
 
       
-          <div className='col-3 menubox '>
+          <div className='col-md-3 menubox ' style={{ backgroundColor: window.themeColors.color}}>
             <Menu />
           </div>
 

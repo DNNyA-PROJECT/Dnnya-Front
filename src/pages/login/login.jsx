@@ -42,12 +42,12 @@ function Login() {
 
   return (
     <>
-      <div className='container-fluid d-flex flex-column justify-content-center align-items-center' style={{ height: '100vh', backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+      <div className='container-fluid d-flex flex-column justify-content-center align-items-center' style={{backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
         <div className='mb-3'>
-          <h1 className='d-flex justify-content-center mt-5'>Sistema Informático de</h1>
+          <h1 className='d-flex justify-content-center'>Sistema Informático de</h1>
           <h1>Defensoria de Niños, Niñas y Adolescentes</h1>
         </div>
-        <div className='mb-3'>
+        <div className=''>
           <img src={DFLogo} alt="Defensoria Logo" className='DFLogo' />
         </div>
         <div className='fw-bolder'><h3>¡Bienvenidos!</h3></div>
@@ -71,7 +71,7 @@ function Login() {
               onChange={handleChange}
             />
           </div>
-          <div className='d-flex flex-column align-items-center mb-3'>
+          <div className='d-flex flex-column align-items-center'>
             <button
               type='submit'
               className='btn register btn-lg mb-3'
