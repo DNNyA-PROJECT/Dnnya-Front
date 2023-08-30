@@ -133,6 +133,7 @@ i.bi.bi-person-fill.select {
 
 .homeHead {
     width: 74vw;
+    padding: 0rem 3rem 0rem 3rem ; 
 }
 
 /* menu */
@@ -155,7 +156,8 @@ a{
 }
 
 .text-link{
-    color: var(--text-black)
+    color: var(--text-black);
+    margin: 0px;
 }
 
 .custom-checkbox {

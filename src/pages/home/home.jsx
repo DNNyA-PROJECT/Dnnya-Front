@@ -23,7 +23,7 @@ function home() {
           </div>
 
           <div className='container-fluid d-flex align-items-center flex-column col-9 justify-content-between'>
-            <div className='homeHead '>
+            <div className=' homeHead '>
               <Header />
             </div>
             <div>
