@@ -5,16 +5,16 @@ import { Link } from 'react-router-dom';
 function Header() {
   const defaultUser = {
     username: 'Usuario',
-    photo: 'photo'
+  /*   photo: 'photo' */
   };
 
   const [selectedUser, setSelectedUser] = useState(defaultUser);
 
   const fetchUser = async (userId) => {
     try {
-      const response = await axios.get(`url_cuando_tenga/users/${userId}`);
+      const response = await axios.get(`http://localhost:8080/Auth/profile${userId}`);
       const user = response.data;
-      setSelectedUser({ username: user.name, photo: defaultUser.photo || user.photo });
+      setSelectedUser({ username: user.name/* , photo: defaultUser.photo || user.photo */ });
     } catch (error) {
       console.error('Error fetching user:', error);
     }
