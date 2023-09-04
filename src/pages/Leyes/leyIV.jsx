@@ -49,27 +49,32 @@ function App() {
   };
 
   return (
-    <div>
-      <button onClick={toggleAccordionAll}>
-        {isOpenAll ? 'Cerrar Todos' : 'Abrir Todos'}
-      </button>
+    <div className='' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }} >
+      <div>
 
-          <div className="accordion" id="accordionExample">
-            LEY II – N.° 16
-            (Antes Ley 3820)
-            LEY DE PROTECCIÓN INTEGRAL DE LOS DERECHOS
-            DE NIÑOS, NIÑAS Y ADOLESCENTES
-            LIBRO I
-            PROTECCIÓN INTEGRAL DE LOS DERECHOS
-            TÍTULO I
-            DISPOSICIONES GENERALES
-            CAPÍTULO ÚNICO
-            FINALIDAD Y OBJETIVOS
-            <AccordionItem numero={1}  isOpen={isOpenAll}  textoAcordeon="Objeto. La presente ley tiene por finalidad garantizar el goce, ejercicio y la
+
+        <button className='btn register btn-lg'
+          style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }} onClick={toggleAccordionAll}>
+          {isOpenAll ? 'Cerrar Todos' : 'Abrir Todos'}
+        </button>
+
+        <div className="accordion" id="accordionExample">
+        <h2>LEY II – N.° 16</h2>
+                <h4>(Antes Ley 3820) </h4>
+
+                LEY DE PROTECCIÓN INTEGRAL DE LOS DERECHOS <br />
+                DE NIÑOS, NIÑAS Y ADOLESCENTES <br />
+                LIBRO I <br />
+                PROTECCIÓN INTEGRAL DE LOS DERECHOS <br />
+                TÍTULO I <br />
+                DISPOSICIONES GENERALES <br />
+                CAPÍTULO ÚNICO <br />
+                FINALIDAD Y OBJETIVOS <br />
+          <AccordionItem numero={1} isOpen={isOpenAll} textoAcordeon="Objeto. La presente ley tiene por finalidad garantizar el goce, ejercicio y la
                         protección integral de los derechos de niños, niñas y adolescentes en la provincia de
                         Misiones.
                         " />
-            <AccordionItem numero={2}  isOpen={isOpenAll}  textoAcordeon="Aplicación legal. Los derechos y garantías enunciados en esta ley se
+          <AccordionItem numero={2} isOpen={isOpenAll} textoAcordeon="Aplicación legal. Los derechos y garantías enunciados en esta ley se
                         entienden como complementarios de los reconocidos en la Constitución Nacional,
                         Convención Internacional sobre los Derechos del Niño; las Reglas Mínimas de las
                         Naciones Unidas para la Administración de la Justicia de menores (Reglas de Beijing),
@@ -78,13 +83,13 @@ function App() {
                         General y las Directrices de Naciones Unidas para la Prevención de la Delincuencia Juvenil
                         (Directrices de Riad); demás convenciones y tratados internacionales en los que el Estado
                         argentino sea parte; leyes nacionales y la Constitución de la Provincia de Misiones." />
-            <AccordionItem numero={3}  isOpen={isOpenAll}  textoAcordeon="Concepto de niño, niña y adolescente. A los efectos de esta ley, se
+          <AccordionItem numero={3} isOpen={isOpenAll} textoAcordeon="Concepto de niño, niña y adolescente. A los efectos de esta ley, se
                         considera niño o niña a toda persona hasta los dieciocho (18) años de edad, entendiéndose
                         como adolescencia la etapa de niñez comprendida entre los trece (13) y hasta los dieciocho
                         (18) años. En caso de duda se presume la edad de niño, niña y adolescente establecida en
                         esta ley y prevalece la condición de adolescente ante la de adulto y de niño, niña ante la de
                         adolescente, hasta tanto se pruebe lo contrario." />
-            <AccordionItem numero={4}  isOpen={isOpenAll}  textoAcordeon="Interés superior. El interés superior de niños, niñas y adolescentes, es un
+          <AccordionItem numero={4} isOpen={isOpenAll} textoAcordeon="Interés superior. El interés superior de niños, niñas y adolescentes, es un
                         principio de interpretación y aplicación de esta ley, dirigido a asegurar el desarrollo integral
                         de los niños, niñas y adolescentes, así como el goce y ejercicio pleno y efectivo de sus
                         derechos y garantías. Es de obligatorio cumplimiento en la toma de todas las decisiones
@@ -102,16 +107,16 @@ function App() {
                         En aplicación del interés superior del niño, niña y adolescente, cuando exista conflicto entre
                         los derechos e intereses de los niños, niñas y adolescentes frente a otros derechos e
                         intereses igualmente legítimos, prevalecen los primeros." />
-            <AccordionItem numero={5}  isOpen={isOpenAll}  textoAcordeon="- Derechos fundamentales. El niño, niña y adolescente es titular de todos los
+          <AccordionItem numero={5} isOpen={isOpenAll} textoAcordeon="- Derechos fundamentales. El niño, niña y adolescente es titular de todos los
                         derechos y garantías fundamentales inherentes a su condición de persona y de la protección
                         jurídica y derechos específicos consagrados en esta ley. La Provincia promueve su
                         participación social y las máximas oportunidades para su pleno desarrollo físico, psíquico,
                         moral, espiritual y social, en condiciones de libertad, igualdad, dignidad y equidad." />
-            <AccordionItem numero={6}  isOpen={isOpenAll}  textoAcordeon="Remoción de obstáculos. Es indelegable e imprescriptible la
+          <AccordionItem numero={6} isOpen={isOpenAll} textoAcordeon="Remoción de obstáculos. Es indelegable e imprescriptible la
                         responsabilidad de las áreas gubernamentales del Estado en la adopción de medidas
                         administrativas, legislativas y de otra índole para la plena satisfacción de los derechos de
                         los niños, niñas y adolescentes." />
-            <AccordionItem numero={7}  isOpen={isOpenAll}  textoAcordeon="Efectivización de derechos. Es responsabilidad conjunta de la familia, la
+          <AccordionItem numero={7} isOpen={isOpenAll} textoAcordeon="Efectivización de derechos. Es responsabilidad conjunta de la familia, la
                         sociedad y el Estado, asegurar a los niños, niñas y adolescentes con absoluta prioridad, la
                         efectivización de los derechos a la vida, la salud, la libertad, la identidad, la alimentación, la
                         educación, la vivienda, la cultura, a ser oídos y que sus opiniones sean tenidas en cuenta, a
@@ -122,7 +127,7 @@ function App() {
                         razones de sexo en la asunción de los roles entre adultos y en relación a los niños, niñas y
                         adolescentes.
                         " />
-            <AccordionItem numero={8} isOpen={isOpenAll} textoAcordeon="Garantía de prioridad. Los niños, niñas y adolescentes tienen prioridad en
+          <AccordionItem numero={8} isOpen={isOpenAll} textoAcordeon="Garantía de prioridad. Los niños, niñas y adolescentes tienen prioridad en
                           la:
                           1) protección y auxilio cualquiera sea la circunstancia;
                           2) atención en los servicios públicos;
@@ -131,30 +136,30 @@ function App() {
                           adolescentes y la familia;
                           4) consideración y ponderación de las necesidades y problemáticas de la comunidad local a
                           la que pertenecen." />
-            <AccordionItem numero={9} isOpen={isOpenAll} textoAcordeon="Principios básicos. El diseño de la política respecto a la infanciaadolescencia, se basa en el fortalecimiento de la familia y de las redes de solidaridad social,
+          <AccordionItem numero={9} isOpen={isOpenAll} textoAcordeon="Principios básicos. El diseño de la política respecto a la infanciaadolescencia, se basa en el fortalecimiento de la familia y de las redes de solidaridad social,
                           implementando planes que facilitan el acceso a los bienes y servicios a toda la población
                           como efectiva práctica de la superación de las desigualdades y de la exclusión social,
                           promoviendo la protección de derechos mediante la implementación de un sistema que
                           garantice la eficiencia de los servicios de apoyo familiar y social.
                           " />
-            <AccordionItem numero={10} isOpen={isOpenAll} textoAcordeon="Interpretación. En la interpretación y aplicación de la presente ley se tiene
+          <AccordionItem numero={10} isOpen={isOpenAll} textoAcordeon="Interpretación. En la interpretación y aplicación de la presente ley se tiene
                           en cuenta la condición del niño, niña y adolescente como sujeto titular de derechos y
                           deberes, contemplándose especialmente su condición de persona en desarrollo. El niño,
                           niña y adolescente tienen participación activa en la sociedad y no pueden ser considerados
                           objeto de socialización, control o prueba.
                           " />
 
-            TÍTULO II
-            DERECHOS FUNDAMENTALES Y GARANTÍAS
-            CAPÍTULO ÚNICO
-            DERECHOS. GARANTÍAS PROCESALES
+          TÍTULO II
+          DERECHOS FUNDAMENTALES Y GARANTÍAS
+          CAPÍTULO ÚNICO
+          DERECHOS. GARANTÍAS PROCESALES
 
-            <AccordionItem numero={11} isOpen={isOpenAll} textoAcordeon=" Derecho a la vida, derecho a la salud, derecho a la libertad ambulatoria,
+          <AccordionItem numero={11} isOpen={isOpenAll} textoAcordeon=" Derecho a la vida, derecho a la salud, derecho a la libertad ambulatoria,
                 dignidad, identidad y respeto. Los niños, niñas y adolescentes tienen derecho a la vida, a su
                 disfrute y protección, a la seguridad y libertad ambulatoria. Tienen derecho a la salud desde
                 una perspectiva integral. Derecho a la dignidad, identidad en todas sus dimensiones y fases,
                 y a ser sujetos titulares de todos los derechos humanos, para lo cual se adoptan garantías" />
-            <AccordionItem numero={12} isOpen={isOpenAll} textoAcordeon="Protección integral de la salud. El niño, niña y adolescente tiene derecho
+          <AccordionItem numero={12} isOpen={isOpenAll} textoAcordeon="Protección integral de la salud. El niño, niña y adolescente tiene derecho
                 a la salud desde una perspectiva integral, a ese efecto el Estado provincial adopta medidas
                 para:
                 1) reducir la morbimortalidad;
@@ -180,7 +185,7 @@ function App() {
                 veinticuatro (24) meses consecutivos a partir del momento del nacimiento, sin que pueda
                 separarse al niño o niña de su madre, y proporcionando lugares especiales para la
                 comunicación entre madre e hijo" />
-            <AccordionItem numero={13} isOpen={isOpenAll} textoAcordeon="Atención perinatal. Los establecimientos públicos y privados que realizan
+          <AccordionItem numero={13} isOpen={isOpenAll} textoAcordeon="Atención perinatal. Los establecimientos públicos y privados que realizan
                 atención del embarazo, del parto y del recién nacido, están obligados a:
                 1) conservar las historias clínicas individuales por el plazo de treinta (30) años;
                 2) determinar pesquisas y terapéutica de enfermedades congénitas del metabolismo en el
@@ -193,14 +198,14 @@ function App() {
                 la madre;
                 6) garantizar la atención de todas las enfermedades perinatales en el ámbito estatal y
                 privado." />
-            <AccordionItem numero={14} isOpen={isOpenAll} textoAcordeon="- Derecho a la identidad. El derecho del niño, niña y adolescente a la
+          <AccordionItem numero={14} isOpen={isOpenAll} textoAcordeon="- Derecho a la identidad. El derecho del niño, niña y adolescente a la
                 identidad comprende el derecho a una nacionalidad, a un nombre, a su cultura, a su lengua
                 de origen, a su orientación sexual, a conocer la identidad de ambos progenitores y a las
                 relaciones familiares sin injerencias ilícitas.
                 En caso de privación ilegal de algunos o todos los elementos de la identidad, el Estado
                 provincial presta asistencia y protección apropiadas para restablecer el derecho
                 rápidamente" />
-            <AccordionItem numero={15} isOpen={isOpenAll} textoAcordeon="Medidas de protección de identidad. Como medidas para efectivizar el
+          <AccordionItem numero={15} isOpen={isOpenAll} textoAcordeon="Medidas de protección de identidad. Como medidas para efectivizar el
                 derecho a la identidad, el Estado provincial debe:
                 1) identificar al recién nacido mediante el procedimiento que establece la normativa
                 vigente;
@@ -209,10 +214,10 @@ function App() {
                 dieciocho (18) años de edad;
                 3) facilitar y colaborar para obtener información, la búsqueda o localización de los padres u
                 otros familiares del niño, niña o adolescente, propiciando el reencuentro familiar" />
-            <AccordionItem numero={16} isOpen={isOpenAll} textoAcordeon="Derecho a la integridad. Los niños, niñas y adolescentes tienen derecho a
+          <AccordionItem numero={16} isOpen={isOpenAll} textoAcordeon="Derecho a la integridad. Los niños, niñas y adolescentes tienen derecho a
                 la integridad biopsicosocial, a la intimidad, a la privacidad, a la autonomía personal, social
                 y jurídica; al respeto a sus valores, ideas o creencias y a sus espacios y objetos personales" />
-            <AccordionItem numero={17} isOpen={isOpenAll} textoAcordeon="Derecho a la libertad ambulatoria. Todos los niños, niñas y adolescentes
+          <AccordionItem numero={17} isOpen={isOpenAll} textoAcordeon="Derecho a la libertad ambulatoria. Todos los niños, niñas y adolescentes
                 tienen derecho a la libertad ambulatoria sin más límites que los establecidos por ley. No
                 pueden ser privados de ella ilegal o arbitrariamente.
                 Por privación de libertad se entiende toda forma de detención o encarcelamiento, así como
@@ -224,27 +229,27 @@ function App() {
                 Todos los niños, niñas y adolescentes tienen derecho al control judicial de la privación de la
                 libertad ambulatoria y al amparo de su libertad ambulatoria de conformidad con la ley.
                 " />
-            <AccordionItem numero={18} isOpen={isOpenAll} textoAcordeon="Derecho a ser oídos. El niño, niña y adolescente tienen derecho a ser
+          <AccordionItem numero={18} isOpen={isOpenAll} textoAcordeon="Derecho a ser oídos. El niño, niña y adolescente tienen derecho a ser
                 oídos y a que sus opiniones sean tenidas en cuenta en cualquier ámbito, cuando se trata de
                 sus intereses o al encontrarse involucrados en cuestiones o procedimientos relativos a sus
                 derechos." />
-            <AccordionItem numero={19} isOpen={isOpenAll} textoAcordeon="Derecho a la dignidad. Es responsabilidad de la familia, la sociedad y el
+          <AccordionItem numero={19} isOpen={isOpenAll} textoAcordeon="Derecho a la dignidad. Es responsabilidad de la familia, la sociedad y el
                 Estado proteger la dignidad del niño, niña y adolescente como sujeto de derechos humanos,
                 impidiendo que sean sometidos a trato violento, discriminatorio, vejatorio, humillante,
                 intimidatorio, a prostitución, explotación sexual o a cualquier condición inhumana o
                 degradante." />
-            <AccordionItem numero={20} isOpen={isOpenAll} textoAcordeon=" Derecho a ser respetado. El respeto al niño, niña y adolescente consiste en
+          <AccordionItem numero={20} isOpen={isOpenAll} textoAcordeon=" Derecho a ser respetado. El respeto al niño, niña y adolescente consiste en
                 brindarle comprensión, propiciar oportunidades para el despliegue de sus actividades,
                 promover el desarrollo de sus potencialidades individuales, y garantizar el goce y ejercicio
                 de sus derechos con el protagonismo activo inherente a las prácticas cívicas acordes con su
                 edad y responsabilidades." />
-            <AccordionItem numero={21} isOpen={isOpenAll} textoAcordeon="Derecho a la igualdad. No se admite discriminación ni segregación por
+          <AccordionItem numero={21} isOpen={isOpenAll} textoAcordeon="Derecho a la igualdad. No se admite discriminación ni segregación por
                 razones o con pretexto de raza, etnia, sexo, género, edad, ideología, religión, opinión,
                 nacionalidad, caracteres físicos, condición psicofísica, social, económica, creencias
                 culturales o cualquier otra circunstancia que implica exclusión o menoscabo de los niños,
                 niñas y adolescentes.
                 " />
-            <AccordionItem numero={22} isOpen={isOpenAll} textoAcordeon="Derecho a la convivencia familiar y comunitaria. El niño, niña y
+          <AccordionItem numero={22} isOpen={isOpenAll} textoAcordeon="Derecho a la convivencia familiar y comunitaria. El niño, niña y
                 adolescente tienen derecho a ser criados y cuidados por sus padres y a permanecer en su
                 grupo familiar de origen, en una convivencia sustentada en vínculos y relaciones de
                 igualdad y equidad, afectivas y comunitarias.
@@ -258,14 +263,14 @@ function App() {
                 ella, de la familia ampliada y de la comunidad según la costumbre local, en programas de
                 asistencia y orientación a la familia.
                 " />
-            <AccordionItem numero={23} isOpen={isOpenAll} textoAcordeon="Derecho a la educación. El derecho a la educación a través del sistema de
+          <AccordionItem numero={23} isOpen={isOpenAll} textoAcordeon="Derecho a la educación. El derecho a la educación a través del sistema de
                 enseñanza formal y acciones educativas no formales contribuye al afianzamiento de valores
                 basados en el reconocimiento de los derechos humanos, la pluralidad cultural, la diversidad,
                 el medio ambiente, los recursos naturales y los bienes sociales, preparando al niño, niña y
                 adolescente para asumir como ciudadano las responsabilidades de su vida en una sociedad
                 democrática.
                 " />
-            <AccordionItem numero={24} isOpen={isOpenAll} textoAcordeon="Derechos comprendidos. El derecho reconocido en el artículo anterior
+          <AccordionItem numero={24} isOpen={isOpenAll} textoAcordeon="Derechos comprendidos. El derecho reconocido en el artículo anterior
                 comprende los derechos a:
                 1) ser respetado por parte de todos los integrantes de la comunidad educativa;
                 2) ser oído con anterioridad a la aplicación de cualquier medida o sanción disciplinaria, las
@@ -279,7 +284,7 @@ function App() {
                 5) constituir y participar en organizaciones estudiantiles;
                 6) conocer los derechos que le son reconocidos, las acciones para su ejercicio y defensa y
                 contar con patrocinio profesional sin costo, en caso de carencia de recursos." />
-            <AccordionItem numero={25} isOpen={isOpenAll} textoAcordeon="- Garantías mínimas educativas. Como medidas de acción positiva de
+          <AccordionItem numero={25} isOpen={isOpenAll} textoAcordeon="- Garantías mínimas educativas. Como medidas de acción positiva de
                 efectividad de los derechos reconocidos en los artículos 23 y 24 de la presente, el Estado
                 provincial garantiza:
                 1) el acceso al conocimiento e información de los procedimientos para la construcción de
@@ -294,25 +299,25 @@ function App() {
                 sanciones dispuestas;
                 5) el contralor del cumplimiento de las distintas funciones que ejercen cada uno de los
                 organismos en sus competencias específicas. " />
-            <AccordionItem numero={26} isOpen={isOpenAll} textoAcordeon="Derecho a la recreación, juego, deporte y descanso. El Estado adopta
+          <AccordionItem numero={26} isOpen={isOpenAll} textoAcordeon="Derecho a la recreación, juego, deporte y descanso. El Estado adopta
                 medidas que posibilitan el goce efectivo de los derechos a la recreación, al juego, al deporte
                 y al descanso.
                 " />
-            <AccordionItem numero={27} isOpen={isOpenAll} textoAcordeon="Participación. El Estado provincial y los municipios que adhieren a la
+          <AccordionItem numero={27} isOpen={isOpenAll} textoAcordeon="Participación. El Estado provincial y los municipios que adhieren a la
                 presente ley, facilitan y promueven la asignación de recursos para financiar planes,
                 programas y proyectos culturales, recreativos y deportivos, impulsando iniciativas de
                 diseño e implementación, que promueven el protagonismo de las organizaciones de la
                 sociedad civil y del niño, niña y adolescente, integrando la participación de niños, niñas o
                 adolescentes con discapacidades." />
-            <AccordionItem numero={28} isOpen={isOpenAll} textoAcordeon="Erradicación del trabajo infantil. Es responsabilidad de los organismos
+          <AccordionItem numero={28} isOpen={isOpenAll} textoAcordeon="Erradicación del trabajo infantil. Es responsabilidad de los organismos
                 del Estado diseñar e implementar políticas específicas de prevención y erradicación del
                 trabajo infantil." />
-            <AccordionItem numero={29} isOpen={isOpenAll} textoAcordeon="- Derecho a la protección contra la explotación. Es responsabilidad de los
+          <AccordionItem numero={29} isOpen={isOpenAll} textoAcordeon="- Derecho a la protección contra la explotación. Es responsabilidad de los
                 organismos del Estado diseñar e implementar políticas específicas para la prevención y
                 erradicación de cualquier forma de explotación de los niños, niñas y adolescentes, realizada
                 para solventar sus necesidades, contribuir al sostenimiento familiar o de otras personas
                 adultas." />
-            <AccordionItem numero={30} isOpen={isOpenAll} textoAcordeon="Derecho a la libre expresión, información y participación. Los niños,
+          <AccordionItem numero={30} isOpen={isOpenAll} textoAcordeon="Derecho a la libre expresión, información y participación. Los niños,
                 niñas y adolescentes tienen derecho a:
                 1) informarse, expresarse y a que se tengan en cuenta sus opiniones;
                 2) creer y profesar cultos religiosos;
@@ -320,7 +325,7 @@ function App() {
                 4) asociarse y celebrar reuniones;
                 5) usar, transitar y permanecer en los espacios públicos.
                 " />
-            <AccordionItem numero={31} isOpen={isOpenAll} textoAcordeon="Garantías procesales. El Estado garantiza a los niños, niñas y
+          <AccordionItem numero={31} isOpen={isOpenAll} textoAcordeon="Garantías procesales. El Estado garantiza a los niños, niñas y
                 adolescentes en todo proceso legal, los principios y garantías procesales reconocidos a las
                 personas adultas y los inherentes a la protección complementaria de la que son sujetos
                 titulares, en especial:
@@ -343,160 +348,160 @@ function App() {
                 aprehensión o detención, del lugar donde se encuentra, hecho que se le imputa, tribunal y
                 organismo de prevención intervinientes;
                 9) a preservar su intimidad." />
-            <AccordionItem numero={32} isOpen={isOpenAll} textoAcordeon="Reserva de identidad. Ningún medio de comunicación social, público o
+          <AccordionItem numero={32} isOpen={isOpenAll} textoAcordeon="Reserva de identidad. Ningún medio de comunicación social, público o
                 privado, debe publicar o difundir informaciones que identifiquen o puedan dar lugar a la
                 identificación de niños, niñas y adolescentes, víctimas o infractores de disposiciones
                 penales o contravencionales, salvo las circunstancias de excepción prevista en el artículo
                 72.
                 " />
-            TÍTULO III
-            SISTEMA DE PROTECCIÓN INTEGRAL DE DERECHOS
-            CAPÍTULO I
-            DISPOSICIÓN GENERAL
-            <AccordionItem numero={33} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={34} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO II
-            POLÍTICAS PÚBLICAS
-            <AccordionItem numero={35} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO III
-            MEDIDAS DE PROTECCIÓN DE DERECHOS
-            <AccordionItem numero={36} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={37} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={38} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={39} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={40} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={41} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={42} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO IV
-            DISEÑO ORGANIZACIONAL
-            <AccordionItem numero={43} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CONSEJO PROVINCIAL DE GARANTÍAS DE LOS DERECHOS DE NIÑOS,
-            NIÑAS, ADOLESCENTES Y LA FAMILIA
-            <AccordionItem numero={44} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={45} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={46} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={47} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={48} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={49} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={50} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={51} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={52} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={53} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={54} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={55} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={56} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={57} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO V
-            FONDO ESPECIAL
-            <AccordionItem numero={58} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={59} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={60} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={61} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={62} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={63} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO VI
-            ORGANIZACIONES DE LA SOCIEDAD CIVIL
-            <AccordionItem numero={64} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO VII
-            ORGANISMOS Y ORGANIZACIONES DE ATENCIÓN
-            <AccordionItem numero={65} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={66} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            LIBRO II
-            FUERO DE NIÑOS, NIÑAS, ADOLESCENTES Y LA FAMILIA
-            TÍTULO I
-            ÓRGANOS JURISDICCIONALES
-            CAPÍTULO I
-            DISPOSICIONES GENERALES
-            <AccordionItem numero={67} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={68} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={69} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={70} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={71} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={72} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={73} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO II
-            DERECHOS DE VÍCTIMAS Y TESTIGOS
-            <AccordionItem numero={74} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={75} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={76} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            TÍTULO II
-            JUSTICIA DE FAMILIA
-            CAPÍTULO I
-            COMPETENCIA
-            <AccordionItem numero={77} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO II
-            ETAPA PREJUDICIAL DE AVENIMIENTO
-            <AccordionItem numero={78} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={79} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={80} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={81} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={82} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={83} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={84} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={85} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={86} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO III
-            PROCEDIMIENTO JUDICIAL
-            <AccordionItem numero={87} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={88} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            TÍTULO III
-            JUSTICIA PENAL DE NIÑOS, NIÑAS Y ADOLESCENTES
-            CAPÍTULO I
-            COMPETENCIA
-            <AccordionItem numero={89} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={90} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={91} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={92} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO II
-            RESTRICCIÓN DE LA LIBERTAD
-            <AccordionItem numero={93} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={94} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={95} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={96} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO III
-            PROCEDIMIENTO PENAL
-            <AccordionItem numero={97} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={98} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={99} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={100} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={101} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={102} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={103} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={104} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={105} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={106} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO IV
-            MEDIDAS DE COERCIÓN PERSONAL
-            <AccordionItem numero={107} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={108} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={109} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={110} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO V
-            ACTOS PRELIMINARES
-            <AccordionItem numero={111} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={112} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={113} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={114} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO VI
-            AUDIENCIA DE DEBATE
-            <AccordionItem numero={115} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={116} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={117} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={118} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            CAPÍTULO VII
-            NIÑOS, NIÑAS O ADOLESCENTES INIMPUTABLES
-            <AccordionItem numero={119} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={120} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={121} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={122} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={123} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            LIBRO III
-            DISPOSICIONES FINALES
-            TÍTULO ÚNICO
-            DISPOSICIONES GENERALES
-            CAPÍTULO ÚNICO
-            DISPOSICIONES FINALES Y TRANSITORIAS
-            <AccordionItem numero={124} isOpen={isOpenAll} textoAcordeon="Modificación artículos 24 y 25 – Ley XIV – N.º 3 (Antes Ley 2677).
+          TÍTULO III
+          SISTEMA DE PROTECCIÓN INTEGRAL DE DERECHOS
+          CAPÍTULO I
+          DISPOSICIÓN GENERAL
+          <AccordionItem numero={33} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={34} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO II
+          POLÍTICAS PÚBLICAS
+          <AccordionItem numero={35} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO III
+          MEDIDAS DE PROTECCIÓN DE DERECHOS
+          <AccordionItem numero={36} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={37} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={38} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={39} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={40} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={41} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={42} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO IV
+          DISEÑO ORGANIZACIONAL
+          <AccordionItem numero={43} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CONSEJO PROVINCIAL DE GARANTÍAS DE LOS DERECHOS DE NIÑOS,
+          NIÑAS, ADOLESCENTES Y LA FAMILIA
+          <AccordionItem numero={44} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={45} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={46} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={47} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={48} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={49} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={50} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={51} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={52} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={53} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={54} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={55} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={56} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={57} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO V
+          FONDO ESPECIAL
+          <AccordionItem numero={58} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={59} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={60} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={61} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={62} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={63} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO VI
+          ORGANIZACIONES DE LA SOCIEDAD CIVIL
+          <AccordionItem numero={64} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO VII
+          ORGANISMOS Y ORGANIZACIONES DE ATENCIÓN
+          <AccordionItem numero={65} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={66} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          LIBRO II
+          FUERO DE NIÑOS, NIÑAS, ADOLESCENTES Y LA FAMILIA
+          TÍTULO I
+          ÓRGANOS JURISDICCIONALES
+          CAPÍTULO I
+          DISPOSICIONES GENERALES
+          <AccordionItem numero={67} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={68} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={69} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={70} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={71} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={72} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={73} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO II
+          DERECHOS DE VÍCTIMAS Y TESTIGOS
+          <AccordionItem numero={74} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={75} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={76} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          TÍTULO II
+          JUSTICIA DE FAMILIA
+          CAPÍTULO I
+          COMPETENCIA
+          <AccordionItem numero={77} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO II
+          ETAPA PREJUDICIAL DE AVENIMIENTO
+          <AccordionItem numero={78} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={79} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={80} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={81} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={82} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={83} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={84} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={85} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={86} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO III
+          PROCEDIMIENTO JUDICIAL
+          <AccordionItem numero={87} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={88} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          TÍTULO III
+          JUSTICIA PENAL DE NIÑOS, NIÑAS Y ADOLESCENTES
+          CAPÍTULO I
+          COMPETENCIA
+          <AccordionItem numero={89} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={90} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={91} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={92} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO II
+          RESTRICCIÓN DE LA LIBERTAD
+          <AccordionItem numero={93} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={94} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={95} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={96} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO III
+          PROCEDIMIENTO PENAL
+          <AccordionItem numero={97} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={98} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={99} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={100} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={101} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={102} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={103} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={104} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={105} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={106} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO IV
+          MEDIDAS DE COERCIÓN PERSONAL
+          <AccordionItem numero={107} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={108} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={109} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={110} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO V
+          ACTOS PRELIMINARES
+          <AccordionItem numero={111} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={112} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={113} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={114} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO VI
+          AUDIENCIA DE DEBATE
+          <AccordionItem numero={115} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={116} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={117} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={118} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          CAPÍTULO VII
+          NIÑOS, NIÑAS O ADOLESCENTES INIMPUTABLES
+          <AccordionItem numero={119} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={120} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={121} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={122} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={123} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          LIBRO III
+          DISPOSICIONES FINALES
+          TÍTULO ÚNICO
+          DISPOSICIONES GENERALES
+          CAPÍTULO ÚNICO
+          DISPOSICIONES FINALES Y TRANSITORIAS
+          <AccordionItem numero={124} isOpen={isOpenAll} textoAcordeon="Modificación artículos 24 y 25 – Ley XIV – N.º 3 (Antes Ley 2677).
                 Modifícanse los artículos 24 y 25 del Código Procesal Penal - Ley XIV – N.º 3 (Antes Ley
                 2677), los que quedan redactados de la siguiente manera:
                 “ARTÍCULO 24: Los Tribunales en lo penal juzgan:
@@ -530,22 +535,23 @@ function App() {
                 dieciocho (18) años al tiempo de la comisión de ellos, cualquiera fuere la pena, de acuerdo
                 con las disposiciones de la Ley de Protección Integral de los Derechos de Niños, Niñas y
                 Adolescentes y las de éste código." />
-            <AccordionItem numero={125} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={126} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={127} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={128} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={129} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={130} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={131} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={132} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={133} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={134} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={135} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-            <AccordionItem numero={136} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
-          </div>
+          <AccordionItem numero={125} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={126} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={127} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={128} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={129} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={130} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={131} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={132} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={133} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={134} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={135} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
+          <AccordionItem numero={136} isOpen={isOpenAll} textoAcordeon="Texto personalizado para el artículo 2." />
         </div>
-    );
-  }
+      </div>
+    </div>
+  );
+}
 
 
 export default App;
