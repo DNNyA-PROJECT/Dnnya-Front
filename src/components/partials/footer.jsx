@@ -14,8 +14,8 @@ function Footer() {
           <div className='col-sm-6 p-0 m-0 d-flex align-items-end flex-column justify-content-center'>
             <h2 style={{ color: window.themeColors.footerColorText }} className='size-font d-flex justify-content-end'>Sistema Informático de Defensoria <br /> de Niño, Niña y Adolescentes</h2>
             <div className='d-flex row w-50 align-items-end '>
-            <Link to="#" className='col-4' > <h2 className='letter' style={{ color: window.themeColors.footerColorText }}>Ley II N° 16</h2> </Link>
-            <Link to="#" className='col-4' >   <h2 className='letter' style={{ color: window.themeColors.footerColorText }}>Ley IV N° 52</h2> </Link>
+            <Link to="/leyII" className='col-4' > <h2 className='letter' style={{ color: window.themeColors.footerColorText }}>Ley II N° 16</h2> </Link>
+            <Link to="/leyIV" className='col-4' >   <h2 className='letter' style={{ color: window.themeColors.footerColorText }}>Ley IV N° 52</h2> </Link>
             </div>
             <h5 className='fw-lighter text-copy d-flex justify-content-center' style={{ color: window.themeColors.footerColorText }}>Copyright © 2023 Todos los derechos reservados</h5>
           </div>

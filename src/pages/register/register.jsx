@@ -12,12 +12,9 @@ window.themeColors = colors;
 
 function Register() {
   const [formData, setFormData] = useState({
-    name: '',
-    lastname: '',
     username: '',
     password: '',
-    repeatpassword: '',
-    email: '',
+    correo: '',
   });
 
   const handleChange = (event) => {
@@ -30,11 +27,8 @@ function Register() {
 
     try {
       const response = await axios.post('http://localhost:8080/Auth/register', {
-        name: formData.name,
-        last: formData.lastname,
         username: formData.username,
         password: formData.password,
-        repeatpassword: formData.repeatpassword,
         email: formData.email,
       });
 
@@ -42,12 +36,9 @@ function Register() {
         console.log('funciona');
 
         setFormData({
-          name: '',
-          lastname: '',
           username: '',
           password: '',
-          repeatpassword: '',
-          email: '',
+          correo: '',
         });
       } else {
         console.log('Registration failed');
