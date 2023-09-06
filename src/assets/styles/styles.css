@@ -222,3 +222,7 @@ a{
 .accordion-item .accordion-button {
     background: #d0bf91;
 }
+
+#custom-accordion .accordion-button.collapsed::after {
+    color: white !important; /* Cambia 'white' al color que desees */
+}
