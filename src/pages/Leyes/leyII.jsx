@@ -2,88 +2,90 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 class AccordionItem extends React.Component {
-  render() {
-    const { numero, textoAcordeon, isOpen } = this.props;
-    const collapseId = `collapse${numero}`;
+    render() {
+        const { numero, textoAcordeon, isOpen } = this.props;
+        const collapseId = `collapse${numero}`;
 
-    const textoConSaltosDeLinea = textoAcordeon.split('\n').map((line, index) => (
-      <React.Fragment key={index}>
-        {line}
-        <br />
-      </React.Fragment>
-    ));
+        const textoConSaltosDeLinea = textoAcordeon.split('\n').map((line, index) => (
+            <React.Fragment key={index}>
+                {line}
+                <br />
+            </React.Fragment>
+        ));
 
-    return (
-      <div className="accordion-item">
-        <h2 className="accordion-header">
-          <button
-            className={`accordion-button ${isOpen ? '' : 'collapsed'}`}
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target={`#${collapseId}`}
-            aria-expanded={isOpen ? 'true' : 'false'}
-            aria-controls={collapseId}
-          >
-            ARTÍCULO {numero}.
-          </button>
-        </h2>
-        <div
-          id={collapseId}
-          className={`accordion-collapse collapse ${isOpen ? 'show' : ''}`}
-          data-bs-parent="#accordionExample"
-        >
-          <div className="accordion-body">
-            {textoConSaltosDeLinea}
-          </div>
-        </div>
-      </div>
-    );
-  }
+        return (
+            <div className="accordion-item">
+                <h2 className="accordion-header">
+                    <button
+                        className={`accordion-button ${isOpen ? '' : 'collapsed'}`}
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target={`#${collapseId}`}
+                        aria-expanded={isOpen ? 'true' : 'false'}
+                        aria-controls={collapseId}
+                    >
+                        ARTÍCULO {numero}.
+                    </button>
+                </h2>
+                <div
+                    id={collapseId}
+                    className={`accordion-collapse collapse ${isOpen ? 'show' : ''}`}
+                    data-bs-parent="#accordionExample"
+                >
+                    <div className="accordion-body">
+                        {textoConSaltosDeLinea}
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 function leyII() {
-  const [isOpenAll, setIsOpenAll] = useState(false);
+    const [isOpenAll, setIsOpenAll] = useState(false);
 
-  const toggleAccordionAll = () => {
-    setIsOpenAll(!isOpenAll);
-  };
+    const toggleAccordionAll = () => {
+        setIsOpenAll(!isOpenAll);
+    };
 
-  return (
-    <div className='' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }} >
-      <div>
+    return (
+        <div className='' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }} >
+            <div>
 
-        <div className='pt-1 d-flex justify-content-evenly'>
-          <button className='btn left btn-lg'
-            style={{ backgroundColor: window.themeColors.buttonColor, }}>
-            <Link to="/" style={{ color: window.themeColors.footerColorText }}> <h4>Regresar a Inicio</h4> </Link>
-          </button>
+                <div className='pt-1 d-flex justify-content-evenly'>
+                    <Link to="/" >
+                        <button className='btn left btn-lg'
+                            style={{ backgroundColor: window.themeColors.buttonColor,  color: window.themeColors.footerColorText }}>
+                            <h4>Regresar a Inicio</h4>
+                        </button>
+                    </Link>
+                    
+                    <button className='btn rigth btn-lg'
+                        style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }} onClick={toggleAccordionAll}>
+                        {isOpenAll ? 'Cerrar Todos Los Articulos' : 'Abrir Todos Los Articulos'}
+                    </button>
+                </div>
 
-          <button className='btn rigth btn-lg'
-            style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }} onClick={toggleAccordionAll}>
-            {isOpenAll ? 'Cerrar Todos Los Articulos' : 'Abrir Todos Los Articulos'}
-          </button>
-        </div>
-
-        <div className="accordion" id="accordionExample">
-          <div className='d-flex flex-column align-items-center '>
-            <h2>LEY II – N.° 16</h2>
-            <h4>(Antes Ley 3820) </h4>
-            <p> LEY DE PROTECCIÓN INTEGRAL DE LOS DERECHOS </p>
-            <p> DE NIÑOS, NIÑAS Y ADOLESCENTES </p> 
-            <p> LIBRO I </p>
-            <p> PROTECCIÓN INTEGRAL DE LOS DERECHOS </p>
-            <p> TÍTULO I   </p>
-            <p>  DISPOSICIONES GENERALES </p>
-            <p>  CAPÍTULO ÚNICO </p>
-            <p> FINALIDAD Y OBJETIVOS </p>
-          </div>
+                <div className="accordion" id="accordionExample">
+                    <div className='d-flex flex-column align-items-center '>
+                        <h2>LEY II – N.° 16</h2>
+                        <h4>(Antes Ley 3820) </h4>
+                        <p> LEY DE PROTECCIÓN INTEGRAL DE LOS DERECHOS </p>
+                        <p> DE NIÑOS, NIÑAS Y ADOLESCENTES </p>
+                        <p> LIBRO I </p>
+                        <p> PROTECCIÓN INTEGRAL DE LOS DERECHOS </p>
+                        <p> TÍTULO I   </p>
+                        <p>  DISPOSICIONES GENERALES </p>
+                        <p>  CAPÍTULO ÚNICO </p>
+                        <p> FINALIDAD Y OBJETIVOS </p>
+                    </div>
 
 
-          <AccordionItem numero={1} isOpen={isOpenAll} textoAcordeon="Objeto. La presente ley tiene por finalidad garantizar el goce, ejercicio y la
+                    <AccordionItem numero={1} isOpen={isOpenAll} textoAcordeon="Objeto. La presente ley tiene por finalidad garantizar el goce, ejercicio y la
                         protección integral de los derechos de niños, niñas y adolescentes en la provincia de
                         Misiones.
                         " />
-          <AccordionItem numero={2} isOpen={isOpenAll} textoAcordeon="Aplicación legal. Los derechos y garantías enunciados en esta ley se
+                    <AccordionItem numero={2} isOpen={isOpenAll} textoAcordeon="Aplicación legal. Los derechos y garantías enunciados en esta ley se
                         entienden como complementarios de los reconocidos en la Constitución Nacional,
                         Convención Internacional sobre los Derechos del Niño; las Reglas Mínimas de las
                         Naciones Unidas para la Administración de la Justicia de menores (Reglas de Beijing),
@@ -92,13 +94,13 @@ function leyII() {
                         General y las Directrices de Naciones Unidas para la Prevención de la Delincuencia Juvenil
                         (Directrices de Riad); demás convenciones y tratados internacionales en los que el Estado
                         argentino sea parte; leyes nacionales y la Constitución de la Provincia de Misiones." />
-          <AccordionItem numero={3} isOpen={isOpenAll} textoAcordeon="Concepto de niño, niña y adolescente. A los efectos de esta ley, se
+                    <AccordionItem numero={3} isOpen={isOpenAll} textoAcordeon="Concepto de niño, niña y adolescente. A los efectos de esta ley, se
                         considera niño o niña a toda persona hasta los dieciocho (18) años de edad, entendiéndose
                         como adolescencia la etapa de niñez comprendida entre los trece (13) y hasta los dieciocho
                         (18) años. En caso de duda se presume la edad de niño, niña y adolescente establecida en
                         esta ley y prevalece la condición de adolescente ante la de adulto y de niño, niña ante la de
                         adolescente, hasta tanto se pruebe lo contrario." />
-          <AccordionItem numero={4} isOpen={isOpenAll} textoAcordeon="Interés superior. El interés superior de niños, niñas y adolescentes, es un
+                    <AccordionItem numero={4} isOpen={isOpenAll} textoAcordeon="Interés superior. El interés superior de niños, niñas y adolescentes, es un
                         principio de interpretación y aplicación de esta ley, dirigido a asegurar el desarrollo integral
                         de los niños, niñas y adolescentes, así como el goce y ejercicio pleno y efectivo de sus
                         derechos y garantías. Es de obligatorio cumplimiento en la toma de todas las decisiones
@@ -116,16 +118,16 @@ function leyII() {
                         En aplicación del interés superior del niño, niña y adolescente, cuando exista conflicto entre
                         los derechos e intereses de los niños, niñas y adolescentes frente a otros derechos e
                         intereses igualmente legítimos, prevalecen los primeros." />
-          <AccordionItem numero={5} isOpen={isOpenAll} textoAcordeon="- Derechos fundamentales. El niño, niña y adolescente es titular de todos los
+                    <AccordionItem numero={5} isOpen={isOpenAll} textoAcordeon="- Derechos fundamentales. El niño, niña y adolescente es titular de todos los
                         derechos y garantías fundamentales inherentes a su condición de persona y de la protección
                         jurídica y derechos específicos consagrados en esta ley. La Provincia promueve su
                         participación social y las máximas oportunidades para su pleno desarrollo físico, psíquico,
                         moral, espiritual y social, en condiciones de libertad, igualdad, dignidad y equidad." />
-          <AccordionItem numero={6} isOpen={isOpenAll} textoAcordeon="Remoción de obstáculos. Es indelegable e imprescriptible la
+                    <AccordionItem numero={6} isOpen={isOpenAll} textoAcordeon="Remoción de obstáculos. Es indelegable e imprescriptible la
                         responsabilidad de las áreas gubernamentales del Estado en la adopción de medidas
                         administrativas, legislativas y de otra índole para la plena satisfacción de los derechos de
                         los niños, niñas y adolescentes." />
-          <AccordionItem numero={7} isOpen={isOpenAll} textoAcordeon="Efectivización de derechos. Es responsabilidad conjunta de la familia, la
+                    <AccordionItem numero={7} isOpen={isOpenAll} textoAcordeon="Efectivización de derechos. Es responsabilidad conjunta de la familia, la
                         sociedad y el Estado, asegurar a los niños, niñas y adolescentes con absoluta prioridad, la
                         efectivización de los derechos a la vida, la salud, la libertad, la identidad, la alimentación, la
                         educación, la vivienda, la cultura, a ser oídos y que sus opiniones sean tenidas en cuenta, a
@@ -136,7 +138,7 @@ function leyII() {
                         razones de sexo en la asunción de los roles entre adultos y en relación a los niños, niñas y
                         adolescentes.
                         " />
-          <AccordionItem numero={8} isOpen={isOpenAll} textoAcordeon="Garantía de prioridad. Los niños, niñas y adolescentes tienen prioridad en
+                    <AccordionItem numero={8} isOpen={isOpenAll} textoAcordeon="Garantía de prioridad. Los niños, niñas y adolescentes tienen prioridad en
                           la:
                           1) protección y auxilio cualquiera sea la circunstancia;
                           2) atención en los servicios públicos;
@@ -145,30 +147,30 @@ function leyII() {
                           adolescentes y la familia;
                           4) consideración y ponderación de las necesidades y problemáticas de la comunidad local a
                           la que pertenecen." />
-          <AccordionItem numero={9} isOpen={isOpenAll} textoAcordeon="Principios básicos. El diseño de la política respecto a la infanciaadolescencia, se basa en el fortalecimiento de la familia y de las redes de solidaridad social,
+                    <AccordionItem numero={9} isOpen={isOpenAll} textoAcordeon="Principios básicos. El diseño de la política respecto a la infanciaadolescencia, se basa en el fortalecimiento de la familia y de las redes de solidaridad social,
                           implementando planes que facilitan el acceso a los bienes y servicios a toda la población
                           como efectiva práctica de la superación de las desigualdades y de la exclusión social,
                           promoviendo la protección de derechos mediante la implementación de un sistema que
                           garantice la eficiencia de los servicios de apoyo familiar y social.
                           " />
-          <AccordionItem numero={10} isOpen={isOpenAll} textoAcordeon="Interpretación. En la interpretación y aplicación de la presente ley se tiene
+                    <AccordionItem numero={10} isOpen={isOpenAll} textoAcordeon="Interpretación. En la interpretación y aplicación de la presente ley se tiene
                           en cuenta la condición del niño, niña y adolescente como sujeto titular de derechos y
                           deberes, contemplándose especialmente su condición de persona en desarrollo. El niño,
                           niña y adolescente tienen participación activa en la sociedad y no pueden ser considerados
                           objeto de socialización, control o prueba.
                           " />
 
-          TÍTULO II
-          DERECHOS FUNDAMENTALES Y GARANTÍAS
-          CAPÍTULO ÚNICO
-          DERECHOS. GARANTÍAS PROCESALES
+                    TÍTULO II
+                    DERECHOS FUNDAMENTALES Y GARANTÍAS
+                    CAPÍTULO ÚNICO
+                    DERECHOS. GARANTÍAS PROCESALES
 
-          <AccordionItem numero={11} isOpen={isOpenAll} textoAcordeon=" Derecho a la vida, derecho a la salud, derecho a la libertad ambulatoria,
+                    <AccordionItem numero={11} isOpen={isOpenAll} textoAcordeon=" Derecho a la vida, derecho a la salud, derecho a la libertad ambulatoria,
                 dignidad, identidad y respeto. Los niños, niñas y adolescentes tienen derecho a la vida, a su
                 disfrute y protección, a la seguridad y libertad ambulatoria. Tienen derecho a la salud desde
                 una perspectiva integral. Derecho a la dignidad, identidad en todas sus dimensiones y fases,
                 y a ser sujetos titulares de todos los derechos humanos, para lo cual se adoptan garantías" />
-          <AccordionItem numero={12} isOpen={isOpenAll} textoAcordeon="Protección integral de la salud. El niño, niña y adolescente tiene derecho
+                    <AccordionItem numero={12} isOpen={isOpenAll} textoAcordeon="Protección integral de la salud. El niño, niña y adolescente tiene derecho
                 a la salud desde una perspectiva integral, a ese efecto el Estado provincial adopta medidas
                 para:
                 1) reducir la morbimortalidad;
@@ -194,7 +196,7 @@ function leyII() {
                 veinticuatro (24) meses consecutivos a partir del momento del nacimiento, sin que pueda
                 separarse al niño o niña de su madre, y proporcionando lugares especiales para la
                 comunicación entre madre e hijo" />
-          <AccordionItem numero={13} isOpen={isOpenAll} textoAcordeon="Atención perinatal. Los establecimientos públicos y privados que realizan
+                    <AccordionItem numero={13} isOpen={isOpenAll} textoAcordeon="Atención perinatal. Los establecimientos públicos y privados que realizan
                 atención del embarazo, del parto y del recién nacido, están obligados a:
                 1) conservar las historias clínicas individuales por el plazo de treinta (30) años;
                 2) determinar pesquisas y terapéutica de enfermedades congénitas del metabolismo en el
@@ -207,14 +209,14 @@ function leyII() {
                 la madre;
                 6) garantizar la atención de todas las enfermedades perinatales en el ámbito estatal y
                 privado." />
-          <AccordionItem numero={14} isOpen={isOpenAll} textoAcordeon="- Derecho a la identidad. El derecho del niño, niña y adolescente a la
+                    <AccordionItem numero={14} isOpen={isOpenAll} textoAcordeon="- Derecho a la identidad. El derecho del niño, niña y adolescente a la
                 identidad comprende el derecho a una nacionalidad, a un nombre, a su cultura, a su lengua
                 de origen, a su orientación sexual, a conocer la identidad de ambos progenitores y a las
                 relaciones familiares sin injerencias ilícitas.
                 En caso de privación ilegal de algunos o todos los elementos de la identidad, el Estado
                 provincial presta asistencia y protección apropiadas para restablecer el derecho
                 rápidamente" />
-          <AccordionItem numero={15} isOpen={isOpenAll} textoAcordeon="Medidas de protección de identidad. Como medidas para efectivizar el
+                    <AccordionItem numero={15} isOpen={isOpenAll} textoAcordeon="Medidas de protección de identidad. Como medidas para efectivizar el
                 derecho a la identidad, el Estado provincial debe:
                 1) identificar al recién nacido mediante el procedimiento que establece la normativa
                 vigente;
@@ -223,10 +225,10 @@ function leyII() {
                 dieciocho (18) años de edad;
                 3) facilitar y colaborar para obtener información, la búsqueda o localización de los padres u
                 otros familiares del niño, niña o adolescente, propiciando el reencuentro familiar" />
-          <AccordionItem numero={16} isOpen={isOpenAll} textoAcordeon="Derecho a la integridad. Los niños, niñas y adolescentes tienen derecho a
+                    <AccordionItem numero={16} isOpen={isOpenAll} textoAcordeon="Derecho a la integridad. Los niños, niñas y adolescentes tienen derecho a
                 la integridad biopsicosocial, a la intimidad, a la privacidad, a la autonomía personal, social
                 y jurídica; al respeto a sus valores, ideas o creencias y a sus espacios y objetos personales" />
-          <AccordionItem numero={17} isOpen={isOpenAll} textoAcordeon="Derecho a la libertad ambulatoria. Todos los niños, niñas y adolescentes
+                    <AccordionItem numero={17} isOpen={isOpenAll} textoAcordeon="Derecho a la libertad ambulatoria. Todos los niños, niñas y adolescentes
                 tienen derecho a la libertad ambulatoria sin más límites que los establecidos por ley. No
                 pueden ser privados de ella ilegal o arbitrariamente.
                 Por privación de libertad se entiende toda forma de detención o encarcelamiento, así como
@@ -238,27 +240,27 @@ function leyII() {
                 Todos los niños, niñas y adolescentes tienen derecho al control judicial de la privación de la
                 libertad ambulatoria y al amparo de su libertad ambulatoria de conformidad con la ley.
                 " />
-          <AccordionItem numero={18} isOpen={isOpenAll} textoAcordeon="Derecho a ser oídos. El niño, niña y adolescente tienen derecho a ser
+                    <AccordionItem numero={18} isOpen={isOpenAll} textoAcordeon="Derecho a ser oídos. El niño, niña y adolescente tienen derecho a ser
                 oídos y a que sus opiniones sean tenidas en cuenta en cualquier ámbito, cuando se trata de
                 sus intereses o al encontrarse involucrados en cuestiones o procedimientos relativos a sus
                 derechos." />
-          <AccordionItem numero={19} isOpen={isOpenAll} textoAcordeon="Derecho a la dignidad. Es responsabilidad de la familia, la sociedad y el
+                    <AccordionItem numero={19} isOpen={isOpenAll} textoAcordeon="Derecho a la dignidad. Es responsabilidad de la familia, la sociedad y el
                 Estado proteger la dignidad del niño, niña y adolescente como sujeto de derechos humanos,
                 impidiendo que sean sometidos a trato violento, discriminatorio, vejatorio, humillante,
                 intimidatorio, a prostitución, explotación sexual o a cualquier condición inhumana o
                 degradante." />
-          <AccordionItem numero={20} isOpen={isOpenAll} textoAcordeon=" Derecho a ser respetado. El respeto al niño, niña y adolescente consiste en
+                    <AccordionItem numero={20} isOpen={isOpenAll} textoAcordeon=" Derecho a ser respetado. El respeto al niño, niña y adolescente consiste en
                 brindarle comprensión, propiciar oportunidades para el despliegue de sus actividades,
                 promover el desarrollo de sus potencialidades individuales, y garantizar el goce y ejercicio
                 de sus derechos con el protagonismo activo inherente a las prácticas cívicas acordes con su
                 edad y responsabilidades." />
-          <AccordionItem numero={21} isOpen={isOpenAll} textoAcordeon="Derecho a la igualdad. No se admite discriminación ni segregación por
+                    <AccordionItem numero={21} isOpen={isOpenAll} textoAcordeon="Derecho a la igualdad. No se admite discriminación ni segregación por
                 razones o con pretexto de raza, etnia, sexo, género, edad, ideología, religión, opinión,
                 nacionalidad, caracteres físicos, condición psicofísica, social, económica, creencias
                 culturales o cualquier otra circunstancia que implica exclusión o menoscabo de los niños,
                 niñas y adolescentes.
                 " />
-          <AccordionItem numero={22} isOpen={isOpenAll} textoAcordeon="Derecho a la convivencia familiar y comunitaria. El niño, niña y
+                    <AccordionItem numero={22} isOpen={isOpenAll} textoAcordeon="Derecho a la convivencia familiar y comunitaria. El niño, niña y
                 adolescente tienen derecho a ser criados y cuidados por sus padres y a permanecer en su
                 grupo familiar de origen, en una convivencia sustentada en vínculos y relaciones de
                 igualdad y equidad, afectivas y comunitarias.
@@ -272,14 +274,14 @@ function leyII() {
                 ella, de la familia ampliada y de la comunidad según la costumbre local, en programas de
                 asistencia y orientación a la familia.
                 " />
-          <AccordionItem numero={23} isOpen={isOpenAll} textoAcordeon="Derecho a la educación. El derecho a la educación a través del sistema de
+                    <AccordionItem numero={23} isOpen={isOpenAll} textoAcordeon="Derecho a la educación. El derecho a la educación a través del sistema de
                 enseñanza formal y acciones educativas no formales contribuye al afianzamiento de valores
                 basados en el reconocimiento de los derechos humanos, la pluralidad cultural, la diversidad,
                 el medio ambiente, los recursos naturales y los bienes sociales, preparando al niño, niña y
                 adolescente para asumir como ciudadano las responsabilidades de su vida en una sociedad
                 democrática.
                 " />
-          <AccordionItem numero={24} isOpen={isOpenAll} textoAcordeon="Derechos comprendidos. El derecho reconocido en el artículo anterior
+                    <AccordionItem numero={24} isOpen={isOpenAll} textoAcordeon="Derechos comprendidos. El derecho reconocido en el artículo anterior
                 comprende los derechos a:
                 1) ser respetado por parte de todos los integrantes de la comunidad educativa;
                 2) ser oído con anterioridad a la aplicación de cualquier medida o sanción disciplinaria, las
@@ -293,7 +295,7 @@ function leyII() {
                 5) constituir y participar en organizaciones estudiantiles;
                 6) conocer los derechos que le son reconocidos, las acciones para su ejercicio y defensa y
                 contar con patrocinio profesional sin costo, en caso de carencia de recursos." />
-          <AccordionItem numero={25} isOpen={isOpenAll} textoAcordeon="- Garantías mínimas educativas. Como medidas de acción positiva de
+                    <AccordionItem numero={25} isOpen={isOpenAll} textoAcordeon="- Garantías mínimas educativas. Como medidas de acción positiva de
                 efectividad de los derechos reconocidos en los artículos 23 y 24 de la presente, el Estado
                 provincial garantiza:
                 1) el acceso al conocimiento e información de los procedimientos para la construcción de
@@ -308,25 +310,25 @@ function leyII() {
                 sanciones dispuestas;
                 5) el contralor del cumplimiento de las distintas funciones que ejercen cada uno de los
                 organismos en sus competencias específicas. " />
-          <AccordionItem numero={26} isOpen={isOpenAll} textoAcordeon="Derecho a la recreación, juego, deporte y descanso. El Estado adopta
+                    <AccordionItem numero={26} isOpen={isOpenAll} textoAcordeon="Derecho a la recreación, juego, deporte y descanso. El Estado adopta
                 medidas que posibilitan el goce efectivo de los derechos a la recreación, al juego, al deporte
                 y al descanso.
                 " />
-          <AccordionItem numero={27} isOpen={isOpenAll} textoAcordeon="Participación. El Estado provincial y los municipios que adhieren a la
+                    <AccordionItem numero={27} isOpen={isOpenAll} textoAcordeon="Participación. El Estado provincial y los municipios que adhieren a la
                 presente ley, facilitan y promueven la asignación de recursos para financiar planes,
                 programas y proyectos culturales, recreativos y deportivos, impulsando iniciativas de
                 diseño e implementación, que promueven el protagonismo de las organizaciones de la
                 sociedad civil y del niño, niña y adolescente, integrando la participación de niños, niñas o
                 adolescentes con discapacidades." />
-          <AccordionItem numero={28} isOpen={isOpenAll} textoAcordeon="Erradicación del trabajo infantil. Es responsabilidad de los organismos
+                    <AccordionItem numero={28} isOpen={isOpenAll} textoAcordeon="Erradicación del trabajo infantil. Es responsabilidad de los organismos
                 del Estado diseñar e implementar políticas específicas de prevención y erradicación del
                 trabajo infantil." />
-          <AccordionItem numero={29} isOpen={isOpenAll} textoAcordeon="- Derecho a la protección contra la explotación. Es responsabilidad de los
+                    <AccordionItem numero={29} isOpen={isOpenAll} textoAcordeon="- Derecho a la protección contra la explotación. Es responsabilidad de los
                 organismos del Estado diseñar e implementar políticas específicas para la prevención y
                 erradicación de cualquier forma de explotación de los niños, niñas y adolescentes, realizada
                 para solventar sus necesidades, contribuir al sostenimiento familiar o de otras personas
                 adultas." />
-          <AccordionItem numero={30} isOpen={isOpenAll} textoAcordeon="Derecho a la libre expresión, información y participación. Los niños,
+                    <AccordionItem numero={30} isOpen={isOpenAll} textoAcordeon="Derecho a la libre expresión, información y participación. Los niños,
                 niñas y adolescentes tienen derecho a:
                 1) informarse, expresarse y a que se tengan en cuenta sus opiniones;
                 2) creer y profesar cultos religiosos;
@@ -334,7 +336,7 @@ function leyII() {
                 4) asociarse y celebrar reuniones;
                 5) usar, transitar y permanecer en los espacios públicos.
                 " />
-          <AccordionItem numero={31} isOpen={isOpenAll} textoAcordeon="Garantías procesales. El Estado garantiza a los niños, niñas y
+                    <AccordionItem numero={31} isOpen={isOpenAll} textoAcordeon="Garantías procesales. El Estado garantiza a los niños, niñas y
                 adolescentes en todo proceso legal, los principios y garantías procesales reconocidos a las
                 personas adultas y los inherentes a la protección complementaria de la que son sujetos
                 titulares, en especial:
@@ -357,22 +359,22 @@ function leyII() {
                 aprehensión o detención, del lugar donde se encuentra, hecho que se le imputa, tribunal y
                 organismo de prevención intervinientes;
                 9) a preservar su intimidad." />
-          <AccordionItem numero={32} isOpen={isOpenAll} textoAcordeon="Reserva de identidad. Ningún medio de comunicación social, público o
+                    <AccordionItem numero={32} isOpen={isOpenAll} textoAcordeon="Reserva de identidad. Ningún medio de comunicación social, público o
                 privado, debe publicar o difundir informaciones que identifiquen o puedan dar lugar a la
                 identificación de niños, niñas y adolescentes, víctimas o infractores de disposiciones
                 penales o contravencionales, salvo las circunstancias de excepción prevista en el artículo
                 72.
                 " />
-          TÍTULO III
-          SISTEMA DE PROTECCIÓN INTEGRAL DE DERECHOS
-          CAPÍTULO I
-          DISPOSICIÓN GENERAL
-          <AccordionItem numero={33} isOpen={isOpenAll} textoAcordeon="Concepto. A los fines de esta ley, se entiende por sistema de protección
+                    TÍTULO III
+                    SISTEMA DE PROTECCIÓN INTEGRAL DE DERECHOS
+                    CAPÍTULO I
+                    DISPOSICIÓN GENERAL
+                    <AccordionItem numero={33} isOpen={isOpenAll} textoAcordeon="Concepto. A los fines de esta ley, se entiende por sistema de protección
             integral de derechos al conjunto de medidas, mecanismos y procedimientos articulados
             entre la familia, la comunidad y el Estado, tendientes a garantizar la efectividad del goce y
             ejercicio de los derechos del niño, niña y adolescente, reconociendo a la familia como
             primordial operador en la defensa, promoción y protección de tales derechos." />
-          <AccordionItem numero={34} isOpen={isOpenAll} textoAcordeon="Principios generales. Las políticas públicas de protección integral de los
+                    <AccordionItem numero={34} isOpen={isOpenAll} textoAcordeon="Principios generales. Las políticas públicas de protección integral de los
             derechos del niño, niña y adolescente, y la familia, se implementan mediante la
             concertación articulada transversalmente de acciones de la Provincia, los municipios que
             adhieren a la presente ley, con la participación de las organizaciones de la sociedad civil,
@@ -383,9 +385,9 @@ function leyII() {
             mejor resueltas por el municipio, con la participación de las organizaciones de la sociedad
             civil legalmente constituidas, privilegiando las realidades locales.
             " />
-          CAPÍTULO II
-          POLÍTICAS PÚBLICAS
-          <AccordionItem numero={35} isOpen={isOpenAll} textoAcordeon="Ejes conceptuales. Las políticas públicas tienden a:
+                    CAPÍTULO II
+                    POLÍTICAS PÚBLICAS
+                    <AccordionItem numero={35} isOpen={isOpenAll} textoAcordeon="Ejes conceptuales. Las políticas públicas tienden a:
             1) fortalecer el rol de la familia como principal ejecutor de la efectivización de los derechos
             del niño, niña y adolescente;
             2) descentralizar los organismos de aplicación de los planes y programas específicos de las
@@ -402,9 +404,9 @@ function leyII() {
             técnica;
             5) propender a la formación de redes sociales que contribuyan a la optimización de los
             recursos existentes." />
-          CAPÍTULO III
-          MEDIDAS DE PROTECCIÓN DE DERECHOS
-          <AccordionItem numero={36} isOpen={isOpenAll} textoAcordeon="- Definición. Las medidas de protección de derechos tienen como finalidad
+                    CAPÍTULO III
+                    MEDIDAS DE PROTECCIÓN DE DERECHOS
+                    <AccordionItem numero={36} isOpen={isOpenAll} textoAcordeon="- Definición. Las medidas de protección de derechos tienen como finalidad
             la preservación o restitución del goce y ejercicio de derechos amenazados o vulnerados y la
             reparación de sus consecuencias; pueden ser acordadas en forma aislada o conjuntamente;
             son limitadas en el tiempo y se mantienen mientras persistan las causas que dieron origen a
@@ -417,7 +419,7 @@ function leyII() {
             En ningún caso estas medidas pueden consistir en privación de la libertad.
             Las medidas adoptadas pueden ser sustituidas en cualquier momento por otras que
             garantizan de mejor forma el goce y ejercicio de los derechos." />
-          <AccordionItem numero={37} isOpen={isOpenAll} textoAcordeon="Formas alternativas de convivencia. Cuando medie inexistencia o
+                    <AccordionItem numero={37} isOpen={isOpenAll} textoAcordeon="Formas alternativas de convivencia. Cuando medie inexistencia o
             privación del grupo familiar de pertenencia, las medidas de protección consisten en la
             búsqueda e individualización de alternativas para que el niño, niña y adolescente conviva
             con personas vinculadas a él a través de líneas de parentesco, por consanguinidad o por
@@ -434,25 +436,25 @@ function leyII() {
             Ninguna autoridad pública o privada, puede obstaculizar el pleno goce de los derechos de
             los niños, niñas y adolescentes, bajo pretexto de que la guarda provisoria no ha sido
             formalizada judicialmente." />
-          <AccordionItem numero={38} isOpen={isOpenAll} textoAcordeon="Desjudicialización de la pobreza. Cuando la violación, amenaza o
+                    <AccordionItem numero={38} isOpen={isOpenAll} textoAcordeon="Desjudicialización de la pobreza. Cuando la violación, amenaza o
             restricción de derechos se produce como consecuencia de necesidades básicas insatisfechas,
             carencias o dificultades materiales, económicas, laborales o de vivienda; las medidas de
             protección a aplicar, consisten en los planes, programas y proyectos sociales establecidos
             por las políticas públicas, que deben brindar orientación, ayuda y apoyo, incluso
             económico, con miras a la sustentación y fortalecimiento de los vínculos del grupo familiar
             responsable del desarrollo integral del niño, niña y adolescente." />
-          <AccordionItem numero={39} isOpen={isOpenAll} textoAcordeon="Medida excepcional. Cuando un niño, niña o adolescente llega por
+                    <AccordionItem numero={39} isOpen={isOpenAll} textoAcordeon="Medida excepcional. Cuando un niño, niña o adolescente llega por
             cualquier circunstancia de vulneración de algunos de sus derechos a una institución pública
             o privada de atención o asistencia a la infancia, sus responsables deben informar en el
             término máximo de veinticuatro (24) horas o el primer día hábil inmediato posterior a las
             instancias administrativas provinciales o municipales que integran el sistema de protección
             integral de derechos de la presente ley, a fin de que articulen inmediatamente las medidas
             alternativas de convivencia familiar del artículo 37 de la presente." />
-          <AccordionItem numero={40} isOpen={isOpenAll} textoAcordeon="Comunicación. Toda persona que tome conocimiento de la existencia de
+                    <AccordionItem numero={40} isOpen={isOpenAll} textoAcordeon="Comunicación. Toda persona que tome conocimiento de la existencia de
             abuso físico, psíquico, sexual, explotación o cualquier trato que impida o menoscabe los
             derechos de un niño, niña y adolescente, debe informarlo inmediatamente a las instancias
             administrativas creadas por esta ley en los ámbitos provincial o municipal." />
-          <AccordionItem numero={41} isOpen={isOpenAll} textoAcordeon="Medidas de protección de derechos. Investigada y comprobada la
+                    <AccordionItem numero={41} isOpen={isOpenAll} textoAcordeon="Medidas de protección de derechos. Investigada y comprobada la
             violación, amenaza o restricción de derechos, pueden implementarse, sin perjuicio de las
             demás mencionadas en el presente Capítulo, las siguientes medidas:
             1) guía, consejo y asistencia al niño, niña y adolescente, y la familia;
@@ -476,24 +478,24 @@ function leyII() {
             participación del niño, niña y adolescente, y su familia, o aquellos a los que adhiere
             afectivamente. Las medidas previstas en los incisos 7), cuando no hubo acuerdo y 8) de este artículo,
             deben ser dispuestas con intervención de la autoridad judicial competente." />
-          <AccordionItem numero={42} isOpen={isOpenAll} textoAcordeon="Exclusión. Verificada la situación de maltrato o abuso psíquico o físico
+                    <AccordionItem numero={42} isOpen={isOpenAll} textoAcordeon="Exclusión. Verificada la situación de maltrato o abuso psíquico o físico
             por parte de los padres o responsables del niño, niña y adolescente, el juez puede, de
             acuerdo a la normativa vigente, determinar la exclusión del agresor de la vivienda común." />
-          CAPÍTULO IV
-          DISEÑO ORGANIZACIONAL
-          <AccordionItem numero={43} isOpen={isOpenAll} textoAcordeon="Concepto. El diseño organizacional para la operativización y vigencia
+                    CAPÍTULO IV
+                    DISEÑO ORGANIZACIONAL
+                    <AccordionItem numero={43} isOpen={isOpenAll} textoAcordeon="Concepto. El diseño organizacional para la operativización y vigencia
             plena de derechos tiende hacia la constitución de áreas de desarrollo, regidas por los ejes
             establecidos en la presente ley.
             " />
-          CONSEJO PROVINCIAL DE GARANTÍAS DE LOS DERECHOS DE NIÑOS,
-          NIÑAS, ADOLESCENTES Y LA FAMILIA
-          <AccordionItem numero={44} isOpen={isOpenAll} textoAcordeon="Creación. Créase el Consejo Provincial de Garantías de los Derechos de
+                    CONSEJO PROVINCIAL DE GARANTÍAS DE LOS DERECHOS DE NIÑOS,
+                    NIÑAS, ADOLESCENTES Y LA FAMILIA
+                    <AccordionItem numero={44} isOpen={isOpenAll} textoAcordeon="Creación. Créase el Consejo Provincial de Garantías de los Derechos de
             Niños, Niñas, Adolescentes y la Familia, como organismo intersectorial de articulación,
             deliberación, consulta y asesoramiento en políticas públicas de la niñez, la adolescencia y la
             familia, en el que convergen las áreas gubernamentales y no gubernamentales que tienen
             como finalidad la promoción y defensa de los derechos de niños, niñas, adolescentes y la
             familia." />
-          <AccordionItem numero={45} isOpen={isOpenAll} textoAcordeon="Funciones. Son funciones del Consejo Provincial de Garantías de los
+                    <AccordionItem numero={45} isOpen={isOpenAll} textoAcordeon="Funciones. Son funciones del Consejo Provincial de Garantías de los
             Derechos de Niños, Niñas, Adolescentes y la Familia, las siguientes:
             1) dictar su reglamento interno;
             2) promover y articular transversalmente, en un espacio de deliberación y participación,
@@ -522,7 +524,7 @@ function leyII() {
             12) requerir la información necesaria para el cumplimiento de sus fines;
             13) celebrar convenios con organizaciones internacionales, nacionales, provinciales y
             municipales para la implementación de las políticas sociales vinculadas a la temática." />
-          <AccordionItem numero={46} isOpen={isOpenAll} textoAcordeon="Integración. El Consejo Provincial de Garantías de los Derechos de
+                    <AccordionItem numero={46} isOpen={isOpenAll} textoAcordeon="Integración. El Consejo Provincial de Garantías de los Derechos de
             Niños, Niñas, Adolescentes y la Familia, se integra con:
             1) un (1) representante de máxima jerarquía de cada área de competencia vinculada a la
             temática de la niñez, la adolescencia y la familia, de los Ministerios de Desarrollo Social, la
@@ -539,7 +541,7 @@ function leyII() {
             6) un (1) representante de organizaciones de jóvenes;
             7) un (1) representante de las comunidades indígenas;
             8) un (1) representante por las universidades." />
-          <AccordionItem numero={47} isOpen={isOpenAll} textoAcordeon="Designación. Presidencia. Los miembros del Consejo determinados en el
+                    <AccordionItem numero={47} isOpen={isOpenAll} textoAcordeon="Designación. Presidencia. Los miembros del Consejo determinados en el
             inciso 1) del artículo anterior, son designados por el Poder Ejecutivo. Los representantes
             contemplados en los incisos 2) a 8) del artículo anterior, lo son a propuesta de sus
             respectivas instituciones o entidades.
@@ -547,16 +549,16 @@ function leyII() {
             contemplados en el inciso 1) del artículo anterior. Dura dos (2) años en sus funciones.
             Los miembros del Consejo no perciben remuneración adicional para el ejercicio de esta
             función." />
-          <AccordionItem numero={48} isOpen={isOpenAll} textoAcordeon="- Requisitos. Para ser miembro del Consejo se requiere residencia en la
+                    <AccordionItem numero={48} isOpen={isOpenAll} textoAcordeon="- Requisitos. Para ser miembro del Consejo se requiere residencia en la
             Provincia no inferior a dos (2) años y acreditar idoneidad y versación en la temática.
             Los miembros representantes de las entidades contempladas en los incisos 2) a 8) del
             artículo 46 de la presente, deben renovar su representación cada dos (2) años.
             " />
-          <AccordionItem numero={49} isOpen={isOpenAll} textoAcordeon="Organismo de articulación. El Ministerio de Desarrollo Social, la Mujer y
+                    <AccordionItem numero={49} isOpen={isOpenAll} textoAcordeon="Organismo de articulación. El Ministerio de Desarrollo Social, la Mujer y
             la Juventud, es el organismo que tiene a su cargo la articulación de las áreas que
             constituyen el diseño organizacional del presente libro para la ejecución de los fines
             previstos en esta ley." />
-          <AccordionItem numero={50} isOpen={isOpenAll} textoAcordeon="- Misiones y funciones. Son funciones del organismo de articulación:
+                    <AccordionItem numero={50} isOpen={isOpenAll} textoAcordeon="- Misiones y funciones. Son funciones del organismo de articulación:
             1) apoyar y supervisar la implementación de esta ley;
             2) articular transversalmente las políticas sociales de infancia, adolescencia y familia de
             todas las áreas de gobierno;
@@ -587,7 +589,7 @@ function leyII() {
             derechos;
             14) mantener permanentemente acciones de cooperación interpoderes con el Poder
             Legislativo y Poder Judicial." />
-          <AccordionItem numero={51} isOpen={isOpenAll} textoAcordeon="Consejos Municipales. Los municipios que adhieren a la presente ley,
+                    <AccordionItem numero={51} isOpen={isOpenAll} textoAcordeon="Consejos Municipales. Los municipios que adhieren a la presente ley,
             deben crear en forma individual o en conjunto con otros municipios de su región, como
             organismo especializado, un Consejo Municipal de Garantías de los Derechos del Niño,
             Niña y Adolescente, y la Familia, como ámbito comunitario público intersectorial de
@@ -599,7 +601,7 @@ function leyII() {
             comunidades religiosas y demás representantes de la comunidad.
             Los integrantes del Consejo no perciben remuneración por la función que ejercen en el
             mismo." />
-          <AccordionItem numero={52} isOpen={isOpenAll} textoAcordeon="Funciones. Son funciones del Consejo Municipal:
+                    <AccordionItem numero={52} isOpen={isOpenAll} textoAcordeon="Funciones. Son funciones del Consejo Municipal:
             1) proponer representantes para integrar el Consejo Provincial;
             2) aconsejar y asesorar sobre las políticas del área privilegiando las características de la
             zona;
@@ -613,20 +615,20 @@ function leyII() {
             presupuestarios;
             7) promover la integración de agencias de derechos de niños, niñas y adolescentes, y la
             familia." />
-          <AccordionItem numero={53} isOpen={isOpenAll} textoAcordeon="Agencias de derechos. Los municipios que adhieren a la presente ley
+                    <AccordionItem numero={53} isOpen={isOpenAll} textoAcordeon="Agencias de derechos. Los municipios que adhieren a la presente ley
             deben crear, en forma individual o en conjunto con otros municipios, como organismo
             descentralizado de los consejos, las agencias de derechos de niños, niñas y adolescentes, y
             la familia." />
-          <AccordionItem numero={54} isOpen={isOpenAll} textoAcordeon="Acciones. Las agencias de derechos de niños, niñas y adolescentes, y la
+                    <AccordionItem numero={54} isOpen={isOpenAll} textoAcordeon="Acciones. Las agencias de derechos de niños, niñas y adolescentes, y la
             familia, implementan un sistema articulado transversalmente de garantía y efectivización de
             los derechos de niños, niñas y adolescentes, y la familia, mediante acciones adoptadas con
             criterios interdisciplinarios y participación de todos los sectores sociales." />
-          <AccordionItem numero={55} isOpen={isOpenAll} textoAcordeon="Equipo técnico. Las agencias están integradas por un equipo técnico
+                    <AccordionItem numero={55} isOpen={isOpenAll} textoAcordeon="Equipo técnico. Las agencias están integradas por un equipo técnico
             interdisciplinario, compuesto por distintas áreas profesionales vinculadas a la temática de la
             niñez y por promotores de derechos.
             Los miembros del equipo técnico son designados por el Consejo Municipal.
             " />
-          <AccordionItem numero={56} isOpen={isOpenAll} textoAcordeon="Funciones generales. Son funciones de las agencias de derechos de niños,
+                    <AccordionItem numero={56} isOpen={isOpenAll} textoAcordeon="Funciones generales. Son funciones de las agencias de derechos de niños,
             niñas y adolescentes, y la familia, las siguientes:
             1) fijar su estructura organizacional;
             2) difundir los principios de la Convención Internacional sobre los Derechos del Niño,
@@ -673,24 +675,24 @@ function leyII() {
             grupo familiar o recuperen la convivencia con miembros de la familia ampliada o de la
             comunidad local, facilitando la reinserción y contención en su medio afectivo y social.
             " />
-          <AccordionItem numero={57} isOpen={isOpenAll} textoAcordeon="Prueba preconstituida. En caso de formarse una causa judicial, toda la
+                    <AccordionItem numero={57} isOpen={isOpenAll} textoAcordeon="Prueba preconstituida. En caso de formarse una causa judicial, toda la
             documental, informes, diagnósticos, pericias, evaluaciones y demás actividades
             extrajudiciales que realizan los equipos técnicos interdisciplinarios de las agencias, deben
             ser agregados a dicha causa como prueba preconstituida, a los efectos de su merituación por
             el juez, con el objeto de evitar reiteraciones innecesarias. Ello sin perjuicio de la facultad de
             la autoridad judicial competente para solicitar cualesquiera otras medidas." />
-          CAPÍTULO V
-          FONDO ESPECIAL
-          <AccordionItem numero={58} isOpen={isOpenAll} textoAcordeon="Creación. Créase el Fondo Especial para la Garantía Integral de los
+                    CAPÍTULO V
+                    FONDO ESPECIAL
+                    <AccordionItem numero={58} isOpen={isOpenAll} textoAcordeon="Creación. Créase el Fondo Especial para la Garantía Integral de los
             Derechos de Niños, Niñas y Adolescentes, y la Familia, de carácter intangible, así como la
             cuenta especial del mismo nombre, la que debe abrirse en la banca que opere como agente
             financiero oficial de la Provincia.
             " />
-          <AccordionItem numero={59} isOpen={isOpenAll} textoAcordeon="Destino. Sin perjuicio del presupuesto asignado a cada área del Estado,
+                    <AccordionItem numero={59} isOpen={isOpenAll} textoAcordeon="Destino. Sin perjuicio del presupuesto asignado a cada área del Estado,
             para la atención de su competencia específica, el Fondo Especial creado en el artículo
             anterior se destina especialmente a la planificación y ejecución de programas que
             garantizan la aplicación de las medidas establecidas en la presente ley" />
-          <AccordionItem numero={60} isOpen={isOpenAll} textoAcordeon=" Integración. El Fondo Especial para la Garantía Integral de los Derechos
+                    <AccordionItem numero={60} isOpen={isOpenAll} textoAcordeon=" Integración. El Fondo Especial para la Garantía Integral de los Derechos
             de Niños, Niñas y Adolescentes, y la Familia, se integra con los siguientes recursos:
             1) partidas establecidas por el presupuesto general de gastos y recursos;
             2) los recursos provenientes de organismos provinciales, nacionales e internacionales;
@@ -704,7 +706,7 @@ function leyII() {
             niños, niñas y adolescentes, y la familia, que administran los diversos organismos públicos
             en la proporción y en el modo que determina la reglamentación.
             " />
-          <AccordionItem numero={61} isOpen={isOpenAll} textoAcordeon="Administración del Fondo Especial. El Poder Ejecutivo determina la
+                    <AccordionItem numero={61} isOpen={isOpenAll} textoAcordeon="Administración del Fondo Especial. El Poder Ejecutivo determina la
             dependencia de la Jurisdicción que tiene a su cargo la percepción, administración y
             disposición de los recursos que integran el Fondo Especial, la que debe periódicamente
             rendir cuentas a la citada autoridad, de la aplicación de los mismos, en la forma y
@@ -713,10 +715,10 @@ function leyII() {
             Asimismo, dicha dependencia debe elevar el plan de inversión del Fondo Especial para el
             ejercicio siguiente, el que, previa aprobación de la citada autoridad, es considerado al
             momento de la formación del Presupuesto General de la Provincia." />
-          <AccordionItem numero={62} isOpen={isOpenAll} textoAcordeon="Autorización. Facúltase al Poder Ejecutivo a que, por vía reglamentaria,
+                    <AccordionItem numero={62} isOpen={isOpenAll} textoAcordeon="Autorización. Facúltase al Poder Ejecutivo a que, por vía reglamentaria,
             establezca los requisitos por los que se rige la administración y disposición del Fondo
             Especial a que se refiere el artículo 58 de la presente." />
-          <AccordionItem numero={63} isOpen={isOpenAll} textoAcordeon="Conceptualización. A los efectos de la presente ley, se entiende por
+                    <AccordionItem numero={63} isOpen={isOpenAll} textoAcordeon="Conceptualización. A los efectos de la presente ley, se entiende por
             organizaciones de la sociedad civil aquéllas que reúnen los siguientes requisitos y
             condiciones:
             1) están legalmente constituidas;
@@ -725,9 +727,9 @@ function leyII() {
             adolescentes, y la familia;
             4) desarrollan programas de estudio, investigación, prevención, promoción, atención,
             protección o cuidado de niños, niñas y adolescentes." />
-          CAPÍTULO VI
-          ORGANIZACIONES DE LA SOCIEDAD CIVIL
-          <AccordionItem numero={64} isOpen={isOpenAll} textoAcordeon="Obligaciones. Los organismos estatales y las organizaciones de la
+                    CAPÍTULO VI
+                    ORGANIZACIONES DE LA SOCIEDAD CIVIL
+                    <AccordionItem numero={64} isOpen={isOpenAll} textoAcordeon="Obligaciones. Los organismos estatales y las organizaciones de la
             sociedad civil que desarrollan o ejecutan programas o servicios de atención y en especial
             aquéllas en que permanecen niños, niñas y adolescentes, en cumplimiento de una medida
             excepcional implementada y supervisada por la autoridad competente, deben cumplir con la
@@ -762,14 +764,14 @@ function leyII() {
             14) tramitar los documentos de identificación personal para aquellos que no los poseen;
             15) llevar legajos personales de cada niño, niña y adolescente, según la orientación de los
             equipos técnicos interdisciplinarios." />
-          CAPÍTULO VII
-          ORGANISMOS Y ORGANIZACIONES DE ATENCIÓN
-          <AccordionItem numero={65} isOpen={isOpenAll} textoAcordeon="Deberes. Los organismos estatales y las organizaciones de la sociedad
+                    CAPÍTULO VII
+                    ORGANISMOS Y ORGANIZACIONES DE ATENCIÓN
+                    <AccordionItem numero={65} isOpen={isOpenAll} textoAcordeon="Deberes. Los organismos estatales y las organizaciones de la sociedad
             civil a las que se refiere el artículo 64 de la presente, deben requerir la inmediata
             intervención de los servicios de protección de derechos. Son supervisadas por la autoridad
             de aplicación.
             " />
-          <AccordionItem numero={66} isOpen={isOpenAll} textoAcordeon="Sanciones. En caso de detectarse el incumplimiento por parte de los
+                    <AccordionItem numero={66} isOpen={isOpenAll} textoAcordeon="Sanciones. En caso de detectarse el incumplimiento por parte de los
             organismos y organizaciones de cualquiera de las obligaciones establecidas en el artículo
             64 de la presente, sin perjuicio de la responsabilidad civil o penal de sus responsables, se
             aplican las siguientes medidas:
@@ -786,13 +788,13 @@ function leyII() {
             c) intervención de establecimientos o suspensión del programa;
             d) cancelación de inscripción en el registro contemplado en el artículo 63 inciso 2) de la
             presente." />
-          LIBRO II
-          FUERO DE NIÑOS, NIÑAS, ADOLESCENTES Y LA FAMILIA
-          TÍTULO I
-          ÓRGANOS JURISDICCIONALES
-          CAPÍTULO I
-          DISPOSICIONES GENERALES
-          <AccordionItem numero={67} isOpen={isOpenAll} textoAcordeon="- Creación. Créase el Fuero de Niños, Niñas, Adolescentes y la Familia, el
+                    LIBRO II
+                    FUERO DE NIÑOS, NIÑAS, ADOLESCENTES Y LA FAMILIA
+                    TÍTULO I
+                    ÓRGANOS JURISDICCIONALES
+                    CAPÍTULO I
+                    DISPOSICIONES GENERALES
+                    <AccordionItem numero={67} isOpen={isOpenAll} textoAcordeon="- Creación. Créase el Fuero de Niños, Niñas, Adolescentes y la Familia, el
             que está integrado por:
             a) Cámaras de Apelaciones en lo Civil y Comercial;
             b) Juzgados de familia;
@@ -801,22 +803,22 @@ function leyII() {
             e) Jueces penales de garantías de niños, niñas y adolescentes;
             f) Ministerio Público.
             " />
-          <AccordionItem numero={68} isOpen={isOpenAll} textoAcordeon="- Consejeros de familia. Los consejeros de familia intervienen en la etapa
+                    <AccordionItem numero={68} isOpen={isOpenAll} textoAcordeon="- Consejeros de familia. Los consejeros de familia intervienen en la etapa
             prejudicial de avenimiento, de acuerdo al procedimiento que se establece en esta Ley. Sus
             titulares tienen igual jerarquía que los defensores oficiales. Deben ser abogados y
             mediadores, reunir los demás requisitos exigidos para ser defensores oficiales y ser
             designados mediante los mismos procedimientos. Ejercen las funciones inherentes al
             Ministerio Pupilar." />
-          <AccordionItem numero={69} isOpen={isOpenAll} textoAcordeon="Defensa técnica. La defensa técnica de los derechos de niños, niñas y
+                    <AccordionItem numero={69} isOpen={isOpenAll} textoAcordeon="Defensa técnica. La defensa técnica de los derechos de niños, niñas y
             adolescentes, en todas las causas judiciales en que se adoptan decisiones que los afectan, es
             ejercida por los defensores oficiales con las atribuciones acordadas por la normativa legal
             vigente y las que se establecen en esta Ley." />
-          <AccordionItem numero={70} isOpen={isOpenAll} textoAcordeon="Recusación. Los jueces del fuero de niños, niñas y adolescentes y la
+                    <AccordionItem numero={70} isOpen={isOpenAll} textoAcordeon="Recusación. Los jueces del fuero de niños, niñas y adolescentes y la
             familia no pueden ser recusados sin expresión de causa." />
-          <AccordionItem numero={71} isOpen={isOpenAll} textoAcordeon="- Idoneidad. Para la designación de magistrados y funcionarios del fuero
+                    <AccordionItem numero={71} isOpen={isOpenAll} textoAcordeon="- Idoneidad. Para la designación de magistrados y funcionarios del fuero
             son valoradas especialmente los antecedentes, idoneidad y capacitación específica en la
             materia." />
-          <AccordionItem numero={72} isOpen={isOpenAll} textoAcordeon="- Carácter de las actuaciones. En todas las actuaciones ante la justicia de
+                    <AccordionItem numero={72} isOpen={isOpenAll} textoAcordeon="- Carácter de las actuaciones. En todas las actuaciones ante la justicia de
             familia y en lo penal de niños, niñas y adolescentes, se preserva la intimidad del niño, niña
             o adolescente, en cuanto a la no difusión de su identificación ni circunstancias de la causa, a
             excepción de los casos en que el niño, niña o adolescente y su defensa técnica lo autoricen
@@ -826,13 +828,13 @@ function leyII() {
             Esta garantía rige aún cuando el niño, niña o adolescente hubiera cumplido dieciocho (18)
             años de edad.
             " />
-          <AccordionItem numero={73} isOpen={isOpenAll} textoAcordeon="- Agregación de prueba. En las actuaciones que se requieren en las causas
+                    <AccordionItem numero={73} isOpen={isOpenAll} textoAcordeon="- Agregación de prueba. En las actuaciones que se requieren en las causas
             que se tramitan ante el fuero creado por esta Ley, donde deben intervenir profesionales de
             distintas ciencias sociales, se está a lo dispuesto en el Artículo 57 de la presente.
             " />
-          CAPÍTULO II
-          DERECHOS DE VÍCTIMAS Y TESTIGOS
-          <AccordionItem numero={74} isOpen={isOpenAll} textoAcordeon="Derecho de víctimas y testigos. A todo niño, niña o adolescente
+                    CAPÍTULO II
+                    DERECHOS DE VÍCTIMAS Y TESTIGOS
+                    <AccordionItem numero={74} isOpen={isOpenAll} textoAcordeon="Derecho de víctimas y testigos. A todo niño, niña o adolescente
             convocado por un órgano judicial en calidad de víctima o testigo, además de los derechos
             reconocidos en el Código Procesal Penal, debe garantizársele especialmente el pleno
             respeto de los siguientes derechos:
@@ -844,21 +846,21 @@ function leyII() {
             persona de su confianza o de algún miembro del equipo técnico interdisciplinario, si el
             menor de edad así lo solicita o se considera conveniente, a menos que ello perjudique el
             curso de la investigación o el normal desenvolvimiento del acto." />
-          <AccordionItem numero={75} isOpen={isOpenAll} textoAcordeon="- Derechos complementarios. Sin perjuicio de lo establecido en el artículo
+                    <AccordionItem numero={75} isOpen={isOpenAll} textoAcordeon="- Derechos complementarios. Sin perjuicio de lo establecido en el artículo
             precedente, el niño, niña o adolescente, víctima de delito y sus padres, tutor o guardador
             tienen derecho a:
             1) ser informados por la oficina correspondiente acerca de los derechos que les asisten,
             especialmente el de ejercer las acciones civiles pertinentes;
             2) ser informado sobre el estado de la causa y la situación del imputado;
             3) recibir orientación del equipo técnico interdisciplinario del fuero." />
-          <AccordionItem numero={76} isOpen={isOpenAll} textoAcordeon="Información. Los derechos reconocidos en este Capítulo deben ser
+                    <AccordionItem numero={76} isOpen={isOpenAll} textoAcordeon="Información. Los derechos reconocidos en este Capítulo deben ser
             enunciados por la autoridad competente al momento de la primera presentación de la
             víctima o el testigo." />
-          TÍTULO II
-          JUSTICIA DE FAMILIA
-          CAPÍTULO I
-          COMPETENCIA
-          <AccordionItem numero={77} isOpen={isOpenAll} textoAcordeon="Enunciación. Los juzgados de familia tienen competencia para entender
+                    TÍTULO II
+                    JUSTICIA DE FAMILIA
+                    CAPÍTULO I
+                    COMPETENCIA
+                    <AccordionItem numero={77} isOpen={isOpenAll} textoAcordeon="Enunciación. Los juzgados de familia tienen competencia para entender
             en las siguientes causas:
             a) autorización supletoria para contraer matrimonio o por dispensa de edad y dispensa
             supletoria del artículo 1277 del Código Civil. Oposición a la celebración de matrimonio;
@@ -892,17 +894,17 @@ function leyII() {
             cautelares y sus cancelaciones, tercerías, juicios accesorios y ejecutorios en relación a las
             materias enumeradas en el presente artículo.
             " />
-          CAPÍTULO II
-          ETAPA PREJUDICIAL DE AVENIMIENTO
-          <AccordionItem numero={78} isOpen={isOpenAll} textoAcordeon="- Comparecencia. En forma previa a la interposición de las acciones
+                    CAPÍTULO II
+                    ETAPA PREJUDICIAL DE AVENIMIENTO
+                    <AccordionItem numero={78} isOpen={isOpenAll} textoAcordeon="- Comparecencia. En forma previa a la interposición de las acciones
             previstas en los incisos a), j) y l) del artículo anterior y cuestiones relativas a la atribución
             del hogar conyugal y derivadas de uniones de hecho, los interesados deben comparecer en
             forma personal por ante el consejero de familia.
             " />
-          <AccordionItem numero={79} isOpen={isOpenAll} textoAcordeon="- Funciones. Es función del consejero de familia orientar a las partes y
+                    <AccordionItem numero={79} isOpen={isOpenAll} textoAcordeon="- Funciones. Es función del consejero de familia orientar a las partes y
             procurar el avenimiento, teniendo en cuenta primordialmente el interés superior del niño,
             niña o adolescente y su familia." />
-          <AccordionItem numero={80} isOpen={isOpenAll} textoAcordeon="Atribuciones. En cumplimiento de la función asignada en el artículo
+                    <AccordionItem numero={80} isOpen={isOpenAll} textoAcordeon="Atribuciones. En cumplimiento de la función asignada en el artículo
             anterior el consejero de familia puede:
             a) convocar a las partes y a toda persona vinculada con el conflicto de que se trate;
             b) fijar audiencias;
@@ -910,32 +912,32 @@ function leyII() {
             d) requerir colaboración de las agencias de derechos de niños, niñas, adolescentes y la
             familia y, en su caso, la intervención de instituciones o personas especializadas.
             " />
-          <AccordionItem numero={81} isOpen={isOpenAll} textoAcordeon="Trámite. El trámite en esta instancia es verbal y actuado" />
-          <AccordionItem numero={82} isOpen={isOpenAll} textoAcordeon="Audiencia. Recibida la presentación, el consejero de familia convoca a
+                    <AccordionItem numero={81} isOpen={isOpenAll} textoAcordeon="Trámite. El trámite en esta instancia es verbal y actuado" />
+                    <AccordionItem numero={82} isOpen={isOpenAll} textoAcordeon="Audiencia. Recibida la presentación, el consejero de familia convoca a
             una audiencia dentro de los diez (10) días siguientes, evaluando la urgencia del caso." />
-          <AccordionItem numero={83} isOpen={isOpenAll} textoAcordeon="Actuaciones Reservadas. Las actuaciones ante el consejero de familia son
+                    <AccordionItem numero={83} isOpen={isOpenAll} textoAcordeon="Actuaciones Reservadas. Las actuaciones ante el consejero de familia son
             reservadas, salvo para las partes y sus patrocinantes. No están sujetas a formalidad alguna.
             Aquéllas que consten por escrito no pueden ofrecerse ni utilizarse como prueba en
             procedimientos ulteriores, excepto lo dispuesto en el artículo 84 de la presente." />
-          <AccordionItem numero={84} isOpen={isOpenAll} textoAcordeon="Acta. Si se logra el avenimiento, se labra un acta en la que constan los
+                    <AccordionItem numero={84} isOpen={isOpenAll} textoAcordeon="Acta. Si se logra el avenimiento, se labra un acta en la que constan los
             términos del acuerdo, elevándola para su homologación al Juzgado de Familia.
             Si no se logra el avenimiento o los interesados peticionan que se dé por concluida esta
             etapa, se labra acta, dejando constancia de los motivos que impidieron arribar a una
             solución.
             Es imprescindible el testimonio del acta para iniciar las actuaciones por ante el Juzgado de
             Familia." />
-          <AccordionItem numero={85} isOpen={isOpenAll} textoAcordeon="Plazo. La etapa prejudicial no puede exceder de veinte (20) días contados
+                    <AccordionItem numero={85} isOpen={isOpenAll} textoAcordeon="Plazo. La etapa prejudicial no puede exceder de veinte (20) días contados
             a partir de la primera audiencia, salvo que, a criterio del consejero de familia o mediando
             petición fundada de los interesados, se resuelva su prórroga por igual término y siempre
             que las circunstancias del caso lo justifiquen.
             " />
-          <AccordionItem numero={86} isOpen={isOpenAll} textoAcordeon="Gratuidad. Las actuaciones ante el consejero de familia son gratuitas,
+                    <AccordionItem numero={86} isOpen={isOpenAll} textoAcordeon="Gratuidad. Las actuaciones ante el consejero de familia son gratuitas,
             están exentas de tasa de justicia y cualquier otro aporte y requieren patrocinio letrado que
             es proporcionado por el Estado en caso de carencia de recursos.
             " />
-          CAPÍTULO III
-          PROCEDIMIENTO JUDICIAL
-          <AccordionItem numero={87} isOpen={isOpenAll} textoAcordeon="Normas generales. En los juicios que se entablen en razón de la
+                    CAPÍTULO III
+                    PROCEDIMIENTO JUDICIAL
+                    <AccordionItem numero={87} isOpen={isOpenAll} textoAcordeon="Normas generales. En los juicios que se entablen en razón de la
             competencia establecida en el Artículo 77 de esta Ley, a excepción de procedimientos
             especiales determinados en la presente, se deben observar las disposiciones del Código
             Procesal Civil y Comercial de la Provincia de Misiones.
@@ -943,34 +945,34 @@ function leyII() {
             tramitan según las normas del proceso sumarísimo.
             El niño, niña o adolescente y los miembros de la familia directamente vinculados son oídos
             personalmente por el juez." />
-          <AccordionItem numero={88} isOpen={isOpenAll} textoAcordeon="Actuaciones con fines de adopción. En cualquier actuación con fines de
+                    <AccordionItem numero={88} isOpen={isOpenAll} textoAcordeon="Actuaciones con fines de adopción. En cualquier actuación con fines de
             adopción que se entable, debe hacerse constar la intervención de las instancias
             administrativas, que actúan en la implementación de planes, programas y proyectos para la
             preservación de los vínculos familiares.
             " />
-          TÍTULO III
-          JUSTICIA PENAL DE NIÑOS, NIÑAS Y ADOLESCENTES
-          CAPÍTULO I
-          COMPETENCIA
-          <AccordionItem numero={89} isOpen={isOpenAll} textoAcordeon="Juez penal de garantías. El juez penal de garantías de niños, niñas y
+                    TÍTULO III
+                    JUSTICIA PENAL DE NIÑOS, NIÑAS Y ADOLESCENTES
+                    CAPÍTULO I
+                    COMPETENCIA
+                    <AccordionItem numero={89} isOpen={isOpenAll} textoAcordeon="Juez penal de garantías. El juez penal de garantías de niños, niñas y
             adolescentes es competente para ejercer el control de legalidad y legitimidad de la
             investigación dirigida por el agente fiscal, de los hechos calificados por la ley como delitos
             atribuidos a niños, niñas o adolescentes, respecto de los cuales el agente fiscal promovió la
             correspondiente acción penal, aunque aquellos alcancen la edad de dieciocho (18) años al
             tiempo de iniciación del proceso.
             " />
-          <AccordionItem numero={90} isOpen={isOpenAll} textoAcordeon="Tribunal penal. El Tribunal penal de niños, niñas y adolescentes es
+                    <AccordionItem numero={90} isOpen={isOpenAll} textoAcordeon="Tribunal penal. El Tribunal penal de niños, niñas y adolescentes es
             competente para:
             a) el juzgamiento de los hechos calificados por la ley como delitos cometidos por
             adolescentes punibles. El juzgamiento comprende la declaración de responsabilidad o de
             irresponsabilidad penal y la imposición o no de pena;
             b) resolver, en grado de apelación, los recursos interpuestos contra resoluciones del juez
             penal de garantías de niños, niñas y adolescentes." />
-          <AccordionItem numero={91} isOpen={isOpenAll} textoAcordeon="Agente fiscal. El agente fiscal, como titular exclusivo de la acción penal,
+                    <AccordionItem numero={91} isOpen={isOpenAll} textoAcordeon="Agente fiscal. El agente fiscal, como titular exclusivo de la acción penal,
             tiene a su cargo la dirección de la investigación de los delitos que son de competencia del
             juzgado penal de garantías de niños, niñas y adolescentes. Actúa también en la etapa de
             plenario." />
-          <AccordionItem numero={92} isOpen={isOpenAll} textoAcordeon="- Coparticipación. Cuando en relación a los mismos hechos penales se
+                    <AccordionItem numero={92} isOpen={isOpenAll} textoAcordeon="- Coparticipación. Cuando en relación a los mismos hechos penales se
             encuentren imputados conjuntamente niños, niñas o adolescentes, por una parte, y mayores
             de dieciocho (18) años, por la otra, son competentes, para la tramitación de las causas
             seguidas contra aquellos, los tribunales penales de niños, niñas y adolescentes.
@@ -981,9 +983,9 @@ function leyII() {
             aún de oficio.
             El tribunal que dicta sentencia en primer término remite copia de la misma al otro.
             " />
-          CAPÍTULO II
-          RESTRICCIÓN DE LA LIBERTAD
-          <AccordionItem numero={93} isOpen={isOpenAll} textoAcordeon="Casos. La detención o aprehensión de un niño, niña y adolescente sin
+                    CAPÍTULO II
+                    RESTRICCIÓN DE LA LIBERTAD
+                    <AccordionItem numero={93} isOpen={isOpenAll} textoAcordeon="Casos. La detención o aprehensión de un niño, niña y adolescente sin
           orden judicial sólo procede en los siguientes casos:
           a) cuando es sorprendido en flagrancia en la comisión de un hecho calificado por la ley
           como delito o mientras es perseguido por el ofendido o por el clamor público;
@@ -991,11 +993,11 @@ function leyII() {
           La aprehensión o detención tiene lugar al sólo efecto de conducir al adolescente de
           inmediato ante el juez penal de garantías de niños, niñas y adolescentes para que resuelva
           sobre su situación." />
-          <AccordionItem numero={94} isOpen={isOpenAll} textoAcordeon="Detención. Orden. Cuando haya sospecha fundada de la participación de
+                    <AccordionItem numero={94} isOpen={isOpenAll} textoAcordeon="Detención. Orden. Cuando haya sospecha fundada de la participación de
           un niño, niña o adolescente en un hecho delictivo cuya pena máxima supere los ocho (8)
           años de prisión, el juez penal de garantías de niños, niñas y adolescentes sólo puede ordenar
           su detención por acto fundado, bajo pena de nulidad" />
-          <AccordionItem numero={95} isOpen={isOpenAll} textoAcordeon="Obligaciones. En caso de aprehensión, detención o arresto, debe
+                    <AccordionItem numero={95} isOpen={isOpenAll} textoAcordeon="Obligaciones. En caso de aprehensión, detención o arresto, debe
           informársele inmediatamente las causas de la medida, sus derechos y garantías, en especial
           el derecho a una defensa técnica; debe permitírsele la comunicación con sus padres, tutor,
           guardador, o persona de la familia ampliada, en ausencia de los demás. El incumplimiento
@@ -1004,20 +1006,20 @@ function leyII() {
           Las disposiciones contenidas en el párrafo anterior se aplican sin perjuicio de lo establecido
           en el artículo 31 de esta ley.
           " />
-          <AccordionItem numero={96} isOpen={isOpenAll} textoAcordeon="Plazo perentorio. El juez penal de garantías de niños, niñas y adolescentes
+                    <AccordionItem numero={96} isOpen={isOpenAll} textoAcordeon="Plazo perentorio. El juez penal de garantías de niños, niñas y adolescentes
           debe resolver respecto de la restricción o no de la libertad del niño, niña o adolescente en el
           plazo perentorio de veinticuatro (24) horas a contar desde su aprehensión, detención o
           arresto, previa vista al defensor y al agente fiscal." />
-          CAPÍTULO III
-          PROCEDIMIENTO PENAL
-          <AccordionItem numero={97} isOpen={isOpenAll} textoAcordeon="- Instrucción. La instrucción es llevada a cabo por el agente fiscal de oficio
+                    CAPÍTULO III
+                    PROCEDIMIENTO PENAL
+                    <AccordionItem numero={97} isOpen={isOpenAll} textoAcordeon="- Instrucción. La instrucción es llevada a cabo por el agente fiscal de oficio
           o en virtud de una prevención, información policial o denuncia." />
-          <AccordionItem numero={98} isOpen={isOpenAll} textoAcordeon="Funcionarios policiales. Los funcionarios policiales que toman
+                    <AccordionItem numero={98} isOpen={isOpenAll} textoAcordeon="Funcionarios policiales. Los funcionarios policiales que toman
           conocimiento de la comisión de un delito de acción pública lo informan en forma inmediata
           y detallada al agente fiscal que practica la investigación preliminar de acuerdo a la
           normativa penal vigente.
           " />
-          <AccordionItem numero={99} isOpen={isOpenAll} textoAcordeon="Actos irreproducibles. Cuando por la naturaleza o características del acto
+                    <AccordionItem numero={99} isOpen={isOpenAll} textoAcordeon="Actos irreproducibles. Cuando por la naturaleza o características del acto
           que sea necesario llevar a cabo éste deba considerarse definitivo e irreproducible, el agente
           fiscal requiere al juez penal de garantías de niños, niñas y adolescentes que lo lleve a cabo.
           Este dispone su realización si lo considera formalmente admisible, en caso contrario, el
@@ -1025,12 +1027,12 @@ function leyII() {
           dirima la cuestión. En todos los casos y bajo pena de nulidad, es obligatoria la notificación
           a la defensa técnica del adolescente.
           " />
-          <AccordionItem numero={100} isOpen={isOpenAll} textoAcordeon="Actos urgentes. Los actos de urgente investigación, que por su
+                    <AccordionItem numero={100} isOpen={isOpenAll} textoAcordeon="Actos urgentes. Los actos de urgente investigación, que por su
           naturaleza no admitan dilación, pueden ser practicados por el juez penal de garantías de
           niños, niñas y adolescentes.
           Finalizado el acto, éste debe remitir las actuaciones al agente fiscal y al defensor, dejando
           constancia detallada de los motivos que determinan la resolución." />
-          <AccordionItem numero={101} isOpen={isOpenAll} textoAcordeon="Declaración. Durante el procedimiento, el imputado presta declaración
+                    <AccordionItem numero={101} isOpen={isOpenAll} textoAcordeon="Declaración. Durante el procedimiento, el imputado presta declaración
           ante el agente fiscal cuando él mismo lo pida, previa entrevista con su defensor, o cuando
           aquel funcionario lo ordena. Si el niño, niña o adolescente se encuentra detenido, el agente
           fiscal solicita al juez penal de garantías de niños, niñas y adolescentes la recepción de dicha
@@ -1044,11 +1046,11 @@ function leyII() {
           correspondan.
           El agente fiscal debe investigar todos los hechos o circunstancias pertinentes y útiles a que
           se refiera el imputado." />
-          <AccordionItem numero={102} isOpen={isOpenAll} textoAcordeon="Plazo. En el plazo de seis (6) días desde la declaración del imputado, el
+                    <AccordionItem numero={102} isOpen={isOpenAll} textoAcordeon="Plazo. En el plazo de seis (6) días desde la declaración del imputado, el
           juez resuelve su situación procesal en los términos del ordenamiento adjetivo vigente en
           materia penal. La resolución es apelable.
           " />
-          <AccordionItem numero={103} isOpen={isOpenAll} textoAcordeon="Requerimiento. Una vez que se encuentre firme la resolución prevista en
+                    <AccordionItem numero={103} isOpen={isOpenAll} textoAcordeon="Requerimiento. Una vez que se encuentre firme la resolución prevista en
           el artículo anterior, si el agente fiscal estima que la investigación proporciona fundamento
           serio para el enjuiciamiento del imputado, requiere al juez penal de garantías de niños,
           niñas y adolescentes la elevación de la causa a juicio. Este requerimiento se formula por
@@ -1056,30 +1058,30 @@ function leyII() {
           relación clara y circunstanciada de los hechos, su calificación legal, una exposición sucinta
           de los motivos en que se funda y el ofrecimiento de la prueba de que intente valerse.
           " />
-          <AccordionItem numero={104} isOpen={isOpenAll} textoAcordeon="Sobreseimiento, falta de mérito o archivo. Cuando el agente fiscal
+                    <AccordionItem numero={104} isOpen={isOpenAll} textoAcordeon="Sobreseimiento, falta de mérito o archivo. Cuando el agente fiscal
           estima que no existe fundamento para solicitar la elevación a juicio, requiere que se dicte el
           sobreseimiento, todo ello en los términos previstos por el ordenamiento procesal penal
           vigente.
           " />
-          <AccordionItem numero={105} isOpen={isOpenAll} textoAcordeon="Disconformidad. Si el juez no está de acuerdo con la solicitud del agente
+                    <AccordionItem numero={105} isOpen={isOpenAll} textoAcordeon="Disconformidad. Si el juez no está de acuerdo con la solicitud del agente
           fiscal de sobreseimiento, se elevan los autos al superior inmediato del agente fiscal
           actuante. Si éste coincide con lo solicitado por el inferior, el juez resuelve en tal sentido. En
           caso contrario, el requerimiento es formulado por el agente fiscal que subroga al actuante." />
-          <AccordionItem numero={106} isOpen={isOpenAll} textoAcordeon="Plazo. La instrucción debe practicarse en los plazos establecidos en la
+                    <AccordionItem numero={106} isOpen={isOpenAll} textoAcordeon="Plazo. La instrucción debe practicarse en los plazos establecidos en la
           ley vigente. Si resulta insuficiente, el agente fiscal solicita prórroga a su superior inmediato,
           el que puede acordarla por un período igual por resolución fundada, según las causas de la
           demora y la naturaleza de la investigación.
           En casos de suma gravedad y de muy difícil investigación, la prórroga otorgada puede
           exceder excepcionalmente de dicho plazo, debiendo informarse tales circunstancias y sus
           procedimientos al juez competente." />
-          CAPÍTULO IV
-          MEDIDAS DE COERCIÓN PERSONAL
-          <AccordionItem numero={107} isOpen={isOpenAll} textoAcordeon="Medidas. Promovida la investigación tendiente a la comprobación de un
+                    CAPÍTULO IV
+                    MEDIDAS DE COERCIÓN PERSONAL
+                    <AccordionItem numero={107} isOpen={isOpenAll} textoAcordeon="Medidas. Promovida la investigación tendiente a la comprobación de un
           delito imputado a un niño, niña o adolescente e individualizado el mismo, en caso de
           mediar peligro de fuga o entorpecimiento de la investigación, el juez puede por auto
           fundado, bajo pena de nulidad, adoptar medidas de coerción personal, de carácter
           circunstancial y cautelar, dentro de las establecidas en la presente ley." />
-          <AccordionItem numero={108} isOpen={isOpenAll} textoAcordeon="- Enumeración. Las medidas de coerción personal pueden consistir, con la
+                    <AccordionItem numero={108} isOpen={isOpenAll} textoAcordeon="- Enumeración. Las medidas de coerción personal pueden consistir, con la
           siguiente prelación, en:
           a) obligación de concurrir periódicamente a la sede del tribunal o autoridad que se
           disponga, acompañado de sus padres, tutor o guardador;
@@ -1092,19 +1094,19 @@ function leyII() {
           En todos los casos el juez fija la duración máxima de las medidas que se adoptan que no
           deben exceder de tres (3) meses. Pueden ser prorrogadas a su vencimiento por decisión
           fundada, previo dictamen del Ministerio Fiscal." />
-          <AccordionItem numero={109} isOpen={isOpenAll} textoAcordeon=" Audiencia. El juez se expide con posterioridad a tomar conocimiento
+                    <AccordionItem numero={109} isOpen={isOpenAll} textoAcordeon=" Audiencia. El juez se expide con posterioridad a tomar conocimiento
           directo del niño, niña o adolescente, en audiencia a la que deben concurrir, bajo pena de
           nulidad, el imputado, su defensor, su representante legal y el agente fiscal." />
-          <AccordionItem numero={110} isOpen={isOpenAll} textoAcordeon="- Recurribilidad. La resolución que ordena medidas de coerción personal
+                    <AccordionItem numero={110} isOpen={isOpenAll} textoAcordeon="- Recurribilidad. La resolución que ordena medidas de coerción personal
           es recurrible por las partes, en los términos del ordenamiento procesal penal vigente" />
-          CAPÍTULO V
-          ACTOS PRELIMINARES
-          <AccordionItem numero={111} isOpen={isOpenAll} textoAcordeon="Examen de las actuaciones. El juez penal de garantías de niños, niñas y
+                    CAPÍTULO V
+                    ACTOS PRELIMINARES
+                    <AccordionItem numero={111} isOpen={isOpenAll} textoAcordeon="Examen de las actuaciones. El juez penal de garantías de niños, niñas y
           adolescentes ordena la notificación del requerimiento del agente fiscal al imputado y a su
           defensor, poniendo las actuaciones y los medios de prueba a disposición para su consulta,
           por el plazo de diez (10) días.
           " />
-          <AccordionItem numero={112} isOpen={isOpenAll} textoAcordeon="Existencia de vicios. Excepciones. Ofrecimiento de pruebas. Dentro del
+                    <AccordionItem numero={112} isOpen={isOpenAll} textoAcordeon="Existencia de vicios. Excepciones. Ofrecimiento de pruebas. Dentro del
           plazo previsto en el artículo anterior, el imputado y su defensor pueden:
           a) señalar los vicios formales en que incurra el escrito de acusación requiriendo su
           corrección;
@@ -1112,65 +1114,65 @@ function leyII() {
           instrucción preliminar;
           c) ofrecer los medios de prueba que se estimen omitidos, requiriendo se ordene practicarlos.
           " />
-          <AccordionItem numero={113} isOpen={isOpenAll} textoAcordeon="Admisión o rechazo de la prueba. Vencido el plazo, el juez admite los
+                    <AccordionItem numero={113} isOpen={isOpenAll} textoAcordeon="Admisión o rechazo de la prueba. Vencido el plazo, el juez admite los
           medios de prueba ofrecidos que considera pertinentes y útiles, ordenando que se practiquen
           las diligencias que razonablemente puedan presumirse que no puedan cumplimentarse en la
           audiencia de debate.
           " />
-          <AccordionItem numero={114} isOpen={isOpenAll} textoAcordeon="Elevación. Transcurrido el término previsto en el artículo anterior sin
+                    <AccordionItem numero={114} isOpen={isOpenAll} textoAcordeon="Elevación. Transcurrido el término previsto en el artículo anterior sin
           que se ofrezcan nuevas pruebas o practicadas las mismas, el juez penal de garantías de
           niños, niñas y adolescentes eleva las actuaciones al tribunal penal de niños, niñas y
           adolescentes.
           " />
-          CAPÍTULO VI
-          AUDIENCIA DE DEBATE
-          <AccordionItem numero={115} isOpen={isOpenAll} textoAcordeon="Designación de audiencia. Cumplidos los requisitos establecidos por la
+                    CAPÍTULO VI
+                    AUDIENCIA DE DEBATE
+                    <AccordionItem numero={115} isOpen={isOpenAll} textoAcordeon="Designación de audiencia. Cumplidos los requisitos establecidos por la
           legislación vigente, el tribunal de juicio, señala audiencia de debate con intervención del
           agente fiscal, el defensor, el adolescente y sus padres, tutor o guardador, quienes, tras la
           lectura de los informes producidos, se expiden separadamente en ese orden." />
-          <AccordionItem numero={116} isOpen={isOpenAll} textoAcordeon="Normas aplicables. A los fines de la realización de la audiencia de
+                    <AccordionItem numero={116} isOpen={isOpenAll} textoAcordeon="Normas aplicables. A los fines de la realización de la audiencia de
           debate, son de aplicación las normas contenidas en el ordenamiento adjetivo penal vigente,
           en todo lo que sea pertinente y no se oponga a la presente ley, debiendo cumplirse con lo
           establecido respecto al secreto de las actuaciones, siempre que expresamente no autorice el
           imputado y su defensa técnica la publicidad.
           " />
-          <AccordionItem numero={117} isOpen={isOpenAll} textoAcordeon="- Oportunidad y lectura de la sentencia. Cumplida la audiencia de debate,
+                    <AccordionItem numero={117} isOpen={isOpenAll} textoAcordeon="- Oportunidad y lectura de la sentencia. Cumplida la audiencia de debate,
           el tribunal penal de niños, niñas y adolescentes dicta sentencia en los términos de la
           legislación vigente.
           Cuando la complejidad del asunto o lo avanzado de la hora hagan necesario diferir la
           redacción de la sentencia, su lectura se efectúa, bajo pena de nulidad, en audiencia que se
           fija dentro de un plazo no mayor de tres (3) días.
           " />
-          <AccordionItem numero={118} isOpen={isOpenAll} textoAcordeon="Juez de ejecución. En caso de aplicarse pena, el tribunal penal de niños,
+                    <AccordionItem numero={118} isOpen={isOpenAll} textoAcordeon="Juez de ejecución. En caso de aplicarse pena, el tribunal penal de niños,
           niñas y adolescentes es el juez de ejecución de la misma." />
-          CAPÍTULO VII
-          NIÑOS, NIÑAS O ADOLESCENTES INIMPUTABLES
-          <AccordionItem numero={119} isOpen={isOpenAll} textoAcordeon="- Procedimiento. Comprobada la existencia de un hecho calificado por ley
+                    CAPÍTULO VII
+                    NIÑOS, NIÑAS O ADOLESCENTES INIMPUTABLES
+                    <AccordionItem numero={119} isOpen={isOpenAll} textoAcordeon="- Procedimiento. Comprobada la existencia de un hecho calificado por ley
           como delito y presumida la intervención de un niño o niña o adolescente inimputable, el
           agente fiscal eleva las actuaciones al juez penal de garantías de niños, niñas y adolescentes,
           expidiéndose sobre la existencia del hecho, calificación legal e intervención que le cupo en
           el mismo." />
-          <AccordionItem numero={120} isOpen={isOpenAll} textoAcordeon="Garantías. El niño, niña o adolescente inimputable goza de todas las
+                    <AccordionItem numero={120} isOpen={isOpenAll} textoAcordeon="Garantías. El niño, niña o adolescente inimputable goza de todas las
           garantías establecidas en el artículo 31 de esta ley." />
-          <AccordionItem numero={121} isOpen={isOpenAll} textoAcordeon="Audiencia. Recibidas las actuaciones, el juez ordena notificar al agente
+                    <AccordionItem numero={121} isOpen={isOpenAll} textoAcordeon="Audiencia. Recibidas las actuaciones, el juez ordena notificar al agente
           fiscal, al niño, niña o adolescente y a su defensor por el término de tres (3) días y convoca a
           una audiencia que se celebra en igual plazo.
           " />
-          <AccordionItem numero={122} isOpen={isOpenAll} textoAcordeon="Sentencia. Cumplida la audiencia del artículo anterior, el juez dicta sin
+                    <AccordionItem numero={122} isOpen={isOpenAll} textoAcordeon="Sentencia. Cumplida la audiencia del artículo anterior, el juez dicta sin
           más trámite sentencia. En caso que la complejidad del asunto así lo requiera, puede
           diferirse su dictado hasta un plazo máximo de tres (3) días.
           En este último caso, cita a las partes y a su defensor a fin de notificar fehacientemente la
           resolución recaída.
           " />
-          <AccordionItem numero={123} isOpen={isOpenAll} textoAcordeon="Recurribilidad. La resolución prevista en el presente capítulo es
+                    <AccordionItem numero={123} isOpen={isOpenAll} textoAcordeon="Recurribilidad. La resolución prevista en el presente capítulo es
           recurrible, debiendo expedirse el tribunal en el plazo de diez (10) días." />
-          LIBRO III
-          DISPOSICIONES FINALES
-          TÍTULO ÚNICO
-          DISPOSICIONES GENERALES
-          CAPÍTULO ÚNICO
-          DISPOSICIONES FINALES Y TRANSITORIAS
-          <AccordionItem numero={124} isOpen={isOpenAll} textoAcordeon="Modificación artículos 24 y 25 – Ley XIV – N.º 3 (Antes Ley 2677).
+                    LIBRO III
+                    DISPOSICIONES FINALES
+                    TÍTULO ÚNICO
+                    DISPOSICIONES GENERALES
+                    CAPÍTULO ÚNICO
+                    DISPOSICIONES FINALES Y TRANSITORIAS
+                    <AccordionItem numero={124} isOpen={isOpenAll} textoAcordeon="Modificación artículos 24 y 25 – Ley XIV – N.º 3 (Antes Ley 2677).
                 Modifícanse los artículos 24 y 25 del Código Procesal Penal - Ley XIV – N.º 3 (Antes Ley
                 2677), los que quedan redactados de la siguiente manera:
                 “ARTÍCULO 24: Los Tribunales en lo penal juzgan:
@@ -1204,7 +1206,7 @@ function leyII() {
                 dieciocho (18) años al tiempo de la comisión de ellos, cualquiera fuere la pena, de acuerdo
                 con las disposiciones de la Ley de Protección Integral de los Derechos de Niños, Niñas y
                 Adolescentes y las de éste código." />
-          <AccordionItem numero={125} isOpen={isOpenAll} textoAcordeon="Modificación artículos 24 y 25 – Ley XIV – N.º 3 (Antes Ley 2677).
+                    <AccordionItem numero={125} isOpen={isOpenAll} textoAcordeon="Modificación artículos 24 y 25 – Ley XIV – N.º 3 (Antes Ley 2677).
           Modifícanse los artículos 24 y 25 del Código Procesal Penal - Ley XIV – N.º 3 (Antes Ley
           2677), los que quedan redactados de la siguiente manera:
           “ARTÍCULO 24: Los Tribunales en lo penal juzgan:
@@ -1239,7 +1241,7 @@ function leyII() {
           con las disposiciones de la Ley de Protección Integral de los Derechos de Niños, Niñas y
           Adolescentes y las de éste código.”
           " />
-          <AccordionItem numero={126} isOpen={isOpenAll} textoAcordeon="Órganos judiciales. Creación. Créanse los siguientes órganos judiciales:
+                    <AccordionItem numero={126} isOpen={isOpenAll} textoAcordeon="Órganos judiciales. Creación. Créanse los siguientes órganos judiciales:
             a) En la Primera Circunscripción Judicial:
             Una (1) Consejería de Familia.
             Un (1) Tribunal Penal de Niños, Niñas y Adolescentes.
@@ -1316,7 +1318,7 @@ function leyII() {
             fiscal y defensor de oficio ante el Juzgado de Instrucción N.°
             1 y el Juzgado Correccional y
             Penal de Garantías de Niños, Niñas y Adolescentes." />
-          <AccordionItem numero={127} isOpen={isOpenAll} textoAcordeon="Disposición de transición en lo penal. Hasta tanto se creen y pongan en
+                    <AccordionItem numero={127} isOpen={isOpenAll} textoAcordeon="Disposición de transición en lo penal. Hasta tanto se creen y pongan en
             funcionamiento los tribunales penales de niños, niñas y adolescentes, el juzgamiento de los
             niños, niñas y adolescentes que no hubiesen cumplido dieciocho (18) años de edad al
             tiempo de la comisión del hecho que se les imputa, corresponde a los jueces penales de
@@ -1324,17 +1326,17 @@ function leyII() {
             adolescentes entienden en los recursos contra las decisiones de los jueces penales de
             garantías de niños, niñas y adolescentes y de las cuestiones de competencia suscitadas entre
             ellos." />
-          <AccordionItem numero={128} isOpen={isOpenAll} textoAcordeon="Equipo técnico interdisciplinario. Los equipos técnicos
+                    <AccordionItem numero={128} isOpen={isOpenAll} textoAcordeon="Equipo técnico interdisciplinario. Los equipos técnicos
           interdisciplinarios de las agencias de derechos de niños, niñas, adolescentes y la familia
           brindan apoyo a la labor de los órganos judiciales en causas que involucren a niños, niñas o
           adolescentes, mediante la elaboración de diagnósticos, pericias e informes que éstos les
           requieran, en las condiciones de prestación del servicio que se convengan." />
-          <AccordionItem numero={129} isOpen={isOpenAll} textoAcordeon="Adhesión. Invítase a los municipios a adherir a la presente ley,
+                    <AccordionItem numero={129} isOpen={isOpenAll} textoAcordeon="Adhesión. Invítase a los municipios a adherir a la presente ley,
           disponiendo en el ámbito de su competencia:
           a) la constitución de instancias administrativas similares a las creadas en esta ley;
           b) la creación de un fondo especial para la efectivización y protección integral de los
           derechos de niños, niñas, adolescentes y la familia." />
-          <AccordionItem numero={130} isOpen={isOpenAll} textoAcordeon="Normas procedimentales. No son de aplicación las disposiciones
+                    <AccordionItem numero={130} isOpen={isOpenAll} textoAcordeon="Normas procedimentales. No son de aplicación las disposiciones
           contenidas en los artículos 234, 235, 236 y 237 del Código Procesal Civil y Comercial de la
           Provincia a los niños, niñas o adolescentes menores de dieciocho (18) años.
           En la investigación y juzgamiento de los hechos atribuidos a personas menores de
@@ -1342,10 +1344,10 @@ function leyII() {
           disposiciones de la presente ley y complementariamente las normas comunes del Código
           Procesal Penal de la Provincia de Misiones.
           " />
-          <AccordionItem numero={131} isOpen={isOpenAll} textoAcordeon="Derogación. Derógase el Capítulo II del Título II del Libro III del
+                    <AccordionItem numero={131} isOpen={isOpenAll} textoAcordeon="Derogación. Derógase el Capítulo II del Título II del Libro III del
           Código Procesal Penal de la Provincia de Misiones – Ley XIV – N.º 3 (Antes Ley 2677) y
           los artículos 62 y 64 de la Ley IV – N.º 15 (Antes Decreto Ley 1550/82)." />
-          <AccordionItem numero={132} isOpen={isOpenAll} textoAcordeon="Normas de funcionamiento. El Superior Tribunal de Justicia determina
+                    <AccordionItem numero={132} isOpen={isOpenAll} textoAcordeon="Normas de funcionamiento. El Superior Tribunal de Justicia determina
           la fecha en la cual los órganos jurisdiccionales creados en esta ley asumen la jurisdicción y
           competencia correspondiente, establece las normas de funcionamiento y procede a la
           distribución de tareas, turnos, personal y equipamiento indispensable para su eficaz
@@ -1354,10 +1356,10 @@ function leyII() {
           juzgados que se crean por la presente, continúan hasta su finalización en los juzgados de su
           radicación y se tramitan de acuerdo con las disposiciones procesales actualmente vigentes.
           " />
-          <AccordionItem numero={133} isOpen={isOpenAll} textoAcordeon="Adecuaciones. Autorízase al Poder Ejecutivo a realizar las
+                    <AccordionItem numero={133} isOpen={isOpenAll} textoAcordeon="Adecuaciones. Autorízase al Poder Ejecutivo a realizar las
           modificaciones, adecuaciones y reestructuraciones en el Presupuesto General de la
           Provincia a los fines de lo establecido en la presente ley." />
-          <AccordionItem numero={134} isOpen={isOpenAll} textoAcordeon="Reglamentación. El Poder Ejecutivo reglamentará la presente ley y
+                    <AccordionItem numero={134} isOpen={isOpenAll} textoAcordeon="Reglamentación. El Poder Ejecutivo reglamentará la presente ley y
           dictará las disposiciones necesarias para coordinar el funcionamiento del Consejo
           Provincial de Garantías de los Derechos de Niños, Niñas, Adolescentes y la Familia creado
           por la presente ley y el Consejo Multilateral de Políticas Sociales y Desarrollo Interior
@@ -1365,13 +1367,13 @@ function leyII() {
           sus respectivas organizaciones locales, de manera de evitar la duplicación de organismos
           y/o funciones durante la coexistencia de ambos organismos.
           " />
-          <AccordionItem numero={135} isOpen={isOpenAll} textoAcordeon="Suspéndase la vigencia de los Libros II y III de la presente ley, hasta
+                    <AccordionItem numero={135} isOpen={isOpenAll} textoAcordeon="Suspéndase la vigencia de los Libros II y III de la presente ley, hasta
           tanto se dicte su reglamentación." />
-          <AccordionItem numero={136} isOpen={isOpenAll} textoAcordeon="Comuníquese al Poder Ejecutivo." />
+                    <AccordionItem numero={136} isOpen={isOpenAll} textoAcordeon="Comuníquese al Poder Ejecutivo." />
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 

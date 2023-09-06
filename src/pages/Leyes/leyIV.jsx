@@ -53,11 +53,13 @@ function leyIV() {
       <div>
 
         <div className='pt-1 d-flex justify-content-evenly'>
-          <button className='btn left btn-lg'
-            style={{ backgroundColor: window.themeColors.buttonColor, }}>
-            <Link to="/" style={{ color: window.themeColors.footerColorText }}> <h4>Regresar a Inicio</h4> </Link>
-          </button>
-
+          <Link to="/" >
+            <button className='btn left btn-lg'
+              style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}>
+              <h4>Regresar a Inicio</h4>
+            </button>
+          </Link>
+          
           <button className='btn rigth btn-lg'
             style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }} onClick={toggleAccordionAll}>
             {isOpenAll ? 'Cerrar Todos Los Articulos' : 'Abrir Todos Los Articulos'}
@@ -69,7 +71,7 @@ function leyIV() {
             <h2>LEY IV – N.° 52</h2>
             <h4>LEY DEL DEFENSOR DE LOS DERECHOS DE NIÑOS, NIÑAS Y ADOLESCENTES</h4>
             <p>CAPÍTULO I</p>
-            <p>DEFENSOR DE LOS DERECHOS DE NIÑOS, NIÑAS Y ADOLESCENTES</p> 
+            <p>DEFENSOR DE LOS DERECHOS DE NIÑOS, NIÑAS Y ADOLESCENTES</p>
           </div>
 
 
@@ -176,7 +178,7 @@ function leyIV() {
           <AccordionItem numero={12} isOpen={isOpenAll} textoAcordeon="El Defensor de los Derechos de Niños, Niñas y Adolescentes determina
             en forma exclusiva los casos a los que dé curso; las presentaciones son gratuitas y la
             participación de gestores e intermediarios está prohibida." />
-            <AccordionItem numero={13} isOpen={isOpenAll} textoAcordeon="El Defensor de los Derechos de Niños, Niñas y Adolescentes cesa en sus
+          <AccordionItem numero={13} isOpen={isOpenAll} textoAcordeon="El Defensor de los Derechos de Niños, Niñas y Adolescentes cesa en sus
             funciones por las siguientes causas:
             1) por renuncia;
             2) por vencimiento del plazo de su mandato;
@@ -210,7 +212,7 @@ function leyIV() {
             4) informar a la opinión pública y a los denunciantes el resultado de las investigaciones y
             acciones realizadas. A tal efecto debe establecerse un espacio en los medios masivos de
             comunicación." />
-                          CAPÍTULO II
+          CAPÍTULO II
           REGISTRO ÚNICO DE NIÑOS, NIÑAS Y ADOLESCENTES
           INSTITUCIONALIZADOS
           <AccordionItem numero={16} isOpen={isOpenAll} textoAcordeon="Créase el Registro Único de Niños, Niñas y Adolescentes
