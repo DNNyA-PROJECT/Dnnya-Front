@@ -223,6 +223,10 @@ a{
     background: #d0bf91;
 }
 
+button.btn.left.btn-lg {
+    margin-left: 4rem;
+}
+
 #custom-accordion .accordion-button.collapsed::after {
     color: white !important; /* Cambia 'white' al color que desees */
 }
