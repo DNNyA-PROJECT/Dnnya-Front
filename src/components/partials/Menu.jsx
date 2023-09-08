@@ -11,10 +11,13 @@ window.themeColors = colors;
 function Menu() {
   const location = useLocation();
 
-  // Aplica una clase de fondo condicional
-  const backgroundClass = (path) => (location.pathname === path ? 'bg-brown' : '');
+  const backgroundStyle = (path) => {
+    if (location.pathname === path) {
+      return { backgroundColor: window.themeColors.footerBackground.darkFooterBackground };
+    }
+    return {};
+  };
 
-  // Aplica una clase de texto condicional
   const textClass = (path) => (location.pathname === path ? 'text-white' : 'text-black');
 
   return (
@@ -22,30 +25,91 @@ function Menu() {
       <div className='container-fluid m-0 p-0 d-flex flex-column align-items-center'>
         <img src={DeFLogo} className='DeFLogo mt-2 ' alt="logo de defensoria" />
         <ul className='mt-3 p-0'>
-          <li className={`mb-4 ${backgroundClass('/')}`}>
-            <Link to="/" className={` ${backgroundClass('/')} ${textClass('/')}`}>
+          <li
+            className={`mb-4`}
+            style={{
+              ...backgroundStyle('/'),
+              ':hover': {
+                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                color: 'white',
+              },
+            }}
+          >
+            <Link
+              to="/"
+              className={` ${location.pathname === '/' ? 'active' : ''} ${textClass('/')}`}
+            >
               <h3 className={`text-link ${textClass('/')}`}>Inicio</h3>
             </Link>
           </li>
-          <li className={`mb-4 ${backgroundClass('/Dashboard')}`}>
-            <Link to="/Dashboard" className={` ${backgroundClass('/Dashboard')} ${textClass('/Dashboard')}`}>
+          <li
+            className={`mb-4`}
+            style={{
+              ...backgroundStyle('/Dashboard'),
+              ':hover': {
+                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                color: 'white',
+              },
+            }}
+          >
+            <Link
+              to="/Dashboard"
+              className={` ${location.pathname === '/Dashboard' ? 'active' : ''} ${textClass('/Dashboard')}`}
+            >
               <h3 className={`text-link ${textClass('/Dashboard')}`}>Dashboard</h3>
             </Link>
           </li>
-          <li className={`mb-4 ${backgroundClass('/Listado_de_casos')}`}>
-            <Link to="/Listado_de_casos" className={` ${backgroundClass('/Listado_de_casos')} ${textClass('/Listado_de_casos')}`}>
-              <h3 className={`text-link ${textClass('/Listado_de_casos')}`}>Listado de casos</h3>
+          <li
+            className={`mb-4`}
+            style={{
+              ...backgroundStyle('/Listado_de_casos'),
+              ':hover': {
+                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                color: 'white',
+              },
+            }}
+          >
+            <Link
+              to="/Listado_de_casos"
+              className={` ${location.pathname === '/Listado_de_casos' ? 'active' : ''} ${textClass('/Listado_de_casos')}`}
+            >
+              <h3 className={`text-link ${textClass('/Listado_de_casos')}`}>Listado de Casos</h3>
             </Link>
           </li>
-          <li className={`mb-4 ${backgroundClass('/Listado_de_legajos')}`}>
-            <Link to="/Listado_de_legajos" className={` ${backgroundClass('/Listado_de_legajos')} ${textClass('/Listado_de_legajos')}`}>
-              <h3 className={`text-link ${textClass('/Listado_de_legajos')}`}>Listado de legajos</h3>
+          <li
+            className={`mb-4`}
+            style={{
+              ...backgroundStyle('/Listado_de_legajos'),
+              ':hover': {
+                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                color: 'white',
+              },
+            }}
+          >
+            <Link
+              to="/Listado_de_legajos"
+              className={` ${location.pathname === '/Listado_de_legajos' ? 'active' : ''} ${textClass('/Listado_de_legajos')}`}
+            >
+              <h3 className={`text-link ${textClass('/Listado_de_legajos')}`}>Listado de Legajos</h3>
             </Link>
           </li>
-          <li className={`mb-4 ${backgroundClass('/Registro_De_Caso')}`}>
-            <Link to="/Registro_De_Caso" className={` ${backgroundClass('/Registro_De_Caso')} ${textClass('/Registro_De_Caso')}`}>
-              <h3 className={`text-link ${textClass('/Registro_De_Caso')}`}>Registros de casos</h3>
+          <li
+            className={`mb-4`}
+            style={{
+              ...backgroundStyle('/Registro_De_Caso'),
+              ':hover': {
+                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                color: 'white',
+              },
+            }}
+          >
+            <Link
+              to="/Registro_De_Caso"
+              className={` ${location.pathname === '/Registro_De_Caso' ? 'active' : ''} ${textClass('/Registro_De_Caso')}`}
+            >
+              <h3 className={`text-link ${textClass('/Registro_De_Caso')}`}>Registro De Caso</h3>
             </Link>
+            
           </li>
         </ul>
       </div>
@@ -54,5 +118,3 @@ function Menu() {
 }
 
 export default Menu;
-
-

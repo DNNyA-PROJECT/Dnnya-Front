@@ -151,12 +151,6 @@ a{
     padding: 10px;
 }
 
-.text-link:hover{
-    background-color: var(--hover-color);
-    color: var(--text-hover-color);
-    padding: 15px 0px 15px 0px ;
-}
-
 .text-link{
     color: var(--text-black);
     margin: 0px;
@@ -239,3 +233,10 @@ button.btn.left.btn-lg {
 .bg-brown {
     background-color: brown; /* Cambia esto al color marrón que desees */
   }
+
+  /* Estilos de hover para los elementos li */
+li:hover {
+    background-color: var(--hover-color);
+    color: var(--text-hover-color);
+  }
+  
