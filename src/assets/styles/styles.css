@@ -230,3 +230,9 @@ button.btn.left.btn-lg {
 #custom-accordion .accordion-button.collapsed::after {
     color: white !important; /* Cambia 'white' al color que desees */
 }
+
+.box-submission {
+    padding: 0rem 5rem 0rem 5rem;
+    margin-top: 9rem;
+}
+

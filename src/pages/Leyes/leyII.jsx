@@ -1,47 +1,8 @@
 import React, { useState } from 'react';
+import AccordionItem from '../../components/accordion/accordion.jsx';
 import { Link } from 'react-router-dom';
 
-class AccordionItem extends React.Component {
-    render() {
-        const { numero, textoAcordeon, isOpen } = this.props;
-        const collapseId = `collapse${numero}`;
-
-        const textoConSaltosDeLinea = textoAcordeon.split('\n').map((line, index) => (
-            <React.Fragment key={index}>
-                {line}
-                <br />
-            </React.Fragment>
-        ));
-
-        return (
-            <div className="accordion-item">
-                <h2 className="accordion-header">
-                    <button
-                        className={`accordion-button ${isOpen ? '' : 'collapsed'}`}
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target={`#${collapseId}`}
-                        aria-expanded={isOpen ? 'true' : 'false'}
-                        aria-controls={collapseId}
-                    >
-                        ARTÍCULO {numero}.
-                    </button>
-                </h2>
-                <div
-                    id={collapseId}
-                    className={`accordion-collapse collapse ${isOpen ? 'show' : ''}`}
-                    data-bs-parent="#accordionExample"
-                >
-                    <div className="accordion-body">
-                        {textoConSaltosDeLinea}
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
-
-function leyII() {
+function LeyII() {
     const [isOpenAll, setIsOpenAll] = useState(false);
 
     const toggleAccordionAll = () => {
@@ -49,6 +10,7 @@ function leyII() {
     };
 
     return (
+
         <div className='' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }} >
             <div>
 
@@ -160,10 +122,13 @@ function leyII() {
                           objeto de socialización, control o prueba.
                           " />
 
-                    TÍTULO II
-                    DERECHOS FUNDAMENTALES Y GARANTÍAS
-                    CAPÍTULO ÚNICO
-                    DERECHOS. GARANTÍAS PROCESALES
+                  <p> TÍTULO II </p>
+                  <p> DERECHOS FUNDAMENTALES Y GARANTÍAS </p>
+                  <p> CAPÍTULO ÚNICO </p>
+                  <p>  DERECHOS. GARANTÍAS PROCESALES </p> 
+                   
+                    
+                  
 
                     <AccordionItem numero={11} isOpen={isOpenAll} textoAcordeon=" Derecho a la vida, derecho a la salud, derecho a la libertad ambulatoria,
                 dignidad, identidad y respeto. Los niños, niñas y adolescentes tienen derecho a la vida, a su
@@ -1376,5 +1341,4 @@ function leyII() {
     );
 }
 
-
-export default leyII;
+export default LeyII;
