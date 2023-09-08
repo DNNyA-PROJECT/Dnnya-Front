@@ -37,12 +37,12 @@ function LeyIV() {
           </div>
 
 
-          <AccordionItem numero={1} isOpen={isOpenAll} textoAcordeon="Créase la figura del Defensor de los Derechos de Niños, Niñas y
+        <AccordionItem number={1} isOpen={isOpenAll} accordionText="Créase la figura del Defensor de los Derechos de Niños, Niñas y
           Adolescentes, en el ámbito de la Provincia de Misiones, quien tiene a su cargo velar por la
           protección y concientización de sus derechos consagrados en la Constitución Nacional y
           Provincial, la Convención Internacional sobre los Derechos del Niño y las leyes nacionales
           y provinciales." />
-          <AccordionItem numero={2} isOpen={isOpenAll} textoAcordeon="Son funciones del Defensor de los Derechos de Niños, Niñas y
+        <AccordionItem number={2} isOpen={isOpenAll} accordionText="Son funciones del Defensor de los Derechos de Niños, Niñas y
           Adolescentes:
           1) proteger los intereses difusos o colectivos relativos a los niños, niñas y adolescentes;
           2) interponer acciones para la protección de los derechos de los niños, niñas y adolescentes
@@ -75,7 +75,7 @@ function LeyIV() {
           Institucionalizados, a los fines de la ejecución de las medidas de protección de niños, niñas
           y adolescentes en la Provincia de Misiones, de conformidad a las facultades, funciones y
           responsabilidades establecidas en la presente Ley." />
-          <AccordionItem numero={3} isOpen={isOpenAll} textoAcordeon="El Defensor de los Derechos de Niños, Niñas y Adolescentes es propuesto
+        <AccordionItem number={3} isOpen={isOpenAll} accordionText="El Defensor de los Derechos de Niños, Niñas y Adolescentes es propuesto
           por una comisión constituida al efecto, designado y removido por la Cámara de
           Representantes. La comisión está conformada por diez (10) miembros con la siguiente
           composición y representación: un (1) integrante del Consejo Multilateral de Políticas
@@ -96,33 +96,33 @@ function LeyIV() {
           comisión, debe ser puesta a consideración del pleno, el que aprueba con mayoría simple de
           los votos. Dentro del plazo de treinta (30) días la Cámara de Representantes toma
           juramento al Defensor de los Derechos de Niños, Niñas y Adolescentes." />
-          <AccordionItem numero={4} isOpen={isOpenAll} textoAcordeon="El Defensor de los Derechos de Niños, Niñas y Adolescentes ejerce su
+        <AccordionItem number={4} isOpen={isOpenAll} accordionText="El Defensor de los Derechos de Niños, Niñas y Adolescentes ejerce su
           función junto a dos (2) defensores adjuntos designados conforme el procedimiento
           establecido en el Artículo 3, quienes deben auxiliar al Defensor en el ejercicio de sus
           funciones con las facultades de reemplazo establecidas en el Artículo 13.
                     ." />
-          <AccordionItem numero={5} isOpen={isOpenAll} textoAcordeon="El Defensor de los Derechos de Niños, Niñas y Adolescentes y los
+        <AccordionItem number={5} isOpen={isOpenAll} accordionText="El Defensor de los Derechos de Niños, Niñas y Adolescentes y los
           defensores adjuntos deben reunir los siguientes requisitos:
           1) ser argentino;
           2) haber cumplido treinta (30) años de edad;
           3) acreditar idoneidad y especialización en la defensa y protección activa de los derechos
           de los niños, niñas y adolescentes y familia." />
-          <AccordionItem numero={6} isOpen={isOpenAll} textoAcordeon="El Defensor de los Derechos de Niños, Niñas y Adolescentes y los
+        <AccordionItem number={6} isOpen={isOpenAll} accordionText="El Defensor de los Derechos de Niños, Niñas y Adolescentes y los
           defensores adjuntos duran en sus funciones cinco (5) años, pudiendo ser reelectos por una
           sola vez" />
-          <AccordionItem numero={7} isOpen={isOpenAll} textoAcordeon="El cargo de Defensor de los Derechos de Niños, Niñas y Adolescentes y de
+        <AccordionItem number={7} isOpen={isOpenAll} accordionText="El cargo de Defensor de los Derechos de Niños, Niñas y Adolescentes y de
             los defensores adjuntos son incompatibles con el desempeño de cualquier otra actividad
             pública, comercial o profesional a excepción de la docencia, estando vedada la actividad
             política partidaria.
             " />
-          <AccordionItem numero={8} isOpen={isOpenAll} textoAcordeon="El Defensor de los Derechos de Niños, Niñas y Adolescentes y los
+        <AccordionItem number={8} isOpen={isOpenAll} accordionText="El Defensor de los Derechos de Niños, Niñas y Adolescentes y los
           defensores adjuntos perciben idéntica remuneración que la prevista para el Defensor Oficial
           del Poder Judicial de la Provincia." />
-          <AccordionItem numero={9} isOpen={isOpenAll} textoAcordeon="Autorízase al Poder Ejecutivo Provincial a realizar las adecuaciones
+        <AccordionItem number={9} isOpen={isOpenAll} accordionText="Autorízase al Poder Ejecutivo Provincial a realizar las adecuaciones
           presupuestarias necesarias para solventar los gastos del funcionamiento administrativo del
           Defensor de los Derechos de Niños, Niñas y Adolescentes a los efectos de dar
           cumplimiento a la presente Ley." />
-          <AccordionItem numero={10} isOpen={isOpenAll} textoAcordeon="El Defensor de los Derechos de Niños, Niñas y Adolescentes debe
+         <AccordionItem number={10} isOpen={isOpenAll} accordionText="El Defensor de los Derechos de Niños, Niñas y Adolescentes debe
             informar anualmente a la Cámara de Representantes, la labor realizada antes del 1º de mayo
             de cada año.
             Cuando la gravedad o urgencia de los hechos lo aconsejan puede presentar un informe
@@ -130,17 +130,17 @@ function LeyIV() {
             Diarios de Sesiones y en Internet.
                                       " />
 
-          <AccordionItem numero={11} isOpen={isOpenAll} textoAcordeon="El Defensor de los Derechos de Niños, Niñas y Adolescentes debe dar
+         <AccordionItem number={11} isOpen={isOpenAll} accordionText="El Defensor de los Derechos de Niños, Niñas y Adolescentes debe dar
             cuenta en su informe anual de las denuncias presentadas y del resultado de la investigación.
             En ningún caso el informe debe contener los datos personales que permitan la pública
             identificación de los denunciantes y de los niños, niñas y adolescentes involucrados.
             El informe debe contener un anexo con la rendición de cuentas del presupuesto del
             organismo en el período que corresponda.
             " />
-          <AccordionItem numero={12} isOpen={isOpenAll} textoAcordeon="El Defensor de los Derechos de Niños, Niñas y Adolescentes determina
+         <AccordionItem number={12} isOpen={isOpenAll} accordionText="El Defensor de los Derechos de Niños, Niñas y Adolescentes determina
             en forma exclusiva los casos a los que dé curso; las presentaciones son gratuitas y la
             participación de gestores e intermediarios está prohibida." />
-          <AccordionItem numero={13} isOpen={isOpenAll} textoAcordeon="El Defensor de los Derechos de Niños, Niñas y Adolescentes cesa en sus
+         <AccordionItem number={13} isOpen={isOpenAll} accordionText="El Defensor de los Derechos de Niños, Niñas y Adolescentes cesa en sus
             funciones por las siguientes causas:
             1) por renuncia;
             2) por vencimiento del plazo de su mandato;
@@ -152,7 +152,7 @@ function LeyIV() {
             Adolescentes en forma provisoria en caso de cese, muerte, suspensión o imposibilidad
             temporal, en el orden que son designados, promoviéndose en el más breve plazo la
             designación de un nuevo titular en la forma establecida en el Artículo 3." />
-          <AccordionItem numero={14} isOpen={isOpenAll} textoAcordeon="Todas las entidades, organismos, personas humanas y jurídicas, de orden
+         <AccordionItem number={14} isOpen={isOpenAll} accordionText="Todas las entidades, organismos, personas humanas y jurídicas, de orden
             público o privado, están obligadas a prestar colaboración a los requerimientos del Defensor
             de los Derechos de Niños, Niñas y Adolescentes con carácter preferente y expedito.
             Todo aquel que desobedece u obstaculiza el ejercicio de las funciones previstas en los
@@ -161,7 +161,7 @@ function LeyIV() {
             los antecedentes respectivos a la Fiscalía de Estado para el ejercicio de las acciones
             pertinentes. Puede requerir la intervención de la justicia para obtener la remisión de la
             documentación que le fue negada por cualquier organismo, institución o sus agentes." />
-          <AccordionItem numero={15} isOpen={isOpenAll} textoAcordeon="Comprobada la veracidad de la denuncia o reclamo, el Defensor de los
+         <AccordionItem number={15} isOpen={isOpenAll} accordionText="Comprobada la veracidad de la denuncia o reclamo, el Defensor de los
             Derechos de Niños, Niñas y Adolescentes debe:
             1) promover y proteger los derechos de los niños, niñas y adolescentes mediante acciones y
             recomendaciones ante las instancias públicas competentes, a fin de garantizar el goce y el
@@ -178,10 +178,10 @@ function LeyIV() {
             <p>  REGISTRO ÚNICO DE NIÑOS, NIÑAS Y ADOLESCENTES </p>
             <p> INSTITUCIONALIZADOS </p>
           
-          <AccordionItem numero={16} isOpen={isOpenAll} textoAcordeon="Créase el Registro Único de Niños, Niñas y Adolescentes
+         <AccordionItem number={16} isOpen={isOpenAll} accordionText="Créase el Registro Único de Niños, Niñas y Adolescentes
             Institucionalizados -RUNNAI-, el cual está a cargo del Defensor de los Derechos de Niños,
             Niñas y Adolescentes." />
-          <AccordionItem numero={17} isOpen={isOpenAll} textoAcordeon="El RUNNAI se conforma con los datos de todas las personas menores de
+         <AccordionItem number={17} isOpen={isOpenAll} accordionText="El RUNNAI se conforma con los datos de todas las personas menores de
             dieciocho (18) años de edad, con determinación de alojamiento en instituciones y/u
             organismos y/o entes cualquiera sea la denominación o naturaleza jurídica, que implique la
             separación de los niños, niñas y adolescentes de su familia o privación de su derecho a la
@@ -192,12 +192,12 @@ function LeyIV() {
             información de toda la Provincia, en una base de datos sobre niños, niñas y adolescentes
             que en consideración a la protección de sus derechos, se encuentran institucionalizados, por
             diferentes motivos y en contextos distintos a los familiares o fuera de su familia de origen." />
-          <AccordionItem numero={18} isOpen={isOpenAll} textoAcordeon="El RUNNAI contempla un sistema informático de recolección única y
+         <AccordionItem number={18} isOpen={isOpenAll} accordionText="El RUNNAI contempla un sistema informático de recolección única y
             centralizada de la información de las medidas de protección excepcional tomadas por todas
             las personas con autoridad para hacerlo en todo el territorio de la Provincia de Misiones, en
             el que se establece de manera coordinada los mecanismos técnicos legales requeridos para
             la conformación del citado Registro." />
-          <AccordionItem numero={19} isOpen={isOpenAll} textoAcordeon="El RUNNAI contiene información suministrada por los diferentes
+         <AccordionItem number={19} isOpen={isOpenAll} accordionText="El RUNNAI contiene información suministrada por los diferentes
             organismos, instituciones o personas, resguardada de conformidad a lo establecido en el
             Artículo 43 párrafo tercero de la Constitución Nacional y la Ley Nacional N.° 25.326 de
             Protección de los Datos Personales.
@@ -210,7 +210,7 @@ function LeyIV() {
             identidad y a la confidencialidad de todo dato que signifique conocer la historia personal y
             de la vida de cada uno de los niños, niñas y adolescentes.
             " />
-          <AccordionItem numero={20} isOpen={isOpenAll} textoAcordeon="En todos los casos, y sin perjuicio de otros que puedan resultar relevantes,
+         <AccordionItem number={20} isOpen={isOpenAll} accordionText="En todos los casos, y sin perjuicio de otros que puedan resultar relevantes,
             el RUNNAI debe contener legajos individuales donde consten los siguientes datos:
             1) nombre completo, documento nacional de identidad, lugar y fecha de nacimiento y
             último domicilio de los niños, niñas y adolescentes;
@@ -229,7 +229,7 @@ function LeyIV() {
             seguimiento específico, y el historial de las distintas instituciones escolares que acogieron o
             acogen a los niños, niñas y adolescentes.
             " />
-          <AccordionItem numero={21} isOpen={isOpenAll} textoAcordeon="Para garantizar la inscripción de los niños, niñas y adolescentes en el
+         <AccordionItem number={21} isOpen={isOpenAll} accordionText="Para garantizar la inscripción de los niños, niñas y adolescentes en el
             RUNNAI y su posterior seguimiento y monitoreo, se llevan a cabo las siguientes acciones:
             1) en el caso que los niños, niñas y adolescentes no cuenten con documento nacional de
             identidad, el juez que interviene de oficio debe solicitar la inmediata gestión de
@@ -254,7 +254,7 @@ function LeyIV() {
             modalidad, lugar de alojamiento, las condiciones y demás requerimientos deben
             efectivizarse y comunicarse de conformidad a lo establecido en el Artículo 20. 
                 " />
-          <AccordionItem numero={22} isOpen={isOpenAll} textoAcordeon="Para garantizar la inscripción de los niños, niñas y adolescentes en el
+         <AccordionItem number={22} isOpen={isOpenAll} accordionText="Para garantizar la inscripción de los niños, niñas y adolescentes en el
           RUNNAI y su posterior seguimiento y monitoreo, se llevan a cabo las siguientes acciones:
           1) en el caso que los niños, niñas y adolescentes no cuenten con documento nacional de
           identidad, el juez que interviene de oficio debe solicitar la inmediata gestión de
@@ -279,7 +279,7 @@ function LeyIV() {
           modalidad, lugar de alojamiento, las condiciones y demás requerimientos deben
           efectivizarse y comunicarse de conformidad a lo establecido en el Artículo 20. 
                 " />
-          <AccordionItem numero={23} isOpen={isOpenAll} textoAcordeon="Créase un Fondo Especial para la implementación del RUNNAI que está
+         <AccordionItem number={23} isOpen={isOpenAll} accordionText="Créase un Fondo Especial para la implementación del RUNNAI que está
           integrado por los siguientes recursos:
           1) las sumas que del presupuesto general de la Provincia se asignan anualmente al Fondo
           Especial;
@@ -289,8 +289,8 @@ function LeyIV() {
           humana o jurídica, públicas o privadas, internacionales, nacionales, provinciales y
           municipales a través de la firma de convenios específicos.
                 " />
-          <AccordionItem numero={24} isOpen={isOpenAll} textoAcordeon="El Poder Ejecutivo reglamentará la presente Ley." />
-          <AccordionItem numero={25} isOpen={isOpenAll} textoAcordeon="- - Comuníquese al Poder Ejecutivo. " />
+         <AccordionItem number={24} isOpen={isOpenAll} accordionText="El Poder Ejecutivo reglamentará la presente Ley." />
+         <AccordionItem number={25} isOpen={isOpenAll} accordionText=" Comuníquese al Poder Ejecutivo. " />
         </div>
       </div>
     </div>

@@ -2,10 +2,10 @@ import React from 'react';
 
 class AccordionItem extends React.Component {
     render() {
-        const { numero, textoAcordeon, isOpen } = this.props;
-        const collapseId = `collapse${numero}`;
+        const { number, accordionText, isOpen } = this.props;
+        const collapseId = `collapse${number}`;
 
-        const textoConSaltosDeLinea = textoAcordeon.split('\n').map((line, index) => (
+        const textWithLineBreaks = accordionText.split('\n').map((line, index) => (
             <React.Fragment key={index}>
                 {line}
                 <br />
@@ -23,7 +23,7 @@ class AccordionItem extends React.Component {
                         aria-expanded={isOpen ? 'true' : 'false'}
                         aria-controls={collapseId}
                     >
-                        ARTÍCULO {numero}.
+                        ARTICULO {number}.
                     </button>
                 </h2>
                 <div
@@ -32,7 +32,7 @@ class AccordionItem extends React.Component {
                     data-bs-parent="#accordionExample"
                 >
                     <div className="accordion-body">
-                        {textoConSaltosDeLinea}
+                        {textWithLineBreaks}
                     </div>
                 </div>
             </div>
