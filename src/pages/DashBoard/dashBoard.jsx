@@ -11,14 +11,14 @@ import Header from '../../components/partials/header.jsx'
 
 window.themeColors = colors;
 
-function home() {
+function Dash() {
   return (
     <>
       <div className='box container-fluid row p-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
 
 
       
-          <div className='col-md-3 container-fluid  menubox ' style={{ backgroundColor: window.themeColors.color}}>
+          <div className='col-md-3 menubox ' style={{ backgroundColor: window.themeColors.color}}>
             <Menu />
           </div>
 
@@ -41,4 +41,4 @@ function home() {
   )
 }
 
-export default home
+export default Dash
