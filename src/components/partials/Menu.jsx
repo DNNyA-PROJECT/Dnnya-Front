@@ -24,9 +24,9 @@ function Menu() {
     <>
       <div className='container-fluid m-0 p-0 d-flex flex-column align-items-center'>
         <img src={DeFLogo} className='DeFLogo mt-2 ' alt="logo de defensoria" />
-        <ul className='mt-3 p-0'>
+        <ul className='mt-3 container-fluid p-0'>
           <li
-            className={`mb-4`}
+            className={`mb-3 pt-3 pb-3 text-center`}
             style={{
               ...backgroundStyle('/'),
               ':hover': {
@@ -43,7 +43,7 @@ function Menu() {
             </Link>
           </li>
           <li
-            className={`mb-4`}
+            className={`mb-3 pt-3 pb-3 text-center`}
             style={{
               ...backgroundStyle('/Dashboard'),
               ':hover': {
@@ -60,7 +60,7 @@ function Menu() {
             </Link>
           </li>
           <li
-            className={`mb-4`}
+            className={`mb-3 pt-3 pb-3 text-center`}
             style={{
               ...backgroundStyle('/Listado_de_casos'),
               ':hover': {
@@ -77,7 +77,7 @@ function Menu() {
             </Link>
           </li>
           <li
-            className={`mb-4`}
+            className={`mb-3 pt-3 pb-3 text-center`}
             style={{
               ...backgroundStyle('/Listado_de_legajos'),
               ':hover': {
@@ -94,7 +94,7 @@ function Menu() {
             </Link>
           </li>
           <li
-            className={`mb-4`}
+            className={`mb-3 pt-3 pb-3 text-center`}
             style={{
               ...backgroundStyle('/Registro_De_Caso'),
               ':hover': {
