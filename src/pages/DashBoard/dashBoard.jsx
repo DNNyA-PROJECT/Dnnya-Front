@@ -1,5 +1,4 @@
 import React from 'react';
-import intro from '../../assets/images/Cartel-Bienvenida-Fiesta-Floral-Otoño-Moderno-Ilustrado-Sencillo-Naranja-_1_-fotor-2023071792028_1.svg'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { colors } from '../../assets/styles/theme.js'
 import '../../assets/styles/styles.css'
@@ -22,12 +21,12 @@ function Dash() {
             <Menu />
           </div>
 
-          <div className='container-fluid d-flex align-items-center flex-column col-9 justify-content-between'>
+          <div className='container-fluid d-flex align-items-center flex-column col-9 '>
             <div className=' homeHead '>
               <Header />
             </div>
             <div>
-              <img src={intro} alt="bienvenida" className='img' />
+             aqui deberia estar el contenido del Dashboard que esta en proceso
             </div>
           </div>
         </div>

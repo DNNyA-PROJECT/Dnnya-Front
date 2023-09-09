@@ -12,7 +12,7 @@ function formSubmission() {
 
 
 
-                <div className='col-md-3 menubox ' style={{ backgroundColor: window.themeColors.color }}>
+                <div className='col-md-3 container-fluid p-0  menubox ' style={{ backgroundColor: window.themeColors.color }}>
                     <Menu />
                 </div>
 
@@ -32,7 +32,7 @@ function formSubmission() {
                                 type="submit"
                                 value="ENVIAR"
                                 className='btn register btn-lg mb-3'
-                                style={{ backgroundColor: window.themeColors.buttonColor,  color: window.themeColors.footerColorText }}
+                                style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
                             />
                         </form>
                     </div>
