@@ -6,43 +6,34 @@ import { colors } from '../../assets/styles/theme.js';
 import '../../assets/styles/styles.css';
 import '../../assets/styles/normalize.css';
 import Footer from '../../components/partials/footer.jsx';
-
+import { useForm, createInitialState, API_URL } from '../../assets/const/constant.jsx';
 window.themeColors = colors;
 
 function Login() {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  });
+  const fieldNames = ['username', 'password'];
+  const initialState = createInitialState(fieldNames);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+  const { formData, handleChange, handleSubmit } = useForm(initialState);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
+  const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/Auth/login', {
-        username: formData.username,
-        password: formData.password,
-      });
+      const response = await axios.post('http://localhost:8080/Auth/login', formData);
 
       if (response.status === 200) {
-       console.log('funciona');
-       window.location.href = 'http://localhost:5173';
+        console.log('Inicio de sesión exitoso');
+
+        window.location.href = 'http://localhost:5173';
       } else {
-        console.log('Login failed');
+        console.log('Inicio de sesión fallido');
       }
     } catch (error) {
-      console.error('Network error:', error);
+      console.error('Error de red:', error);
     }
   };
 
   return (
     <>
-      <div className='container-fluid d-flex flex-column justify-content-center align-items-center' style={{backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+      <div className='container-fluid d-flex flex-column justify-content-center align-items-center' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
         <div className='mb-3'>
           <h1 className='d-flex justify-content-center'>Sistema Informático de</h1>
           <h1>Defensoria de Niños, Niñas y Adolescentes</h1>
@@ -52,7 +43,7 @@ function Login() {
         </div>
         <div className='fw-bolder'><h3>¡Bienvenidos!</h3></div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(event) => handleSubmit(event, handleLogin)}>
           <div className='d-flex'>
             <input
               type="text"
@@ -82,7 +73,6 @@ function Login() {
             <a href="#" className='text-secondary  mb-3'><p>RECUPERAR CREDENCIALES</p></a>
           </div>
         </form>
-
       </div>
       <Footer />
     </>
@@ -90,6 +80,7 @@ function Login() {
 }
 
 export default Login;
+
 
 
 
