@@ -8,7 +8,7 @@ import Menu from '../../components/partials/Menu.jsx'
 import Avatar from '../../assets/images/Mesa_de_trabajo_50.png'
 window.themeColors = colors;
 
-function Dash() {
+function recoverCredentials() {
     return (
         <>
             <div className='box container-fluid row p-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
@@ -50,4 +50,4 @@ function Dash() {
     )
 }
 
-export default Dash
+export default recoverCredentials

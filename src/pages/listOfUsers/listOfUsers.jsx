@@ -5,9 +5,6 @@ import '../../assets/styles/styles.css'
 import '../../assets/styles/normalize.css'
 import Footer from '../../components/partials/footer.jsx'
 import Menu from '../../components/partials/Menu.jsx'
-import Header from '../../components/partials/header.jsx'
-
-
 
 window.themeColors = colors;
 
@@ -23,13 +20,8 @@ function ListOfUsers() {
                 </div>
 
                 <div className='container-fluid d-flex align-items-center flex-column col-9 '>
-                    <div className=' homeHead '>
-                        <Header />
-                    </div>
                     <div>
-                        <div className="App">
-
-                        </div>
+                       <h1 className='text-first d-flex justify-content-center'> Listado de Usuarios y Solicitantes </h1>
                     </div>
                 </div>
             </div>
