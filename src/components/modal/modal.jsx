@@ -1,37 +1,33 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-import { Modal as BootstrapModal, Button } from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
-const Modal = ({ title, content }) => {
-  const [show, setShow] = useState(false);
-
-  const openModal = () => {
-    setShow(true);
-  };
-
-  const closeModal = () => {
-    setShow(false);
-  };
-
-  const modal = (
-    <BootstrapModal show={show} onHide={closeModal}>
-      <BootstrapModal.Header closeButton>
-        <BootstrapModal.Title>{title}</BootstrapModal.Title>
-      </BootstrapModal.Header>
-      <BootstrapModal.Body>{content}</BootstrapModal.Body>
-      <BootstrapModal.Footer>
-        <Button variant="secondary" onClick={closeModal}>
-          Cerrar
-        </Button>
-        <Button variant="primary">Guardar Cambios</Button>
-      </BootstrapModal.Footer>
-    </BootstrapModal>
+function CustomModal({ title, body, show, handleClose }) {
+  return (
+<Modal show={show} onHide={handleClose}>
+  <div style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+    <Modal.Header closeButton>
+      <Modal.Title>{title}</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>{body}</Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={handleClose}>
+        Cerrar
+      </Button>
+      <Button
+        onClick={handleClose}
+        className='btn register btn-lg'
+        style={{
+          backgroundColor: window.themeColors.buttonColor,
+          color: window.themeColors.footerColorText
+        }}
+      >
+        Guardar Cambios
+      </Button>
+    </Modal.Footer>
+  </div>
+</Modal>
   );
+}
 
-  return {
-    openModal,
-    modalComponent: modal,
-  };
-};
-
-export default Modal;
+export default CustomModal;

@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DFLogo from '../../assets/images/defensoria_logo.svg';
 import '../../assets/styles/styles.css';
 import '../../assets/styles/normalize.css';
 import Footer from '../../components/partials/footer.jsx';
 import { useForm, createInitialState } from '../../assets/const/constant.jsx';
+import CustomModal from '../../components/modal/modal';
 
 function RegistrationForm() {
   const fieldNames = ['name', 'lastname', 'username', 'email', 'password', 'repeatpassword'];
   const initialState = createInitialState(fieldNames);
-
   const { formData, handleChange, handleSubmit } = useForm(initialState);
+  const [modalShow, setModalShow] = useState(false);
 
+  const handleShowModal = () => {
+    setModalShow(true);
+  }
+  const handleCloseModal = () => {
+    setModalShow(false);
+  }
   return (
     <>
       <div className='container-fluid d-flex flex-column m-0' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
@@ -52,10 +59,21 @@ function RegistrationForm() {
               name="username"
               placeholder='Usuario'
             />
-            <button className='button-select d-flex align-items-center justify-content-evenly'>
+            <button className='button-select d-flex align-items-center justify-content-evenly' onClick={handleShowModal}>
               <h6>Foto de perfil</h6>
               <i className="bi bi-person-fill select"></i>
             </button>
+            <CustomModal
+              title="Selecciona tu avatar"
+              show={modalShow}
+              handleClose={handleCloseModal}
+              body={
+                <div>
+                  <img src={DFLogo} alt="Avatar" />
+                </div>
+              }
+            />
+
           </div>
           <div className='use mb-3'>
             <input
@@ -86,15 +104,15 @@ function RegistrationForm() {
             />
           </div>
           <div className='use'>
-              <button
-                type="submit"
-                className='btn register btn-lg'
-                style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
-              >
-                Crear Cuenta
-              </button>
-              <button type="reset" className='btn btn-outline-danger reset'>Borrar</button>
-            </div>
+            <button
+              type="submit"
+              className='btn register btn-lg'
+              style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
+            >
+              Crear Cuenta
+            </button>
+            <button type="reset" className='btn btn-outline-danger reset'>Borrar</button>
+          </div>
         </form>
       </div>
       <Footer />

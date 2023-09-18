@@ -70,7 +70,7 @@ function Login() {
             >
               Iniciar Sesión
             </button>
-            <a href="#" className='text-secondary  mb-3'><p>RECUPERAR CREDENCIALES</p></a>
+            <a href="/Recuperacion_de_Credenciales" className='text-secondary  mb-3'><p>RECUPERAR CREDENCIALES</p></a>
           </div>
         </form>
       </div>
