@@ -24,5 +24,6 @@ export const colors = {
     boxColorLightBeige: '#EDCFBE',
     boxColorLightLavender: '#D7BEED', 
     acertColor: '#C2EDBE',
-    greyColor:'#A29D9DA6'
+    greyColor:'#A29D9DA6',
+    colorHeaderData:"background: #F2A57F",
   };
