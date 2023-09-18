@@ -24,7 +24,7 @@ function Dash() {
                     <div className='box-recover' style={{ backgroundColor: window.themeColors.color }}>
                         <form action="" className=' d-flex flex-column align-items-center'>
                             <h1 className='text-first'>Cambiar Correo</h1>
-                            <img src={Avatar} alt="Avatar" className='Avatar' />
+                            <img src={Avatar} alt="Avatar" className='picture' />
                             <div>
                                 <input
                                     type="email"

@@ -264,3 +264,21 @@ li:hover {
 .Avatar:hover{
     background-color:  #45371e;
 }
+
+.dropdown-menu.show {
+    display: block;
+    width: 14rem;
+}
+
+li {
+    text-align: center;
+}
+
+
+.dropdown-menu.show {
+    transform: translate3d(50px, 22.4px, 0px) !important ;
+}
+
+.picture{
+    width: 5rem;
+}
