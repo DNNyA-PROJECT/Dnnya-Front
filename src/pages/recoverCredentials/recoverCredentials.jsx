@@ -5,7 +5,7 @@ import '../../assets/styles/styles.css'
 import '../../assets/styles/normalize.css'
 import Footer from '../../components/partials/footer.jsx'
 import Menu from '../../components/partials/Menu.jsx'
-
+import Avatar from '../../assets/images/Mesa_de_trabajo_50.png'
 window.themeColors = colors;
 
 function Dash() {
@@ -24,7 +24,7 @@ function Dash() {
                     <div className='box-recover' style={{ backgroundColor: window.themeColors.color }}>
                         <form action="" className=' d-flex flex-column align-items-center'>
                             <h1 className='text-first'>Cambiar Correo</h1>
-                            imagen aqui
+                            <img src={Avatar} alt="Avatar" className='Avatar' />
                             <div>
                                 <input
                                     type="email"

@@ -10,7 +10,7 @@ export const colors = {
     textColorBlack: '#000000',
     newColor:'#FBC73C66',
     color: 'rgba(0, 0, 0, 20%)',
-    
+    modalBackgroundColor: '#E0C98C',
     
     // aside o dashboard
 

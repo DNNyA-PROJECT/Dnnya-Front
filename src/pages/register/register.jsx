@@ -5,6 +5,7 @@ import '../../assets/styles/normalize.css';
 import Footer from '../../components/partials/footer.jsx';
 import { useForm, createInitialState } from '../../assets/const/constant.jsx';
 import CustomModal from '../../components/modal/modal';
+import Avatar from '../../assets/images/Mesa_de_trabajo_50.png'
 
 function RegistrationForm() {
   const fieldNames = ['name', 'lastname', 'username', 'email', 'password', 'repeatpassword'];
@@ -64,13 +65,23 @@ function RegistrationForm() {
               <i className="bi bi-person-fill select"></i>
             </button>
             <CustomModal
-              title="Selecciona tu avatar"
+              title="Por Favor Seleccione un Avatar"
               show={modalShow}
               handleClose={handleCloseModal}
               body={
-                <div>
-                  <img src={DFLogo} alt="Avatar" />
+                <div className='d-flex justify-content-around flex-wrap'>
+                  <img src={Avatar} alt="Avatar" className='Avatar' />
+                  <img src={Avatar} alt="Avatar" className='Avatar' />
+                  <img src={Avatar} alt="Avatar" className='Avatar' />
+                  <img src={Avatar} alt="Avatar" className='Avatar' />
+                  <img src={Avatar} alt="Avatar" className='Avatar' />
+                  <img src={Avatar} alt="Avatar" className='Avatar' />
+                  <img src={Avatar} alt="Avatar" className='Avatar' />
+                  <img src={Avatar} alt="Avatar" className='Avatar' />
+                  <img src={Avatar} alt="Avatar" className='Avatar' />
+                  <img src={Avatar} alt="Avatar" className='Avatar' />
                 </div>
+                
               }
             />
 
