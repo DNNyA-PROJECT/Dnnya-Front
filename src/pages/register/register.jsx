@@ -29,7 +29,7 @@ function Register() {
       const response = await axios.post('http://localhost:8080/Auth/register', {
         username: formData.username,
         password: formData.password,
-        email: formData.email,
+        correo: formData.correo,
       });
 
       if (response.status === 200) {
@@ -100,8 +100,8 @@ function Register() {
               <input
                 type="email"
                 className='form-control bg'
-                name="email"
-                value={formData.email}
+                name="correo"
+                value={formData.correo}
                 onChange={handleChange}
                 placeholder='Correo Electrónico'
               />
