@@ -23,7 +23,7 @@ function Menu() {
   return (
     <>
       <div className='container-fluid m-0 p-0 d-flex flex-column align-items-center'>
-        <img src={DeFLogo} className='DeFLogo mt-2 ' alt="logo de defensoria" />
+        <img src={DeFLogo} className='DeFLogo my-3 ' alt="logo de defensoria" />
         <ul className='mt-3 container-fluid p-0'>
           <li
             className={`mb-3 pt-3 pb-3 text-center`}

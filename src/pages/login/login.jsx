@@ -6,29 +6,46 @@ import { colors } from '../../assets/styles/theme.js';
 import '../../assets/styles/styles.css';
 import '../../assets/styles/normalize.css';
 import Footer from '../../components/partials/footer.jsx';
-import { useForm, createInitialState, API_URL } from '../../assets/const/constant.jsx';
+
 window.themeColors = colors;
 
 function Login() {
-  const fieldNames = ['username', 'password'];
-  const initialState = createInitialState(fieldNames);
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState('');
 
-  const { formData, handleChange, handleSubmit } = useForm(initialState);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  }
 
-  const handleLogin = async () => {
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     try {
-      const response = await axios.post('http://localhost:8080/Auth/login', formData);
+      const response = await axios.post('http://localhost:8080/Auth/login', {
+        username: formData.username,
+        password: formData.password,
+      });
 
       if (response.status === 200) {
-        console.log('Inicio de sesión exitoso');
+       console.log('funciona');
 
-        window.location.href = 'http://localhost:5173';
       } else {
-        console.log('Inicio de sesión fallido');
+        console.log('Login failed');
       }
     } catch (error) {
-      console.error('Error de red:', error);
+      console.error('Network error:', error);
     }
+
   };
 
   return (
@@ -38,13 +55,13 @@ function Login() {
           <h1 className='d-flex justify-content-center'>Sistema Informático de</h1>
           <h1>Defensoria de Niños, Niñas y Adolescentes</h1>
         </div>
-        <div className=''>
+        <div>
           <img src={DFLogo} alt="Defensoria Logo" className='DFLogo' />
         </div>
         <div className='fw-bolder'><h3>¡Bienvenidos!</h3></div>
 
-        <form onSubmit={(event) => handleSubmit(event, handleLogin)}>
-          <div className='d-flex'>
+        <form onSubmit={handleSubmit}>
+          <div className='d-flex align-items-baseline'>
             <input
               type="text"
               className='form-inputs form-control md'
@@ -53,14 +70,23 @@ function Login() {
               value={formData.username}
               onChange={handleChange}
             />
-            <input
-              type="password"
-              className='form-inputs form-control md'
-              name='password'
-              placeholder='Contraseña'
-              value={formData.password}
-              onChange={handleChange}
-            />
+            <div className="password-input-container">
+              <div className="password-input-wrapper">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={formData.password}
+                  name='password'
+                  onChange={(e) => setPassword(e.target.value)}
+                  className='form-control md'
+                  placeholder="Contraseña"
+                />
+                <i
+                  className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'}`}
+                  onClick={togglePasswordVisibility}
+                  style={{ cursor: 'pointer' }}
+                ></i>
+              </div>
+            </div>
           </div>
           <div className='d-flex flex-column align-items-center'>
             <button

@@ -3,14 +3,11 @@ import DFLogo from '../../assets/images/defensoria_logo.svg';
 import '../../assets/styles/styles.css';
 import '../../assets/styles/normalize.css';
 import Footer from '../../components/partials/footer.jsx';
-import { useForm, createInitialState } from '../../assets/const/constant.jsx';
 import CustomModal from '../../components/modal/modal';
 import Avatar from '../../assets/images/Mesa_de_trabajo_50.png'
+import axios from 'axios';
 
 function RegistrationForm() {
-  const fieldNames = ['name', 'lastname', 'username', 'email', 'password', 'repeatpassword'];
-  const initialState = createInitialState(fieldNames);
-  const { formData, handleChange, handleSubmit } = useForm(initialState);
   const [modalShow, setModalShow] = useState(false);
 
   const handleShowModal = () => {
@@ -18,6 +15,45 @@ function RegistrationForm() {
   }
   const handleCloseModal = () => {
     setModalShow(false);
+  }
+  
+    const [formData, setFormData] = useState({
+        name: '',
+        surname: '',
+        username: '',
+        password: '',
+        correo: '',
+      });
+      const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+      };
+      const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+          const response = await axios.post('http://localhost:8080/Auth/register', {
+            name: formData.name,
+            surname:formData.surname ,
+            username: formData.username,
+            password: formData.password,
+            correo: formData.correo,
+          });
+    
+          if (response.status === 200) {
+            console.log('funciona');
+            setFormData({
+              username: '',
+              password: '',
+              correo: '',
+              name: '',
+              surname: '',
+            });
+          } else {
+            console.log('Registration failed');
+          }
+        } catch (error) {
+          console.error('Network error:', error);
+        }
   }
   return (
     <>
@@ -45,8 +81,8 @@ function RegistrationForm() {
             <input
               type="text"
               className='form-control md'
-              name="lastname"
-              value={formData.lastname}
+              name="surname"
+              value={formData.surname}
               onChange={handleChange}
               placeholder='Apellido'
             />
@@ -90,8 +126,8 @@ function RegistrationForm() {
             <input
               type="email"
               className='form-control bg'
-              name="email"
-              value={formData.email}
+              name="correo"
+              value={formData.correo}
               onChange={handleChange}
               placeholder='Correo Electrónico'
             />

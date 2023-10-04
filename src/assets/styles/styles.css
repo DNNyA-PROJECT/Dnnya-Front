@@ -25,10 +25,11 @@
     font-weight: 400;
 }
 /* aside */
-.DeFLogo{
-    width: 6vw;
+.DeFLogo {
+    width: 4.5vw;
     border-radius: 50vw;
 }
+
 .box-aside{
     width:20vw ;
     height: 60vw;
@@ -97,7 +98,7 @@ i.bi.bi-person-fill.select {
 }
 
 .text-first,.text-second{
-    font-size: 2.5vw;
+    font-size: 1.5vw;
 }
 
 .btn.register{
@@ -117,9 +118,10 @@ i.bi.bi-person-fill.select {
 .text-intro{
     font-family: 'sansita';
 }
-.img{
-    width:70vw;
-    margin-bottom:6vw ; 
+
+.img {
+    width: 38vw;
+    margin-bottom: 10vw;
 }
 
 .box{
@@ -131,12 +133,6 @@ i.bi.bi-person-fill.select {
     padding-bottom: 10px;
 }
 
-
-
-.homeHead {
-    width: 74vw;
-    padding: 0rem 3rem 0rem 1.5rem ; 
-}
 
 /* menu */
 ul{
@@ -153,7 +149,7 @@ a{
 
 .text-link{
     color: var(--text-black);
-    margin: 0px;
+    font-size: 1.5vw;
 }
 
 .custom-checkbox {
@@ -275,9 +271,6 @@ li {
 }
 
 
-.dropdown-menu.show {
-    transform: translate3d(50px, 22.4px, 0px) !important ;
-}
 
 .picture{
     width: 5rem;
@@ -298,3 +291,32 @@ tbody, td, tfoot, th, thead, tr {
     background-color: #edd2be;
     border: none;
 }
+
+.password-input-container {
+    position: relative;
+  }
+  
+  .password-input-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-input-wrapper input {
+    padding-right: 30px; 
+  }
+  
+  .bi {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    fill: currentcolor;
+    font-size: 1.5rem;
+}
+
+  .password-input-wrapper i {
+    position: absolute;
+    right: 21px;
+    top: 44%;
+    transform: translateY(-50%);
+}
+

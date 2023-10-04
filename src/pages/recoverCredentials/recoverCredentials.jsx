@@ -15,7 +15,7 @@ function recoverCredentials() {
 
 
 
-                <div className='col-md-3 container-fluid p-0  menubox ' style={{ backgroundColor: window.themeColors.color }}>
+                <div className='col-md-2 m-0 container-fluid p-0 menubox d-none d-md-block' style={{ backgroundColor: window.themeColors.color }}>
                     <Menu />
                 </div>
 
