@@ -16,8 +16,8 @@ function Routes() {
     <Router>
       <div>
         <Switch>
-          <Route exact path='/' component={Home} />
           <Route exact path='/Iniciar_sesion' component={Login} />
+          <Route exact path='/' component={Home} />
           <Route exact path='/Registro' component={Register} />
           <Route exact path='/leyII' component={LeyII} />
           <Route exact path='/leyIV' component={LeyIV} />

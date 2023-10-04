@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { colors } from '../../assets/styles/theme.js'
 import '../../assets/styles/styles.css'
@@ -6,10 +6,19 @@ import '../../assets/styles/normalize.css'
 import Footer from '../../components/partials/footer.jsx'
 import Header from '../../components/partials/header.jsx'
 import Menu from '../../components/partials/Menu.jsx'
+import CustomModal from '../../components/modal/modal';
 
 window.themeColors = colors;
 
 function CaseRecord() {
+    const [modalShow, setModalShow] = useState(false);
+
+    const handleShowModal = () => {
+        setModalShow(true);
+    }
+    const handleCloseModal = () => {
+        setModalShow(false);
+    }
 
     return (
         <>
@@ -29,7 +38,7 @@ function CaseRecord() {
                             <h3>Detalles de Registro e Identificación del Caso</h3>
                         </div>
 
-                        <form action="">
+                        <form onSubmit={(event) => handleSubmit(event)}>
                             <div className='container pt-3 pb-3 mb-3 ' style={{ backgroundColor: window.themeColors.boxBorder }}>
                                 <div className='container  mb-3 p-5 ' style={{ backgroundColor: window.themeColors.boxColorGreen }}>
                                     <div className='d-flex justify-content-center'>
@@ -194,11 +203,26 @@ function CaseRecord() {
                                 </div>
 
                                 <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightBeige }}>
-                                    <div className='d-flex justify-content-center'>
+                                    <div className='d-flex justify-content-center' >
                                         <h1>Datos de la NNyA</h1>
                                     </div>
+
                                     <div className='d-flex justify-content-center'>
-                                        <button>seleccionar nnya</button>
+                                        <button className='d-flex' onClick={handleShowModal}>
+                                            <h6>Seleccionar NNyA</h6>
+                                        </button>
+                                        <CustomModal
+                                            title="Datos NNyA"
+                                            show={modalShow}
+                                            handleClose={handleCloseModal}
+                                            body={
+                                                <div className='d-flex justify-content-around flex-wrap'>
+                                                    <p>rogelio</p>
+                                                    <p>ramiro</p>
+                                                    <p>cris</p>
+                                                </div>
+                                            }
+                                        />
                                     </div>
 
                                     <div className='d-flex justify-content-evenly mb-3  row' >
@@ -426,6 +450,11 @@ function CaseRecord() {
                                     </div>
                                 </div>
                             </div>
+                            <input
+                                className='btn'
+                                type="submit"
+                                value="enviar"
+                            />
                         </form>
 
                     </div>

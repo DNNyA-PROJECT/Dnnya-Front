@@ -11,16 +11,15 @@ window.themeColors = colors;
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState('');
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  }
 
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -37,15 +36,13 @@ function Login() {
       });
 
       if (response.status === 200) {
-       console.log('funciona');
-
+        window.location.href = 'http://localhost:5173';
       } else {
         console.log('Login failed');
       }
     } catch (error) {
       console.error('Network error:', error);
     }
-
   };
 
   return (
@@ -76,7 +73,7 @@ function Login() {
                   type={showPassword ? 'text' : 'password'}
                   value={formData.password}
                   name='password'
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                   className='form-control md'
                   placeholder="Contraseña"
                 />
@@ -106,9 +103,4 @@ function Login() {
 }
 
 export default Login;
-
-
-
-
-
 
