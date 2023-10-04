@@ -42,11 +42,11 @@ function RegistrationForm() {
           if (response.status === 200) {
             console.log('funciona');
             setFormData({
+              name: '',
+              surname: '',
               username: '',
               password: '',
               correo: '',
-              name: '',
-              surname: '',
             });
           } else {
             console.log('Registration failed');
