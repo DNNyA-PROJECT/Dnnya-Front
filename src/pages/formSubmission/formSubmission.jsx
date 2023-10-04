@@ -1,30 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/styles/styles.css'
 import '../../assets/styles/normalize.css'
 import Footer from '../../components/partials/footer.jsx'
 import Menu from '../../components/partials/Menu.jsx'
 
-function formSubmission() {
+function FormSubmission() {
+    const [email, setEmail] = useState('');
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('la/', {
+                email: email
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <>
             <div className='box container-fluid row p-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
-
-
-
                 <div className='col-md-2 m-0 container-fluid p-0 menubox d-none d-md-block' style={{ backgroundColor: window.themeColors.color }}>
                     <Menu />
                 </div>
 
                 <div className='container-fluid d-flex align-items-center flex-column col-9 justify-content-between'>
-
                     <div className='box-submission' style={{ backgroundColor: window.themeColors.color }}>
-                        <form action="" className=' d-flex flex-column align-items-center'>
+                        <form onSubmit={handleSubmit} className=' d-flex flex-column align-items-center'>
                             <h1 className='text-first'>Envio de Formulario de Registro</h1>
                             <input
                                 type="email"
-                                name=""
-                                id=""
+                                name="email"
+                                id="email"
+                                value={email}
+                                onChange={handleEmailChange}
                                 className='form-inputs form-control md'
                                 placeholder='Ingrese el Correo Electronico'
                             />
@@ -39,8 +56,6 @@ function formSubmission() {
                 </div>
             </div>
 
-
-
             <div className='container-fluid p-0 m-0'>
                 <Footer />
             </div>
@@ -48,4 +63,4 @@ function formSubmission() {
     )
 }
 
-export default formSubmission
+export default FormSubmission;
