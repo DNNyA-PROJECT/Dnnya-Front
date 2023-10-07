@@ -11,13 +11,12 @@
   }
 
 /* Footer */
-  .text-copy{
-    font-size: 20px;
-    margin-left: 4.9vw;
+.text-copy {
+    font-size: 1rem;
 }
 
-.img-fluid.custom-width{
-    width: 15vw;
+.img-fluid.custom-width {
+    width: 7rem;
 }
 
 .size-font{
@@ -127,10 +126,6 @@ i.bi.bi-person-fill.select {
 .box{
     margin: 0px;
     height: 79.9vh;
-}
-.menubox{
-    padding-left: 0px;
-    padding-bottom: 10px;
 }
 
 

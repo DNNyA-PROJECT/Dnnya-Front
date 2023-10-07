@@ -66,6 +66,7 @@ function Login() {
               placeholder='Usuario'
               value={formData.username}
               onChange={handleChange}
+              autoComplete="username"
             />
             <div className="password-input-container">
               <div className="password-input-wrapper">
@@ -76,6 +77,7 @@ function Login() {
                   onChange={(e) => handleChange(e)}
                   className='form-control md'
                   placeholder="Contraseña"
+                  autoComplete="current-password" 
                 />
                 <i
                   className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'}`}

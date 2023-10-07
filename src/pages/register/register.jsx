@@ -4,11 +4,13 @@ import '../../assets/styles/styles.css';
 import '../../assets/styles/normalize.css';
 import Footer from '../../components/partials/footer.jsx';
 import CustomModal from '../../components/modal/modal';
-import Avatar from '../../assets/images/Mesa_de_trabajo_50.png'
+import Avatar from '../../assets/images/Mesa_de_trabajo_50.png';
 import axios from 'axios';
 
 function RegistrationForm() {
   const [modalShow, setModalShow] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
   const handleShowModal = () => {
     setModalShow(true);
@@ -16,45 +18,63 @@ function RegistrationForm() {
   const handleCloseModal = () => {
     setModalShow(false);
   }
-  
-    const [formData, setFormData] = useState({
-        name: '',
-        surname: '',
-        username: '',
-        password: '',
-        correo: '',
+
+  const [formData, setFormData] = useState({
+    name: '',
+    surname: '',
+    username: '',
+    password: '',
+    correo: '',
+    repeatpassword: '',
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleRepeatPasswordVisibility = () => {
+    setShowRepeatPassword(!showRepeatPassword);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (formData.password !== formData.repeatpassword) {
+      console.error('Error: Las contraseñas no coinciden');
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:8080/Auth/register', {
+        name: formData.name,
+        surname: formData.surname,
+        username: formData.username,
+        password: formData.password,
+        correo: formData.correo,
       });
-      const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
-      };
-      const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-          const response = await axios.post('http://localhost:8080/Auth/register', {
-            name: formData.name,
-            surname:formData.surname ,
-            username: formData.username,
-            password: formData.password,
-            correo: formData.correo,
-          });
-    
-          if (response.status === 200) {
-            console.log('funciona');
-            setFormData({
-              name: '',
-              surname: '',
-              username: '',
-              password: '',
-              correo: '',
-            });
-          } else {
-            console.log('Registration failed');
-          }
-        } catch (error) {
-          console.error('Network error:', error);
-        }
+
+      if (response.status === 200) {
+        console.log('funciona');
+        setFormData({
+          name: '',
+          surname: '',
+          username: '',
+          password: '',
+          correo: '',
+          repeatpassword: '',
+        });
+      } else {
+        console.log('Registration failed');
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
   }
+
   return (
     <>
       <div className='container-fluid d-flex flex-column m-0' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
@@ -94,6 +114,7 @@ function RegistrationForm() {
               value={formData.username}
               onChange={handleChange}
               name="username"
+              autoComplete="username"
               placeholder='Usuario'
             />
             <button className='button-select d-flex align-items-center justify-content-evenly' onClick={handleShowModal}>
@@ -117,10 +138,8 @@ function RegistrationForm() {
                   <img src={Avatar} alt="Avatar" className='Avatar' />
                   <img src={Avatar} alt="Avatar" className='Avatar' />
                 </div>
-                
               }
             />
-
           </div>
           <div className='use mb-3'>
             <input
@@ -130,25 +149,46 @@ function RegistrationForm() {
               value={formData.correo}
               onChange={handleChange}
               placeholder='Correo Electrónico'
+              autoComplete="username"
             />
           </div>
           <div className='use mb-3'>
-            <input
-              type="password"
-              className='form-control md'
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder='Contraseña'
-            />
-            <input
-              type="password"
-              className='form-control md'
-              name="repeatpassword"
-              value={formData.repeatpassword}
-              onChange={handleChange}
-              placeholder='Confirmar Contraseña'
-            />
+            <div className="password-input-container">
+              <div className="password-input-wrapper">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={formData.password}
+                  name='password'
+                  onChange={(e) => handleChange(e)}
+                  className='form-control md'
+                  placeholder="Contraseña"
+                  autoComplete="new-password"
+                />
+                <i
+                  className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'}`}
+                  onClick={togglePasswordVisibility}
+                  style={{ cursor: 'pointer' }}
+                ></i>
+              </div>
+            </div>
+            <div className="password-input-container">
+              <div className="password-input-wrapper">
+                <input
+                  type={showRepeatPassword ? 'text' : 'password'}
+                  value={formData.repeatpassword}
+                  name='repeatpassword'
+                  onChange={(e) => handleChange(e)}
+                  className='form-control md'
+                  placeholder="Confirmar Contraseña"
+                  autoComplete="new-password"
+                />
+                <i
+                  className={`bi ${showRepeatPassword ? 'bi-eye-slash' : 'bi-eye'}`}
+                  onClick={toggleRepeatPasswordVisibility}
+                  style={{ cursor: 'pointer' }}
+                ></i>
+              </div>
+            </div>
           </div>
           <div className='use'>
             <button
@@ -168,3 +208,4 @@ function RegistrationForm() {
 }
 
 export default RegistrationForm;
+
