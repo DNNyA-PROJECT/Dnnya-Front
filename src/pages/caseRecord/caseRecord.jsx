@@ -16,6 +16,7 @@ function CaseRecord() {
     const handleShowModal = () => {
         setModalShow(true);
     }
+    
     const handleCloseModal = () => {
         setModalShow(false);
     }
@@ -208,7 +209,7 @@ function CaseRecord() {
                                     </div>
 
                                     <div className='d-flex justify-content-center'>
-                                        <button className='d-flex' onClick={handleShowModal}>
+                                        <button className='d-flex' type='button' onClick={handleShowModal}>
                                             <h6>Seleccionar NNyA</h6>
                                         </button>
                                         <CustomModal
@@ -454,6 +455,7 @@ function CaseRecord() {
                                 className='btn'
                                 type="submit"
                                 value="enviar"
+                                onClick={(event) => handleSubmit(event)}
                             />
                         </form>
 
