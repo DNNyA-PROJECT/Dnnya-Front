@@ -28,6 +28,23 @@ function ListOfUsers() {
         );
     };
 
+    const ButtonClose = () => {
+        return (
+            <button className='Check'>
+                <i class="bi bi-x-lg"></i>
+            </button>
+        );
+
+    };
+    const ButtonCheck = () => {
+        return (
+            <button className='Check'>
+                <i class="bi bi-check-lg"></i>
+            </button>
+        );
+
+    };
+
     const modalBody = currentModal === 1 ? (
         <div>
             <h5>.Informacion del contacto</h5>
@@ -106,19 +123,15 @@ function ListOfUsers() {
 
     const customData = [
         ["Nombre y Apellido", "Información del Solicitante", "Fecha de Solicitud", "Dar de Alta / Baja"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", "boton"],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
     ];
 
     const modalTitle = currentModal === 1 ? "Informacion del Usuario" : "Informacion del Usuario";

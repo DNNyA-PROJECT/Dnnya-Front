@@ -7,6 +7,7 @@ import Footer from '../../components/partials/footer.jsx'
 import Header from '../../components/partials/header.jsx'
 import Menu from '../../components/partials/Menu.jsx'
 import CustomModal from '../../components/modal/modal';
+import DataTable from '../../components/dataTable/dataTable.jsx';
 
 window.themeColors = colors;
 
@@ -20,6 +21,13 @@ function CaseRecord() {
     const handleCloseModal = () => {
         setModalShow(false);
     }
+
+    const customData = [
+        ["Seleccionar", "Nombre y Apellido", "D.N.I" ],
+        ["Boton", "Ramiro",  "121312131" ],
+        ["Boton",  "Rogelio", "123131241" ],
+        ["Boton",  "Cris", "122314125" ],
+    ];
 
     return (
         <>
@@ -217,10 +225,9 @@ function CaseRecord() {
                                             show={modalShow}
                                             handleClose={handleCloseModal}
                                             body={
-                                                <div className='d-flex justify-content-around flex-wrap'>
-                                                    <p>rogelio</p>
-                                                    <p>ramiro</p>
-                                                    <p>cris</p>
+                                                <div className='d-flex justify-content-around flex-column flex-wrap'>
+                                                    Buscador
+                                                    <DataTable data={customData} headerBackgroundColor="#F2A57F" />
                                                 </div>
                                             }
                                         />

@@ -45,7 +45,7 @@ function RegistrationForm() {
     event.preventDefault();
     if (formData.password !== formData.repeatpassword) {
       console.error('Error: Las contraseñas no coinciden');
-      return; // Evita enviar el formulario si las contraseñas no coinciden
+      return; 
     }
 
     try {
@@ -114,6 +114,7 @@ function RegistrationForm() {
               value={formData.username}
               onChange={handleChange}
               name="username"
+              autoComplete="username"
               placeholder='Usuario'
             />
             <button className='button-select d-flex align-items-center justify-content-evenly' onClick={handleShowModal}>
