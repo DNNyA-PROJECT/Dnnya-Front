@@ -122,16 +122,16 @@ function ListOfUsers() {
     );
 
     const customData = [
-        ["Nombre y Apellido", "Información del Solicitante", "Fecha de Solicitud", "Dar de Alta / Baja"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />],
+        ["Nombre y Apellido", "Información del Solicitante", "Fecha de Solicitud", "Dar de Alta /","Dar Baja"],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />  ],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose /> ],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose /> ],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />],
     ];
 
     const modalTitle = currentModal === 1 ? "Informacion del Usuario" : "Informacion del Usuario";

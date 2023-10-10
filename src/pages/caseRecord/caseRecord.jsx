@@ -23,13 +23,19 @@ function CaseRecord() {
     const handleCloseModal = () => {
         setModalShow(false);
     }
-
+    const Checkbox = () => {
+        return (
+            <button className='folderButton' onClick={() => handleShowModal(2)}>
+                <input type="radio" name="selec" id="selec" />
+            </button>
+        );
+    };
 
         const customData = [
             ["Seleccionar", "Nombre y Apellido", "D.N.I"],
-            ["Boton", "Ramiro", "121312131"],
-            ["Boton", "Rogelio", "123131241"],
-            ["Boton", "Cris", "122314125"],
+            [<Checkbox />, "Ramiro", "121312131"],
+            [<Checkbox />, "Rogelio", "123131241"],
+            [<Checkbox />, "Cris", "122314125"],
         ];
 
         return (
@@ -230,7 +236,6 @@ function CaseRecord() {
                                                 body={
                                                     <div className='d-flex justify-content-around flex-column flex-wrap'>
                                                         <div>
-                                                            <h2>Buscar Frutas</h2>
                                                             <Searcher datos={customData} />
                                                         </div>
                                                         <DataTable data={customData} headerBackgroundColor="#F2A57F" />
