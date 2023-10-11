@@ -9,14 +9,24 @@ const Buscador = ({ datos }) => {
   };
 
   const filtrarResultados = () => {
-    const filtro = query.toLowerCase();
-    return datos
-      .slice(1)
-      .filter(
-        (fila) =>
-          fila[1].toLowerCase().includes(filtro) || fila[2].includes(filtro)
-      );
+    const filtro = query.toLowerCase().trim();
+    if (filtro === '') {
+      return datos.slice(1); // Mostrar la tabla completa si no hay filtro
+    }
+
+    const resultados = datos.slice(1).filter((fila) =>
+      fila.some((item) => {
+        if (typeof item === 'string') {
+          return item.toLowerCase().includes(filtro);
+        }
+        return false; // Tratar los componentes como no coincidentes
+      })
+    );
+
+    return resultados;
   };
+
+  const resultados = filtrarResultados();
 
   return (
     <div>
@@ -29,17 +39,32 @@ const Buscador = ({ datos }) => {
       />
       <table className="table mt-2">
         <tbody>
-          {query !== '' ? (
-            filtrarResultados().map((fila, index) => (
+          {resultados.length > 0 ? (
+            resultados.map((fila, index) => (
               <tr key={index}>
-                <td>{fila[0]}</td>
-                <td>{fila[1]}</td>
-                <td>{fila[2]}</td>
+                {fila.map((item, i) => (
+                  <td key={i}>
+                    {typeof item === 'string' ? (
+                      <span>
+                        {item.split(query).map((parte, j) => (
+                          <span key={j}>
+                            {j > 0 && <strong>{query}</strong>}
+                            {parte}
+                          </span>
+                        ))}
+                      </span>
+                    ) : (
+                      item
+                    )}
+                  </td>
+                ))}
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="3">No se encontraron coincidencias.</td>
+              <td colSpan={datos[0].length} className="text-center">
+                No se encontraron coincidencias.
+              </td>
             </tr>
           )}
         </tbody>

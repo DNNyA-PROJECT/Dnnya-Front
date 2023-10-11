@@ -6,6 +6,7 @@ import Menu from '../../components/partials/Menu.jsx';
 import DataTable from '../../components/dataTable/dataTable.jsx';
 import CustomModal from '../../components/modal/modal';
 import Button from 'react-bootstrap/Button';
+import Searcher from '../../components/searcher/searcher.jsx'
 
 function ListOfUsers() {
     const [modalShow, setModalShow] = useState(false);
@@ -31,7 +32,7 @@ function ListOfUsers() {
     const ButtonClose = () => {
         return (
             <button className='Check'>
-                <i class="bi bi-x-lg"></i>
+                <i className="bi bi-x-lg"></i>
             </button>
         );
 
@@ -39,7 +40,7 @@ function ListOfUsers() {
     const ButtonCheck = () => {
         return (
             <button className='Check'>
-                <i class="bi bi-check-lg"></i>
+                <i className="bi bi-check-lg"></i>
             </button>
         );
 
@@ -122,16 +123,10 @@ function ListOfUsers() {
     );
 
     const customData = [
-        ["Nombre y Apellido", "Información del Solicitante", "Fecha de Solicitud", "Dar de Alta /","Dar Baja"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />  ],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose /> ],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose /> ],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck /> , <ButtonClose />],
+        ["Nombre y Apellido", "Información del Solicitante", "Fecha de Solicitud", "Dar de Alta /", "Dar Baja"],
+        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />, <ButtonClose />],
+        ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
+        ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
     ];
 
     const modalTitle = currentModal === 1 ? "Informacion del Usuario" : "Informacion del Usuario";
@@ -146,7 +141,10 @@ function ListOfUsers() {
                     <div>
                         <h1 className='text-first d-flex justify-content-center'> Listado de Usuarios y Solicitantes </h1>
                     </div>
-                    <div className='container-fluid table-container p-0 m-0' style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '30vw' }}>
+                    <div>
+                        <Searcher datos={customData} />
+                    </div>
+                    <div className='container-fluid table-container p-0 m-0' style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '25vw' }}>
                         <DataTable data={customData} headerBackgroundColor="#F2A57F" />
                         <CustomModal
                             title={modalTitle}
