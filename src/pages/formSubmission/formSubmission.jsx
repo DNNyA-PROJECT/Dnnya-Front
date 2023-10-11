@@ -7,7 +7,7 @@ import Footer from '../../components/partials/footer.jsx'
 import Menu from '../../components/partials/Menu.jsx'
 
 function FormSubmission() {
-    const [email, setEmail] = useState('');
+    const [correoDestino, setEmail] = useState('');
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -16,8 +16,8 @@ function FormSubmission() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('la/', {
-                email: email
+            const response = await axios.post('http://localhost:8080/enviarCorreo', {
+                correoDestino: correoDestino
             });
             console.log(response.data);
         } catch (error) {
@@ -38,9 +38,9 @@ function FormSubmission() {
                             <h1 className='text-first'>Envio de Formulario de Registro</h1>
                             <input
                                 type="email"
-                                name="email"
-                                id="email"
-                                value={email}
+                                name="correoDestino"
+                                id="correoDestino"
+                                value={correoDestino}
                                 onChange={handleEmailChange}
                                 className='form-inputs form-control md'
                                 placeholder='Ingrese el Correo Electronico'
