@@ -21,7 +21,7 @@ function ListOfUsers() {
         setModalShow(false);
     };
 
-    const ButtonWithModal = () => {
+    const ButtonFolder = () => {
         return (
             <button className='folderButton' onClick={() => handleShowModal(2)}>
                 <i className="bi bi-folder-fill"></i>
@@ -91,7 +91,10 @@ function ListOfUsers() {
                 <p>Usuario: tubebitofiufiu</p>
                 <p>Foto de Perfil</p>
                 <h5>.Rol</h5>
-                No Asignado
+                <select name="role" id="role">
+                <option value="Admin">Administrador</option>
+                <option value="User">Usuario </option>
+                </select>
                 <h5>.Permisos</h5>
                 No tiene
             </div>
@@ -123,20 +126,10 @@ function ListOfUsers() {
     );
 
     const [data, setData] = useState([
-        ["Nombre y Apellido", "Información del Solicitante", "Fecha de Solicitud", "Dar de Alta /", "Dar Baja"],
-        ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />, <ButtonClose />],
-        ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
-        ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
-        ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
-        ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
-        ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
-        ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
-        ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
-        ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
-        ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
-        ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
-        ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
-        ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
+        ["Nombre y Apellido", "Información del Solicitante", "Fecha de Solicitud", "Fecha de Ingreso", "Dar de Alta /", "Dar Baja"],
+        ["Alejandro Bianchi", <ButtonFolder />, "29/08/23","29/09/19" , <ButtonCheck />, <ButtonClose />],
+        ["Fabricio Saucedo", <ButtonFolder />, "15/02/23","25/09/98" , <ButtonCheck />, <ButtonClose />],
+        ["Leandro Joel Ramos", <ButtonFolder />, "30/03/23","12/06/99" , <ButtonCheck />, <ButtonClose />],
     ]);
     const [filteredData, setFilteredData] = useState(data);
 
