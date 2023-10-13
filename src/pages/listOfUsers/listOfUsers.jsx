@@ -5,19 +5,18 @@ import Footer from '../../components/partials/footer.jsx';
 import Menu from '../../components/partials/Menu.jsx';
 import DataTable from '../../components/dataTable/dataTable.jsx';
 import CustomModal from '../../components/modal/modal';
-import Button from 'react-bootstrap/Button';
 import Searcher from '../../components/searcher/searcher.jsx'
 
 function ListOfUsers() {
     const [showModal, setShowModal] = useState(false);
     const [currentModal, setCurrentModal] = useState(1);
 
-    // Función para manejar el cierre del modal
+
     const handleCloseModal = () => {
         setShowModal(false);
     };
 
-    // Función para manejar la navegación entre modales
+
     const handleNavButtonClick = (direction) => {
         if (direction === 'previous') {
             setCurrentModal(1);
@@ -57,7 +56,7 @@ function ListOfUsers() {
         </div>
     );
 
-    const ButtonFolder = () => {
+    const ButtonFolder = ({ name }) => {
         return (
             <button className='folderButton' onClick={() => setShowModal(true)}>
                 <i className="bi bi-folder-fill"></i>
@@ -65,29 +64,37 @@ function ListOfUsers() {
         );
     };
 
-    const ButtonClose = () => {
+    const ButtonCheck = ({ name }) => {
+        const handleCheckClick = () => {
+            console.log(`El mensaje es correcto para ${name}`);
+        };
+    
         return (
-            <button className='Check'>
-                <i className="bi bi-x-lg"></i>
-            </button>
-        );
-
-    };
-    const ButtonCheck = () => {
-        return (
-            <button className='Check'>
+            <button className='Check' onClick={handleCheckClick}>
                 <i className="bi bi-check-lg"></i>
             </button>
         );
-
     };
-
+    
+    const ButtonClose = ({ name }) => {
+        const handleCloseClick = () => {
+            console.log(`El mensaje no es correcto para ${name}`);
+        };
+    
+        return (
+            <button className='Close' onClick={handleCloseClick}>
+                <i className="bi bi-x-lg"></i>
+            </button>
+        );
+    };
+    
     const [data, setData] = useState([
         ["Nombre y Apellido", "Información del Solicitante", "Fecha de Solicitud", "Fecha de Ingreso", "Dar de Alta /", "Dar Baja"],
-        ["Alejandro Bianchi", <ButtonFolder />, "29/08/23", "29/09/19", <ButtonCheck />, <ButtonClose />],
-        ["Fabricio Saucedo", <ButtonFolder />, "15/02/23", "25/09/98", <ButtonCheck />, <ButtonClose />],
-        ["Leandro Joel Ramos", <ButtonFolder />, "30/03/23", "12/06/99", <ButtonCheck />, <ButtonClose />],
+        ["Alejandro Bianchi", <ButtonFolder name="Alejandro Bianchi" />, "29/08/23", "29/09/95", <ButtonCheck name="Alejandro Bianchi" />, <ButtonClose name="Alejandro Bianchi" />],
+        ["Fabricio Saucedo", <ButtonFolder name="Fabricio Saucedo" />, "15/02/23", "25/09/98", <ButtonCheck name="Fabricio Saucedo" />, <ButtonClose name="Fabricio Saucedo" />],
+        ["Leandro Joel Ramos", <ButtonFolder name="Leandro Joel Ramos" />, "30/03/23", "12/06/99", <ButtonCheck name="Leandro Joel Ramos" />, <ButtonClose name="Leandro Joel Ramos" />],
     ]);
+    
     const [filteredData, setFilteredData] = useState(data);
 
     const handleSearch = (query) => {
