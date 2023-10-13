@@ -122,13 +122,40 @@ function ListOfUsers() {
         </div>
     );
 
-    const customData = [
+    const [data, setData] = useState([
         ["Nombre y Apellido", "Información del Solicitante", "Fecha de Solicitud", "Dar de Alta /", "Dar Baja"],
         ["Alejandro Bianchi", <ButtonWithModal />, "29/08/23", <ButtonCheck />, <ButtonClose />],
         ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
         ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
-    ];
+        ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
+        ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
+        ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
+        ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
+        ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
+        ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
+        ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
+        ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
+        ["Fabricio Saucedo", <ButtonWithModal />, "15/02/23", <ButtonCheck />, <ButtonClose />],
+        ["Leandro Joel Ramos", <ButtonWithModal />, "30/03/23", <ButtonCheck />, <ButtonClose />],
+    ]);
+    const [filteredData, setFilteredData] = useState(data);
 
+    const handleSearch = (query) => {
+      const filtro = query.toLowerCase().trim();
+      if (filtro === '') {
+        setFilteredData(data);
+      } else {
+        const resultados = data.filter((fila) =>
+          fila.some((item) => {
+            if (typeof item === 'string') {
+              return item.toLowerCase().includes(filtro);
+            }
+            return false;
+          })
+        );
+        setFilteredData(resultados);
+      }
+    };
     const modalTitle = currentModal === 1 ? "Informacion del Usuario" : "Informacion del Usuario";
 
     return (
@@ -142,10 +169,10 @@ function ListOfUsers() {
                         <h1 className='text-first d-flex justify-content-center'> Listado de Usuarios y Solicitantes </h1>
                     </div>
                     <div>
-                        <Searcher datos={customData} />
+                         <Searcher data={data} onSearch={handleSearch} />
                     </div>
                     <div className='container-fluid table-container p-0 m-0' style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '25vw' }}>
-                        <DataTable data={customData} headerBackgroundColor="#F2A57F" />
+                        <DataTable data={filteredData} headerBackgroundColor="#F2A57F" />
                         <CustomModal
                             title={modalTitle}
                             show={modalShow}
