@@ -18,6 +18,8 @@ const DataTable = ({ data, headerBackgroundColor }) => {
     setFilteredData(filtered);
   };
 
+  const noResults = (filteredData.length === 0 && query !== '') ? true : false;
+
   if (!data || data.length === 0 || data[0].length === 0) {
     return <div>No hay datos para mostrar</div>;
   }
@@ -45,7 +47,7 @@ const DataTable = ({ data, headerBackgroundColor }) => {
         </thead>
         <tbody>
           {filteredData.map((row, rowIndex) => (
-            <tr key={rowIndex}>
+            <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'even-row' : 'odd-row'}>
               {row.map((cell, colIndex) => (
                 <td key={colIndex}>{cell}</td>
               ))}
@@ -53,21 +55,20 @@ const DataTable = ({ data, headerBackgroundColor }) => {
           ))}
         </tbody>
       </table>
-      {filteredData.length === 0 && (
-        <div className="table m-0">
-          <div className="table-row">
-            <div className="table-cell">
-              No se encontraron coincidencias.
-            </div>
-          </div>
-        </div>
+      {noResults && (
+        <table className="table m-0">
+          <tbody>
+            <tr>
+              <td>No se encontraron coincidencias.</td>
+            </tr>
+          </tbody>
+        </table>
       )}
     </div>
   );
 };
 
 export default DataTable;
-
 
 
 
