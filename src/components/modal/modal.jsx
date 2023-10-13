@@ -12,7 +12,7 @@ function CustomModal({ title, body, show, handleClose, showNavButtons, onNavButt
         <Modal.Body>{body}</Modal.Body>
         <Modal.Footer>
           {showNavButtons && (
-            <>
+            <div className="navigation-buttons p-0 mb-3 container-fluid d-flex justify-content-between ">
               <Button
                 variant="primary"
                 onClick={() => onNavButtonClick('previous')}
@@ -31,26 +31,29 @@ function CustomModal({ title, body, show, handleClose, showNavButtons, onNavButt
                   backgroundColor: window.themeColors.buttonColor,
                   color: window.themeColors.footerColorText
                 }}>
-                <i className="bi bi-arrow-right-square-fill"></i>
+                 <i className="bi bi-arrow-right-square-fill"></i>
               </Button>
-            </>
+            </div>
           )}
-          <Button variant="secondary" onClick={handleClose} className='btn register btn-lg'
-            style={{
-              backgroundColor: window.themeColors.buttonColor,
-              color: window.themeColors.footerColorText
-            }}>
-            Cerrar
-          </Button>
-          <Button
-            onClick={handleClose}
-            className='btn register btn-lg'
-            style={{
-              backgroundColor: window.themeColors.buttonColor,
-              color: window.themeColors.footerColorText
-            }}>
-            Guardar Cambios
-          </Button>
+
+          <div className="save-close-buttons  p-0 container-fluid d-flex justify-content-between ">
+            <Button variant="secondary" onClick={handleClose} className='btn register btn-lg'
+              style={{
+                backgroundColor: window.themeColors.buttonColor,
+                color: window.themeColors.footerColorText
+              }}>
+              Cerrar
+            </Button>
+            <Button
+              onClick={handleClose}
+              className='btn register btn-lg'
+              style={{
+                backgroundColor: window.themeColors.buttonColor,
+                color: window.themeColors.footerColorText
+              }}>
+              Guardar Cambios
+            </Button>
+          </div>
         </Modal.Footer>
       </div>
     </Modal>
