@@ -35,33 +35,39 @@ const DataTable = ({ data, headerBackgroundColor }) => {
           onChange={handleInputChange}
         />
       </div>
-      <div className="table-container">
-          <table className="table m-0">
-            <thead>
-              <tr>
-                {header.map((cell, index) => (
-                  <th key={index} style={{ backgroundColor: headerBackgroundColor }}>{cell}</th>
-                ))}
-              </tr>
-            </thead>
-          </table>
-          <table className="table m-0 p-0">
-            <tbody>
-              {filteredData.map((row, rowIndex) => (
-                <tr key={rowIndex}>
-                  {row.map((cell, colIndex) => (
-                    <td key={colIndex}>{cell}</td>
-                  ))}
-                </tr>
+      <table className="table m-0">
+        <thead>
+          <tr>
+            {header.map((cell, index) => (
+              <th key={index} style={{ backgroundColor: headerBackgroundColor }}>{cell}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {filteredData.map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              {row.map((cell, colIndex) => (
+                <td key={colIndex}>{cell}</td>
               ))}
-            </tbody>
-          </table>
-      </div>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {filteredData.length === 0 && (
+        <div className="table m-0">
+          <div className="table-row">
+            <div className="table-cell">
+              No se encontraron coincidencias.
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default DataTable;
+
 
 
 
