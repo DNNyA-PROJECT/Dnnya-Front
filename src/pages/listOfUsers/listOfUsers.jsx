@@ -90,7 +90,7 @@ function ListOfUsers() {
     
     const [data, setData] = useState([
         ["Nombre y Apellido", "Información del Solicitante", "Fecha de Solicitud", "Fecha de Ingreso", "Dar de Alta /", "Dar Baja"],
-        ["Alejandro Bianchi", <ButtonFolder name="Alejandro Bianchi" />, "29/08/23", "29/09/95", <ButtonCheck name="Alejandro Bianchi" />, <ButtonClose name="Alejandro Bianchi" />],
+        ["Alejandro Bianchi", <ButtonFolder name="Alejandro Bianchi" />, "29/08/23", "05/09/95", <ButtonCheck name="Alejandro Bianchi" />, <ButtonClose name="Alejandro Bianchi" />],
         ["Fabricio Saucedo", <ButtonFolder name="Fabricio Saucedo" />, "15/02/23", "25/09/98", <ButtonCheck name="Fabricio Saucedo" />, <ButtonClose name="Fabricio Saucedo" />],
         ["Leandro Joel Ramos", <ButtonFolder name="Leandro Joel Ramos" />, "30/03/23", "12/06/99", <ButtonCheck name="Leandro Joel Ramos" />, <ButtonClose name="Leandro Joel Ramos" />],
     ]);
