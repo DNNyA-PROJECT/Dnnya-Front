@@ -6,6 +6,7 @@ import { colors } from '../../assets/styles/theme.js';
 import '../../assets/styles/styles.css';
 import '../../assets/styles/normalize.css';
 import Footer from '../../components/partials/footer.jsx';
+import Conections from '../../components/conections/conections';
 
 window.themeColors = colors;
 
@@ -30,13 +31,13 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/Auth/login', {
+      const response = await Conections.post('/Auth/login', {
         username: formData.username,
         password: formData.password,
       });
 
-      if (response.status === 200) {
-        window.location.href = 'http://localhost:5173';
+      if (response.status === 200) {       
+       window.location.href = 'http://localhost:5173';
       } else {
         console.log('Login failed');
       }

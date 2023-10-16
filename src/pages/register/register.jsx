@@ -5,9 +5,10 @@ import '../../assets/styles/normalize.css';
 import Footer from '../../components/partials/footer.jsx';
 import CustomModal from '../../components/modal/modal';
 import Avatar from '../../assets/images/Mesa_de_trabajo_50.png';
+import Conections from '../../components/conections/conections';
 import axios from 'axios';
 
-function RegistrationForm() {
+const RegistrationForm = () => {
   const [modalShow, setModalShow] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
@@ -30,7 +31,10 @@ function RegistrationForm() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   const togglePasswordVisibility = () => {
@@ -45,11 +49,11 @@ function RegistrationForm() {
     event.preventDefault();
     if (formData.password !== formData.repeatpassword) {
       console.error('Error: Las contraseñas no coinciden');
-      return; 
+      return;
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/Auth/register', {
+      const response = await Conections.post('/Auth/register', {
         name: formData.name,
         surname: formData.surname,
         username: formData.username,
@@ -68,12 +72,12 @@ function RegistrationForm() {
           repeatpassword: '',
         });
       } else {
-        console.log('Registration failed');
+        console.log('Registro fallido');
       }
     } catch (error) {
-      console.error('Network error:', error);
+      console.error('Error de red:', error);
     }
-  }
+  };
 
   return (
     <>
