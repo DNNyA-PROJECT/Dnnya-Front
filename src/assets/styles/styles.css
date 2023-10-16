@@ -124,8 +124,8 @@ i.bi.bi-person-fill.select {
 }
 
 .box{
-    margin: 0px;
-    height: 79.9vh;
+    margin:0px ;
+    height: 100vh;
 }
 
 
@@ -150,7 +150,7 @@ a{
 .custom-checkbox {
     display: inline-block;
     position: relative;
-    padding-left: 30px; /* Ajusta este valor para dar espacio al cuadrado */
+    padding-left: 30px; 
     cursor: pointer;
     font-size: 16px;
     user-select: none;
@@ -168,14 +168,14 @@ a{
     left: 1;
     height: 20px;
     width: 20px;
-    background-color: #eee; /* Color del checkbox sin seleccionar */
-    border: 2px solid #000; /* Borde del cuadrado */
-    transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
+    background-color: #eee;
+    border: 2px solid #000;
+    transition: background-color 0.3s, border-color 0.3s;
   }
   
   .custom-checkbox input:checked ~ .checkmark {
-    background-color: #000; /* Color del cuadrado seleccionado */
-    border-color: #000; /* Color del borde del cuadrado seleccionado */
+    background-color: #000;
+    border-color: #000; 
   }
 
   .letter{
@@ -259,6 +259,7 @@ li:hover {
 .dropdown-menu.show {
     display: block;
     width: 14rem;
+    transform: translate3d(-60px, 29.799999999999997px, 0px) !important;
 }
 
 li {
@@ -314,3 +315,4 @@ tbody, td, tfoot, th, thead, tr {
     top: 44%;
     transform: translateY(-50%);
 }
+
