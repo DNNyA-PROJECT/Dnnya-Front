@@ -350,7 +350,7 @@ function CaseRecord() {
                                         <h3>Buscar un Profesional</h3>
                                     </div>
 
-                                    <select name="" id="">
+                                    <select className='container-fluid mb-3'  name="" id="">
                                         <option value="area">Área</option>
                                     </select>
 
