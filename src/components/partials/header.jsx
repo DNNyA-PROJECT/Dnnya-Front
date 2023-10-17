@@ -41,7 +41,8 @@ function Header() {
         <div className=' d-md-none'>
           <div className="dropdown">
             <button className='user d-flex align-items-center dropdown-toggle' type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <div><h4>{selectedUser.username}</h4></div>
+               <i className="bi bi-person-fill"></i>
+              <h4>{selectedUser.username}</h4>
             </button>
             <ul className="dropdown-menu" style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
               <li><Link to="/Iniciar_sesion"><h3 className='text-link'>Iniciar Sesión</h3></Link></li>
