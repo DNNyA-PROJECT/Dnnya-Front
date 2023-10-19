@@ -316,3 +316,27 @@ tbody, td, tfoot, th, thead, tr {
     transform: translateY(-50%);
 }
 
+.caso-individual {
+    background-color: gray;
+    color: white;
+  }
+  
+  .caso-grupal {
+    background-color: gray;
+    color: white;
+  }
+  
+  .caso-individual.active {
+    background-color: #FA7330;
+    color: white;
+  }
+  
+  .caso-grupal.active {
+    background-color: #FA7330;
+    color: white;
+  }
+
+  .caso-individual:hover, .caso-grupal:hover {
+    background-color: #FA7330 !important;
+    color: white !important;
+  }

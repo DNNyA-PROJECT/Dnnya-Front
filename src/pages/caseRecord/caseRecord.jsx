@@ -16,6 +16,19 @@ window.themeColors = colors;
 function CaseRecord() {
     const [modalShow, setModalShow] = useState(false);
 
+    const [casoIndividualActive, setCasoIndividualActive] = useState(true);
+    const [casoGrupalActive, setCasoGrupalActive] = useState(false);
+  
+    const handleClick = (button) => {
+      if (button === 'casoIndividual') {
+        setCasoIndividualActive(true);
+        setCasoGrupalActive(false);
+      } else if (button === 'casoGrupal') {
+        setCasoIndividualActive(false);
+        setCasoGrupalActive(true);
+      }
+    }
+
     const handleShowModal = () => {
         setModalShow(true);
     }
@@ -205,7 +218,7 @@ function CaseRecord() {
 
                                 <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorBluSky }}>
                                     <div className='d-flex justify-content-center'>
-                                        <h1>Datos del Adulto</h1>
+                                        <h1>Datos Del Adulto</h1>
                                     </div>
 
                                     <div className='d-flex justify-content-evenly mb-3  row' >
@@ -356,45 +369,6 @@ function CaseRecord() {
 
                                 <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
                                     <div className='d-flex flex-column align-items-center'>
-                                        <h1>Informacion del Seguimiento</h1>
-                                        <h3>Buscar un Profesional</h3>
-                                    </div>
-
-                                    <select className='container-fluid w-75 mb-3' name="" id="">
-                                        <option value="area">Área</option>
-                                    </select>
-
-                                    <div className='row d-flex justify-content-evenly' >
-                                        <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="Everithing" className="custom-checkbox">
-                                                Todos
-                                                <input type="checkbox" id="Everithing" className="checkbox" name="Profession" />
-                                                <span className="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="Jur" className="custom-checkbox">
-                                                juridica
-                                                <input type="checkbox" id="Jur" className="checkbox" name="Profession" />
-                                                <span className="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="Pshyc" className="custom-checkbox">
-                                                Psicosocial
-                                                <input type="checkbox" id="Pshyc" className="checkbox" name="Profession" />
-                                                <span className="checkmark"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <div id="editor"></div>
-                                    </div>
-                                </div>
-
-                                <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
-                                    <div className='d-flex flex-column align-items-center'>
                                         <h1>Estado Del Caso </h1>
                                     </div>
 
@@ -438,11 +412,19 @@ function CaseRecord() {
                                         <h1>Tipo Del Caso</h1>
                                     </div>
 
-                                    <div className='row d-flex justify-content-evenly '>
-                                        <div className='col-3 btn mb-3' style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}>
-                                            Caso Individual</div>
-                                        <div className='col-3 btn mb-3' style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}>
-                                            Caso Grupal</div>
+                                    <div className='row d-flex justify-content-evenly'>
+                                        <div
+                                            className={`col-3 btn mb-3 caso-individual ${casoIndividualActive ? 'active' : ''}`}
+                                            onClick={() => handleClick('casoIndividual')}
+                                        >
+                                            Caso Individual
+                                        </div>
+                                        <div
+                                            className={`col-3 btn mb-3 caso-grupal ${casoGrupalActive ? 'active' : ''}`}
+                                            onClick={() => handleClick('casoGrupal')}
+                                        >
+                                            Caso Grupal
+                                        </div>
                                     </div>
                                 </div>
 
