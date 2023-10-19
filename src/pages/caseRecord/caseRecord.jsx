@@ -138,7 +138,11 @@ function CaseRecord() {
                                                 </label>
                                             </div>
                                             <div className='col-3 mb-3 py-3 '>
-                                                <button>agregar medio <i className="bi bi-plus-circle"></i> </button>
+                                                <button className='btn bg-white'>agregar medio <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0z" fill="green" />
+                                                    <path d="M7.5 4.5a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 0-1z" fill="white" />
+                                                </svg> </button>
+
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +195,10 @@ function CaseRecord() {
                                             </label>
                                         </div>
                                         <div className='col-3 mb-3 py-3 '>
-                                            <button>ingresar relacion con nnya <i className="bi bi-plus-circle"></i> </button>
+                                            <button>ingresar relacion con nnya <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0z" fill="green" />
+                                                    <path d="M7.5 4.5a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 0-1z" fill="white" />
+                                                </svg> </button>
                                         </div>
                                     </div>
                                 </div>
@@ -315,13 +322,16 @@ function CaseRecord() {
                                                 </label>
                                             </div>
                                             <div className='col-3 mb-3 py-3 '>
-                                                <button>agregar motivo <i className="bi bi-plus-circle"></i>  </button>
+                                                <button>agregar motivo <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0z" fill="green" />
+                                                    <path d="M7.5 4.5a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 0-1z" fill="white" />
+                                                </svg>  </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-center'>
-                                    <button className='btn container-fluid mb-3'
+                                    <button className='btn container-md mb-3'
                                         style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}>AGREGAR NNYA</button>
                                 </div>
                                 <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightBeige }}>
@@ -350,7 +360,7 @@ function CaseRecord() {
                                         <h3>Buscar un Profesional</h3>
                                     </div>
 
-                                    <select className='container-fluid mb-3'  name="" id="">
+                                    <select className='container-fluid mb-3' name="" id="">
                                         <option value="area">Área</option>
                                     </select>
 
@@ -461,14 +471,20 @@ function CaseRecord() {
                                             <p>Caso Grupal</p></div>
                                     </div>
                                 </div>
+
+                                <input
+                                    className='btn my-3  container-fluid mb-3'
+                                    style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
+                                    type="submit"
+                                    value="REGISTRAR CASO"
+                                    onClick={(event) => handleSubmit(event)}
+                                />
+
+                                <button className='btn mb-3 container-fluid'
+                                    style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }} >
+                                    <p className='p-0 mb-0'>CANCELAR REGISTRO</p>
+                                </button>
                             </div>
-                            <input
-                                className='btn container-fluid mb-3'
-                                style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
-                                type="submit"
-                                value="REGISTRAR CASO"
-                                onClick={(event) => handleSubmit(event)}
-                            />
                         </form>
 
                     </div>
