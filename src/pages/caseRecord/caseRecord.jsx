@@ -16,28 +16,13 @@ window.themeColors = colors;
 
 function CaseRecord() {
     const [modalShow, setModalShow] = useState(false);
-
-    const [casoIndividualActive, setCasoIndividualActive] = useState(true);
-    const [casoGrupalActive, setCasoGrupalActive] = useState(false);
-
-    const handleClick = (button) => {
-        if (button === 'casoIndividual') {
-            setCasoIndividualActive(true);
-            setCasoGrupalActive(false);
-        } else if (button === 'casoGrupal') {
-            setCasoIndividualActive(false);
-            setCasoGrupalActive(true);
-        }
-    }
-
     const [formularios, setFormularios] = useState([]);
+    const [casoGrupalActive, setCasoGrupalActive] = useState(false);
 
     const toggleFormulario = (index) => {
         if (formularios.includes(index)) {
-
             setFormularios(formularios.filter((item) => item !== index));
         } else {
-
             setFormularios([...formularios, index]);
         }
     };
@@ -424,39 +409,25 @@ function CaseRecord() {
                                     </div>
                                 </div>
 
-                                <div className='container' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
-                                    <div className='d-flex justify-content-center'>
-                                        <h1>Tipo Del Caso</h1>
-                                    </div>
 
-                                    <div className='row d-flex justify-content-evenly'>
-                                        <div
-                                            className={`col-3 btn mb-3 caso-individual ${casoIndividualActive ? 'active' : ''}`}
-                                            onClick={() => handleClick('casoIndividual')}
-                                        >
-                                            Caso Individual
-                                        </div>
-                                        <div
-                                            className={`col-3 btn mb-3 caso-grupal ${casoGrupalActive ? 'active' : ''}`}
-                                            onClick={() => handleClick('casoGrupal')}
-                                        >
-                                            Caso Grupal
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div className='d-flex align-items-center py-3 flex-column' >
-                                    <input
-                                        className='btn my-3 w-75 container-fluid mb-3'
-                                        style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
-                                        type="submit"
-                                        value="REGISTRAR CASO"
-                                        onClick={(event) => handleSubmit(event)}
-                                    />
-                                    <button className='btn mb-3 w-75 container-fluid'
-                                        style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }} >
-                                        <p className='p-0 mb-0'>CANCELAR REGISTRO</p>
-                                    </button>
+                                    <div className='container' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
+                                        <div className='d-flex justify-content-center'>
+                                            <h1>Tipo Del Caso</h1>
+                                        </div>
+
+                                        <div className='row d-flex justify-content-evenly'>
+                                            <div
+                                                className={`col-3 btn mb-3 caso-individual ${formularios.length === 0 ? 'active' : ''}`}
+                                            >
+                                                Caso Individual
+                                            </div>
+                                            <div
+                                                className={`col-3 btn mb-3 caso-grupal ${formularios.length > 0 ? 'active' : ''}`}
+                                            >
+                                                Caso Grupal
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </form>
