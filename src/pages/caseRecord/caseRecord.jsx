@@ -32,14 +32,14 @@ function CaseRecord() {
 
     const [formularios, setFormularios] = useState([]);
 
-    const agregarFormulario = () => {
-        setFormularios([...formularios, <FormularioNnya />]);
-    };
+    const toggleFormulario = (index) => {
+        if (formularios.includes(index)) {
 
-    const anularFormulario = (index) => {
-        const nuevosFormularios = [...formularios];
-        nuevosFormularios.splice(index, 1);
-        setFormularios(nuevosFormularios);
+            setFormularios(formularios.filter((item) => item !== index));
+        } else {
+
+            setFormularios([...formularios, index]);
+        }
     };
 
     const handleShowModal = () => {
@@ -357,122 +357,108 @@ function CaseRecord() {
                                     </div>
                                 </div>
 
-
-                                {formularios.length === 0 && (
-                                    <div className='d-flex justify-content-center'>
-                                        <button
-                                            className='btn w-75 container-md mb-3'
-                                            type='button'
-                                            style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
-                                            onClick={agregarFormulario}
-                                        >
-                                            AGREGAR NNYA
-                                        </button>
-                                    </div>
-                                )}
-
-                                <div>
-                                    {formularios.map((formulario, index) => (
-                                        <div key={index}>
-                                            <div className='d-flex justify-content-center'>
-                                                <button
-                                                    className='btn w-75 container-md mb-3'
-                                                    type='button'
-                                                    style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
-                                                    onClick={agregarFormulario}
-                                                >
-                                                    AGREGAR NNYA
-                                                </button>
-                                            </div>
-                                            {formulario}
-                                            <div className='d-flex justify-content-center'>
-                                                <button
-                                                    className='btn w-75 container-md mb-3'
-                                                    type='button'
-                                                    style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
-                                                    onClick={() => anularFormulario(index)}
-                                                >
-                                                    ANULAR NNyA
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ))}
+                                <div className='d-flex justify-content-center'>
+                                    <button className='btn w-75 container-fluid mb-3'
+                                        style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
+                                        type='button'
+                                        onClick={() => {
+                                            const newIndex = formularios.length;
+                                            toggleFormulario(newIndex);
+                                        }}
+                                    >
+                                        {formularios.includes(formularios.length) ? "Anular Formulario" : "Agregar Formulario"}
+                                    </button>
                                 </div>
 
-                                    <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
-                                        <div className='d-flex flex-column align-items-center'>
-                                            <h1>Estado Del Caso </h1>
-                                        </div>
-
-                                        <div className='row d-flex  justify-content-evenly' >
-                                            <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Record with Follow-up" className="custom-checkbox px-0">
-                                                    Grave con Seguimiento
-                                                    <input type="checkbox" id="Record with Follow-up" className="checkbox" name="Case-with-Follow-up" />
-                                                    <span className="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Follow-up" className="custom-checkbox px-0">
-                                                    En Seguimiento
-                                                    <input type="checkbox" id="Follow-up" className="checkbox" name="Case-with-Follow-up" />
-                                                    <span className="checkmark"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className='row d-flex  justify-content-evenly' >
-                                            <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Record-without-Follow-up" className="custom-checkbox px-0">
-                                                    Grave sin Seguimiento
-                                                    <input type="checkbox" id="Record-without-Follow-up" className="checkbox" name="Untracked Case" />
-                                                    <span className="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Untracked" className="custom-checkbox px-0">
-                                                    Sin Seguimiento
-                                                    <input type="checkbox" id="Untracked" className="checkbox" name="Untracked Case" />
-                                                    <span className="checkmark"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className='container' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
+                                {formularios.map((index) => (
+                                    <div key={index}>
+                                        <FormularioNnya />
                                         <div className='d-flex justify-content-center'>
-                                            <h1>Tipo Del Caso</h1>
-                                        </div>
-
-                                        <div className='row d-flex justify-content-evenly'>
-                                            <div
-                                                className={`col-3 btn mb-3 caso-individual ${casoIndividualActive ? 'active' : ''}`}
-                                                onClick={() => handleClick('casoIndividual')}
+                                            <button className='btn w-75 container-fluid mb-3'
+                                                style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
+                                                onClick={() => toggleFormulario(index)}
                                             >
-                                                Caso Individual
-                                            </div>
-                                            <div
-                                                className={`col-3 btn mb-3 caso-grupal ${casoGrupalActive ? 'active' : ''}`}
-                                                onClick={() => handleClick('casoGrupal')}
-                                            >
-                                                Caso Grupal
-                                            </div>
+                                                {formularios.includes(index) ? "Anular Formulario" : "Agregar Formulario"}
+                                            </button>
                                         </div>
                                     </div>
+                                ))}
 
-                                    <div className='d-flex align-items-center py-3 flex-column' >
-                                        <input
-                                            className='btn my-3 w-75 container-fluid mb-3'
-                                            style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
-                                            type="submit"
-                                            value="REGISTRAR CASO"
-                                            onClick={(event) => handleSubmit(event)}
-                                        />
-                                        <button className='btn mb-3 w-75 container-fluid'
-                                            style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }} >
-                                            <p className='p-0 mb-0'>CANCELAR REGISTRO</p>
-                                        </button>
+
+                                <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
+                                    <div className='d-flex flex-column align-items-center'>
+                                        <h1>Estado Del Caso </h1>
+                                    </div>
+
+                                    <div className='row d-flex  justify-content-evenly' >
+                                        <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                            <label htmlFor="Record with Follow-up" className="custom-checkbox px-0">
+                                                Grave con Seguimiento
+                                                <input type="checkbox" id="Record with Follow-up" className="checkbox" name="Case-with-Follow-up" />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                            <label htmlFor="Follow-up" className="custom-checkbox px-0">
+                                                En Seguimiento
+                                                <input type="checkbox" id="Follow-up" className="checkbox" name="Case-with-Follow-up" />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div className='row d-flex  justify-content-evenly' >
+                                        <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                            <label htmlFor="Record-without-Follow-up" className="custom-checkbox px-0">
+                                                Grave sin Seguimiento
+                                                <input type="checkbox" id="Record-without-Follow-up" className="checkbox" name="Untracked Case" />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                            <label htmlFor="Untracked" className="custom-checkbox px-0">
+                                                Sin Seguimiento
+                                                <input type="checkbox" id="Untracked" className="checkbox" name="Untracked Case" />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div className='container' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
+                                    <div className='d-flex justify-content-center'>
+                                        <h1>Tipo Del Caso</h1>
+                                    </div>
+
+                                    <div className='row d-flex justify-content-evenly'>
+                                        <div
+                                            className={`col-3 btn mb-3 caso-individual ${casoIndividualActive ? 'active' : ''}`}
+                                            onClick={() => handleClick('casoIndividual')}
+                                        >
+                                            Caso Individual
+                                        </div>
+                                        <div
+                                            className={`col-3 btn mb-3 caso-grupal ${casoGrupalActive ? 'active' : ''}`}
+                                            onClick={() => handleClick('casoGrupal')}
+                                        >
+                                            Caso Grupal
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='d-flex align-items-center py-3 flex-column' >
+                                    <input
+                                        className='btn my-3 w-75 container-fluid mb-3'
+                                        style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
+                                        type="submit"
+                                        value="REGISTRAR CASO"
+                                        onClick={(event) => handleSubmit(event)}
+                                    />
+                                    <button className='btn mb-3 w-75 container-fluid'
+                                        style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }} >
+                                        <p className='p-0 mb-0'>CANCELAR REGISTRO</p>
+                                    </button>
+                                </div>
+                            </div>
                         </form>
 
                     </div>
