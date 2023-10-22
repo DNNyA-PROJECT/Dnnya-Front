@@ -288,29 +288,18 @@ tbody, td, tfoot, th, thead, tr {
     transform: translateY(-50%);
 }
 
-.caso-individual {
+.caso-individual , .caso-grupal {
     background-color: gray;
     color: white;
+    border-radius: 12px;
+    font-weight: bolder;
   }
   
-  .caso-grupal {
-    background-color: gray;
-    color: white;
-  }
-  
-  .caso-individual.active {
+  .caso-individual.active , .caso-grupal.active  {
     background-color: #FA7330;
     color: white;
-  }
-  
-  .caso-grupal.active {
-    background-color: #FA7330;
-    color: white;
-  }
-
-  .caso-individual:hover, .caso-grupal:hover {
-    background-color: #FA7330 !important;
-    color: white !important;
+    border-radius: 12px;
+    font-weight: bolder;
   }
   
   .custom-checkbox {

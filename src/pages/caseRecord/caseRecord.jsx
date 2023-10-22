@@ -407,14 +407,14 @@ function CaseRecord() {
 
                                     <div className='row d-flex justify-content-evenly'>
                                         <div
-                                            className={`col-3 btn mb-3 caso-individual ${formularios.length === 0 ? 'active' : ''}`}
+                                            className={`col-3 mb-3 py-3 text-center caso-individual ${formularios.length === 0 ? 'active' : ''}`}
                                         >
-                                            Caso Individual
+                                            CASO INDIVIDUAL
                                         </div>
                                         <div
-                                            className={`col-3 btn mb-3 caso-grupal ${formularios.length > 0 ? 'active' : ''}`}
+                                            className={`col-3 mb-3 py-3 text-center caso-grupal ${formularios.length > 0 ? 'active' : ''}`}
                                         >
-                                            Caso Grupal
+                                            CASO GRUPAL
                                         </div>
                                     </div>
                                 </div>

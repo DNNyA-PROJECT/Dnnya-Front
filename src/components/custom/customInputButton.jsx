@@ -18,7 +18,7 @@ function CustomInputButton({ buttonText, inputPlaceholder }) {
     }
 
     return (
-        <div class="h-100 d-flex align-items-center w-100" style={{ backgroundColor: window.themeColors.footerColorText }}>
+        <div className="h-100 d-flex align-items-center w-100" style={{ backgroundColor: window.themeColors.footerColorText }}>
             {currentState === 'boton' && (
                 <button
                     className='btn d-flex flex-row justify-content-evenly align-items-center w-100 py-3 bg-white'
