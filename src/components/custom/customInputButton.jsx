@@ -10,7 +10,7 @@ function CustomInputButton({ buttonText, inputPlaceholder }) {
     }
 
     const handleInputKeyPress = (e) => {
-        if (e.key === '0' && inputValue.trim() !== '') {
+        if (e.key === 'Enter' && inputValue.trim() !== '') {
             setMotivos([...motivos, inputValue]);
             setInputValue('');
             setCurrentState('checkbox');

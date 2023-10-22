@@ -16,6 +16,7 @@ export const colors = {
 
     //register colors
     buttonColor: '#FA7330',
+    buttonColorTransparent: 'rgba(250, 115, 48,65%) ',
     
     //caseRecord
     boxBorder: '#C8B992', 

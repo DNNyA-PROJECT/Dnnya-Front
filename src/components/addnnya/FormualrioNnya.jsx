@@ -19,7 +19,7 @@ function FormularioNnya({ onAddNnyaClick }) {
     }
 
     const handleInputKeyPress = (e) => {
-        if (e.key === '0' && inputValue.trim() !== '') {
+        if (e.key === 'Enter' && inputValue.trim() !== '') {
             setMotivos([...motivos, inputValue]);
             setInputValue('');
             setCurrentState('checkbox');
@@ -192,7 +192,7 @@ function FormularioNnya({ onAddNnyaClick }) {
                             {currentState === 'checkbox' && (
                                 <div className='mt-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                     {motivos.map((motivo, index) => (
-                                        <label key={index} className="custom-checkbox">
+                                        <label key={index} className="custom-checkbox mx-2">
                                             {motivo}
                                             <input
                                                 type="checkbox"

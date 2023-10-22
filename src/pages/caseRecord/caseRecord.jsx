@@ -418,9 +418,14 @@ function CaseRecord() {
                                         </div>
                                     </div>
                                 </div>
+                                <div className='container w-75 d-flex flex-column justify-content-evenly mt-3'>
+                                    <input type="submit" value="REGISTRAR CASO" className='btn register btn-lg mb-3'
+                                        style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }} />
+                                    <button type='button' className='btn register btn-lg mb-3'
+                                        style={{ backgroundColor: window.themeColors.buttonColorTransparent, color: window.themeColors.footerColorText }} >CANCELAR CASO</button>
+                                </div>
                             </div>
                         </form>
-
                     </div>
                 </div >
                 <Footer />
