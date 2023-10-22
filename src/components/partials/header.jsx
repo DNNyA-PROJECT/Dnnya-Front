@@ -7,14 +7,18 @@ function Header() {
   const defaultUser = {
     username: 'Usuario',
   };
-  
-  const [selectedUser, setSelectedUser] = useState(defaultUser);
-  
+
+
+  const storedUser = localStorage.getItem('user');
+  const [selectedUser, setSelectedUser] = useState(storedUser ? JSON.parse(storedUser) : defaultUser);
+
   const fetchUser = async () => {
     try {
       const response = await axios.get('http://localhost:8080/Auth/profile');
       const user = response.data;
       setSelectedUser({ username: user.username });
+      
+      localStorage.setItem('user', JSON.stringify({ username: user.username }));
     } catch (error) {
       console.error('Error fetching user:', error);
     }
@@ -23,6 +27,7 @@ function Header() {
   useEffect(() => {
     fetchUser();
   }, []);
+
 
   return (
     <div className='content-fluid d-flex flex-column flex-md-row align-items-center justify-content-around'>
