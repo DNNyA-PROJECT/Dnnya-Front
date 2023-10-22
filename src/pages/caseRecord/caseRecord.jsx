@@ -17,7 +17,7 @@ window.themeColors = colors;
 function CaseRecord() {
     const [modalShow, setModalShow] = useState(false);
     const [formularios, setFormularios] = useState([]);
-    const [casoGrupalActive, setCasoGrupalActive] = useState(false);
+
 
     const toggleFormulario = (index) => {
         if (formularios.includes(index)) {
@@ -408,26 +408,23 @@ function CaseRecord() {
                                         </div>
                                     </div>
                                 </div>
+                                <div className='container' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
+                                    <div className='d-flex justify-content-center'>
+                                        <h1>Tipo Del Caso</h1>
+                                    </div>
 
-
-
-                                    <div className='container' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
-                                        <div className='d-flex justify-content-center'>
-                                            <h1>Tipo Del Caso</h1>
+                                    <div className='row d-flex justify-content-evenly'>
+                                        <div
+                                            className={`col-3 btn mb-3 caso-individual ${formularios.length === 0 ? 'active' : ''}`}
+                                        >
+                                            Caso Individual
                                         </div>
-
-                                        <div className='row d-flex justify-content-evenly'>
-                                            <div
-                                                className={`col-3 btn mb-3 caso-individual ${formularios.length === 0 ? 'active' : ''}`}
-                                            >
-                                                Caso Individual
-                                            </div>
-                                            <div
-                                                className={`col-3 btn mb-3 caso-grupal ${formularios.length > 0 ? 'active' : ''}`}
-                                            >
-                                                Caso Grupal
-                                            </div>
+                                        <div
+                                            className={`col-3 btn mb-3 caso-grupal ${formularios.length > 0 ? 'active' : ''}`}
+                                        >
+                                            Caso Grupal
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
