@@ -151,7 +151,7 @@ function CaseRecord() {
                                                 </label>
                                             </div>
                                             <div className='col-3 mb-3 px-0 py-0 mr-0 '>
-                                                <CustomInputButton buttonText="Nuevo Motivo" inputPlaceholder="Agrega el Motivo" />
+                                                <CustomInputButton buttonText="Agregar Asistencia" inputPlaceholder="Nueva Asistencia" />
                                             </div>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@ function CaseRecord() {
                                     </div>
 
                                     <div className='row d-flex justify-content-evenly' >
-                                        <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                        <div className='col-3 mb-3 py-3 d-flex  align-items-center ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                             <label htmlFor="Mother" className="custom-checkbox">
                                                 Madre
                                                 <input type="checkbox" id="Mother" className="checkbox" name="Relation" />

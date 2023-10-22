@@ -48,7 +48,7 @@ function CustomInputButton({ buttonText, inputPlaceholder }) {
             {currentState === 'checkbox' && (
                 <div className='' style={{ backgroundColor: window.themeColors.footerColorText }}>
                     {motivos.map((motivo, index) => (
-                        <label key={index} className="custom-checkbox">
+                        <label key={index} className="custom-checkbox mx-2">
                             {motivo}
                             <input
                                 type="checkbox"
