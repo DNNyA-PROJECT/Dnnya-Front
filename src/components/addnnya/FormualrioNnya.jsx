@@ -10,7 +10,7 @@ function FormularioNnya({ onAddNnyaClick }) {
         Ausent: false,
         State: false,
     });
-    const [currentState, setCurrentState] = useState('boton'); 
+    const [currentState, setCurrentState] = useState('boton');
     const [inputValue, setInputValue] = useState('');
     const [motivos, setMotivos] = useState([]);
 
@@ -21,8 +21,8 @@ function FormularioNnya({ onAddNnyaClick }) {
     const handleInputKeyPress = (e) => {
         if (e.key === '0' && inputValue.trim() !== '') {
             setMotivos([...motivos, inputValue]);
-            setInputValue(''); 
-            setCurrentState('checkbox'); 
+            setInputValue('');
+            setCurrentState('checkbox');
         }
     }
 
@@ -163,46 +163,46 @@ function FormularioNnya({ onAddNnyaClick }) {
 
                         <div className='col-3 mb-3 p-0' style={{ backgroundColor: window.themeColors.footerColorText }}>
 
-                                {currentState === 'boton' && (
-                                    <button
-                                        className='btn d-flex flex-row justify-content-between py-3 px-5 bg-white'
-                                        onClick={handleButtonClick}
-                                    >
-                                        Agregar motivo
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" className="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0z" fill="green" />
-                                            <path d="M7.5 4.5a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 0-1z" fill="white" />
-                                        </svg>
-                                    </button>
-                                )}
+                            {currentState === 'boton' && (
+                                <button
+                                    className='btn d-flex flex-row justify-content-evenly py-3 w-100 bg-white'
+                                    onClick={handleButtonClick}
+                                >
+                                    Agregar motivo
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" className="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0z" fill="green" />
+                                        <path d="M7.5 4.5a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 0-1z" fill="white" />
+                                    </svg>
+                                </button>
+                            )}
 
-                                {currentState === 'input' && (
-                                    <div>
-                                        <input
-                                            type="text"
-                                            className="col-2 w-100 form-control md"
-                                            placeholder="Nuevo motivo"
-                                            value={inputValue}
-                                            onChange={(e) => setInputValue(e.target.value)}
-                                            onKeyPress={handleInputKeyPress}
-                                        />
-                                    </div>
-                                )}
+                            {currentState === 'input' && (
+                                <div>
+                                    <input
+                                        type="text"
+                                        className="col-2 w-100 form-control md"
+                                        placeholder="Nuevo motivo"
+                                        value={inputValue}
+                                        onChange={(e) => setInputValue(e.target.value)}
+                                        onKeyPress={handleInputKeyPress}
+                                    />
+                                </div>
+                            )}
 
-                                {currentState === 'checkbox' && (
-                                    <div className='mt-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                        {motivos.map((motivo, index) => (
-                                            <label key={index} className="custom-checkbox">
-                                                 {motivo}
-                                                <input
-                                                    type="checkbox"
-                                                    className="checkbox"
-                                                />
-                                                <span className="checkmark"></span>
-                                            </label>
-                                        ))}
-                                    </div>
-                                )}
+                            {currentState === 'checkbox' && (
+                                <div className='mt-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                    {motivos.map((motivo, index) => (
+                                        <label key={index} className="custom-checkbox">
+                                            {motivo}
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                            />
+                                            <span className="checkmark"></span>
+                                        </label>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
