@@ -160,8 +160,9 @@ function FormularioNnya({ onAddNnyaClick }) {
                                 <span className="checkmark"></span>
                             </label>
                         </div>
-                        <div className='col-3 mb-3 p-0'>
-                            <div>
+
+                        <div className='col-3 mb-3 p-0' style={{ backgroundColor: window.themeColors.footerColorText }}>
+
                                 {currentState === 'boton' && (
                                     <button
                                         className='btn d-flex flex-row justify-content-between py-3 px-5 bg-white'
@@ -179,7 +180,7 @@ function FormularioNnya({ onAddNnyaClick }) {
                                     <div>
                                         <input
                                             type="text"
-                                            className="form-control"
+                                            className="col-2 w-100 form-control md"
                                             placeholder="Nuevo motivo"
                                             value={inputValue}
                                             onChange={(e) => setInputValue(e.target.value)}
@@ -189,20 +190,19 @@ function FormularioNnya({ onAddNnyaClick }) {
                                 )}
 
                                 {currentState === 'checkbox' && (
-                                    <div>
+                                    <div className='mt-3' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                         {motivos.map((motivo, index) => (
                                             <label key={index} className="custom-checkbox">
+                                                 {motivo}
                                                 <input
                                                     type="checkbox"
                                                     className="checkbox"
                                                 />
                                                 <span className="checkmark"></span>
-                                                {motivo}
                                             </label>
                                         ))}
                                     </div>
                                 )}
-                            </div>
                         </div>
                     </div>
                 </div>
