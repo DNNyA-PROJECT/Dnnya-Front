@@ -10,6 +10,8 @@ import CustomModal from '../../components/modal/modal';
 import DataTable from '../../components/dataTable/dataTable.jsx';
 import Searcher from '../../components/searcher/searcher.jsx'
 import FormularioNnya from '../../components/addnnya/FormualrioNnya.jsx'
+import CustomInputButton from '../../components/custom/customInputButton.jsx';
+
 
 window.themeColors = colors;
 
@@ -149,11 +151,7 @@ function CaseRecord() {
                                                 </label>
                                             </div>
                                             <div className='col-3 mb-3 px-0 py-0 mr-0 '>
-                                                <button className='btn d-flex flex-row justify-content-evenly py-3 mr-0 w-100 bg-white'>Agregar Medio <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0z" fill="green" />
-                                                    <path d="M7.5 4.5a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 0-1z" fill="white" />
-                                                </svg> </button>
-
+                                                <CustomInputButton buttonText="Nuevo Motivo" inputPlaceholder="Agrega el Motivo" />
                                             </div>
                                         </div>
                                     </div>
@@ -206,10 +204,7 @@ function CaseRecord() {
                                             </label>
                                         </div>
                                         <div className='col-3 mb-3 p-0 '>
-                                        <button className='btn d-flex flex-row justify-content-evenly align-items-center  w-100 bg-white'>Ingresar Relación con NNyA <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0z" fill="green" />
-                                                <path d="M7.5 4.5a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 0-1z" fill="white" />
-                                            </svg> </button>
+                                            <CustomInputButton buttonText="Ingresar Nueva Relacion NNya" inputPlaceholder="Nueva Relación" />
                                         </div>
                                     </div>
                                 </div>
@@ -333,10 +328,7 @@ function CaseRecord() {
                                                 </label>
                                             </div>
                                             <div className='col-3 mb-3 p-0 '>
-                                                <button className='btn d-flex flex-row justify-content-evenly py-3 w-100 bg-white'>agregar motivo <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0z" fill="green" />
-                                                    <path d="M7.5 4.5a.5.5 0 0 1 1 0v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 0-1z" fill="white" />
-                                                </svg>  </button>
+                                                <CustomInputButton buttonText="Agregar Motivo" inputPlaceholder="Nuevo Motivo" />
                                             </div>
                                         </div>
                                     </div>
