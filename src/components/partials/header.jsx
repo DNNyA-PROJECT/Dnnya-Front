@@ -8,25 +8,35 @@ function Header() {
     username: 'Usuario',
   };
 
-
   const storedUser = localStorage.getItem('user');
-  const [selectedUser, setSelectedUser] = useState(storedUser ? JSON.parse(storedUser) : defaultUser);
+  const [selectedUser, setSelectedUser] = useState(
+    storedUser ? JSON.parse(storedUser) : defaultUser
+  );
 
   const fetchUser = async () => {
     try {
-      const token = localStorage.getItem('token')
-      const response = await axios.get('http://localhost:8080/Auth/profile');
+      const token = localStorage.getItem('token');
+      const response = await axios.get('http://localhost:8080/Auth/profile', {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const user = response.data;
       setSelectedUser({ username: user.username });
-      
+
       localStorage.setItem('user', JSON.stringify({ username: user.username }));
-    } catch (error) {
+      
+    
+      if (response.status === 200) {
+        console.log("El inicio de sesión fue un éxito");
+      } else {
+        console.log("Error del servidor");
+      }
+    }catch (error) {
       console.error('Error fetching user:', error);
+      console.log("Error del servidor: " + error.message);
     }
-  };
+  }
 
   useEffect(() => {
     fetchUser();
