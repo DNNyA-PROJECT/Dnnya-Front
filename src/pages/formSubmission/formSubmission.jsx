@@ -30,7 +30,7 @@ function FormSubmission() {
         try {
             const token = localStorage.getItem('token');
             console.log('Token enviado en la solicitud:', token);
-            const response = await axios.post('http://localhost:8080/enviarCorreo', {
+            const response = await axios.post('http://localhost:8080/api/enviarCorreo', {
                 correoDestino: correoDestino
               }, {
                 headers: {
