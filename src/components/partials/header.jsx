@@ -9,18 +9,20 @@ function Header() {
   };
 
   const storedUser = localStorage.getItem('user');
-  const [selectedUser, setSelectedUser] = useState(
-    storedUser ? JSON.parse(storedUser) : defaultUser
-  );
+  const token = localStorage.getItem('token');
+  const [selectedUser, setSelectedUser] = useState(storedUser ? JSON.parse(storedUser) : defaultUser);
 
   const fetchUser = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8080/Auth/profile', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      console.log('Token enviado en la solicitud:', token);
+      const response = await axios.get('http://localhost:8080/Auth/profile',{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      } 
+    }
+    
+    );
+        
       const user = response.data;
       setSelectedUser({ username: user.username });
 

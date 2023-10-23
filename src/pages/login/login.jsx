@@ -37,7 +37,13 @@ function Login() {
       });
 
       if (response.status === 200) {       
-       window.location.href = 'http://localhost:5173';
+        const token = response.data.token;
+        
+        // Almacena el token JWT en localStorage
+        localStorage.setItem('token', token);
+        
+        window.location.href = 'http://localhost:5173';
+        
       } else {
         console.log('Login failed');
       }
