@@ -11,6 +11,8 @@ function FormSubmission() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submissionResult, setSubmissionResult] = useState(null);
 
+    const token = localStorage.getItem('token');
+
     useEffect(() => {
         if (submissionResult) {
             console.log('Form submitted successfully:', submissionResult);
@@ -26,8 +28,17 @@ function FormSubmission() {
         setIsSubmitting(true);
 
         try {
+            const token = localStorage.getItem('token');
+            console.log('Token enviado en la solicitud:', token);
             const response = await axios.post('http://localhost:8080/enviarCorreo', {
-                correoDestino: correoDestino,
+                correoDestino: correoDestino
+              }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type' : 'application/json',
+                  }, 
+                  
+                
             });
             setSubmissionResult(response.data);
         } catch (error) {
