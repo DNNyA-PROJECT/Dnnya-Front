@@ -12,29 +12,34 @@ function Header() {
   const token = localStorage.getItem('token');
   const [selectedUser, setSelectedUser] = useState(storedUser ? JSON.parse(storedUser) : defaultUser);
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    
+  
+    window.location.href = '/Iniciar_sesion'; 
+  }
+
   const fetchUser = async () => {
     try {
       console.log('Token enviado en la solicitud:', token);
-      const response = await axios.get('http://localhost:8080/Auth/profile',{
-      headers: {
-        Authorization: `Bearer ${token}`,
-      } 
-    }
-    
-    );
-        
+      const response = await axios.get('http://localhost:8080/Auth/profile', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+
       const user = response.data;
       setSelectedUser({ username: user.username });
 
       localStorage.setItem('user', JSON.stringify({ username: user.username }));
-      
-    
+
       if (response.status === 200) {
         console.log("El inicio de sesión fue un éxito");
       } else {
         console.log("Error del servidor");
       }
-    }catch (error) {
+    } catch (error) {
       console.error('Error fetching user:', error);
       console.log("Error del servidor: " + error.message);
     }
@@ -43,7 +48,6 @@ function Header() {
   useEffect(() => {
     fetchUser();
   }, []);
-
 
   return (
     <div className='content-fluid d-flex flex-column flex-md-row align-items-center justify-content-around'>
@@ -60,16 +64,17 @@ function Header() {
           </button>
         </div>
         <div className=' d-md-none'>
-          <div className="dropdown">
-            <button className='user d-flex align-items-center dropdown-toggle' type="button" data-bs-toggle="dropdown" aria-expanded="false">
-               <i className="bi bi-person-fill"></i>
-              <h4>{selectedUser.username}</h4>
+          {token ? (
+            <button onClick={handleLogout} className='user d-flex align-items-center' style={{ cursor: 'pointer' }}>
+              <i className="bi bi-box-arrow-right btn"></i>
+              <h4>Cerrar Sesión</h4>
             </button>
-            <ul className="dropdown-menu" style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
-              <li><Link to="/Iniciar_sesion"><h3 className='text-link'>Iniciar Sesión</h3></Link></li>
-              <li><Link to="/Registro"><h3 className='text-link'>Registrarse</h3></Link></li>
-            </ul>
-          </div>
+          ) : (
+            <>
+              <Link to="/Iniciar_sesion"><h3 className='text-link'>Iniciar Sesión</h3></Link>
+              <Link to="/Registro"><h3 className='text-link'>Registrarse</h3></Link>
+            </>
+          )}
         </div>
       </div>
 
@@ -79,8 +84,14 @@ function Header() {
             <div><h4>{selectedUser.username}</h4></div>
           </button>
           <ul className="dropdown-menu" style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
-            <li><Link to="/Iniciar_sesion"><h3 className='text-link'>Iniciar Sesión</h3></Link></li>
-            <li><Link to="/Registro"><h3 className='text-link'>Registrarse</h3></Link></li>
+            {token ? ( 
+              <li><button onClick={handleLogout} className='text-link btn'><h3>Cerrar Sesión</h3></button></li>
+            ) : (
+              <>
+                <li><Link to="/Iniciar_sesion"><h3 className='text-link'>Iniciar Sesión</h3></Link></li>
+                <li><Link to="/Registro"><h3 className='text-link'>Registrarse</h3></Link></li>
+              </>
+            )}
           </ul>
         </div>
       </div>
@@ -89,4 +100,3 @@ function Header() {
 }
 
 export default Header;
-
