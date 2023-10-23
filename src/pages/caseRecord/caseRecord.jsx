@@ -165,7 +165,7 @@ function CaseRecord() {
                                     <div className='row d-flex justify-content-evenly' >
                                         <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                             <label htmlFor="Anonimus" className="custom-checkbox">
-                                                Anonimo ?
+                                                Anónimo/a ?
                                                 <input type="checkbox" id="Anonimus" className="checkbox" name="Relation" />
                                                 <span className="checkmark"></span>
                                             </label>
@@ -234,7 +234,7 @@ function CaseRecord() {
                                             style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
                                             type='button' onClick={handleShowModal}
                                         >
-                                            <h6 className='m-0'>BUSCAR Y SELECCIONAR NNYA</h6>
+                                            <h6 className='m-0 fw-bold py-2'>BUSCAR Y SELECCIONAR NNYA</h6>
                                         </button>
                                         <CustomModal
                                             title="Datos NNyA"
@@ -335,7 +335,7 @@ function CaseRecord() {
                                 </div>
 
                                 <div className='d-flex justify-content-center'>
-                                    <button className='btn w-75 container-fluid mb-3'
+                                    <button className='btn w-75 container-fluid py-3 mb-3 fw-bold'
                                         style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
                                         type='button'
                                         onClick={() => {
