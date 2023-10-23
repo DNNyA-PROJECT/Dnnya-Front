@@ -96,7 +96,7 @@ function Menu() {
           <li
             className={`mb-3 pt-3 pb-3 text-center`}
             style={{
-              ...backgroundStyle('/Registro_De_Caso'),
+              ...backgroundStyle('/Lista_De_Usuarios'),
               ':hover': {
                 backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
                 color: 'white',
@@ -104,10 +104,28 @@ function Menu() {
             }}
           >
             <Link
-              to="/Registro_De_Caso"
-              className={` ${location.pathname === '/Registro_De_Caso' ? 'active' : ''} ${textClass('/Registro_De_Caso')}`}
+              to="/Lista_De_Usuarios"
+              className={` ${location.pathname === '/Lista_De_Usuarios' ? 'active' : ''} ${textClass('/Lista_De_Usuarios')}`}
             >
-              <h3 className={`text-link ${textClass('/Registro_De_Caso')}`}>Registro De Caso</h3>
+              <h3 className={`text-link ${textClass('/Lista_De_Usuarios')}`}>Listado de Usuarios</h3>
+            </Link>
+            
+          </li>
+          <li
+            className={`mb-3 pt-3 pb-3 text-center`}
+            style={{
+              ...backgroundStyle('/Envio_de_Formulario'),
+              ':hover': {
+                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                color: 'white',
+              },
+            }}
+          >
+            <Link
+              to="/Envio_de_Formulario"
+              className={` ${location.pathname === '/Envio_de_Formulario' ? 'active' : ''} ${textClass('/Envio_de_Formulario')}`}
+            >
+              <h3 className={`text-link ${textClass('/Envio_de_Formulario')}`}>Envio de Formulario</h3>
             </Link>
             
           </li>
