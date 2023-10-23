@@ -14,7 +14,11 @@ function Header() {
 
   const fetchUser = async () => {
     try {
+      const token = localStorage.getItem('token')
       const response = await axios.get('http://localhost:8080/Auth/profile');
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       const user = response.data;
       setSelectedUser({ username: user.username });
       
