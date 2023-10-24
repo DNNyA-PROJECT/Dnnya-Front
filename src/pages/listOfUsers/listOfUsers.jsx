@@ -105,7 +105,7 @@ function ListOfUsers() {
                 const token = localStorage.getItem('token');
 
 
-                const response = await axios.get('http://localhost:8080/Auth/usuariosActivos', {
+                const response = await axios.get('http://localhost:8080/Auth/usuariosSolicitantes', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

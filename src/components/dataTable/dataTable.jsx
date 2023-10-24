@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DataTable = ({ data, headerBackgroundColor }) => {
   const [query, setQuery] = useState('');
   const [filteredData, setFilteredData] = useState(data.slice(1));
-  
+
+  // Actualiza filteredData cuando cambia data o query
+  useEffect(() => {
+    const filtered = data.slice(1).filter((row) => {
+      return row.some((cell) =>
+        typeof cell === 'string' && cell.toLowerCase().includes(query.toLowerCase())
+      );
+    });
+    setFilteredData(filtered);
+  }, [data, query]);
+
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setQuery(inputValue);
-
-    const filtered = data.slice(1).filter((row) => {
-      return row.some((cell) =>
-        typeof cell === 'string' && cell.toLowerCase().includes(inputValue.toLowerCase())
-      );
-    });
-
-    setFilteredData(filtered);
   };
 
   const noResults = (filteredData.length === 0 && query !== '') ? true : false;
@@ -25,7 +27,7 @@ const DataTable = ({ data, headerBackgroundColor }) => {
   }
 
   const header = data[0];
- 
+
   return (
     <div>
       <div className="search-bar">
@@ -46,7 +48,6 @@ const DataTable = ({ data, headerBackgroundColor }) => {
           </tr>
         </thead>
         <tbody>
-      
           {filteredData.map((row, rowIndex) => (
             <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'even-row' : 'odd-row'}>
               {row.map((cell, colIndex) => (
@@ -70,6 +71,3 @@ const DataTable = ({ data, headerBackgroundColor }) => {
 };
 
 export default DataTable;
-
-
-
