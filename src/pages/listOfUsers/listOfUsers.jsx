@@ -138,7 +138,57 @@ useEffect(() => {
   }, []);
   
 
+<<<<<<< HEAD
   const handleSearch = (query) => {
+=======
+            try {
+                const token = localStorage.getItem('token');
+
+
+                const response = await axios.get('http://localhost:8080/Auth/usuariosSolicitantes', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                if (response.status === 200) {
+
+
+
+                    const userData = response.data; // Datos de usuarios
+                    const newData = [...data]; // Copia del estado data
+
+
+                    userData.forEach(user => {
+                        const fullName = `${user.name} ${user.username}`;
+                        const buttonsFolder = [
+                            <ButtonFolder key="folder" />,
+                            
+                            
+                        ];
+                        const buttonsChecks = [
+                            <ButtonCheck key="check" />,
+                            <ButtonClose key="close" />,
+                        ]
+
+                        newData.push([fullName, buttonsFolder, ...buttonsChecks]);
+                    });
+                    setData(newData);
+                    setFilteredData(newData);
+                } else {
+                    console.error('Error en la solicitud de datos');
+                }
+
+            } catch (error) {
+                console.error('Error en la solicitud de datos:', error);
+            }
+        };
+        fetchData();
+}, []);
+
+
+const handleSearch = (query) => {
+>>>>>>> c4851bea4b087d67679f93a30249e08374525b53
     const filtro = query.toLowerCase().trim();
     if (filtro === '') {
       setFilteredData(data);

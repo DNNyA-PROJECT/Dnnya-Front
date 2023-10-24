@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DataTable = ({ data, headerBackgroundColor }) => {
   const [query, setQuery] = useState('');
   const [filteredData, setFilteredData] = useState(data.slice(1));
 
+  useEffect(() => {
+    const filtered = data.slice(1).filter((row) => {
+      return row.some((cell) =>
+        typeof cell === 'string' && cell.toLowerCase().includes(query.toLowerCase())
+      );
+    });
+    setFilteredData(filtered);
+  }, [data, query]);
+
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setQuery(inputValue);
-
-    const filtered = data.slice(1).filter((row) => {
-      return row.some((cell) =>
-        typeof cell === 'string' && cell.toLowerCase().includes(inputValue.toLowerCase())
-      );
-    });
-
-    setFilteredData(filtered);
   };
 
   const noResults = (filteredData.length === 0 && query !== '') ? true : false;
@@ -69,6 +70,3 @@ const DataTable = ({ data, headerBackgroundColor }) => {
 };
 
 export default DataTable;
-
-
-
