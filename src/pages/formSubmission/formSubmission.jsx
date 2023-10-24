@@ -32,13 +32,13 @@ function FormSubmission() {
             console.log('Token enviado en la solicitud:', token);
             const response = await axios.post('http://localhost:8080/api/enviarCorreo', {
                 correoDestino: correoDestino
-              }, {
+            }, {
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    'Content-Type' : 'application/json',
-                  }, 
-                  
-                
+                    'Content-Type': 'application/json',
+                },
+
+
             });
             setSubmissionResult(response.data);
         } catch (error) {
@@ -83,12 +83,13 @@ function FormSubmission() {
                         {submissionResult && (
                             <div className="submission-result">
                                 {submissionResult.success ? (
-                                    <p className="text-success">Formulario enviado exitosamente</p>
+                                    <p className="text-danger text-center">Error al enviar el formulario: {submissionResult.error}</p>
                                 ) : (
-                                    <p className="text-danger">Error al enviar el formulario: {submissionResult.error}</p>
+                                    <p className="text-success text-center">Formulario enviado exitosamente</p>
                                 )}
                             </div>
                         )}
+
                     </div>
                 </div>
             </div>
