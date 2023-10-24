@@ -110,8 +110,8 @@ useEffect(() => {
       })
       .then(response => {
         if (response.status === 200) {
-          const userData = response.data; // Datos de usuarios
-          const newData = [...data]; // Copia del estado data
+          const userData = response.data; 
+          const newData = [...data]; 
           userData.forEach(user => {
             const fullName = `${user.nombre} ${user.apellido}`;
             const buttons = [
