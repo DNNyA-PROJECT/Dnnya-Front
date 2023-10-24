@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const DataTable = ({ data, headerBackgroundColor }) => {
   const [query, setQuery] = useState('');
   const [filteredData, setFilteredData] = useState(data.slice(1));
-
+  
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setQuery(inputValue);
@@ -25,7 +25,7 @@ const DataTable = ({ data, headerBackgroundColor }) => {
   }
 
   const header = data[0];
-
+ 
   return (
     <div>
       <div className="search-bar">
@@ -46,6 +46,7 @@ const DataTable = ({ data, headerBackgroundColor }) => {
           </tr>
         </thead>
         <tbody>
+      
           {filteredData.map((row, rowIndex) => (
             <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'even-row' : 'odd-row'}>
               {row.map((cell, colIndex) => (
