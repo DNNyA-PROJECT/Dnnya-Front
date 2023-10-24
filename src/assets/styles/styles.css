@@ -46,8 +46,8 @@ i.bi.bi-person-fill.select {
     font-size: 39px;
 }
 
-.content{
-    padding-right: 20rem;
+.content {
+    padding-right: 32vw;
 }
 
 .DFLogo{
@@ -332,3 +332,17 @@ tbody, td, tfoot, th, thead, tr {
     background-color: #000;
     border-color: #000; 
   }
+
+  .test{
+        margin-right: 19vw;
+        margin-left: 19vw;
+    }
+  
+    @media screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
+        .button-select {
+            padding: 0px 7.5vw 0px 7.5vw;
+            border-radius: 7px;
+            background-color: white;
+            border: none;
+        }
+      }

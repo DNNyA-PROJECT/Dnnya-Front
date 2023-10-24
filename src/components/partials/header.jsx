@@ -72,7 +72,6 @@ function Header() {
           ) : (
             <>
               <Link to="/Iniciar_sesion"><h3 className='text-link'>Iniciar Sesión</h3></Link>
-              <Link to="/Registro"><h3 className='text-link'>Registrarse</h3></Link>
             </>
           )}
         </div>
@@ -83,13 +82,12 @@ function Header() {
           <button className='user d-flex align-items-center dropdown-toggle' type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <div><h4>{selectedUser.username}</h4></div>
           </button>
-          <ul className="dropdown-menu p-0" style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+          <ul className="dropdown-menu p-0 m-0" style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
             {token ? ( 
-              <li><button onClick={handleLogout} className='text-link btn h-100'><h3>Cerrar Sesión</h3></button></li>
+              <li><button onClick={handleLogout} className='text-link btn m-0 h-100'><h3>Cerrar Sesión</h3></button></li>
             ) : (
               <>
-                <li><Link to="/Iniciar_sesion"><h3 className='text-link h-100 py-3'>Iniciar Sesión</h3></Link></li>
-                <li><Link to="/Registro"><h3 className='text-link h-100 py-3'>Registrarse</h3></Link></li>
+                <li><Link to="/Iniciar_sesion"><h3 className='text-link m-0 h-100 py-3'>Iniciar Sesión</h3></Link></li>
               </>
             )}
           </ul>

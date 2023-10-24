@@ -162,7 +162,7 @@ useEffect(() => {
         <div className='col-md-2 m-0 container-fluid p-0 menubox d-none d-md-block' style={{ backgroundColor: window.themeColors.color }}>
           <Menu />
         </div>
-        <div className='container-fluid d-flex flex-column m-0 p-0 col-9'>
+        <div className='container-fluid d-flex flex-column mx-5 p-0 col-md-7 col-lg-8 py-4'>
           <div>
             <h1 className='text-first d-flex justify-content-center'> Listado de Usuarios y Solicitantes </h1>
           </div>

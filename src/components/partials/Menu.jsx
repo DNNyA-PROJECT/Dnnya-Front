@@ -62,40 +62,6 @@ function Menu() {
           <li
             className={`mb-3 pt-3 pb-3 text-center`}
             style={{
-              ...backgroundStyle('/Listado_de_casos'),
-              ':hover': {
-                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
-                color: 'white',
-              },
-            }}
-          >
-            <Link
-              to="/Listado_de_casos"
-              className={` ${location.pathname === '/Listado_de_casos' ? 'active' : ''} ${textClass('/Listado_de_casos')}`}
-            >
-              <h3 className={`text-link ${textClass('/Listado_de_casos')}`}>Listado de Casos</h3>
-            </Link>
-          </li>
-          <li
-            className={`mb-3 pt-3 pb-3 text-center`}
-            style={{
-              ...backgroundStyle('/Listado_de_legajos'),
-              ':hover': {
-                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
-                color: 'white',
-              },
-            }}
-          >
-            <Link
-              to="/Listado_de_legajos"
-              className={` ${location.pathname === '/Listado_de_legajos' ? 'active' : ''} ${textClass('/Listado_de_legajos')}`}
-            >
-              <h3 className={`text-link ${textClass('/Listado_de_legajos')}`}>Listado de Legajos</h3>
-            </Link>
-          </li>
-          <li
-            className={`mb-3 pt-3 pb-3 text-center`}
-            style={{
               ...backgroundStyle('/Lista_De_Usuarios'),
               ':hover': {
                 backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
@@ -126,6 +92,25 @@ function Menu() {
               className={` ${location.pathname === '/Envio_de_Formulario' ? 'active' : ''} ${textClass('/Envio_de_Formulario')}`}
             >
               <h3 className={`text-link ${textClass('/Envio_de_Formulario')}`}>Envio de Formulario</h3>
+            </Link>
+            
+          </li>
+          
+          <li
+            className={`mb-3 pt-3 pb-3 text-center`}
+            style={{
+              ...backgroundStyle('/Registro_De_Caso'),
+              ':hover': {
+                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                color: 'white',
+              },
+            }}
+          >
+            <Link
+              to="/Registro_De_Caso"
+              className={` ${location.pathname === '/Registro_De_Caso' ? 'active' : ''} ${textClass('/Registro_De_Caso')}`}
+            >
+              <h3 className={`text-link ${textClass('/Registro_De_Caso')}`}>Registro de Casos</h3>
             </Link>
             
           </li>

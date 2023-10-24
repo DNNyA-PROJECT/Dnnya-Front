@@ -54,7 +54,7 @@ function Login() {
 
   return (
     <>
-      <div className='container-fluid d-flex flex-column justify-content-center align-items-center' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+      <div className='container-fluid d-flex box flex-column justify-content-center align-items-center' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
         <div className='mb-3'>
           <h1 className='d-flex justify-content-center'>Sistema Informático de</h1>
           <h1>Defensoria de Niños, Niñas y Adolescentes</h1>

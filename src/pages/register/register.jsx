@@ -81,7 +81,7 @@ const RegistrationForm = () => {
 
   return (
     <>
-      <div className='container-fluid d-flex flex-column m-0' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+      <div className='container-fluid d-flex box flex-column m-0' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
         <div className='content d-flex flex-row align-items-center m-0 justify-content-between pb-3'>
           <div className='DFlogo'>
             <img src={DFLogo} alt="Defensoria Logo" className='DFLogo' />
@@ -92,8 +92,8 @@ const RegistrationForm = () => {
           </div>
         </div>
 
-        <form className='pb-5' onSubmit={(event) => handleSubmit(event)}>
-          <div className='use mb-3'>
+        <form className='pb-5 my-5' onSubmit={(event) => handleSubmit(event)}>
+          <div className='use mb-5'>
             <input
               type="text"
               className='form-control md'
@@ -111,7 +111,7 @@ const RegistrationForm = () => {
               placeholder='Apellido'
             />
           </div>
-          <div className='use mb-3'>
+          <div className='use mb-5'>
             <input
               type="text"
               className='form-control md'
@@ -145,10 +145,10 @@ const RegistrationForm = () => {
               }
             />
           </div>
-          <div className='use mb-3'>
+          <div className='d-flex justify-content-center mb-5'>
             <input
               type="email"
-              className='form-control bg'
+              className='form-control text-center form-control-lg test w-75'
               name="correo"
               value={formData.correo}
               onChange={handleChange}
@@ -157,7 +157,7 @@ const RegistrationForm = () => {
             />
 
           </div>
-          <div className='use mb-3'>
+          <div className='use mb-5'>
             <div className="password-input-container">
               <div className="password-input-wrapper">
                 <input
