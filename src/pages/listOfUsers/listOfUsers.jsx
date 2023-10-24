@@ -22,8 +22,10 @@ const ButtonCheck = () => {
         // Lógica para el botón Check
     };
     return (
-        <button className='Check' onClick={handleCheckClick}>
-            <i className="bi bi-check-lg"></i>
+        <button className='Check btn' onClick={handleCheckClick}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check-lg" viewBox="0 0 16 16">
+                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" fill='green' />
+            </svg>
         </button>
     );
 };
@@ -32,8 +34,10 @@ const ButtonClose = () => {
         // Lógica para el botón Close
     };
     return (
-        <button className='Close' onClick={handleCloseClick}>
-            <i className="bi bi-x-lg"></i>
+        <button className='Close btn' onClick={handleCloseClick}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" fill='red' />
+            </svg>
         </button>
     );
 };
@@ -95,13 +99,13 @@ function ListOfUsers() {
                 });
                 if (response.status === 200) {
                     const userData = response.data;
-                    const newData = [...data]; 
+                    const newData = [...data];
                     userData.forEach(user => {
                         const fullName = `${user.name} ${user.surname}`;
                         const buttonsFolder = [
                             <ButtonFolder key="folder" />,
-                            
-                            
+
+
                         ];
                         const buttonsChecks = [
                             <ButtonCheck key="check" />,
@@ -119,53 +123,53 @@ function ListOfUsers() {
             }
         };
         fetchData();
-}, []);
-const handleSearch = (query) => {
-    const filtro = query.toLowerCase().trim();
-    if (filtro === '') {
-        setFilteredData(data);
-    } else {
-        const resultados = data.filter((fila) =>
-            fila.some((item) => {
-                if (typeof item === 'string') {
-                    return item.toLowerCase().includes(filtro);
-                }
-                return false;
-            })
-        );
-        setFilteredData(resultados);
-    }
-};
-return (
-    <>
-        <div className='box container-fluid row p-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
-            <div className='col-md-2 m-0 container-fluid p-0 menubox d-none d-md-block' style={{ backgroundColor: window.themeColors.color }}>
-                <Menu />
+    }, []);
+    const handleSearch = (query) => {
+        const filtro = query.toLowerCase().trim();
+        if (filtro === '') {
+            setFilteredData(data);
+        } else {
+            const resultados = data.filter((fila) =>
+                fila.some((item) => {
+                    if (typeof item === 'string') {
+                        return item.toLowerCase().includes(filtro);
+                    }
+                    return false;
+                })
+            );
+            setFilteredData(resultados);
+        }
+    };
+    return (
+        <>
+            <div className='box container-fluid row p-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+                <div className='col-md-2 m-0 container-fluid p-0 menubox d-none d-md-block' style={{ backgroundColor: window.themeColors.color }}>
+                    <Menu />
+                </div>
+                <div className='container-fluid d-flex flex-column mx-5 p-0 col-md-7 col-lg-8 py-4'>
+                    <div>
+                        <h1 className='text-first d-flex justify-content-center'> Listado de Usuarios y Solicitantes </h1>
+                    </div>
+                    <div>
+                        <Searcher data={data} onSearch={handleSearch} />
+                    </div>
+                    <div className='container-fluid table-container p-0 m-0' style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '25vw' }}>
+                        <DataTable data={filteredData} headerBackgroundColor="#F2A57F" />
+                        <CustomModal
+                            title="Título del Modal"
+                            body={modalBody}
+                            show={showModal}
+                            handleClose={handleCloseModal}
+                            showNavButtons={true}
+                            onNavButtonClick={handleNavButtonClick}
+                        />
+                    </div>
+                </div>
             </div>
-            <div className='container-fluid d-flex flex-column mx-5 p-0 col-md-7 col-lg-8 py-4'>
-                <div>
-                    <h1 className='text-first d-flex justify-content-center'> Listado de Usuarios y Solicitantes </h1>
-                </div>
-                <div>
-                    <Searcher data={data} onSearch={handleSearch} />
-                </div>
-                <div className='container-fluid table-container p-0 m-0' style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '25vw' }}>
-                    <DataTable data={filteredData} headerBackgroundColor="#F2A57F" />
-                    <CustomModal
-                        title="Título del Modal"
-                        body={modalBody}
-                        show={showModal}
-                        handleClose={handleCloseModal}
-                        showNavButtons={true}
-                        onNavButtonClick={handleNavButtonClick}
-                    />
-                </div>
+            <div className='container-fluid p-0 m-0'>
+                <Footer />
             </div>
-        </div>
-        <div className='container-fluid p-0 m-0'>
-            <Footer />
-        </div>
-    </>
-);
+        </>
+    );
 }
 export default ListOfUsers;

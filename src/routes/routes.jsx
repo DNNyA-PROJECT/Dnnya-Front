@@ -10,6 +10,7 @@ import formSubmission from '../pages/formSubmission/formSubmission.jsx';
 import Dash from '../pages/dashBoard/dashBoard.jsx';
 import ListUsers from '../pages/listOfUsers/listOfUsers.jsx'
 import recoverCredentials from '../pages/recoverCredentials/recoverCredentials.jsx'
+import CaseFollowUp from '../pages/CaseFollowUp/CaseFollowUp.jsx'
 
 function Routes() {
   return (
@@ -26,6 +27,7 @@ function Routes() {
           <Route exact path='/Dashboard' component={Dash} />
           <Route exact path='/Lista_De_Usuarios' component={ListUsers} />
           <Route exact path='/Recuperacion_de_Credenciales' component={recoverCredentials} />
+          <Route exact path='/Seguimiento_de_Caso' component={CaseFollowUp} />
         </Switch>
       </div>
     </Router>
