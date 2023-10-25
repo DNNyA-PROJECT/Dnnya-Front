@@ -21,7 +21,7 @@ const DataTable = ({ data, headerBackgroundColor }) => {
 
   const noResults = (filteredData.length === 0 && query !== '') ? true : false;
 
-  if (!data || data.length === 0 || data[0].length === 0) {
+  if (data === null || (Array.isArray(data) && data.length === 0)) {
     return <div>No hay datos para mostrar</div>;
   }
 

@@ -186,7 +186,7 @@ function ListOfUsers() {
                     </div>
                     <div className='mb-3'>
                         <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
-                            <option value="solicitantesActivos">Usuarios</option>
+                            <option value="solicitantesActivos">Solicitantes</option>
                             <option value="solicitantesDadosDeBaja">Dados de Baja</option>
                             <option value="solicitantesDadosDeAlta"> Dados de Alta</option>
                         </select>
