@@ -44,6 +44,8 @@ const ButtonClose = () => {
 function ListOfUsers() {
     const [showModal, setShowModal] = useState(false);
     const [currentModal, setCurrentModal] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
+
     const handleCloseModal = () => {
         setShowModal(false);
     };
@@ -54,6 +56,7 @@ function ListOfUsers() {
             setCurrentModal(2);
         }
     };
+    const [selectedOption, setSelectedOption] = useState('solicitantesActivos');
     const [filteredData, setFilteredData] = useState([]);
     const [data, setData] = useState([
         ["Nombre y Apellido", "Información del Usuario", "Dar de Alta /", "Dar Baja"]
@@ -86,44 +89,75 @@ function ListOfUsers() {
             <p>vacio</p>
         </div>
     );
+    const fetchData = async (selectedOption) => {
+        try {
+          setIsLoading(true);
+          const token = localStorage.getItem('token');
+          if (!token) {
+            console.log('Permiso de token no encontrado');
+            setIsLoading(false);
+            return;
+          }
+      
+          let endpoint = '';
+      
+          if (selectedOption === 'solicitantesActivos') {
+            endpoint = 'usuariosActivos';
+          } else if (selectedOption === 'solicitantesDadosDeBaja') {
+            endpoint = 'usuariosInactivos';
+          } else if (selectedOption === 'solicitantesDadosDeAlta') {
+            endpoint = 'usuariosSolicitantes';
+          }
+      
+          const response = await axios.get(`http://localhost:8080/Auth/${endpoint}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+      
+          if (response.status === 200) {
+            console.log('Solicitud exitosa');
+            const userData = response.data;
+            console.log('Datos obtenidos:', userData);
+      
+
+            const header = data[0];
+            const newData = [header];
+      
+            userData.forEach(user => {
+              const fullName = `${user.name} ${user.surname}`;
+              const buttonsFolder = [
+                <ButtonFolder key="folder" />,
+              ];
+              const buttonsChecks = [
+                <ButtonCheck key="check" />,
+                <ButtonClose key="close" />,
+              ];
+      
+
+              newData.push([fullName, buttonsFolder, ...buttonsChecks]);
+            });
+      
+            setData(newData);
+            setFilteredData(newData);
+            setIsLoading(false); 
+          } else {
+            console.error('Error en la solicitud de datos');
+            setIsLoading(false); 
+          }
+        } catch (error) {
+          console.error('Error en la solicitud de datos:', error);
+          setIsLoading(false); 
+        }
+      };
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const token = localStorage.getItem('token');
+        fetchData(selectedOption);
+    }, [selectedOption]);
 
 
-                const response = await axios.get('http://localhost:8080/Auth/usuariosSolicitantes', {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                if (response.status === 200) {
-                    const userData = response.data;
-                    const newData = [...data];
-                    userData.forEach(user => {
-                        const fullName = `${user.name} ${user.surname}`;
-                        const buttonsFolder = [
-                            <ButtonFolder key="folder" />,
-
-
-                        ];
-                        const buttonsChecks = [
-                            <ButtonCheck key="check" />,
-                            <ButtonClose key="close" />,
-                        ]
-                        newData.push([fullName, buttonsFolder, ...buttonsChecks]);
-                    });
-                    setData(newData);
-                    setFilteredData(newData);
-                } else {
-                    console.error('Error en la solicitud de datos');
-                }
-            } catch (error) {
-                console.error('Error en la solicitud de datos:', error);
-            }
-        };
-        fetchData();
-    }, []);
+    useEffect(() => {
+        fetchData(selectedOption);
+    }, [selectedOption]);
     const handleSearch = (query) => {
         const filtro = query.toLowerCase().trim();
         if (filtro === '') {
@@ -150,11 +184,20 @@ function ListOfUsers() {
                     <div>
                         <h1 className='text-first d-flex justify-content-center'> Listado de Usuarios y Solicitantes </h1>
                     </div>
-                    <div>
+                    <div className='mb-3'>
+                        <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
+                            <option value="solicitantesActivos">Usuarios</option>
+                            <option value="solicitantesDadosDeBaja">Dados de Baja</option>
+                            <option value="solicitantesDadosDeAlta"> Dados de Alta</option>
+                        </select>
                         <Searcher data={data} onSearch={handleSearch} />
                     </div>
                     <div className='container-fluid table-container p-0 m-0' style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '25vw' }}>
-                        <DataTable data={filteredData} headerBackgroundColor="#F2A57F" />
+                        {isLoading ? (
+                            <div>Cargando...</div>
+                        ) : (
+                            <DataTable data={filteredData} headerBackgroundColor="#F2A57F" />
+                        )}
                         <CustomModal
                             title="Título del Modal"
                             body={modalBody}
@@ -165,7 +208,7 @@ function ListOfUsers() {
                         />
                     </div>
                 </div>
-            </div>
+            </div >
             <div className='container-fluid p-0 m-0'>
                 <Footer />
             </div>
