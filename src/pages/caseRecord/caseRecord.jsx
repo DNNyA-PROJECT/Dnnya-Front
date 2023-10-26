@@ -351,7 +351,7 @@ function CaseRecord() {
                                     <div key={index}>
                                         <FormularioNnya />
                                         <div className='d-flex justify-content-center'>
-                                            <button className='btn w-75 container-fluid mb-3'
+                                            <button className='btn w-75 container-fluid py-3 fw-bold mb-3'
                                                 style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
                                                 onClick={() => toggleFormulario(index)}
                                             >
