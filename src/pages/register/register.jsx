@@ -8,7 +8,7 @@ import Avatar from '../../assets/images/Mesa_de_trabajo_50.png';
 import Conections from '../../components/conections/conections';
 import axios from 'axios';
 
-const RegistrationForm = () => {
+const Register = () => {
   const [modalShow, setModalShow] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
@@ -81,135 +81,140 @@ const RegistrationForm = () => {
 
   return (
     <>
-      <div className='container-fluid d-flex box flex-column m-0' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
-        <div className='content d-flex flex-row align-items-center m-0 justify-content-between pb-3'>
-          <div className='DFlogo'>
-            <img src={DFLogo} alt="Defensoria Logo" className='DFLogo' />
-          </div>
-          <div className='m-0'>
-            <h1 className='text-first d-flex justify-content-center'>Sistema Informático de</h1>
-            <h1 className='text-second'>Defensoria de Niños, Niñas y Adolescentes</h1>
-          </div>
-        </div>
+      <div className=' container-fluid  row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+        <div className='container-fluid m-0 p-0 d-flex flex-column justify-content-between'>
+          <div className='homeHead container-fluid justify-content-between  py-5 px-5'>
+            <div className='d-flex justify-content-between content'>
+              <div className='DFlogo'>
+                <img src={DFLogo} alt="Defensoria Logo" className='DFLogo' />
+              </div>
+              <div className='m-0'>
+                <h1 className='text-first d-flex justify-content-center'>Sistema Informático de</h1>
+                <h1 className='text-second'>Defensoria de Niños, Niñas y Adolescentes</h1>
+              </div>
+            </div>
 
-        <form className='pb-5 my-5' onSubmit={(event) => handleSubmit(event)}>
-          <div className='use mb-5'>
-            <input
-              type="text"
-              className='form-control md'
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder='Nombre'
-            />
-            <input
-              type="text"
-              className='form-control md'
-              name="surname"
-              value={formData.surname}
-              onChange={handleChange}
-              placeholder='Apellido'
-            />
-          </div>
-          <div className='use mb-5'>
-            <input
-              type="text"
-              className='form-control md'
-              value={formData.username}
-              onChange={handleChange}
-              name="username"
-              autoComplete="username"
-              placeholder='Usuario'
-            />
-            <button className='button-select d-flex align-items-center justify-content-evenly' onClick={handleShowModal}>
-              <h6>Foto de perfil</h6>
-              <i className="bi bi-person-fill select"></i>
-            </button>
-            <CustomModal
-              title="Por Favor Seleccione un Avatar"
-              show={modalShow}
-              handleClose={handleCloseModal}
-              body={
-                <div className='d-flex justify-content-around flex-wrap'>
-                  <img src={Avatar} alt="Avatar" className='Avatar' />
-                  <img src={Avatar} alt="Avatar" className='Avatar' />
-                  <img src={Avatar} alt="Avatar" className='Avatar' />
-                  <img src={Avatar} alt="Avatar" className='Avatar' />
-                  <img src={Avatar} alt="Avatar" className='Avatar' />
-                  <img src={Avatar} alt="Avatar" className='Avatar' />
-                  <img src={Avatar} alt="Avatar" className='Avatar' />
-                  <img src={Avatar} alt="Avatar" className='Avatar' />
-                  <img src={Avatar} alt="Avatar" className='Avatar' />
-                  <img src={Avatar} alt="Avatar" className='Avatar' />
+            <form className='pb-5 my-5' onSubmit={(event) => handleSubmit(event)}>
+              <div className='use mb-5'>
+                <input
+                  type="text"
+                  className='form-control md'
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder='Nombre'
+                />
+                <input
+                  type="text"
+                  className='form-control md'
+                  name="surname"
+                  value={formData.surname}
+                  onChange={handleChange}
+                  placeholder='Apellido'
+                />
+              </div>
+              <div className='use mb-5'>
+                <input
+                  type="text"
+                  className='form-control md'
+                  value={formData.username}
+                  onChange={handleChange}
+                  name="username"
+                  autoComplete="username"
+                  placeholder='Usuario'
+                />
+                <button className='button-select d-flex align-items-center justify-content-evenly' onClick={handleShowModal}>
+                  <h6>Foto de perfil</h6>
+                  <i className="bi bi-person-fill select"></i>
+                </button>
+                <CustomModal
+                  title="Por Favor Seleccione un Avatar"
+                  show={modalShow}
+                  handleClose={handleCloseModal}
+                  body={
+                    <div className='d-flex justify-content-around flex-wrap'>
+                      <img src={Avatar} alt="Avatar" className='Avatar' />
+                      <img src={Avatar} alt="Avatar" className='Avatar' />
+                      <img src={Avatar} alt="Avatar" className='Avatar' />
+                      <img src={Avatar} alt="Avatar" className='Avatar' />
+                      <img src={Avatar} alt="Avatar" className='Avatar' />
+                      <img src={Avatar} alt="Avatar" className='Avatar' />
+                      <img src={Avatar} alt="Avatar" className='Avatar' />
+                      <img src={Avatar} alt="Avatar" className='Avatar' />
+                      <img src={Avatar} alt="Avatar" className='Avatar' />
+                      <img src={Avatar} alt="Avatar" className='Avatar' />
+                    </div>
+                  }
+                />
+              </div>
+              <div className='d-flex justify-content-center mb-5'>
+                <input
+                  type="email"
+                  className='form-control text-center form-control-lg test w-100'
+                  name="correo"
+                  value={formData.correo}
+                  onChange={handleChange}
+                  placeholder='Correo Electrónico'
+                  autoComplete="username"
+                />
+
+              </div>
+              <div className='use mb-5'>
+                <div className="password-input-container">
+                  <div className="password-input-wrapper">
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      value={formData.password}
+                      name='password'
+                      onChange={(e) => handleChange(e)}
+                      className='form-control md'
+                      placeholder="Contraseña"
+                      autoComplete="new-password"
+                    />
+                    <i
+                      className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'}`}
+                      onClick={togglePasswordVisibility}
+                      style={{ cursor: 'pointer' }}
+                    ></i>
+                  </div>
                 </div>
-              }
-            />
+                <div className="password-input-container">
+                  <div className="password-input-wrapper">
+                    <input
+                      type={showRepeatPassword ? 'text' : 'password'}
+                      value={formData.repeatpassword}
+                      name='repeatpassword'
+                      onChange={(e) => handleChange(e)}
+                      className='form-control md'
+                      placeholder="Confirmar Contraseña"
+                      autoComplete="new-password"
+                    />
+                    <i
+                      className={`bi ${showRepeatPassword ? 'bi-eye-slash' : 'bi-eye'}`}
+                      onClick={toggleRepeatPasswordVisibility}
+                      style={{ cursor: 'pointer' }}
+                    ></i>
+                  </div>
+                </div>
+              </div>
+              <div className='use'>
+                <button
+                  type="submit"
+                  className='btn register btn-lg'
+                  style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
+                >
+                  Crear Cuenta
+                </button>
+                <button type="reset" className='btn btn-outline-danger reset'>Borrar</button>
+              </div>
+            </form>
           </div>
-          <div className='d-flex justify-content-center mb-5'>
-            <input
-              type="email"
-              className='form-control text-center form-control-lg test w-75'
-              name="correo"
-              value={formData.correo}
-              onChange={handleChange}
-              placeholder='Correo Electrónico'
-              autoComplete="username" 
-            />
+        </div >
+        <Footer />
+      </div >
 
-          </div>
-          <div className='use mb-5'>
-            <div className="password-input-container">
-              <div className="password-input-wrapper">
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  value={formData.password}
-                  name='password'
-                  onChange={(e) => handleChange(e)}
-                  className='form-control md'
-                  placeholder="Contraseña"
-                  autoComplete="new-password"
-                />
-                <i
-                  className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'}`}
-                  onClick={togglePasswordVisibility}
-                  style={{ cursor: 'pointer' }}
-                ></i>
-              </div>
-            </div>
-            <div className="password-input-container">
-              <div className="password-input-wrapper">
-                <input
-                  type={showRepeatPassword ? 'text' : 'password'}
-                  value={formData.repeatpassword}
-                  name='repeatpassword'
-                  onChange={(e) => handleChange(e)}
-                  className='form-control md'
-                  placeholder="Confirmar Contraseña"
-                  autoComplete="new-password"
-                />
-                <i
-                  className={`bi ${showRepeatPassword ? 'bi-eye-slash' : 'bi-eye'}`}
-                  onClick={toggleRepeatPasswordVisibility}
-                  style={{ cursor: 'pointer' }}
-                ></i>
-              </div>
-            </div>
-          </div>
-          <div className='use'>
-            <button
-              type="submit"
-              className='btn register btn-lg'
-              style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
-            >
-              Crear Cuenta
-            </button>
-            <button type="reset" className='btn btn-outline-danger reset'>Borrar</button>
-          </div>
-        </form>
-      </div>
-      <Footer />
     </>
-  );
+  )
 }
 
-export default RegistrationForm;
+export default Register

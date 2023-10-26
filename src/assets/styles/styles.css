@@ -333,10 +333,10 @@ tbody, td, tfoot, th, thead, tr {
     border-color: #000; 
   }
 
-  .test{
-        margin-right: 19vw;
-        margin-left: 19vw;
-    }
+  .test {
+    margin-right: 17vw;
+    margin-left: 17vw;
+}
   
     @media screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
         .button-select {
