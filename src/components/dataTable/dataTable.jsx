@@ -31,7 +31,7 @@ const DataTable = ({ data, headerBackgroundColor }) => {
         {data.slice(1).map((row, rowIndex) => (
           <tr key={rowIndex}>
             {row.map((cell, colIndex) => (
-              <td key={colIndex} style={tdStyle}>{cell}</td>
+              <td className='py-3' key={colIndex} style={tdStyle}>{cell}</td>
             ))}
           </tr>
         ))}

@@ -346,3 +346,9 @@ tbody, td, tfoot, th, thead, tr {
             border: none;
         }
       }
+
+      button.btn.fw-bold {
+        display: flex;
+        justify-content: space-around;
+        width: 74vw;
+    }
