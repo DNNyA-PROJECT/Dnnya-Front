@@ -44,13 +44,33 @@ function CaseRecord() {
             </button>
         );
     };
-
+    
     const customData = [
         ["Seleccionar", "Nombre y Apellido", "D.N.I"],
         [<Checkbox />, "Ramiro", "121312131"],
         [<Checkbox />, "Rogelio", "123131241"],
         [<Checkbox />, "Cris", "122314125"],
     ];
+
+    const [data, setData] = useState(customData);
+    const [query, setQuery] = useState('');
+  
+    const handleInputChange = (e) => {
+      const inputValue = e.target.value;
+      setQuery(inputValue);
+  
+      const filteredData = customData.filter((row, rowIndex) => {
+        if (rowIndex === 0) {
+          return true;
+        }
+        return row.some((cell) =>
+          typeof cell === 'string' && cell.toLowerCase().includes(inputValue.toLowerCase())
+        );
+      });
+      setData(filteredData);
+    };
+
+  
 
     return (
         <>
@@ -243,9 +263,9 @@ function CaseRecord() {
                                             body={
                                                 <div className='d-flex justify-content-around flex-column flex-wrap'>
                                                     <div>
-                                                        <Searcher datos={customData} />
+                                                     <Searcher query={query} handleInputChange={handleInputChange} />
                                                     </div>
-                                                    <DataTable data={customData} headerBackgroundColor="#F2A57F" />
+                                                    <DataTable data={data} headerBackgroundColor="#F2A57F" />
                                                 </div>
                                             }
                                         />
