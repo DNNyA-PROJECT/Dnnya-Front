@@ -1,71 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
 
 const DataTable = ({ data, headerBackgroundColor }) => {
-  const [query, setQuery] = useState('');
-  const [filteredData, setFilteredData] = useState(data.slice(1));
-
-  useEffect(() => {
-    const filtered = data.slice(1).filter((row) => {
-      return row.some((cell) =>
-        typeof cell === 'string' && cell.toLowerCase().includes(query.toLowerCase())
-      );
-    });
-    setFilteredData(filtered);
-  }, [data, query]);
-
-  const handleInputChange = (e) => {
-    const inputValue = e.target.value;
-    setQuery(inputValue);
-  };
-
-  const noResults = (filteredData.length === 0 && query !== '') ? true : false;
-
-  if (data === null || (Array.isArray(data) && data.length === 0)) {
-    return <div>No hay datos para mostrar</div>;
+  if (!data) {
+    return null;
   }
 
-  const header = data[0];
+  const tableStyle = {
+    width: '100%', 
+  };
+
+  const thStyle = {
+    backgroundColor: headerBackgroundColor,
+  };
+
+  const tdStyle = {
+    textAlign: 'center', 
+    verticalAlign: 'middle', 
+  };
 
   return (
-    <div>
-      <div className="search-bar">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Buscar..."
-          value={query}
-          onChange={handleInputChange}
-        />
-      </div>
-      <table className="table m-0">
-        <thead>
-          <tr>
-            {header.map((cell, index) => (
-              <th key={index} style={{ backgroundColor: headerBackgroundColor }}>{cell}</th>
+    <table className="table" style={tableStyle}>
+      <thead>
+        <tr>
+          {data[0].map((header, index) => (
+            <th className='py-3' key={index} style={thStyle}>{header}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {data.slice(1).map((row, rowIndex) => (
+          <tr key={rowIndex}>
+            {row.map((cell, colIndex) => (
+              <td key={colIndex} style={tdStyle}>{cell}</td>
             ))}
           </tr>
-        </thead>
-        <tbody>
-          {filteredData.map((row, rowIndex) => (
-            <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'even-row' : 'odd-row'}>
-              {row.map((cell, colIndex) => (
-                <td key={colIndex}>{cell}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      {noResults && (
-        <table className="table m-0">
-          <tbody>
-            <tr>
-              <td>No se encontraron coincidencias.</td>
-            </tr>
-          </tbody>
-        </table>
-      )}
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 };
 

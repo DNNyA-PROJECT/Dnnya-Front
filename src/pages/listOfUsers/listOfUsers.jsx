@@ -44,7 +44,6 @@ const ButtonClose = () => {
 function ListOfUsers() {
     const [showModal, setShowModal] = useState(false);
     const [currentModal, setCurrentModal] = useState(1);
-    const [isLoading, setIsLoading] = useState(false);
 
     const handleCloseModal = () => {
         setShowModal(false);
@@ -56,11 +55,15 @@ function ListOfUsers() {
             setCurrentModal(2);
         }
     };
-    const [selectedOption, setSelectedOption] = useState('solicitantesActivos');
-    const [filteredData, setFilteredData] = useState([]);
     const [data, setData] = useState([
-        ["Nombre y Apellido", "Información del Usuario", "Dar de Alta /", "Dar Baja"]
-    ]);
+        ["Nombre y Apellido", "Información del Usuario", "Dar de Alta / ", " Dar Baja"]
+      ]);
+      
+      const [filteredData, setFilteredData] = useState(data);
+      const [isLoading, setIsLoading] = useState(false);
+      const [selectedOption, setSelectedOption] = useState('solicitantesActivos');
+      const [query, setQuery] = useState('');
+      
     const modalBody = currentModal === 1 ? (
         <div>
             <h5>Información Personal</h5>
@@ -89,91 +92,104 @@ function ListOfUsers() {
             <p>vacio</p>
         </div>
     );
-    const fetchData = async (selectedOption) => {
-        try {
-          setIsLoading(true);
-          const token = localStorage.getItem('token');
-          if (!token) {
-            console.log('Permiso de token no encontrado');
-            setIsLoading(false);
-            return;
-          }
-      
-          let endpoint = '';
-      
-          if (selectedOption === 'solicitantesActivos') {
-            endpoint = 'usuariosActivos';
-          } else if (selectedOption === 'solicitantesDadosDeBaja') {
-            endpoint = 'usuariosInactivos';
-          } else if (selectedOption === 'solicitantesDadosDeAlta') {
-            endpoint = 'usuariosSolicitantes';
-          }
-      
-          const response = await axios.get(`http://localhost:8080/Auth/${endpoint}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-      
-          if (response.status === 200) {
-            console.log('Solicitud exitosa');
-            const userData = response.data;
-            console.log('Datos obtenidos:', userData);
-      
-
-            const header = data[0];
-            const newData = [header];
-      
-            userData.forEach(user => {
-              const fullName = `${user.name} ${user.surname}`;
-              const buttonsFolder = [
-                <ButtonFolder key="folder" />,
-              ];
-              const buttonsChecks = [
-                <ButtonCheck key="check" />,
-                <ButtonClose key="close" />,
-              ];
-      
-
-              newData.push([fullName, buttonsFolder, ...buttonsChecks]);
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            setIsLoading(true);
+            const token = localStorage.getItem('token');
+            if (!token) {
+              console.log('Permiso de token no encontrado');
+              setIsLoading(false);
+              return;
+            }
+    
+            let endpoint = '';
+    
+            if (selectedOption === 'solicitantesActivos') {
+              endpoint = 'usuariosActivos';
+            } else if (selectedOption === 'solicitantesDadosDeBaja') {
+              endpoint = 'usuariosInactivos';
+            } else if (selectedOption === 'solicitantesDadosDeAlta') {
+              endpoint = 'usuariosSolicitantes';
+            }
+    
+            const response = await axios.get(`http://localhost:8080/Auth/${endpoint}`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             });
-      
-            setData(newData);
-            setFilteredData(newData);
-            setIsLoading(false); 
-          } else {
-            console.error('Error en la solicitud de datos');
-            setIsLoading(false); 
+    
+            if (response.status === 200) {
+              console.log('Solicitud exitosa');
+              const userData = response.data;
+              console.log('Datos obtenidos:', userData);
+    
+              const header = data[0];
+              const newData = [header];
+    
+              userData.forEach(user => {
+                const fullName = `${user.name} ${user.surname}`;
+                const buttonsFolder = [
+                  <ButtonFolder key="folder" />,
+                ];
+                const buttonsChecks = [
+                  <ButtonCheck key="check" />,
+                  <ButtonClose key="close" />,
+                ];
+    
+                newData.push([fullName, buttonsFolder, ...buttonsChecks]);
+              });
+    
+              setData(newData);
+              setFilteredData(newData);
+              setIsLoading(false);
+            } else {
+              console.error('Error en la solicitud de datos');
+              setIsLoading(false);
+            }
+          } catch (error) {
+            console.error('Error en la solicitud de datos:', error);
+            setIsLoading(false);
           }
-        } catch (error) {
-          console.error('Error en la solicitud de datos:', error);
-          setIsLoading(false); 
-        }
+        };
+    
+        fetchData();
+      }, [selectedOption]);
+    
+      console.log('Datos en data:', data);
+     
+
+      useEffect(() => {
+        handleSearch(query);
+      }, [query]);
+
+      const handleInputChange = (e) => {
+        const inputValue = e.target.value;
+        setQuery(inputValue);
       };
-    useEffect(() => {
-        fetchData(selectedOption);
-    }, [selectedOption]);
-
-
-    useEffect(() => {
-        fetchData(selectedOption);
-    }, [selectedOption]);
-    const handleSearch = (query) => {
+    
+      const handleSearch = (query) => {
         const filtro = query.toLowerCase().trim();
         if (filtro === '') {
-            setFilteredData(data);
+          setFilteredData(data);
         } else {
-            const resultados = data.filter((fila) =>
-                fila.some((item) => {
-                    if (typeof item === 'string') {
-                        return item.toLowerCase().includes(filtro);
-                    }
-                    return false;
-                })
-            );
-            setFilteredData(resultados);
+          const resultados = data.filter((fila, rowIndex) => {
+            if (rowIndex === 0) {
+              return true;
+            }
+            return fila.some((item) => {
+              if (typeof item === 'string') {
+                return item.toLowerCase().includes(filtro);
+              }
+              return false;
+            });
+          });
+          setFilteredData(resultados);
         }
-    };
+      };
+      
+      
+      
     return (
         <>
             <div className='box container-fluid row p-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
@@ -190,8 +206,11 @@ function ListOfUsers() {
                             <option value="solicitantesDadosDeBaja">Dados de Baja</option>
                             <option value="solicitantesDadosDeAlta"> Dados de Alta</option>
                         </select>
-                        <Searcher data={data} onSearch={handleSearch} />
                     </div>
+                    <div className='mb-3'>
+                    <Searcher data={data} handleInputChange={handleInputChange} />
+                    </div>
+                   
                     <div className='container-fluid table-container p-0 m-0' style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '25vw' }}>
                         {isLoading ? (
                             <div>Cargando...</div>
