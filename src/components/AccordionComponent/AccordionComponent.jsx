@@ -10,7 +10,7 @@ function AccordionComponent({ children, buttonText, buttonClassName }) {
   return (
     <div className="accordion">
       <div className="accordion-header" onClick={toggleAccordion}>
-        <button className={`btn ${buttonClassName}`}>
+        <button type='button' className={`btn ${buttonClassName}`}>
         {buttonText}
           {isAccordionOpen ? (
             <svg

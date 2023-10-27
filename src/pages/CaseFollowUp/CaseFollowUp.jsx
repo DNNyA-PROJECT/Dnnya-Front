@@ -13,10 +13,9 @@ window.themeColors = colors;
 
 const CaseFollowUp = () => {
     const customData = [
-        ["NNyA", "DNI", "Número del Caso", "Estado del Caso", "Fecha de Alta"],
-        ["funes", "Ramiro", "121312131", "asda", "asda"],
-        ["funesas", "Ramiro", "12131213231", "asda", "asda"],
-        ["funes", "Ramirasdo", "121312131", "asda", "asda"],
+        ["NNyA", "DNI", "Número del Caso", "Estado del Caso", "Fecha de Alta", " "],
+        ["Guiin Flynn", "39024532", "420", "Con Seguimiento", "17/08/23", "╚"],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", "‼"],
     ];
 
     const [data, setData] = useState(customData);
@@ -53,12 +52,20 @@ const CaseFollowUp = () => {
                         <Searcher query={query} handleInputChange={handleInputChange} />
                     </div>
                     <div className='py-3'>
-                    <AccordionComponent  buttonText="Filtros" buttonClassName="fw-bold">
-  {/* Contenido del acordeón */}
-                            <ul>
-                                <li>Item 1</li>
-                                <li>Item 2</li>
-                            </ul>
+                        <AccordionComponent buttonText="Filtros" buttonClassName="fw-bold">
+                            <div className='row'>
+                                <input type="checkbox" className='col-3'  name="" id="" />
+                                <input type="checkbox" name="" className='col-3' id="" />
+                                <div className='col-3'> jajasja</div>
+                            </div>
+                            <div className='row'>
+                                <input type="checkbox" className='col-3'  name="" id="" />
+                                <input type="checkbox" name="" className='col-3' id="" />
+                                <div className='col-3'> jajasja</div>
+                            </div>
+                            <div>
+                                
+                            </div>
                         </AccordionComponent>
                     </div>
                     <DataTable data={data} headerBackgroundColor="#F2A57F" />

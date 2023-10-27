@@ -352,3 +352,36 @@ tbody, td, tfoot, th, thead, tr {
         justify-content: space-around;
         width: 74vw;
     }
+
+
+/* CSS personalizado */
+.custom-btn {
+    background-color: var(--btn-color) !important; 
+  }
+  
+  .custom-btn:active {
+    background-color: var(--btn-active-color) !important;
+ 
+  }
+  
+
+  .greenColor {
+    --btn-color: #C2EDBE;
+    --btn-active-color:  #C2EDBE; 
+  }
+  
+  .lightblue {
+    --btn-color: #BEE3ED; 
+    --btn-active-color: #BEE3ED; 
+  }
+  
+ .LightBeige {
+    --btn-color: #EDCFBE;
+    --btn-active-color: #EDCFBE; 
+  }
+  
+  .LightLavender {
+    --btn-color: #D7BEED;
+    --btn-active-color: #D7BEED; 
+  }
+  
