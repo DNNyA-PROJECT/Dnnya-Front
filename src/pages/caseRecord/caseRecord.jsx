@@ -19,7 +19,66 @@ window.themeColors = colors;
 function CaseRecord() {
     const [modalShow, setModalShow] = useState(false);
     const [formularios, setFormularios] = useState([]);
+    const [inputValue, setInputValue] = useState('');
 
+    const [checkboxState, setCheckboxState] = useState({
+        TelAdvice: false,
+        Presence: false,
+        Intervention: false,
+        Consent: false,
+    });
+
+    const handleInputValueChange = (value) => {
+        setInputValue(value);
+    };
+
+    const handleCustomCheckboxChange = (checkboxName) => {
+        setCheckboxState({
+            ...checkboxState,
+            [checkboxName]: !checkboxState[checkboxName],
+        });
+    };
+
+    const token = localStorage.getItem('token');
+
+    const handlePost = () => {
+        const data = {
+            checkboxes: checkboxState,
+            inputValue: inputValue,
+        };
+
+        axios
+            .post('http://localhost:8080', data, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log('Respuesta del servidor:', response.data);
+                } else {
+                    console.log('Respuesta con un estado inesperado:', response.status);
+                }
+            })
+            .catch((error) => {
+                if (error.response) {
+                    console.error('Error en la respuesta:', error.response.data);
+                } else if (error.request) {
+                    console.error('Error de red:', error.message);
+                } else {
+                    console.error('Error desconocido:', error.message);
+                }
+            });
+    };
+
+
+    const handleCheckboxChange = (checkboxName) => {
+        setCheckboxState({
+            ...checkboxState,
+            [checkboxName]: !checkboxState[checkboxName],
+        });
+    };
 
     const toggleFormulario = (index) => {
         if (formularios.includes(index)) {
@@ -111,35 +170,35 @@ function CaseRecord() {
                                             <h1>Tipo De Asesoramiento E Intervención</h1>
                                         </div>
                                         <div>
-                                            <div className='row d-flex justify-content-evenly' >
+                                            <div className='row d-flex justify-content-evenly'>
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="TelAdvice" className="custom-checkbox">
                                                         Asesoría Telefónica
-                                                        <input type="checkbox" id="TelAdvice" className="checkbox" name="Atencion" />
+                                                        <input type="checkbox" id="TelAdvice" className="checkbox" onChange={handleCheckboxChange} />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="Presence" className="custom-checkbox">
                                                         Asesoría Presencial
-                                                        <input type="checkbox" id="Presence" className="checkbox" name="Atencion" />
+                                                        <input type="checkbox" id="Presence" className="checkbox" onChange={handleCheckboxChange} />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
                                             </div>
 
-                                            <div className='row d-flex justify-content-evenly' >
+                                            <div className='row d-flex justify-content-evenly'>
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="Intervention" className="custom-checkbox">
                                                         Intervención
-                                                        <input type="checkbox" id="Intervention" className="checkbox" name="Atencion" />
+                                                        <input type="checkbox" id="Intervention" className="checkbox" onChange={handleCheckboxChange} />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="Consent" className="custom-checkbox">
                                                         Consentimiento
-                                                        <input type="checkbox" id="Consent" className="checkbox" name="Atencion" />
+                                                        <input type="checkbox" id="Consent" className="checkbox" onChange={handleCheckboxChange} />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
@@ -171,7 +230,14 @@ function CaseRecord() {
                                                     </label>
                                                 </div>
                                                 <div className='col-3 mb-3 px-0 py-0 mr-0 '>
-                                                    <CustomInputButton buttonText="Agregar Asistencia" inputPlaceholder="Nueva Asistencia" />
+                                                    <CustomInputButton
+                                                        buttonText="Agregar Asistencia"
+                                                        inputPlaceholder="Nueva Asistencia"
+                                                        selectedCheckboxes={checkboxState}
+                                                        onCustomCheckboxChange={handleCheckboxChange}
+                                                        inputValue={inputValue}
+                                                        onInputValueChange={handleInputValueChange}
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
@@ -223,7 +289,14 @@ function CaseRecord() {
                                                 </label>
                                             </div>
                                             <div className='col-3 mb-3 p-0 '>
-                                                <CustomInputButton buttonText="Ingresar Nueva Relacion NNya" inputPlaceholder="Nueva Relación" />
+                                                <CustomInputButton
+                                                    buttonText="Ingresar Nueva Relacion NNya"
+                                                    inputPlaceholder="Nueva Relación"
+                                                    selectedCheckboxes={checkboxState}
+                                                    onCustomCheckboxChange={handleCheckboxChange}
+                                                    inputValue={inputValue}
+                                                    onInputValueChange={handleInputValueChange}
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -346,7 +419,14 @@ function CaseRecord() {
                                                     </label>
                                                 </div>
                                                 <div className='col-3 mb-3 p-0 '>
-                                                    <CustomInputButton buttonText="Agregar Motivo" inputPlaceholder="Nuevo Motivo" />
+                                                    <CustomInputButton
+                                                        buttonText="Agregar Motivo"
+                                                        inputPlaceholder="Nuevo Motivo"
+                                                        selectedCheckboxes={checkboxState}
+                                                        onCustomCheckboxChange={handleCheckboxChange}
+                                                        inputValue={inputValue}
+                                                        onInputValueChange={handleInputValueChange}
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
@@ -380,7 +460,7 @@ function CaseRecord() {
                                     ))}
                                 </AccordionComponent>
 
-                                <AccordionComponent buttonText="Estado Del Caso"  buttonClassName="fw-bold custom-btn LightLavender mt-3 w-100 py-4 fs-4 m-0">
+                                <AccordionComponent buttonText="Estado Del Caso" buttonClassName="fw-bold custom-btn LightLavender mt-3 w-100 py-4 fs-4 m-0">
                                     <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
 
                                         <div className='row d-flex  justify-content-evenly' >
