@@ -32,13 +32,6 @@ function CaseRecord() {
         setInputValue(value);
     };
 
-    const handleCustomCheckboxChange = (checkboxName) => {
-        setCheckboxState({
-            ...checkboxState,
-            [checkboxName]: !checkboxState[checkboxName],
-        });
-    };
-
     const token = localStorage.getItem('token');
 
     const handlePost = () => {
