@@ -34,9 +34,6 @@ function ListOfUsers() {
       </div>
     );
   };
-  /*  modal */
-
-
 
   /*   datatable */
 
@@ -121,6 +118,7 @@ function ListOfUsers() {
     fetchData();
   }, [selectedOption]);
 
+    /*  modal */
   const [showModal, setShowModal] = useState(false);
   const [currentModal, setCurrentModal] = useState(1);
 
@@ -139,6 +137,7 @@ function ListOfUsers() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
   const handleNavButtonClick = (direction) => {
     if (direction === 'previous') {
       setCurrentModal(2);
@@ -175,7 +174,7 @@ function ListOfUsers() {
       No tiene
     </div>
   );
-
+ 
   /* buscador */
   useEffect(() => {
     handleSearch(query);
