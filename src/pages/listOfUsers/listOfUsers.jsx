@@ -35,59 +35,8 @@ function ListOfUsers() {
     );
   };
   /*  modal */
-  const [showModal, setShowModal] = useState(false);
-  const [currentModal, setCurrentModal] = useState(1);
 
-  const ButtonFolder = () => {
-    const handleFolderClick = (modalNumber) => {
-      setShowModal(true);
-      setCurrentModal(modalNumber);
-    }
-    return (
-      <button className='folderButton' onClick={handleFolderClick}>
-        <i className="bi bi-folder-fill"></i>
-      </button>
-    );
-  };
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-  const handleNavButtonClick = (direction) => {
-    if (direction === 'previous') {
-      setCurrentModal(2);
-    } else if (direction === 'next') {
-      setCurrentModal(1);
-    }
-  };
 
-  const modalBody = currentModal === 1 ? (
-    <div>
-      <h5>Información del contacto</h5>
-      <p>Dirección Actual</p>
-      <p>Número de Teléfono (fijo o celular)</p>
-      <p>Dirección de correo Electrónico</p>
-      <h5>Información de Emergencia</h5>
-      <p>vacio</p>
-      <p>vacio</p>
-      <h5>Información del Historial Educativo</h5>
-      <p>vacio</p>
-    </div>
-  ) : (
-    <div>
-      <h5>Información Personal</h5>
-      <p>Nombre Completo: Alejandro Bianchi</p>
-      <p>Email: alebianchi@gmail.com</p>
-      <p>Usuario: tubebitofiufiu</p>
-      <p>Foto de Perfil</p>
-      <h5>Rol</h5>
-      <select name="role" id="role">
-        <option value="ADMIN">Administrador</option>
-        <option value="USER">Usuario</option>
-      </select>
-      <h5>Permisos</h5>
-      No tiene
-    </div>
-  );
 
   /*   datatable */
 
@@ -99,6 +48,10 @@ function ListOfUsers() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedOption, setSelectedOption] = useState('solicitantesActivos');
   const [query, setQuery] = useState('');
+  const [fullName, setFullName] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [username, setUsername] = useState("");
+  const [ids, setIds] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -126,7 +79,7 @@ function ListOfUsers() {
             Authorization: `Bearer ${token}`,
           },
         });
-
+        
         if (response.status === 200) {
           console.log('Solicitud exitosa');
           const userData = response.data;
@@ -137,6 +90,13 @@ function ListOfUsers() {
 
           userData.forEach(user => {
             const fullName = `${user.name} ${user.surname}`;
+            setFullName(fullName);
+            const usuario = user.username;
+            setUsername(usuario);
+            const userIds = userData.map(user => user.id);
+            setIds(userIds);
+            const correo = user.correo;
+            setCorreo(correo);
             const buttonsFolder = [
               <ButtonFolder key="folder" />,
             ];
@@ -146,7 +106,6 @@ function ListOfUsers() {
 
             newData.push([fullName, buttonsFolder, ...buttonsCheck]);
           });
-
           setData(newData);
           setFilteredData(newData);
           setIsLoading(false);
@@ -159,14 +118,65 @@ function ListOfUsers() {
         setIsLoading(false);
       }
     };
-
     fetchData();
   }, [selectedOption]);
 
-  console.log('Datos en data:', data);
+  const [showModal, setShowModal] = useState(false);
+  const [currentModal, setCurrentModal] = useState(1);
+
+  const ButtonFolder = () => {
+    const handleFolderClick = (modalNumber) => {
+      setShowModal(true);
+      setCurrentModal(modalNumber);
+    }
+    return (
+      <button className='folderButton' onClick={handleFolderClick}>
+        <i className="bi bi-folder-fill"></i>
+      </button>
+    );
+  };
+  
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+  const handleNavButtonClick = (direction) => {
+    if (direction === 'previous') {
+      setCurrentModal(2);
+    } else if (direction === 'next') {
+      setCurrentModal(1);
+    }
+  };
+
+  const modalBody = currentModal === 1 ? (
+    <div>
+      <h5>Información del contacto</h5>
+      <p>Dirección Actual</p>
+      <p>Número de Teléfono (fijo o celular)</p>
+      <p>Dirección de correo Electrónico</p>
+      <h5>Información de Emergencia</h5>
+      <p>vacio</p>
+      <p>vacio</p>
+      <h5>Información del Historial Educativo</h5>
+      <p>vacio</p>
+    </div>
+  ) : (
+    <div>
+      <h5>Información Personal</h5>
+      <p>Nombre Completo: {fullName} </p>
+      <p>Email: {correo}</p>
+      <p>Usuario: {username}</p>
+      <p>Foto de Perfil</p>
+      <h5>Rol</h5>
+      <select name="role" id="role">
+        <option value="ADMIN">Administrador</option>
+        <option value="USER">Usuario</option>
+      </select>
+      <h5>Permisos</h5>
+      No tiene
+    </div>
+  );
 
   /* buscador */
-
   useEffect(() => {
     handleSearch(query);
   }, [query]);
