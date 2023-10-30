@@ -14,8 +14,23 @@ window.themeColors = colors;
 const CaseFollowUp = () => {
     const customData = [
         ["NNyA", "DNI", "Número del Caso", "Estado del Caso", "Fecha de Alta", " "],
-        ["Guiin Flynn", "39024532", "420", "Con Seguimiento", "17/08/23", "╚"],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", "‼"],
+        ["Guiin Flynn", "39024532", "420", "Con Seguimiento", "17/08/23", " "],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+    ];
+    const Header = [
+        ["Tipo de Caso", "Estado del Caso","Fecha de Alta"],
+      
     ];
 
     const [data, setData] = useState(customData);
@@ -38,7 +53,7 @@ const CaseFollowUp = () => {
 
     return (
         <div>
-            <div className='box container-fluid row p-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+            <div className=' container-fluid row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
 
                 <div className='col-md-2 m-0 container-fluid p-0 menubox d-none d-md-block' style={{ backgroundColor: window.themeColors.color }}>
                     <Menu />
@@ -48,27 +63,93 @@ const CaseFollowUp = () => {
                     <div className='py-3 fw-bold'>
                         Buscador
                     </div>
-                    <div>
+                    <div className='d-flex'>
                         <Searcher query={query} handleInputChange={handleInputChange} />
                     </div>
                     <div className='py-3'>
                         <AccordionComponent buttonText="Filtros" buttonClassName="fw-bold">
-                            <div className='row'>
-                                <input type="checkbox" className='col-3'  name="" id="" />
-                                <input type="checkbox" name="" className='col-3' id="" />
-                                <div className='col-3'> jajasja</div>
-                            </div>
-                            <div className='row'>
-                                <input type="checkbox" className='col-3'  name="" id="" />
-                                <input type="checkbox" name="" className='col-3' id="" />
-                                <div className='col-3'> jajasja</div>
-                            </div>
-                            <div>
-                                
+                        <DataTable data={Header} headerBackgroundColor="#F2A57F" />
+                            <div className='row d-flex justify-content-between mx-3'>
+                                <div className='col-3'>
+                                    <div className='container-fluid flex-column d-flex justify-content-evenly' >
+                                        <div className='col-3 w-100 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                            <label htmlFor="Individual" className="custom-checkbox">
+                                                Individual
+                                                <input type="checkbox" id="Individual" className="checkbox" name="Case" />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                            <label htmlFor="GrandMother" className="custom-checkbox">
+                                                Grupal
+                                                <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='col-3'>
+                                    <div className='container-fluid flex-column d-flex justify-content-evenly' >
+                                        <div className='col-3 w-100 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                            <label htmlFor="indi" className="custom-checkbox p-0">
+                                                Grave con Seguimiento
+                                                <input type="checkbox" id="Individual" className="checkbox" name="Case" />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                            <label htmlFor="GrandMother" className="custom-checkbox p-0">
+                                                Grave sin Seguimiento
+                                                <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                            <label htmlFor="GrandMother" className="custom-checkbox p-0">
+                                                Grave sin Seguimiento
+                                                <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                            <label htmlFor="GrandMother" className="custom-checkbox p-0">
+                                                Grave sin Seguimiento
+                                                <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                            <label htmlFor="GrandMother" className="custom-checkbox p-0">
+                                                Grave sin Seguimiento
+                                                <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                            <label htmlFor="GrandMother" className="custom-checkbox p-0">
+                                                Grave sin Seguimiento
+                                                <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                    </div>
+                                </div>
+                                <div className='col-3'>
+                                    <div className='container-fluid flex-column d-flex justify-content-evenly' >
+                                     <input type="date" name="" className='py-3' id="" />
+                                    </div>
+                                </div>
+
+
                             </div>
                         </AccordionComponent>
                     </div>
-                    <DataTable data={data} headerBackgroundColor="#F2A57F" />
+                    <div className='container-fluid table-container p-0 my-5 mx-0' style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '25vw' }}>
+                        <DataTable data={data} headerBackgroundColor="#F2A57F" />
+                    </div>
                 </div>
             </div>
 
