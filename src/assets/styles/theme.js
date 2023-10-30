@@ -13,7 +13,7 @@ export const colors = {
     modalBackgroundColor: '#E0C98C',
     
     // aside o dashboard
-
+    gris: 'rgb(183, 186, 189)',
     //register colors
     buttonColor: '#FA7330',
     buttonColorTransparent: 'rgba(250, 115, 48,65%) ',

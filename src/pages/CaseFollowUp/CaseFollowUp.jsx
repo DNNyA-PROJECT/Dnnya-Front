@@ -29,8 +29,8 @@ const CaseFollowUp = () => {
         ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
     ];
     const Header = [
-        ["Tipo de Caso", "Estado del Caso","Fecha de Alta"],
-      
+        ["Tipo de Caso", "Estado del Caso", "Fecha de Alta"],
+
     ];
 
     const [data, setData] = useState(customData);
@@ -59,16 +59,19 @@ const CaseFollowUp = () => {
                     <Menu />
                 </div>
 
-                <div className='container-fluid d-flex align-items-center flex-column col-lg-9 col-md-6 '>
-                    <div className='py-3 fw-bold'>
+                <div className='container-fluid d-flex flex-column col-lg-9 col-md-6 '>
+                    <div className='py-3 d-flex justify-content-center fw-bold'>
                         Buscador
                     </div>
-                    <div className='d-flex'>
-                        <Searcher query={query} handleInputChange={handleInputChange} />
+                    <div className='d-flex py-3 container-fluid' style={{ backgroundColor: window.themeColors.gris }}>
+                        <div className='d-flex align-items-center'>
+                            Busqueda
+                        </div>
+                        <Searcher query={query} className="br-0" handleInputChange={handleInputChange} />
                     </div>
                     <div className='py-3'>
-                        <AccordionComponent buttonText="Filtros" buttonClassName="fw-bold">
-                        <DataTable data={Header} headerBackgroundColor="#F2A57F" />
+                        <AccordionComponent buttonText="Filtros" buttonClassName="py-3 fw-bold">
+                            <DataTable data={Header} headerBackgroundColor="#F2A57F" />
                             <div className='row d-flex justify-content-between mx-3'>
                                 <div className='col-3'>
                                     <div className='container-fluid flex-column d-flex justify-content-evenly' >
@@ -139,7 +142,7 @@ const CaseFollowUp = () => {
                                 </div>
                                 <div className='col-3'>
                                     <div className='container-fluid flex-column d-flex justify-content-evenly' >
-                                     <input type="date" name="" className='py-3' id="" />
+                                        <input type="date" name="" className='py-3' id="" />
                                     </div>
                                 </div>
 
