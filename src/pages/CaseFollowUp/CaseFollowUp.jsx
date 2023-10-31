@@ -78,14 +78,14 @@ const CaseFollowUp = () => {
                                         <div className='col-3 w-100 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                             <label htmlFor="Individual" className="custom-checkbox">
                                                 Individual
-                                                <input type="checkbox" id="Individual" className="checkbox" name="Case" />
+                                                <input type="checkbox" id="Individual" className="checkbox" name="filter" />
                                                 <span className="checkmark"></span>
                                             </label>
                                         </div>
                                         <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                             <label htmlFor="GrandMother" className="custom-checkbox">
                                                 Grupal
-                                                <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                                <input type="checkbox" id="GrandMother" className="checkbox" name="filter" />
                                                 <span className="checkmark"></span>
                                             </label>
                                         </div>
@@ -95,44 +95,44 @@ const CaseFollowUp = () => {
                                 <div className='col-3'>
                                     <div className='container-fluid flex-column d-flex justify-content-evenly' >
                                         <div className='col-3 w-100 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="indi" className="custom-checkbox p-0">
+                                            <label htmlFor="Record with Follow-up" className="custom-checkbox p-0">
                                                 Grave con Seguimiento
-                                                <input type="checkbox" id="Individual" className="checkbox" name="Case" />
+                                                <input type="checkbox" id="Record with Follow-up" className="checkbox" name="filter" />
                                                 <span className="checkmark"></span>
                                             </label>
                                         </div>
                                         <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="GrandMother" className="custom-checkbox p-0">
+                                            <label htmlFor="Record-without-Follow-up" className="custom-checkbox p-0">
                                                 Grave sin Seguimiento
-                                                <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                                <input type="checkbox" id="Record-without-Follow-up" className="checkbox" name="filter" />
                                                 <span className="checkmark"></span>
                                             </label>
                                         </div>
                                         <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="GrandMother" className="custom-checkbox p-0">
-                                                Grave sin Seguimiento
-                                                <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                            <label htmlFor="followup" className="custom-checkbox p-0">
+                                                con Seguimiento
+                                                <input type="checkbox" id="followup" className="checkbox" name="filter" />
                                                 <span className="checkmark"></span>
                                             </label>
                                         </div>
                                         <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="GrandMother" className="custom-checkbox p-0">
-                                                Grave sin Seguimiento
-                                                <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                            <label htmlFor="Untracked" className="custom-checkbox p-0">
+                                                sin Seguimiento
+                                                <input type="checkbox" id="Untracked" className="checkbox" name="filter" />
                                                 <span className="checkmark"></span>
                                             </label>
                                         </div>
                                         <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="GrandMother" className="custom-checkbox p-0">
-                                                Grave sin Seguimiento
-                                                <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                            <label htmlFor="Derivate" className="custom-checkbox p-0">
+                                                Derivado
+                                                <input type="checkbox" id="Derivate" className="checkbox" name="filter" />
                                                 <span className="checkmark"></span>
                                             </label>
                                         </div>
                                         <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="GrandMother" className="custom-checkbox p-0">
-                                                Grave sin Seguimiento
-                                                <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                            <label htmlFor="Close" className="custom-checkbox p-0">
+                                               Cerrado
+                                                <input type="checkbox" id="Close" className="checkbox" name="filter" />
                                                 <span className="checkmark"></span>
                                             </label>
                                         </div>
