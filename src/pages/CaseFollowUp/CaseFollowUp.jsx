@@ -72,7 +72,7 @@ const CaseFollowUp = () => {
                     <Menu />
                 </div>
 
-                <div className='container-fluid d-flex flex-column col-lg-9 col-md-6 '>
+                <div className='container-fluid d-flex flex-column col-lg-10 m-0 p-0 col-md-6 '>
                     <div className='py-3 d-flex fs-3 justify-content-center fw-bold'>
                         Buscador
                     </div>
@@ -83,7 +83,7 @@ const CaseFollowUp = () => {
                         <Searcher query={query} className="br-0" handleInputChange={handleInputChange} />
                     </div>
                     <div className='py-3'>
-                        <AccordionComponent buttonText="Filtros" buttonClassName="py-3 fs-3 mb-3 fw-bold">
+                        <AccordionComponent buttonText="Filtros" buttonClassName="py-3 fs-3 fw-bold">
                             <DataTable data={Header} headerBackgroundColor="#F2A57F" />
                             <form action="">
                             <div className='row d-flex justify-content-between mx-3'>
