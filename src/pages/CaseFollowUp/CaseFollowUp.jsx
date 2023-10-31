@@ -85,6 +85,7 @@ const CaseFollowUp = () => {
                     <div className='py-3'>
                         <AccordionComponent buttonText="Filtros" buttonClassName="py-3 fs-3 mb-3 fw-bold">
                             <DataTable data={Header} headerBackgroundColor="#F2A57F" />
+                            <form action="">
                             <div className='row d-flex justify-content-between mx-3'>
                                 <div className='col-3'>
                                     <div className='container-fluid flex-column d-flex justify-content-evenly' >
@@ -158,9 +159,12 @@ const CaseFollowUp = () => {
                                         <input type="date" name="" className='py-3' id="" />
                                     </div>
                                 </div>
-
-
                             </div>
+                            <div className='d-flex align-items-center justify-content-center'>
+                                <button type='button' className='btn btn-lg'style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
+                >filtrar</button>
+                            </div>
+                            </form>
                         </AccordionComponent>
                     </div>
                     <div className='container-fluid table-container p-0 my-5 mx-0' style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '25vw' }}>
