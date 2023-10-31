@@ -12,21 +12,34 @@ import AccordionComponent from '../../components/AccordionComponent/AccordionCom
 window.themeColors = colors;
 
 const CaseFollowUp = () => {
+    
+    const ButtonArrow = () => {
+        const handleFolderClick = () => {
+
+        }
+        return (
+            <button className='folderButton' onClick={handleFolderClick}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-archive-fill" viewBox="0 0 16 16"> 
+                    <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z" />
+                </svg>
+            </button>
+        );
+    };
     const customData = [
         ["NNyA", "DNI", "Número del Caso", "Estado del Caso", "Fecha de Alta", " "],
-        ["Guiin Flynn", "39024532", "420", "Con Seguimiento", "17/08/23", " "],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", " "],
+        ["Guiin Flynn", "39024532", "420", "Con Seguimiento", "17/08/23", <ButtonArrow/> ],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
+        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
     ];
     const Header = [
         ["Tipo de Caso", "Estado del Caso", "Fecha de Alta"],
@@ -60,7 +73,7 @@ const CaseFollowUp = () => {
                 </div>
 
                 <div className='container-fluid d-flex flex-column col-lg-9 col-md-6 '>
-                    <div className='py-3 d-flex justify-content-center fw-bold'>
+                    <div className='py-3 d-flex fs-3 justify-content-center fw-bold'>
                         Buscador
                     </div>
                     <div className='d-flex py-3 container-fluid' style={{ backgroundColor: window.themeColors.gris }}>
@@ -70,7 +83,7 @@ const CaseFollowUp = () => {
                         <Searcher query={query} className="br-0" handleInputChange={handleInputChange} />
                     </div>
                     <div className='py-3'>
-                        <AccordionComponent buttonText="Filtros" buttonClassName="py-3 fw-bold">
+                        <AccordionComponent buttonText="Filtros" buttonClassName="py-3 fs-3 mb-3 fw-bold">
                             <DataTable data={Header} headerBackgroundColor="#F2A57F" />
                             <div className='row d-flex justify-content-between mx-3'>
                                 <div className='col-3'>
@@ -131,7 +144,7 @@ const CaseFollowUp = () => {
                                         </div>
                                         <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                             <label htmlFor="Close" className="custom-checkbox p-0">
-                                               Cerrado
+                                                Cerrado
                                                 <input type="checkbox" id="Close" className="checkbox" name="filter" />
                                                 <span className="checkmark"></span>
                                             </label>
