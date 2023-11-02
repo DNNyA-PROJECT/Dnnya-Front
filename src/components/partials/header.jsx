@@ -15,9 +15,9 @@ function Header() {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    
-  
-    window.location.href = '/Iniciar_sesion'; 
+
+
+    window.location.href = '/Iniciar_sesion';
   }
 
   const fetchUser = async () => {
@@ -65,10 +65,12 @@ function Header() {
         </div>
         <div className=' d-md-none'>
           {token ? (
-            <button onClick={handleLogout} className='user d-flex align-items-center' style={{ cursor: 'pointer' }}>
-              <i className="bi bi-box-arrow-right btn"></i>
-              <h4>Cerrar Sesión</h4>
-            </button>
+            <ul>
+              <button onClick={handleLogout} className='user d-flex align-items-center' style={{ cursor: 'pointer' }}>
+                <h4>Cerrar Sesión</h4>
+              </button>
+              <li><Link to="/Perfil"><h3 className='text-link fs-3 m-0 h-100 py-3'>Perfil</h3></Link></li>
+            </ul>
           ) : (
             <>
               <Link to="/Iniciar_sesion"><h3 className='text-link'>Iniciar Sesión</h3></Link>
@@ -83,8 +85,11 @@ function Header() {
             <div><h4>{selectedUser.username}</h4></div>
           </button>
           <ul className="dropdown-menu p-0 m-0" style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
-            {token ? ( 
-              <li><button onClick={handleLogout} className='text-link btn m-0 h-100'><h3>Cerrar Sesión</h3></button></li>
+            {token ? (
+              <ul className='p-0 m-0'>
+                <li><Link to="/Perfil"><h3 className='text-link fs-3 m-0 h-100 py-3'>Perfil</h3></Link></li>
+                <li><button onClick={handleLogout} className='text-link btn m-0 h-100'><h3>Cerrar Sesión</h3></button></li>
+              </ul>
             ) : (
               <>
                 <li><Link to="/Iniciar_sesion"><h3 className='text-link m-0 h-100 py-3'>Iniciar Sesión</h3></Link></li>
