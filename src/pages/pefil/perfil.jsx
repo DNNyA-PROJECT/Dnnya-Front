@@ -21,7 +21,7 @@ function perfil() {
                                     <input type="text" name="" className="form-control md mb-3" id="" placeholder="Estado Civil" />
                                 </div>
                             </div>
-                            <h3 className="d-flex justify-content-center">Infromación de Contacto</h3>
+                            <h3 className="d-flex py-3 justify-content-center">Infromación de Contacto</h3>
                             <div className="d-flex flex-column container-fluid py-5" style={{ backgroundColor: window.themeColors.boxColorBluSky }}>
                                 <div className="flex-wrap  row d-flex justify-content-center">
                                     <div className="col-3">
@@ -35,7 +35,7 @@ function perfil() {
                                     <input type="email" name="" id="" className="form-control w-100 form-control md text-center" placeholder="Correo Electronico" />
                                 </div>
                             </div>
-                            <h3 className="d-flex justify-content-center">Contacto de Emergencia</h3>
+                            <h3 className="d-flex py-3 justify-content-center">Contacto de Emergencia</h3>
                             <div className="d-flex flex-column container-fluid py-5" style={{ backgroundColor: window.themeColors.boxColorBluSky }}>
                                 <div className="flex-wrap  row d-flex justify-content-center">
                                     <div className="col-3">
@@ -49,10 +49,10 @@ function perfil() {
                                     <input type="Text" name="" id="" className="form-control w-100 form-control md text-center" placeholder="Informacion medica" />
                                 </div>
                             </div>
-                            <h3 className="d-flex justify-content-center">Informacion Extra</h3>
+                            <h3 className="d-flex py-3 justify-content-center">Informacion Extra</h3>
                             <div>
                                 <AccordionComponent buttonText={"Historial Educativo"} buttonClassName=" lightblue custom-btn mt-3 w-100 py-4 fs-4 m-0">
-                                    <div className="py-5 d-flex justify-content-center" style={{ backgroundColor: window.themeColors.boxColorBluSky }}>
+                                    <div className="pb-5 d-flex justify-content-center" style={{ backgroundColor: window.themeColors.boxColorBluSky }}>
                                         <input type="text" name="" id="" className="form-control md w-50" placeholder="Títulos academicos, Instituciones eductativas, Fechas de graduación" />
                                     </div>
                                 </AccordionComponent>
