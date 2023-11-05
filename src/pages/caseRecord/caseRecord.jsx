@@ -22,11 +22,15 @@ function CaseRecord() {
     const [formularios, setFormularios] = useState([]);
     const [inputValue, setInputValue] = useState('');
 
+
     const [checkboxState, setCheckboxState] = useState({
         TelAdvice: false,
         Presence: false,
         Intervention: false,
         Consent: false,
+        Monitoring: false,
+        Interview: false,
+        SocialNetwork: false,
     });
 
     const handleCheckboxChange = (checkboxName) => {
@@ -112,7 +116,6 @@ function CaseRecord() {
             }
         }
 
-
         for (var pair of formData.entries()) {
             console.log(pair[0] + ': ' + pair[1]);
         }
@@ -187,24 +190,30 @@ function CaseRecord() {
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="TelAdvice" className="custom-checkbox">
                                                         Asesoría Telefónica
-                                                        <input type="checkbox" id="TelAdvice" className="checkbox" onCustomCheckboxChange={handleCustomCheckboxChange}
-                                                            inputValue={inputValue}
+                                                        <input
+                                                            type="checkbox"
+                                                            id="TelAdvice"
+                                                            className="checkbox"
                                                             checked={checkboxState.TelAdvice}
                                                             onChange={() => handleCheckboxChange("TelAdvice")}
-                                                            onInputValueChange={handleInputValueChange} />
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
+
                                                 </div>
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="Presence" className="custom-checkbox">
                                                         Asesoría Presencial
-                                                        <input type="checkbox" id="Presence" className="checkbox" onCustomCheckboxChange={handleCustomCheckboxChange}
-                                                            inputValue={inputValue}
+                                                        <input
+                                                            type="checkbox"
+                                                            id="Presence"
+                                                            className="checkbox"
                                                             checked={checkboxState.Presence}
                                                             onChange={() => handleCheckboxChange("Presence")}
-                                                            onInputValueChange={handleInputValueChange} />
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
+
                                                 </div>
                                             </div>
 
@@ -212,22 +221,27 @@ function CaseRecord() {
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="Intervention" className="custom-checkbox">
                                                         Intervención
-                                                        <input type="checkbox" id="Intervention" className="checkbox" onCustomCheckboxChange={handleCustomCheckboxChange}
-                                                            inputValue={inputValue}
+                                                        <input
+                                                            type="checkbox"
+                                                            id="Intervention"
+                                                            className="checkbox"
                                                             checked={checkboxState.Intervention}
                                                             onChange={() => handleCheckboxChange("Intervention")}
-                                                            onInputValueChange={handleInputValueChange} />
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
+
                                                 </div>
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="Consent" className="custom-checkbox">
                                                         Consentimiento
-                                                        <input type="checkbox" id="Consent" className="checkbox" onCustomCheckboxChange={handleCustomCheckboxChange}
-                                                            inputValue={inputValue}
+                                                        <input
+                                                            type="checkbox"
+                                                            id="Consent"
+                                                            className="checkbox"
                                                             checked={checkboxState.Consent}
                                                             onChange={() => handleCheckboxChange("Consent")}
-                                                            onInputValueChange={handleInputValueChange} />
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
@@ -237,14 +251,26 @@ function CaseRecord() {
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="Monitoring" className="custom-checkbox">
                                                         Monitoreo
-                                                        <input type="checkbox" id="Monitoring" className="checkbox" name="Atencion" />
+                                                        <input
+                                                            type="checkbox"
+                                                            id="Monitoring"
+                                                            className="checkbox"
+                                                            checked={checkboxState.Monitoring}
+                                                            onChange={() => handleCheckboxChange("Monitoring")}
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="Interview" className="custom-checkbox">
                                                         Entrevista a Domicilio
-                                                        <input type="checkbox" id="Interview" className="checkbox" name="Atencion" />
+                                                        <input
+                                                            type="checkbox"
+                                                            id="Interview"
+                                                            className="checkbox"
+                                                            checked={checkboxState.Interview}
+                                                            onChange={() => handleCheckboxChange("Interview")}
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
@@ -254,7 +280,13 @@ function CaseRecord() {
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="SocialNetwork" className="custom-checkbox">
                                                         Redes Sociales
-                                                        <input type="checkbox" id="SocialNetwork" className="checkbox" name="Atencion" />
+                                                        <input
+                                                            type="checkbox"
+                                                            id="SocialNetwork"
+                                                            className="checkbox"
+                                                            checked={checkboxState.SocialNetwork}
+                                                            onChange={() => handleCheckboxChange("SocialNetwork")}
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
@@ -280,14 +312,28 @@ function CaseRecord() {
                                             <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                 <label htmlFor="Anonimus" className="custom-checkbox">
                                                     Anónimo/a ?
-                                                    <input type="checkbox" id="Anonimus" className="checkbox" name="Relation" />
+                                                    <input
+                                                        type="checkbox"
+                                                        id="Anonimus"
+                                                        className="checkbox"
+                                                        name="Relation"
+                                                        onChange={() => handleCheckboxChange("Anonimus")}
+                                                        checked={checkboxState.Anonimus}
+                                                    />
                                                     <span className="checkmark"></span>
                                                 </label>
                                             </div>
                                             <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                 <label htmlFor="GrandMother" className="custom-checkbox">
                                                     Abuela
-                                                    <input type="checkbox" id="GrandMother" className="checkbox" name="Relation" />
+                                                    <input
+                                                        type="checkbox"
+                                                        id="GrandMother"
+                                                        className="checkbox"
+                                                        name="Relation"
+                                                        onChange={() => handleCheckboxChange("GrandMother")}
+                                                        checked={checkboxState.GrandMother}
+                                                    />
                                                     <span className="checkmark"></span>
                                                 </label>
                                             </div>
