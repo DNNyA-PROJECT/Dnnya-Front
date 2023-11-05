@@ -12,6 +12,7 @@ import Searcher from '../../components/searcher/searcher.jsx'
 import FormularioNnya from '../../components/addnnya/FormualrioNnya.jsx'
 import CustomInputButton from '../../components/custom/customInputButton.jsx';
 import AccordionComponent from '../../components/AccordionComponent/AccordionComponent.jsx'
+import axios from 'axios';
 
 window.themeColors = colors;
 
@@ -27,44 +28,6 @@ function CaseRecord() {
         Intervention: false,
         Consent: false,
     });
-
-    const handleInputValueChange = (value) => {
-        setInputValue(value);
-    };
-
-    const token = localStorage.getItem('token');
-
-    const handlePost = () => {
-        const data = {
-            checkboxes: checkboxState,
-            inputValue: inputValue,
-        };
-
-        axios
-            .post('http://localhost:8080', data, {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then((response) => {
-                if (response.status === 200) {
-                    console.log('Respuesta del servidor:', response.data);
-                } else {
-                    console.log('Respuesta con un estado inesperado:', response.status);
-                }
-            })
-            .catch((error) => {
-                if (error.response) {
-                    console.error('Error en la respuesta:', error.response.data);
-                } else if (error.request) {
-                    console.error('Error de red:', error.message);
-                } else {
-                    console.error('Error desconocido:', error.message);
-                }
-            });
-    };
-
 
     const handleCheckboxChange = (checkboxName) => {
         setCheckboxState({
@@ -122,6 +85,63 @@ function CaseRecord() {
         setData(filteredData);
     };
 
+    const handleInputValueChange = (value) => {
+        setInputValue(value);
+    };
+
+    const handleCustomCheckboxChange = (checkboxName) => {
+        setCheckboxState({
+            ...checkboxState,
+            [checkboxName]: !checkboxState[checkboxName],
+        });
+    };
+
+    const token = localStorage.getItem('token');
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append('inputValue', inputValue);
+
+        for (const checkbox in checkboxState) {
+            if (checkboxState[checkbox]) {
+                formData.append(checkbox, 'true');
+            } else {
+                formData.append(checkbox, 'false');
+            }
+        }
+
+
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
+
+
+        axios
+            .post('http://localhost:8080', formData, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data',
+                },
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log('Respuesta del servidor:', response.data);
+                } else {
+                    console.log('Respuesta con un estado inesperado:', response.status);
+                }
+            })
+            .catch((error) => {
+                if (error.response) {
+                    console.error('Error en la respuesta:', error.response.data);
+                } else if (error.request) {
+                    console.error('Error de red:', error.message);
+                } else {
+                    console.error('Error desconocido:', error.message);
+                }
+            });
+    };
 
 
     return (
@@ -142,7 +162,7 @@ function CaseRecord() {
                             <h3>Detalles de Registro e Identificación del Caso</h3>
                         </div>
 
-                        <form onSubmit={(event) => handleSubmit(event)}>
+                        <form onSubmit={handleFormSubmit}>
                             <div className='container py-5 px-3 mb-3 ' style={{ backgroundColor: window.themeColors.boxBorder }}>
                                 <AccordionComponent buttonText="Registro De aserorías E intervenciones" buttonClassName="fw-bold greenColor custom-btn w-100 py-4 fs-4 m-0">
                                     <div className='container  mb-3 p-5 ' style={{ backgroundColor: window.themeColors.boxColorGreen }}>
@@ -167,14 +187,22 @@ function CaseRecord() {
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="TelAdvice" className="custom-checkbox">
                                                         Asesoría Telefónica
-                                                        <input type="checkbox" id="TelAdvice" className="checkbox" onChange={handleCheckboxChange} />
+                                                        <input type="checkbox" id="TelAdvice" className="checkbox" onCustomCheckboxChange={handleCustomCheckboxChange}
+                                                            inputValue={inputValue}
+                                                            checked={checkboxState.TelAdvice}
+                                                            onChange={() => handleCheckboxChange("TelAdvice")}
+                                                            onInputValueChange={handleInputValueChange} />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="Presence" className="custom-checkbox">
                                                         Asesoría Presencial
-                                                        <input type="checkbox" id="Presence" className="checkbox" onChange={handleCheckboxChange} />
+                                                        <input type="checkbox" id="Presence" className="checkbox" onCustomCheckboxChange={handleCustomCheckboxChange}
+                                                            inputValue={inputValue}
+                                                            checked={checkboxState.Presence}
+                                                            onChange={() => handleCheckboxChange("Presence")}
+                                                            onInputValueChange={handleInputValueChange} />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
@@ -184,14 +212,22 @@ function CaseRecord() {
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="Intervention" className="custom-checkbox">
                                                         Intervención
-                                                        <input type="checkbox" id="Intervention" className="checkbox" onChange={handleCheckboxChange} />
+                                                        <input type="checkbox" id="Intervention" className="checkbox" onCustomCheckboxChange={handleCustomCheckboxChange}
+                                                            inputValue={inputValue}
+                                                            checked={checkboxState.Intervention}
+                                                            onChange={() => handleCheckboxChange("Intervention")}
+                                                            onInputValueChange={handleInputValueChange} />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                     <label htmlFor="Consent" className="custom-checkbox">
                                                         Consentimiento
-                                                        <input type="checkbox" id="Consent" className="checkbox" onChange={handleCheckboxChange} />
+                                                        <input type="checkbox" id="Consent" className="checkbox" onCustomCheckboxChange={handleCustomCheckboxChange}
+                                                            inputValue={inputValue}
+                                                            checked={checkboxState.Consent}
+                                                            onChange={() => handleCheckboxChange("Consent")}
+                                                            onInputValueChange={handleInputValueChange} />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
