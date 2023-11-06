@@ -31,6 +31,21 @@ function CaseRecord() {
         Monitoring: false,
         Interview: false,
         SocialNetwork: false,
+        //
+        Anonimus: false,
+        Mother: false,
+        Father: false,
+        GrandFather: false,
+        GrandMother: false,
+        //
+        PhysicalViolence: false,
+        SexualAbuse: false,
+        Relinking: false,
+        Adoptability: false,
+        Abandonment: false,
+        AbsenceFromSchool: false,
+        HealthCondition: false,
+
     });
 
     const handleCheckboxChange = (checkboxName) => {
@@ -311,7 +326,7 @@ function CaseRecord() {
                                         <div className='row d-flex justify-content-evenly' >
                                             <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                 <label htmlFor="Anonimus" className="custom-checkbox">
-                                                    Anónimo/a ?
+                                                    Anonimo/a
                                                     <input
                                                         type="checkbox"
                                                         id="Anonimus"
@@ -342,14 +357,29 @@ function CaseRecord() {
                                             <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                 <label htmlFor="Father" className="custom-checkbox">
                                                     Padre
-                                                    <input type="checkbox" id="Father" className="checkbox" name="Relation" />
+                                                    <input
+                                                        type="checkbox"
+                                                        id="Father"
+                                                        className="checkbox"
+                                                        name="Relation"
+                                                        onChange={() => handleCheckboxChange("Father")}
+                                                        checked={checkboxState.Father}
+                                                    />
                                                     <span className="checkmark"></span>
                                                 </label>
+
                                             </div>
                                             <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                 <label htmlFor="GrandFather" className="custom-checkbox">
                                                     Abuelo
-                                                    <input type="checkbox" id="GrandFather" className="checkbox" name="Relation" />
+                                                    <input
+                                                        type="checkbox"
+                                                        id="GrandFather"
+                                                        className="checkbox"
+                                                        name="Relation"
+                                                        onChange={() => handleCheckboxChange("GrandFather")}
+                                                        checked={checkboxState.GrandFather}
+                                                    />
                                                     <span className="checkmark"></span>
                                                 </label>
                                             </div>
@@ -359,7 +389,14 @@ function CaseRecord() {
                                             <div className='col-3 mb-3 py-3 d-flex  align-items-center ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                 <label htmlFor="Mother" className="custom-checkbox">
                                                     Madre
-                                                    <input type="checkbox" id="Mother" className="checkbox" name="Relation" />
+                                                    <input
+                                                        type="checkbox"
+                                                        id="Mother"
+                                                        className="checkbox"
+                                                        name="Relation"
+                                                        onChange={() => handleCheckboxChange("Mother")}
+                                                        checked={checkboxState.Mother}
+                                                    />
                                                     <span className="checkmark"></span>
                                                 </label>
                                             </div>
@@ -439,57 +476,106 @@ function CaseRecord() {
 
                                             <div className='row d-flex justify-content-evenly' >
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="Fisic" className="custom-checkbox">
-                                                        Violencia Fisica
-                                                        <input type="checkbox" id="Fisic" className="checkbox" name="Reason" />
+                                                    <label htmlFor="PhysicalViolence" className="custom-checkbox">
+                                                        Violencia Física
+                                                        <input
+                                                            type="checkbox"
+                                                            id="PhysicalViolence"
+                                                            className="checkbox"
+                                                            name="Relation"
+                                                            onChange={() => handleCheckboxChange("PhysicalViolence")}
+                                                            checked={checkboxState.PhysicalViolence}
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="Sexual" className="custom-checkbox">
+                                                    <label htmlFor="SexualAbuse" className="custom-checkbox">
                                                         Abuso Sexual
-                                                        <input type="checkbox" id="Sexual" className="checkbox" name="Reason" />
+                                                        <input
+                                                            type="checkbox"
+                                                            id="SexualAbuse"
+                                                            className="checkbox"
+                                                            name="Relation"
+                                                            onChange={() => handleCheckboxChange("SexualAbuse")}
+                                                            checked={checkboxState.SexualAbuse}
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
                                             </div>
                                             <div className='row d-flex justify-content-evenly' >
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="revincualation" className="custom-checkbox">
+                                                    <label htmlFor="Relinking" className="custom-checkbox">
                                                         Revinculación
-                                                        <input type="checkbox" id="revincualation" className="checkbox" name="Reason" />
+                                                        <input
+                                                            type="checkbox"
+                                                            id="Relinking"
+                                                            className="checkbox"
+                                                            name="Relation"
+                                                            onChange={() => handleCheckboxChange("Relinking")}
+                                                            checked={checkboxState.Relinking}
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="Adop" className="custom-checkbox">
-                                                        Adoptibilidad
-                                                        <input type="checkbox" id="Adop" className="checkbox" name="Reason" />
+                                                <label htmlFor="Adoptability" className="custom-checkbox">
+                                                       Adoptabilidad
+                                                        <input
+                                                            type="checkbox"
+                                                            id="Adoptability"
+                                                            className="checkbox"
+                                                            name="Relation"
+                                                            onChange={() => handleCheckboxChange("Adoptability")}
+                                                            checked={checkboxState.Adoptability}
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
                                             </div>
                                             <div className='row d-flex justify-content-evenly' >
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="Abandoned" className="custom-checkbox">
-                                                        Abandono
-                                                        <input type="checkbox" id="Abandoned" className="checkbox" name="Reason" />
+                                                <label htmlFor="Abandonment" className="custom-checkbox">
+                                                       Abandono
+                                                        <input
+                                                            type="checkbox"
+                                                            id="Abandonment"
+                                                            className="checkbox"
+                                                            name="Relation"
+                                                            onChange={() => handleCheckboxChange("Abandonment")}
+                                                            checked={checkboxState.Abandonment}
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="Ausent" className="custom-checkbox">
-                                                        Ausencia a la Escuela
-                                                        <input type="checkbox" id="Ausent" className="checkbox" name="Reason" />
+                                                <label htmlFor="AbsenceFromSchool" className="custom-checkbox">
+                                                       Ausencia de la Escuela
+                                                        <input
+                                                            type="checkbox"
+                                                            id="AbsenceFromSchool"
+                                                            className="checkbox"
+                                                            name="Relation"
+                                                            onChange={() => handleCheckboxChange("AbsenceFromSchool")}
+                                                            checked={checkboxState.AbsenceFromSchool}
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
                                             </div>
                                             <div className='row d-flex justify-content-evenly' >
                                                 <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="State" className="custom-checkbox">
-                                                        Estado de Salud
-                                                        <input type="checkbox" id="State" className="checkbox" name="Reason" />
+                                                <label htmlFor="HealthCondition" className="custom-checkbox">
+                                                    Estado de Salud
+                                                        <input
+                                                            type="checkbox"
+                                                            id="HealthCondition"
+                                                            className="checkbox"
+                                                            name="Relation"
+                                                            onChange={() => handleCheckboxChange("HealthCondition")}
+                                                            checked={checkboxState.HealthCondition}
+                                                        />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
