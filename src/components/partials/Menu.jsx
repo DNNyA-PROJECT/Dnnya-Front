@@ -26,7 +26,7 @@ function Menu() {
         <img src={DeFLogo} className='DeFLogo my-3 ' alt="logo de defensoria" />
         <ul className='mt-3 container-fluid p-0'>
           <li
-            className={`mb-3 pt-3 pb-3 text-center`}
+            className={`mb-3 text-center block`}
             style={{
               ...backgroundStyle('/'),
               ':hover': {
@@ -35,15 +35,19 @@ function Menu() {
               },
             }}
           >
-            <Link
-              to="/"
-              className={` ${location.pathname === '/' ? 'active' : ''} ${textClass('/')}`}
+            <Link to="/" className={` ${location.pathname === '/' ? 'active' : ''} ${textClass('/')}`}
+              style={{
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                padding: '1rem',
+              }}
             >
               <h3 className={`text-link ${textClass('/')}`}>Inicio</h3>
             </Link>
           </li>
           <li
-            className={`mb-3 pt-3 pb-3 text-center`}
+            className={`mb-3 text-center block`}
             style={{
               ...backgroundStyle('/Dashboard'),
               ':hover': {
@@ -52,15 +56,20 @@ function Menu() {
               },
             }}
           >
-            <Link
-              to="/Dashboard"
-              className={` ${location.pathname === '/Dashboard' ? 'active' : ''} ${textClass('/Dashboard')}`}
+            <Link to="/Dashboard" className={` ${location.pathname === '/Dashboard' ? 'active' : ''} ${textClass('/Dashboard')}`}
+              style={{
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                padding: '1rem',
+              }}
             >
               <h3 className={`text-link ${textClass('/Dashboard')}`}>Dashboard</h3>
             </Link>
           </li>
+
           <li
-            className={`mb-3 pt-3 pb-3 text-center`}
+            className={`mb-3 text-center`}
             style={{
               ...backgroundStyle('/Lista_De_Usuarios'),
               ':hover': {
@@ -69,16 +78,20 @@ function Menu() {
               },
             }}
           >
-            <Link
-              to="/Lista_De_Usuarios"
-              className={` ${location.pathname === '/Lista_De_Usuarios' ? 'active' : ''} ${textClass('/Lista_De_Usuarios')}`}
+            <Link to="/Lista_De_Usuarios" className={` ${location.pathname === '/Lista_De_Usuarios' ? 'active' : ''} ${textClass('/Lista_De_Usuarios')}`}
+              style={{
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                padding: '1rem',
+              }}
             >
               <h3 className={`text-link ${textClass('/Lista_De_Usuarios')}`}>Listado de Usuarios</h3>
             </Link>
-            
           </li>
+
           <li
-            className={`mb-3 pt-3 pb-3 text-center`}
+            className={`mb-3 text-center`}
             style={{
               ...backgroundStyle('/Envio_de_Formulario'),
               ':hover': {
@@ -87,17 +100,21 @@ function Menu() {
               },
             }}
           >
-            <Link
-              to="/Envio_de_Formulario"
-              className={` ${location.pathname === '/Envio_de_Formulario' ? 'active' : ''} ${textClass('/Envio_de_Formulario')}`}
+            <Link to="/Envio_de_Formulario" className={` ${location.pathname === '/Envio_de_Formulario' ? 'active' : ''} ${textClass('/Envio_de_Formulario')}`}
+              style={{
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                padding: '1rem',
+              }}
             >
               <h3 className={`text-link ${textClass('/Envio_de_Formulario')}`}>Envio de Formulario</h3>
             </Link>
-            
           </li>
-          
+
+
           <li
-            className={`mb-3 pt-3 pb-3 text-center`}
+            className={`mb-3 text-center`}
             style={{
               ...backgroundStyle('/Registro_De_Caso'),
               ':hover': {
@@ -106,17 +123,20 @@ function Menu() {
               },
             }}
           >
-            <Link
-              to="/Registro_De_Caso"
-              className={` ${location.pathname === '/Registro_De_Caso' ? 'active' : ''} ${textClass('/Registro_De_Caso')}`}
+            <Link to="/Registro_De_Caso" className={` ${location.pathname === '/Registro_De_Caso' ? 'active' : ''} ${textClass('/Registro_De_Caso')}`}
+              style={{
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                padding: '1rem',
+              }}
             >
               <h3 className={`text-link ${textClass('/Registro_De_Caso')}`}>Registro de Casos</h3>
             </Link>
-            
           </li>
 
           <li
-            className={`mb-3 pt-3 pb-3 text-center`}
+            className={`mb-3 text-center`}
             style={{
               ...backgroundStyle('/Seguimiento_de_Caso'),
               ':hover': {
@@ -125,14 +145,18 @@ function Menu() {
               },
             }}
           >
-            <Link
-              to="/Seguimiento_de_Caso"
-              className={` ${location.pathname === '/Seguimiento_de_Caso' ? 'active' : ''} ${textClass('/Seguimiento_de_Caso')}`}
+            <Link to="/Seguimiento_de_Caso" className={` ${location.pathname === '/Seguimiento_de_Caso' ? 'active' : ''} ${textClass('/Seguimiento_de_Caso')}`}
+              style={{
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                padding: '1rem',
+              }}
             >
               <h3 className={`text-link ${textClass('/Seguimiento_de_Caso')}`}>Seguimiento de Caso</h3>
             </Link>
-            
           </li>
+
         </ul>
       </div>
     </>
