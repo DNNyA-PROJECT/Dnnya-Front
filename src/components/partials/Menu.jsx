@@ -43,7 +43,7 @@ function Menu() {
                 padding: '1rem',
               }}
             >
-              <h3 className={`text-link ${textClass('/')}`}>Inicio</h3>
+              <h3 className={`text-link text-center ${textClass('/')}`}>Inicio</h3>
             </Link>
           </li>
           <li
@@ -64,7 +64,7 @@ function Menu() {
                 padding: '1rem',
               }}
             >
-              <h3 className={`text-link ${textClass('/Dashboard')}`}>Dashboard</h3>
+              <h3 className={`text-link text-center ${textClass('/Dashboard')}`}>Dashboard</h3>
             </Link>
           </li>
 
@@ -86,7 +86,7 @@ function Menu() {
                 padding: '1rem',
               }}
             >
-              <h3 className={`text-link ${textClass('/Lista_De_Usuarios')}`}>Listado de Usuarios</h3>
+              <h3 className={`text-link  text-center ${textClass('/Lista_De_Usuarios')}`}>Listado de Usuarios</h3>
             </Link>
           </li>
 
@@ -108,7 +108,7 @@ function Menu() {
                 padding: '1rem',
               }}
             >
-              <h3 className={`text-link ${textClass('/Envio_de_Formulario')}`}>Envio de Formulario</h3>
+              <h3 className={`text-link  text-center ${textClass('/Envio_de_Formulario')}`}>Envio de Formulario</h3>
             </Link>
           </li>
 
@@ -131,7 +131,7 @@ function Menu() {
                 padding: '1rem',
               }}
             >
-              <h3 className={`text-link ${textClass('/Registro_De_Caso')}`}>Registro de Casos</h3>
+              <h3 className={`text-link  text-center ${textClass('/Registro_De_Caso')}`}>Registro de Casos</h3>
             </Link>
           </li>
 
@@ -153,7 +153,7 @@ function Menu() {
                 padding: '1rem',
               }}
             >
-              <h3 className={`text-link ${textClass('/Seguimiento_de_Caso')}`}>Seguimiento de Caso</h3>
+              <h3 className={`text-link  text-center ${textClass('/Seguimiento_de_Caso')}`}>Seguimiento de Caso</h3>
             </Link>
           </li>
 
