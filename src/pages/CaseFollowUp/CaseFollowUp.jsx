@@ -53,13 +53,22 @@ const CaseFollowUp = () => {
     const [data, setData] = useState(customData);
 
     const handleInputChange = (e) => {
-        const inputValue = e.target.value.toLowerCase().trim();
+        const inputValue = e.target.value.toLowerCase();
         setQuery(inputValue);
       
         const filteredData = customData.filter((row, rowIndex) => (
           rowIndex === 0 ||
           (!isChecked || row[3].toLowerCase().includes("grave")) &&
-          row.some((cell) => typeof cell === 'string' && cell.toLowerCase().includes(inputValue))
+          (!isGraveWithoutFollowUp || row[3].toLowerCase().includes("grave sin seguimiento")) &&
+          row.some((cell) => {
+            if (typeof cell === 'string') {
+              const cellValue = cell.toLowerCase();
+              const searchWords = inputValue.split(' ').filter(word => word.trim() !== '');
+      
+              return searchWords.every(word => cellValue.includes(word));
+            }
+            return false;
+          })
         ));
       
         setData(filteredData);
