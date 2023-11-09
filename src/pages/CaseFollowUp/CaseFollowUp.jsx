@@ -12,14 +12,14 @@ import AccordionComponent from '../../components/AccordionComponent/AccordionCom
 window.themeColors = colors;
 
 const CaseFollowUp = () => {
-    
+
     const ButtonArrow = () => {
         const handleFolderClick = () => {
 
         }
         return (
             <button className='folderButton' onClick={handleFolderClick}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-archive-fill" viewBox="0 0 16 16"> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-archive-fill" viewBox="0 0 16 16">
                     <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z" />
                 </svg>
             </button>
@@ -27,42 +27,63 @@ const CaseFollowUp = () => {
     };
     const customData = [
         ["NNyA", "DNI", "Número del Caso", "Estado del Caso", "Fecha de Alta", " "],
-        ["Guiin Flynn", "39024532", "420", "Con Seguimiento", "17/08/23", <ButtonArrow/> ],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
-        ["Soynara Frost", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow/> ],
+        ["Guiin Flynn", "39024532", "420", "Con Seguimiento", "17/08/23", <ButtonArrow />],
+        ["Lionel Andres Messi", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow />],
+        ["Cristiano Penaldo", "42124532", "660", "Grave con Seguimiento", "02/10/23", <ButtonArrow />],
+        ["Juan Roman Frizelme", "42124532", "660", "Grave sin Seguimiento", "02/10/23", <ButtonArrow />],
+        ["Ariel Ortega", "42124532", "660", "Derivado", "02/10/23", <ButtonArrow />],
+        ["Cesar Aimar", "42124532", "660", "Cerrado", "02/10/23", <ButtonArrow />],
+        ["Guiin Flynn", "39024532", "420", "Con Seguimiento", "17/08/23", <ButtonArrow />],
+        ["Lionel Andres Messi", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow />],
+        ["Cristiano Penaldo", "42124532", "660", "Grave con Seguimiento", "02/10/23", <ButtonArrow />],
+        ["Juan Roman Frizelme", "42124532", "660", "Grave sin Seguimiento", "02/10/23", <ButtonArrow />],
+        ["Ariel Ortega", "42124532", "660", "Derivado", "02/10/23", <ButtonArrow />],
+        ["Cesar Aimar", "42124532", "660", "Cerrado", "02/10/23", <ButtonArrow />],
     ];
+
     const Header = [
         ["Tipo de Caso", "Estado del Caso", "Fecha de Alta"],
 
     ];
 
-    const [data, setData] = useState(customData);
     const [query, setQuery] = useState('');
+    const [isChecked, setIsChecked] = useState(false);
+    const [data, setData] = useState(customData);
 
     const handleInputChange = (e) => {
-        const inputValue = e.target.value;
+        const inputValue = e.target.value.toLowerCase().trim();
         setQuery(inputValue);
 
         const filteredData = customData.filter((row, rowIndex) => {
             if (rowIndex === 0) {
                 return true;
             }
-            return row.some((cell) =>
-                typeof cell === 'string' && cell.toLowerCase().includes(inputValue.toLowerCase())
-            );
+
+            const graveWithFollowUp = row[3].toLowerCase();
+
+            return (!isChecked || graveWithFollowUp === "grave con seguimiento") &&
+                row.some((cell) => typeof cell === 'string' && cell.toLowerCase().includes(inputValue));
         });
+
         setData(filteredData);
     };
+
+    const handleCheckboxChange = () => {
+        const updatedIsChecked = !isChecked;
+      
+        const filteredData = customData.filter((row, rowIndex) => {
+          if (rowIndex === 0) {
+            return true;
+          }
+      
+          const graveWithFollowUp = row[3].toLowerCase();
+      
+          return updatedIsChecked ? graveWithFollowUp === "grave con seguimiento" : true;
+        });
+      
+        setIsChecked(updatedIsChecked);
+        setData(filteredData);
+      };
 
     return (
         <div>
@@ -86,84 +107,81 @@ const CaseFollowUp = () => {
                         <AccordionComponent buttonText="Filtros" buttonClassName="py-3 fs-3 fw-bold">
                             <DataTable data={Header} headerBackgroundColor="#F2A57F" />
                             <form action="">
-                            <div className='row d-flex justify-content-between mx-3'>
-                                <div className='col-3'>
-                                    <div className='container-fluid flex-column d-flex justify-content-evenly' >
-                                        <div className='col-3 w-100 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="Individual" className="custom-checkbox">
-                                                Individual
-                                                <input type="checkbox" id="Individual" className="checkbox" name="filter" />
-                                                <span className="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="GrandMother" className="custom-checkbox">
-                                                Grupal
-                                                <input type="checkbox" id="GrandMother" className="checkbox" name="filter" />
-                                                <span className="checkmark"></span>
-                                            </label>
+                                <div className='row d-flex justify-content-between mx-3'>
+                                    <div className='col-3'>
+                                        <div className='container-fluid flex-column d-flex justify-content-evenly' >
+                                            <div className='col-3 w-100 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                                <label htmlFor="Individual" className="custom-checkbox">
+                                                    Individual
+                                                    <input type="checkbox" id="Individual" className="checkbox" name="filter" />
+                                                    <span className="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                                <label htmlFor="GrandMother" className="custom-checkbox">
+                                                    Grupal
+                                                    <input type="checkbox" id="GrandMother" className="checkbox" name="filter" />
+                                                    <span className="checkmark"></span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div className='col-3'>
-                                    <div className='container-fluid flex-column d-flex justify-content-evenly' >
-                                        <div className='col-3 w-100 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="Record with Follow-up" className="custom-checkbox p-0">
-                                                Grave con Seguimiento
-                                                <input type="checkbox" id="Record with Follow-up" className="checkbox" name="filter" />
-                                                <span className="checkmark"></span>
-                                            </label>
+                                    <div className='col-3'>
+                                        <div className='container-fluid flex-column d-flex justify-content-evenly' >
+                                            <div className='col-3 w-100 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                                <label htmlFor="Record with Follow-up" className="custom-checkbox p-0">
+                                                    Grave con Seguimiento
+                                                    <input type="checkbox" id="Record with Follow-up" checked={isChecked}
+                                                        onChange={handleCheckboxChange} className="checkbox" name="filter" />
+                                                    <span className="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                                <label htmlFor="Record-without-Follow-up" className="custom-checkbox p-0">
+                                                    Grave sin Seguimiento
+                                                    <input type="checkbox" id="Record-without-Follow-up" className="checkbox" name="filter" />
+                                                    <span className="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                                <label htmlFor="followup" className="custom-checkbox p-0">
+                                                    con Seguimiento
+                                                    <input type="checkbox" id="followup" className="checkbox" name="filter" />
+                                                    <span className="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                                <label htmlFor="Untracked" className="custom-checkbox p-0">
+                                                    sin Seguimiento
+                                                    <input type="checkbox" id="Untracked" className="checkbox" name="filter" />
+                                                    <span className="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                                <label htmlFor="Derivate" className="custom-checkbox p-0">
+                                                    Derivado
+                                                    <input type="checkbox" id="Derivate" className="checkbox" name="filter" />
+                                                    <span className="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
+                                                <label htmlFor="Close" className="custom-checkbox p-0">
+                                                    Cerrado
+                                                    <input type="checkbox" id="Close" className="checkbox" name="filter" />
+                                                    <span className="checkmark"></span>
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="Record-without-Follow-up" className="custom-checkbox p-0">
-                                                Grave sin Seguimiento
-                                                <input type="checkbox" id="Record-without-Follow-up" className="checkbox" name="filter" />
-                                                <span className="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="followup" className="custom-checkbox p-0">
-                                                con Seguimiento
-                                                <input type="checkbox" id="followup" className="checkbox" name="filter" />
-                                                <span className="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="Untracked" className="custom-checkbox p-0">
-                                                sin Seguimiento
-                                                <input type="checkbox" id="Untracked" className="checkbox" name="filter" />
-                                                <span className="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="Derivate" className="custom-checkbox p-0">
-                                                Derivado
-                                                <input type="checkbox" id="Derivate" className="checkbox" name="filter" />
-                                                <span className="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                            <label htmlFor="Close" className="custom-checkbox p-0">
-                                                Cerrado
-                                                <input type="checkbox" id="Close" className="checkbox" name="filter" />
-                                                <span className="checkmark"></span>
-                                            </label>
+                                        <div>
                                         </div>
                                     </div>
-                                    <div>
+                                    <div className='col-3'>
+                                        <div className='container-fluid flex-column d-flex justify-content-evenly' >
+                                            <input type="date" name="" className='py-3' id="" />
+                                        </div>
                                     </div>
                                 </div>
-                                <div className='col-3'>
-                                    <div className='container-fluid flex-column d-flex justify-content-evenly' >
-                                        <input type="date" name="" className='py-3' id="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='d-flex align-items-center justify-content-center'>
-                                <button type='button' className='btn btn-lg'style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
-                >filtrar</button>
-                            </div>
                             </form>
                         </AccordionComponent>
                     </div>
