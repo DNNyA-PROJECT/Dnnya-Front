@@ -19,14 +19,16 @@ const CaseFollowUp = () => {
         }
         return (
             <button className='folderButton' onClick={handleFolderClick}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-archive-fill" viewBox="0 0 16 16">
-                    <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-medical" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v.634l.549-.317a.5.5 0 1 1 .5.866L9 6l.549.317a.5.5 0 1 1-.5.866L8.5 6.866V7.5a.5.5 0 0 1-1 0v-.634l-.549.317a.5.5 0 1 1-.5-.866L7 6l-.549-.317a.5.5 0 0 1 .5-.866l.549.317V4.5A.5.5 0 0 1 8 4zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
                 </svg>
             </button>
         );
     };
     const customData = [
-        ["NNyA", "DNI", "Número del Caso", "Estado del Caso", "Fecha de Alta", " "],
+        ["NNyA", "DNI", "Número del Caso", "Estado del Caso", "Fecha de Alta", "Caso"],
         ["Guiin Flynn", "39024532", "420", "Con Seguimiento", "17/08/23", <ButtonArrow />],
         ["Lionel Andres Messi", "42124532", "660", "Sin Seguimiento", "02/10/23", <ButtonArrow />],
         ["Cristiano Penaldo", "42124532", "660", "Grave con Seguimiento", "02/10/23", <ButtonArrow />],
@@ -55,47 +57,47 @@ const CaseFollowUp = () => {
     const handleInputChange = (e) => {
         const inputValue = e.target.value.toLowerCase();
         setQuery(inputValue);
-      
+
         const filteredData = customData.filter((row, rowIndex) => (
-          rowIndex === 0 ||
-          (!isChecked || row[3].toLowerCase().includes("grave")) &&
-          (!isGraveWithoutFollowUp || row[3].toLowerCase().includes("grave sin seguimiento")) &&
-          row.some((cell) => {
-            if (typeof cell === 'string') {
-              const cellValue = cell.toLowerCase();
-              const searchWords = inputValue.split(' ').filter(word => word.trim() !== '');
-      
-              return searchWords.every(word => cellValue.includes(word));
-            }
-            return false;
-          })
+            rowIndex === 0 ||
+            (!isChecked || row[3].toLowerCase().includes("grave")) &&
+            (!isGraveWithoutFollowUp || row[3].toLowerCase().includes("grave sin seguimiento")) &&
+            row.some((cell) => {
+                if (typeof cell === 'string') {
+                    const cellValue = cell.toLowerCase();
+                    const searchWords = inputValue.split(' ').filter(word => word.trim() !== '');
+
+                    return searchWords.every(word => cellValue.includes(word));
+                }
+                return false;
+            })
         ));
-      
+
         setData(filteredData);
-      };
-      
-      const handleCheckboxWithFollowUpChange = () => {
+    };
+
+    const handleCheckboxWithFollowUpChange = () => {
         const updatedIsChecked = !isChecked;
-      
+
         const filteredData = customData.filter((row, rowIndex) => (
-          rowIndex === 0 || !updatedIsChecked || row[3].toLowerCase().includes("grave con seguimiento")
+            rowIndex === 0 || !updatedIsChecked || row[3].toLowerCase().includes("grave con seguimiento")
         ));
-      
+
         setIsChecked(updatedIsChecked);
         setData(filteredData);
-      };
-      
-      const handleCheckboxWithoutFollowUpChange = () => {
+    };
+
+    const handleCheckboxWithoutFollowUpChange = () => {
         const updatedIsGraveWithoutFollowUp = !isGraveWithoutFollowUp;
-      
+
         const filteredData = customData.filter((row, rowIndex) => (
-          rowIndex === 0 || !updatedIsGraveWithoutFollowUp || row[3].toLowerCase().includes("grave sin seguimiento")
+            rowIndex === 0 || !updatedIsGraveWithoutFollowUp || row[3].toLowerCase().includes("grave sin seguimiento")
         ));
-      
+
         setIsGraveWithoutFollowUp(updatedIsGraveWithoutFollowUp);
         setData(filteredData);
-      };
-      
+    };
+
 
 
 
