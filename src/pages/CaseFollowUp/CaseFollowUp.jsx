@@ -48,42 +48,47 @@ const CaseFollowUp = () => {
 
     const [query, setQuery] = useState('');
     const [isChecked, setIsChecked] = useState(false);
+    const [isGraveWithoutFollowUp, setIsGraveWithoutFollowUp] = useState(false);
+
     const [data, setData] = useState(customData);
 
     const handleInputChange = (e) => {
         const inputValue = e.target.value.toLowerCase().trim();
         setQuery(inputValue);
-
-        const filteredData = customData.filter((row, rowIndex) => {
-            if (rowIndex === 0) {
-                return true;
-            }
-
-            const graveWithFollowUp = row[3].toLowerCase();
-
-            return (!isChecked || graveWithFollowUp === "grave con seguimiento") &&
-                row.some((cell) => typeof cell === 'string' && cell.toLowerCase().includes(inputValue));
-        });
-
+      
+        const filteredData = customData.filter((row, rowIndex) => (
+          rowIndex === 0 ||
+          (!isChecked || row[3].toLowerCase().includes("grave")) &&
+          row.some((cell) => typeof cell === 'string' && cell.toLowerCase().includes(inputValue))
+        ));
+      
         setData(filteredData);
-    };
-
-    const handleCheckboxChange = () => {
+      };
+      
+      const handleCheckboxWithFollowUpChange = () => {
         const updatedIsChecked = !isChecked;
       
-        const filteredData = customData.filter((row, rowIndex) => {
-          if (rowIndex === 0) {
-            return true;
-          }
-      
-          const graveWithFollowUp = row[3].toLowerCase();
-      
-          return updatedIsChecked ? graveWithFollowUp === "grave con seguimiento" : true;
-        });
+        const filteredData = customData.filter((row, rowIndex) => (
+          rowIndex === 0 || !updatedIsChecked || row[3].toLowerCase().includes("grave con seguimiento")
+        ));
       
         setIsChecked(updatedIsChecked);
         setData(filteredData);
       };
+      
+      const handleCheckboxWithoutFollowUpChange = () => {
+        const updatedIsGraveWithoutFollowUp = !isGraveWithoutFollowUp;
+      
+        const filteredData = customData.filter((row, rowIndex) => (
+          rowIndex === 0 || !updatedIsGraveWithoutFollowUp || row[3].toLowerCase().includes("grave sin seguimiento")
+        ));
+      
+        setIsGraveWithoutFollowUp(updatedIsGraveWithoutFollowUp);
+        setData(filteredData);
+      };
+      
+
+
 
     return (
         <div>
@@ -130,17 +135,24 @@ const CaseFollowUp = () => {
                                     <div className='col-3'>
                                         <div className='container-fluid flex-column d-flex justify-content-evenly' >
                                             <div className='col-3 w-100 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Record with Follow-up" className="custom-checkbox p-0">
+                                                <label htmlFor="RecordWithFollowUp" className="custom-checkbox p-0">
                                                     Grave con Seguimiento
-                                                    <input type="checkbox" id="Record with Follow-up" checked={isChecked}
-                                                        onChange={handleCheckboxChange} className="checkbox" name="filter" />
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={isChecked}
+                                                        onChange={handleCheckboxWithFollowUpChange}
+                                                        id="RecordWithFollowUp"
+                                                        className="checkbox"
+                                                        name="filter"
+                                                    />
                                                     <span className="checkmark"></span>
                                                 </label>
                                             </div>
                                             <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                 <label htmlFor="Record-without-Follow-up" className="custom-checkbox p-0">
                                                     Grave sin Seguimiento
-                                                    <input type="checkbox" id="Record-without-Follow-up" className="checkbox" name="filter" />
+                                                    <input type="checkbox" checked={isGraveWithoutFollowUp}
+                                                        onChange={handleCheckboxWithoutFollowUpChange} id="Record-without-Follow-up" className="checkbox" name="filter" />
                                                     <span className="checkmark"></span>
                                                 </label>
                                             </div>
