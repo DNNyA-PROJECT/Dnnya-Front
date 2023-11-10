@@ -12,6 +12,7 @@ import ListUsers from '../pages/listOfUsers/listOfUsers.jsx'
 import recoverCredentials from '../pages/recoverCredentials/recoverCredentials.jsx'
 import CaseFollowUp from '../pages/CaseFollowUp/CaseFollowUp.jsx'
 import Perfil from '../pages/pefil/perfil.jsx'
+import SearcherCase from '../pages/searcherCase/searcherCase.jsx'
 
 function Routes() {
   return (
@@ -30,6 +31,7 @@ function Routes() {
           <Route exact path='/Recuperacion_de_Credenciales' component={recoverCredentials} />
           <Route exact path='/Seguimiento_de_Caso' component={CaseFollowUp} />
           <Route exact path='/Perfil' component={Perfil} />
+          <Route exact path='/Buscador_de_Casos' component={SearcherCase} />
         </Switch>
       </div>
     </Router>

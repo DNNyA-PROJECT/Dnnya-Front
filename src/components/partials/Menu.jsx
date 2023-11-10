@@ -138,14 +138,14 @@ function Menu() {
           <li
             className={`mb-3 text-center`}
             style={{
-              ...backgroundStyle('/Seguimiento_de_Caso'),
+              ...backgroundStyle('/Buscador_de_Casos'),
               ':hover': {
                 backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
                 color: 'white',
               },
             }}
           >
-            <Link to="/Seguimiento_de_Caso" className={` ${location.pathname === '/Seguimiento_de_Caso' ? 'active' : ''} ${textClass('/Seguimiento_de_Caso')}`}
+            <Link to="/Buscador_de_Casos" className={` ${location.pathname === '/Buscador_de_Casos' ? 'active' : ''} ${textClass('/Buscador_de_Casos')}`}
               style={{
                 display: 'block',
                 width: '100%',
@@ -153,7 +153,7 @@ function Menu() {
                 padding: '1rem',
               }}
             >
-              <h3 className={`text-link  text-center ${textClass('/Seguimiento_de_Caso')}`}>Seguimiento de Caso</h3>
+              <h3 className={`text-link  text-center ${textClass('/Buscador_de_Casos')}`}>Buscador de Casos</h3>
             </Link>
           </li>
 
