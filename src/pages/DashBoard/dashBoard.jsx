@@ -13,7 +13,7 @@ window.themeColors = colors;
 function Dash() {
   return (
     <>
-      <div className='box container-fluid row p-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+      <div className='container-fluid row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
 
 
 

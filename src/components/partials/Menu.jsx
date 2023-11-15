@@ -157,6 +157,28 @@ function Menu() {
             </Link>
           </li>
 
+          <li
+            className={`mb-3 text-center`}
+            style={{
+              ...backgroundStyle('/Seguimiento_de_Caso'),
+              ':hover': {
+                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                color: 'white',
+              },
+            }}
+          >
+            <Link to="/Seguimiento_de_Caso" className={` ${location.pathname === '/Seguimiento_de_Caso' ? 'active' : ''} ${textClass('/Seguimiento_de_Caso')}`}
+              style={{
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                padding: '1rem',
+              }}
+            >
+              <h3 className={`text-link  text-center ${textClass('/Seguimiento_de_Caso')}`}>Seguimiento de Caso</h3>
+            </Link>
+          </li>
+
         </ul>
       </div>
     </>

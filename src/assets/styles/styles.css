@@ -385,3 +385,13 @@ tbody, td, tfoot, th, thead, tr {
     --btn-active-color: #D7BEED; 
   }
   
+  .bi {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    fill: currentcolor;
+    font-size: 2rem;
+}
+.yellowbg {
+    background-color: rgb(255 233 175 / 94%) !important;
+}
