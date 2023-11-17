@@ -6,8 +6,9 @@ import '../../assets/styles/normalize.css';
 import Menu from '../../components/partials/Menu.jsx';
 import Footer from '../../components/partials/footer.jsx';
 import AccordionComponent from '../../components/AccordionComponent/AccordionComponent.jsx';
-
-
+import CustomModal from '../../components/modal/modal';
+import DataTable from '../../components/dataTable/dataTable.jsx';
+import ComponentComment from '../../components/componentComment/componentComment.jsx';
 
 window.themeColors = colors;
 
@@ -33,13 +34,13 @@ const CaseFollowUp = () => {
 
                                 <div className='container-fluid'>
                                     <div className='row d-flex px-5'>
-                                        <div className='col-5 py-5'>
-                                            <input type="text" name="" id="" className='form-control md' />
+                                        <div className='col-5 py-3'>
+                                            <input type="text" name="" id="" className='form-control md mb-3' />
                                             <input type="text" name="" id="" className='form-control md' />
                                         </div>
 
-                                        <div className='col-5 py-5'>
-                                            <input type="text" name="" id="" className='form-control md' />
+                                        <div className='col-5 py-3'>
+                                            <input type="text" name="" id="" className='form-control md mb-3' />
                                             <input type="text" name="" id="" className='form-control md' />
                                         </div>
                                     </div>
@@ -50,11 +51,11 @@ const CaseFollowUp = () => {
                                 </div>
 
                                 <div className='row d-flex px-5'>
-                                    <div className='col-5'>
+                                    <div className='col-5 py-3'>
                                         <input type="text" name="" id="" className='form-control md' />
                                     </div>
 
-                                    <div className='col-5'>
+                                    <div className='col-5 py-3'>
                                         <input type="text" name="" id="" className='form-control md' />
                                     </div>
                                 </div>
@@ -62,12 +63,17 @@ const CaseFollowUp = () => {
                                 <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.boxColorGreen }}>
                                     Tipo de Caso
                                 </div>
-                                <div className='row d-flex justify-content-evenly px-5'>
-                                    <div className=''>
-                                        CASO INDIVIDUAL
+                                <div className='row px-5'>
+                                    <div className='col-3 py-3'>
+                                        <div className='col-3 w-100 mb-3 py-3 text-center caso-individual'>
+                                            CASO INDIVIDUAL
+                                        </div>
+
                                     </div>
-                                    <div>
-                                        CASO GRUPAL
+                                    <div className='col-3 py-3'>
+                                        <div className='col-3 w-100 mb-3 py-3 text-center caso-grupal'>
+                                            CASO GRUPAL
+                                        </div>
                                     </div>
                                 </div>
 
@@ -76,11 +82,11 @@ const CaseFollowUp = () => {
                                 </div>
 
                                 <div className='row d-flex px-5'>
-                                    <div className='col-5'>
+                                    <div className='col-5 py-3'>
                                         <input type="text" name="" id="" className='form-control md' />
                                     </div>
 
-                                    <div className='col-5'>
+                                    <div className='col-5 py-3'>
                                         <input type="text" name="" id="" className='form-control md' />
                                     </div>
 
@@ -100,7 +106,7 @@ const CaseFollowUp = () => {
                                     Estado el Caso
                                 </div>
 
-                                <div className='row d-flex px-5'>
+                                <div className='row d-flex px-5 py-3'>
                                     <div className='col-5'>
                                         <input type="text" name="" id="" className='form-control md' />
                                     </div>
@@ -122,17 +128,17 @@ const CaseFollowUp = () => {
                                     Plazo de Seguimiento
                                 </div>
                                 <div className='row d-flex px-5'>
-                                    <div className='col-5'>
+                                    <div className='col-5 py-3'>
                                         desde
                                         <input type="date" name="" id="" className='form-control md' />
                                     </div>
 
-                                    <div className='col-5'>
+                                    <div className='col-3 py-3'>
                                         hasta
                                         <input type="date" name="" id="" className='form-control md' />
                                     </div>
                                 </div>
-                                
+                                <ComponentComment titulo="Agregar Comentarios" placeholder="Escribe aquí tus comentarios" />
                             </div>
                         </AccordionComponent>
                         <AccordionComponent buttonText="Detalles de Registro e Identificación del Caso" buttonClassName="w-100 fs-3 fw-bold align-items-center justify-content-center d-flex">

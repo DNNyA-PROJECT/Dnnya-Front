@@ -137,7 +137,7 @@ function CaseRecord() {
 
 
         axios
-            .post('http://localhost:8080', formData, {
+            .post('http://localhost:8080/api/motivos', formData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data',

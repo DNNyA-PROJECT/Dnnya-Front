@@ -23,6 +23,7 @@ export const colors = {
     boxColorGreen: '#C2EDBE',
     boxColorBluSky: '#BEE3ED',
     boxColorLightBeige: '#EDCFBE',
+    boxnewColor: '#F2A57F',
     boxColorLightLavender: '#D7BEED', 
     acertColor: '#C2EDBE',
     greyColor:'#A29D9DA6',
