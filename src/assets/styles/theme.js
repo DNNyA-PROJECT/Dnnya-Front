@@ -24,6 +24,7 @@ export const colors = {
     boxColorBluSky: '#BEE3ED',
     boxColorLightBeige: '#EDCFBE',
     boxnewColor: '#F2A57F',
+    boxColorOrange: '#FA7330A6',
     boxColorLightLavender: '#D7BEED', 
     acertColor: '#C2EDBE',
     greyColor:'#A29D9DA6',

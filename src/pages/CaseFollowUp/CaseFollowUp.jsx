@@ -56,7 +56,7 @@ const CaseFollowUp = () => {
     }
 
     const customData = [
-        ["Comentario", "Responsable", "NNyA", "Fecha de alta", "Archivos","Modificaciones"," "],
+        ["Comentario", "Responsable", "NNyA", "Fecha de alta", "Archivos", "Modificaciones", " "],
         [<ButtonCommentary />, "Fabricio Saucedo", "Soynara Frost", "17/08/23", <ButtonPDF />, <ButtonHistory />, " "]
     ]
     return (
@@ -185,7 +185,7 @@ const CaseFollowUp = () => {
                                     </div>
                                 </div>
                                 <ComponentComment titulo="Agregar Comentarios" placeholder="Escribe aquí tus comentarios" />
-                                <div className='container w-75'>
+                                <div className='container w-75 mt-5'>
                                     <DataTable data={customData} headerBackgroundColor="#F2A57F" />
                                 </div>
 
@@ -194,6 +194,44 @@ const CaseFollowUp = () => {
                         <AccordionComponent buttonText="Detalles de Registro e Identificación del Caso" buttonClassName="w-100 fs-3 fw-bold align-items-center justify-content-center d-flex">
                         </AccordionComponent>
                         <AccordionComponent buttonText="Seguimiento del Caso" buttonClassName="w-100 fs-3 fw-bold align-items-center justify-content-center d-flex">
+                            <div className='py-5 yellowbg' >
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+                                    Área Jurídica
+                                </div>
+                                <div className='container  mb-3 py-4 px-5 w-75 mt-5  ' style={{ backgroundColor: window.themeColors.boxColorOrange }}>
+                                    <div className='d-flex justify-content-center'>
+                                        <div className='fs-3 mb-5'>
+                                            Estado Jurídico
+                                        </div>
+                                    </div>
+                                    <div className='d-flex justify-content-evenly mb-3  row' >
+                                        <input className='col-2  form-control md' type="number" name="" id="" placeholder='Judicializado:' />
+                                        <input className='col-2  form-control md' type="number" name="" id="" placeholder='Nro exp. Judicial:' />
+                                    </div>
+                                    <div className='d-flex justify-content-evenly  row' >
+                                        <input className='col-2 form-control md' type="text" name="" id="" placeholder='Juzgado:' />
+                                        <input className='col-2 form-control md' type="text" name="" id="" placeholder='caratula:' />
+                                    </div>
+                                </div>
+                                <ComponentComment titulo="Agregar Comentarios" placeholder="Escribe aquí tus comentarios" />
+                                <div className='container w-75 mt-5'>
+                                    <DataTable data={customData} headerBackgroundColor="#F2A57F" />
+                                </div>
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+                                    Área Psicosocial
+                                </div>
+                                <ComponentComment titulo="Agregar Comentarios" placeholder="Escribe aquí tus comentarios" />
+                                <div className='container w-75 mt-5'>
+                                    <DataTable data={customData} headerBackgroundColor="#F2A57F" />
+                                </div>
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+                                    Supervisor
+                                </div>
+                                <ComponentComment titulo="Agregar Comentarios" placeholder="Escribe aquí tus comentarios" />
+                                <div className='container w-75 mt-5'>
+                                    <DataTable data={customData} headerBackgroundColor="#F2A57F" />
+                                </div>
+                            </div>
                         </AccordionComponent>
                     </div>
 
