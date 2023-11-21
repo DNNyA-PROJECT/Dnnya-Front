@@ -114,8 +114,8 @@ function CaseRecord() {
             [checkboxName]: !checkboxState[checkboxName],
         });
     };
-
-    const token = localStorage.getItem('token');
+/* 
+    const token = localStorage.getItem('token'); */
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -138,10 +138,10 @@ function CaseRecord() {
 
         axios
             .post('http://localhost:8080/api/motivos', formData, {
-                headers: {
+              /*   headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data',
-                },
+                }, */
             })
             .then((response) => {
                 if (response.status === 200) {

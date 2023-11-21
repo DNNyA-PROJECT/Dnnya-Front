@@ -10,8 +10,8 @@ function FormSubmission() {
     const [correoDestino, setEmail] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submissionResult, setSubmissionResult] = useState(null);
-
-    const token = localStorage.getItem('token');
+/* 
+    const token = localStorage.getItem('token'); */
 
     useEffect(() => {
         if (submissionResult) {
@@ -33,10 +33,10 @@ function FormSubmission() {
             const response = await axios.post('http://localhost:8080/api/enviarCorreo', {
                 correoDestino: correoDestino
             }, {
-                headers: {
+            /*     headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json',
-                },
+                }, */
 
 
             });

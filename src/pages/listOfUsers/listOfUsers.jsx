@@ -54,12 +54,12 @@ function ListOfUsers() {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const token = localStorage.getItem('token');
+/*         const token = localStorage.getItem('token');
         if (!token) {
           console.log('Permiso de token no encontrado');
           setIsLoading(false);
           return;
-        }
+        } */
 
         let endpoint = '';
 
@@ -72,9 +72,9 @@ function ListOfUsers() {
         }
 
         const response = await axios.get(`http://localhost:8080/Auth/${endpoint}`, {
-          headers: {
+         /*  headers: {
             Authorization: `Bearer ${token}`,
-          },
+          }, */
         });
         
         if (response.status === 200) {
