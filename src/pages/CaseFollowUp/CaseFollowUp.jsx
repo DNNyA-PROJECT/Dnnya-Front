@@ -205,7 +205,7 @@ const CaseFollowUp = () => {
                                         </div>
                                     </div>
                                     <div className='d-flex justify-content-evenly mb-3  row' >
-                                        <input className='col-2  form-control md' type="number" name="" id="" placeholder='Judicializado:' />
+                                        <input className='col-2  form-control md' type="text" name="" id="" placeholder='Judicializado:' />
                                         <input className='col-2  form-control md' type="number" name="" id="" placeholder='Nro exp. Judicial:' />
                                     </div>
                                     <div className='d-flex justify-content-evenly  row' >
