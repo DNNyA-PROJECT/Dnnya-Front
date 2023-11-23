@@ -113,7 +113,7 @@ function Menu() {
             </Link>
           </li>
 
-          <AccordionComponent buttonText="Caso" buttonClassName="w-100 fs-3 fw-bold align-items-center justify-content-center d-flex">
+          <AccordionComponent buttonText="Caso" buttonClassName="w-100 fs-3 fw-900 align-items-center justify-content-center d-flex">
             <li
               className={`mb-3 text-center`}
               style={{
@@ -180,7 +180,7 @@ function Menu() {
             </li>
           </AccordionComponent>
 
-          <AccordionComponent buttonText="Notas de Entrada" buttonClassName="w-100 fs-3 fw-bold align-items-center justify-content-center d-flex">
+          <AccordionComponent buttonText="Notas de Entrada" buttonClassName="w-100 fs-3 fw-900 align-items-center justify-content-center d-flex">
           <li
             className={`mb-3 text-center`}
             style={{
