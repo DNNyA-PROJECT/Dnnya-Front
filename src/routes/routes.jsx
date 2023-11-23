@@ -13,6 +13,10 @@ import recoverCredentials from '../pages/recoverCredentials/recoverCredentials.j
 import CaseFollowUp from '../pages/CaseFollowUp/CaseFollowUp.jsx'
 import Perfil from '../pages/pefil/perfil.jsx'
 import SearcherCase from '../pages/searcherCase/searcherCase.jsx'
+import entryNotesFinder from '../pages/entryNoteFinder/entryNoteFinder.jsx';
+import entryNotesRegister from '../pages/entryNotesRegister/entryNotesRegister.jsx'
+import trackEntryNotes from '../pages/trackEntryNotes/trackEntryNotes.jsx'
+
 
 function Routes() {
   return (
@@ -32,6 +36,10 @@ function Routes() {
           <Route exact path='/Seguimiento_de_Caso' component={CaseFollowUp} />
           <Route exact path='/Perfil' component={Perfil} />
           <Route exact path='/Buscador_de_Casos' component={SearcherCase} />
+          <Route exact path='/Buscador_de_Notas_de_Entrada' component={entryNotesFinder} />
+          <Route exact path='/Registro_de_Notas_de_Entrada' component={entryNotesRegister} />
+          <Route exact path='/Seguimiento_de_Notas_de_Entrada' component={trackEntryNotes} />
+
         </Switch>
       </div>
     </Router>
