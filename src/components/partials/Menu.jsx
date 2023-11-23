@@ -5,6 +5,7 @@ import { colors } from '../../assets/styles/theme.js';
 import '../../assets/styles/styles.css';
 import { Link, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AccordionComponent from '../../components/AccordionComponent/AccordionComponent.jsx';
 
 window.themeColors = colors;
 
@@ -112,18 +113,85 @@ function Menu() {
             </Link>
           </li>
 
+          <AccordionComponent buttonText="Caso" buttonClassName="w-100 fs-3 fw-bold align-items-center justify-content-center d-flex">
+            <li
+              className={`mb-3 text-center`}
+              style={{
+                ...backgroundStyle('/Registro_De_Caso'),
+                ':hover': {
+                  backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                  color: 'white',
+                },
+              }}
+            >
+              <Link to="/Registro_De_Caso" className={` ${location.pathname === '/Registro_De_Caso' ? 'active' : ''} ${textClass('/Registro_De_Caso')}`}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
+                  padding: '1rem',
+                }}
+              >
+                <h3 className={`text-link  text-center ${textClass('/Registro_De_Caso')}`}>Registro de Casos</h3>
+              </Link>
+            </li>
 
+            <li
+              className={`mb-3 text-center`}
+              style={{
+                ...backgroundStyle('/Buscador_de_Casos'),
+                ':hover': {
+                  backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                  color: 'white',
+                },
+              }}
+            >
+              <Link to="/Buscador_de_Casos" className={` ${location.pathname === '/Buscador_de_Casos' ? 'active' : ''} ${textClass('/Buscador_de_Casos')}`}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
+                  padding: '1rem',
+                }}
+              >
+                <h3 className={`text-link  text-center ${textClass('/Buscador_de_Casos')}`}>Buscador de Casos</h3>
+              </Link>
+            </li>
+            <li
+              className={`mb-3 text-center`}
+              style={{
+                ...backgroundStyle('/Seguimiento_de_Caso'),
+                ':hover': {
+                  backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                  color: 'white',
+                },
+              }}
+            >
+              <Link to="/Seguimiento_de_Caso" className={` ${location.pathname === '/Seguimiento_de_Caso' ? 'active' : ''} ${textClass('/Seguimiento_de_Caso')}`}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
+                  padding: '1rem',
+                }}
+              >
+                <h3 className={`text-link  text-center ${textClass('/Seguimiento_de_Caso')}`}>Seguimiento de Caso</h3>
+              </Link>
+            </li>
+          </AccordionComponent>
+
+          <AccordionComponent buttonText="Notas de Entrada" buttonClassName="w-100 fs-3 fw-bold align-items-center justify-content-center d-flex">
           <li
             className={`mb-3 text-center`}
             style={{
-              ...backgroundStyle('/Registro_De_Caso'),
+              ...backgroundStyle('Buscador_de_Notas_de_Entrada'),
               ':hover': {
                 backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
                 color: 'white',
               },
             }}
           >
-            <Link to="/Registro_De_Caso" className={` ${location.pathname === '/Registro_De_Caso' ? 'active' : ''} ${textClass('/Registro_De_Caso')}`}
+            <Link to="Buscador_de_Notas_de_Entrada" className={` ${location.pathname === 'Buscador_de_Notas_de_Entrada' ? 'active' : ''} ${textClass('Buscador_de_Notas_de_Entrada')}`}
               style={{
                 display: 'block',
                 width: '100%',
@@ -131,21 +199,20 @@ function Menu() {
                 padding: '1rem',
               }}
             >
-              <h3 className={`text-link  text-center ${textClass('/Registro_De_Caso')}`}>Registro de Casos</h3>
+              <h3 className={`text-link  text-center ${textClass('Buscador_de_Notas_de_Entrada')}`}>Buscador de Notas de Entrada</h3>
             </Link>
           </li>
-
           <li
             className={`mb-3 text-center`}
             style={{
-              ...backgroundStyle('/Buscador_de_Casos'),
+              ...backgroundStyle('/Registro_de_Notas_de_Entrada'),
               ':hover': {
                 backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
                 color: 'white',
               },
             }}
           >
-            <Link to="/Buscador_de_Casos" className={` ${location.pathname === '/Buscador_de_Casos' ? 'active' : ''} ${textClass('/Buscador_de_Casos')}`}
+            <Link to="/Registro_de_Notas_de_Entrada" className={` ${location.pathname === '/Registro_de_Notas_de_Entrada' ? 'active' : ''} ${textClass('/Registro_de_Notas_de_Entrada')}`}
               style={{
                 display: 'block',
                 width: '100%',
@@ -153,21 +220,20 @@ function Menu() {
                 padding: '1rem',
               }}
             >
-              <h3 className={`text-link  text-center ${textClass('/Buscador_de_Casos')}`}>Buscador de Casos</h3>
+              <h3 className={`text-link  text-center ${textClass('/Registro_de_Notas_de_Entrada')}`}>Registro de Notas de Entrada</h3>
             </Link>
           </li>
-
           <li
             className={`mb-3 text-center`}
             style={{
-              ...backgroundStyle('/Seguimiento_de_Caso'),
+              ...backgroundStyle('/Seguimiento_de_Notas_de_Entrada'),
               ':hover': {
                 backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
                 color: 'white',
               },
             }}
           >
-            <Link to="/Seguimiento_de_Caso" className={` ${location.pathname === '/Seguimiento_de_Caso' ? 'active' : ''} ${textClass('/Seguimiento_de_Caso')}`}
+            <Link to="/Seguimiento_de_Notas_de_Entrada" className={` ${location.pathname === '/Seguimiento_de_Notas_de_Entrada' ? 'active' : ''} ${textClass('/Seguimiento_de_Notas_de_Entrada')}`}
               style={{
                 display: 'block',
                 width: '100%',
@@ -175,10 +241,10 @@ function Menu() {
                 padding: '1rem',
               }}
             >
-              <h3 className={`text-link  text-center ${textClass('/Seguimiento_de_Caso')}`}>Seguimiento de Caso</h3>
+              <h3 className={`text-link  text-center ${textClass('/Seguimiento_de_Notas_de_Entrada')}`}>Seguimiento de Notas de Entrada</h3>
             </Link>
           </li>
-
+          </AccordionComponent>
         </ul>
       </div>
     </>
