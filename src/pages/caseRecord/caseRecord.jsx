@@ -146,8 +146,8 @@ const CaseRecord = () => {
                                                         flex: '0 0 calc(50% - 10px)',
                                                     }}
                                                 >
-                                                    <label htmlFor={asesoramiento.nombre} className="custom-checkbox">
-                                                        {asesoramiento.nombre}
+                                                    <label htmlFor={asesoramiento.nombre} className="custom-checkbox" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <span>{asesoramiento.nombre}</span>
                                                         <input
                                                             type="checkbox"
                                                             id={asesoramiento.nombre}
@@ -158,6 +158,7 @@ const CaseRecord = () => {
                                                         />
                                                         <span className="checkmark"></span>
                                                     </label>
+
                                                 </div>
                                             ))}
                                         </div>

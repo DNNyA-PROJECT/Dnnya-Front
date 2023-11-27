@@ -303,35 +303,38 @@ tbody, td, tfoot, th, thead, tr {
   }
   
   .custom-checkbox {
-    display: inline-block;
-    position: relative;
-    padding-left: 0vw;
+    position: relative; /* Añadida para que la posición absoluta sea relativa a este contenedor */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     cursor: pointer;
     font-size: 16px;
     user-select: none;
 }
-  
-  .custom-checkbox input {
+
+.custom-checkbox input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-  }
-  
-  .checkmark {
+}
+
+.checkmark {
     position: absolute;
-    top: 0;
-    left: 12rem;
+    top: 50%;
+    transform: translateY(-50%); /* Centra verticalmente el checkmark */
+    right: 0; /* Coloca el checkmark en la parte derecha */
     height: 20px;
     width: 20px;
     background-color: #eee;
     border: 2px solid #000;
     transition: background-color 0.3s, border-color 0.3s;
 }
-  
-  .custom-checkbox input:checked ~ .checkmark {
+
+.custom-checkbox input:checked ~ .checkmark {
     background-color: #000;
     border-color: #000; 
-  }
+}
+
 
   .test {
     margin-right: 17vw;
