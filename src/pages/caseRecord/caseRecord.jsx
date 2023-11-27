@@ -250,7 +250,7 @@ const CaseRecord = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightBeige }}>
                                         <div className='d-flex justify-content-center'>
                                             <h1>Motivo Del Reclamo</h1>
