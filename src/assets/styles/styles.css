@@ -305,11 +305,11 @@ tbody, td, tfoot, th, thead, tr {
   .custom-checkbox {
     display: inline-block;
     position: relative;
-    padding-left: 30px; 
+    padding-left: 0vw;
     cursor: pointer;
     font-size: 16px;
     user-select: none;
-  }
+}
   
   .custom-checkbox input {
     position: absolute;

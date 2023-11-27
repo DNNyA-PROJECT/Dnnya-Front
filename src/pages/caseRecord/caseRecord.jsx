@@ -1,59 +1,44 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { colors } from '../../assets/styles/theme.js'
-import '../../assets/styles/styles.css'
-import '../../assets/styles/normalize.css'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Form } from 'react-bootstrap';
 import Footer from '../../components/partials/footer.jsx'
 import Header from '../../components/partials/header.jsx'
 import Menu from '../../components/partials/Menu.jsx'
+import AccordionComponent from '../../components/AccordionComponent/AccordionComponent.jsx'
 import CustomModal from '../../components/modal/modal';
 import DataTable from '../../components/dataTable/dataTable.jsx';
 import Searcher from '../../components/searcher/searcher.jsx'
-import FormularioNnya from '../../components/addnnya/FormualrioNnya.jsx'
-import CustomInputButton from '../../components/custom/customInputButton.jsx';
-import AccordionComponent from '../../components/AccordionComponent/AccordionComponent.jsx'
-import axios from 'axios';
 
-window.themeColors = colors;
-
-
-function CaseRecord() {
+const CaseRecord = () => {
     const [modalShow, setModalShow] = useState(false);
-    const [formularios, setFormularios] = useState([]);
-    const [inputValue, setInputValue] = useState('');
+    const [checkboxValues, setCheckboxValues] = useState({});
+    const [estadosDelCaso, setEstadosDelCaso] = useState([]);
+    const [tiposAsesoramiento, setTiposAsesoramiento] = useState([]);
+    const [motivos, setMotivos] = useState([]);
+    const [relacionesConAdulto, setRelacionesConAdulto] = useState([]);
 
+    useEffect(() => {
+        axios.get('http://localhost:8080/api/informacion')
+            .then(response => {
+                if (response.status === 200) {
+                    console.log('Es correcto');
+                    const sortedEstadosDelCaso = response.data.estadosDelCaso.sort((a, b) => a.id - b.id);
+                    const sortedTiposAsesoramiento = response.data.tiposAsesoramiento.sort((a, b) => a.id - b.id);
+                    const sortedMotivos = response.data.motivos.sort((a, b) => a.id - b.id);
+                    const sortedRelacionesConAdulto = response.data.relacionesConAdulto.sort((a, b) => a.id - b.id);
 
-    const [checkboxState, setCheckboxState] = useState({
-        TelAdvice: false,
-        Presence: false,
-        Intervention: false,
-        Consent: false,
-        Monitoring: false,
-        Interview: false,
-        SocialNetwork: false,
-        //
-        Anonimus: false,
-        Mother: false,
-        Father: false,
-        GrandFather: false,
-        GrandMother: false,
-        //
-        PhysicalViolence: false,
-        SexualAbuse: false,
-        Relinking: false,
-        Adoptability: false,
-        Abandonment: false,
-        AbsenceFromSchool: false,
-        HealthCondition: false,
-
-    });
-
-    const handleCheckboxChange = (checkboxName) => {
-        setCheckboxState({
-            ...checkboxState,
-            [checkboxName]: !checkboxState[checkboxName],
-        });
-    };
+                    setEstadosDelCaso(sortedEstadosDelCaso);
+                    setTiposAsesoramiento(sortedTiposAsesoramiento);
+                    setMotivos(sortedMotivos);
+                    setRelacionesConAdulto(sortedRelacionesConAdulto);
+                } else {
+                    console.log('No se pudo obtener la respuesta esperada');
+                }
+            })
+            .catch(error => {
+                console.error('Error al realizar la solicitud:', error);
+            });
+    }, []);
 
     const toggleFormulario = (index) => {
         if (formularios.includes(index)) {
@@ -104,63 +89,15 @@ function CaseRecord() {
         setData(filteredData);
     };
 
-    const handleInputValueChange = (value) => {
-        setInputValue(value);
+    const handleCheckboxChange = (type, id) => {
+        setCheckboxValues((prevValues) => ({
+            ...prevValues,
+            [type]: { ...prevValues[type], [id]: !prevValues[type]?.[id] },
+        }));
+
+
+        console.log('Nuevo estado de checkboxValues:', checkboxValues);
     };
-
-    const handleCustomCheckboxChange = (checkboxName) => {
-        setCheckboxState({
-            ...checkboxState,
-            [checkboxName]: !checkboxState[checkboxName],
-        });
-    };
-/* 
-    const token = localStorage.getItem('token'); */
-
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-
-        const formData = new FormData();
-        formData.append('inputValue', inputValue);
-
-        for (const checkbox in checkboxState) {
-            if (checkboxState[checkbox]) {
-                formData.append(checkbox, 'true');
-            } else {
-                formData.append(checkbox, 'false');
-            }
-        }
-
-        for (var pair of formData.entries()) {
-            console.log(pair[0] + ': ' + pair[1]);
-        }
-
-
-        axios
-            .post('http://localhost:8080/api/motivos', formData, {
-              /*   headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data',
-                }, */
-            })
-            .then((response) => {
-                if (response.status === 200) {
-                    console.log('Respuesta del servidor:', response.data);
-                } else {
-                    console.log('Respuesta con un estado inesperado:', response.status);
-                }
-            })
-            .catch((error) => {
-                if (error.response) {
-                    console.error('Error en la respuesta:', error.response.data);
-                } else if (error.request) {
-                    console.error('Error de red:', error.message);
-                } else {
-                    console.error('Error desconocido:', error.message);
-                }
-            });
-    };
-
 
     return (
         <>
@@ -179,8 +116,7 @@ function CaseRecord() {
                             <h1>REGISTRO DEL CASO</h1>
                             <h3>Detalles de Registro e Identificación del Caso</h3>
                         </div>
-
-                        <form onSubmit={handleFormSubmit}>
+                        <Form>
                             <div className='container py-5 px-3 mb-3 ' style={{ backgroundColor: window.themeColors.boxBorder }}>
                                 <AccordionComponent buttonText="Registro De aserorías E intervenciones" buttonClassName="fw-bold greenColor custom-btn w-100 py-4 fs-4 m-0">
                                     <div className='container  mb-3 p-5 ' style={{ backgroundColor: window.themeColors.boxColorGreen }}>
@@ -200,219 +136,62 @@ function CaseRecord() {
                                         <div className='d-flex justify-content-center'>
                                             <h1>Tipo De Asesoramiento E Intervención</h1>
                                         </div>
-                                        <div>
-                                            <div className='row d-flex justify-content-evenly'>
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="TelAdvice" className="custom-checkbox">
-                                                        Asesoría Telefónica
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                                            {tiposAsesoramiento.map((asesoramiento) => (
+                                                <div
+                                                    key={asesoramiento.id}
+                                                    className="p-3"
+                                                    style={{
+                                                        backgroundColor: window.themeColors.footerColorText,
+                                                        flex: '0 0 calc(50% - 10px)',
+                                                    }}
+                                                >
+                                                    <label htmlFor={asesoramiento.nombre} className="custom-checkbox">
+                                                        {asesoramiento.nombre}
                                                         <input
                                                             type="checkbox"
-                                                            id="TelAdvice"
+                                                            id={asesoramiento.nombre}
                                                             className="checkbox"
-                                                            checked={checkboxState.TelAdvice}
-                                                            onChange={() => handleCheckboxChange("TelAdvice")}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-
-                                                </div>
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="Presence" className="custom-checkbox">
-                                                        Asesoría Presencial
-                                                        <input
-                                                            type="checkbox"
-                                                            id="Presence"
-                                                            className="checkbox"
-                                                            checked={checkboxState.Presence}
-                                                            onChange={() => handleCheckboxChange("Presence")}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-
-                                                </div>
-                                            </div>
-
-                                            <div className='row d-flex justify-content-evenly'>
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="Intervention" className="custom-checkbox">
-                                                        Intervención
-                                                        <input
-                                                            type="checkbox"
-                                                            id="Intervention"
-                                                            className="checkbox"
-                                                            checked={checkboxState.Intervention}
-                                                            onChange={() => handleCheckboxChange("Intervention")}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-
-                                                </div>
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="Consent" className="custom-checkbox">
-                                                        Consentimiento
-                                                        <input
-                                                            type="checkbox"
-                                                            id="Consent"
-                                                            className="checkbox"
-                                                            checked={checkboxState.Consent}
-                                                            onChange={() => handleCheckboxChange("Consent")}
+                                                            checked={checkboxValues['tiposAsesoramiento']?.[asesoramiento.id] || false}
+                                                            onChange={() => handleCheckboxChange('tiposAsesoramiento', asesoramiento.id)}
+                                                            style={{ marginLeft: '10px' }}
                                                         />
                                                         <span className="checkmark"></span>
                                                     </label>
                                                 </div>
-                                            </div>
-
-                                            <div className='row d-flex justify-content-evenly' >
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="Monitoring" className="custom-checkbox">
-                                                        Monitoreo
-                                                        <input
-                                                            type="checkbox"
-                                                            id="Monitoring"
-                                                            className="checkbox"
-                                                            checked={checkboxState.Monitoring}
-                                                            onChange={() => handleCheckboxChange("Monitoring")}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="Interview" className="custom-checkbox">
-                                                        Entrevista a Domicilio
-                                                        <input
-                                                            type="checkbox"
-                                                            id="Interview"
-                                                            className="checkbox"
-                                                            checked={checkboxState.Interview}
-                                                            onChange={() => handleCheckboxChange("Interview")}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div className='row d-flex justify-content-evenly' >
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="SocialNetwork" className="custom-checkbox">
-                                                        Redes Sociales
-                                                        <input
-                                                            type="checkbox"
-                                                            id="SocialNetwork"
-                                                            className="checkbox"
-                                                            checked={checkboxState.SocialNetwork}
-                                                            onChange={() => handleCheckboxChange("SocialNetwork")}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                                <div className='col-3 mb-3 px-0 py-0 mr-0 '>
-                                                    <CustomInputButton
-                                                        buttonText="Agregar Asistencia"
-                                                        inputPlaceholder="Nueva Asistencia"
-                                                        selectedCheckboxes={checkboxState}
-                                                        onCustomCheckboxChange={handleCheckboxChange}
-                                                        inputValue={inputValue}
-                                                        onInputValueChange={handleInputValueChange}
-                                                    />
-                                                </div>
-                                            </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </AccordionComponent>
 
                                 <AccordionComponent buttonText="Relación Del Adulto con NNyA" buttonClassName="fw-bold lightblue  custom-btn mt-3 w-100 py-4 fs-4 m-0">
                                     <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorBluSky }}>
-
-                                        <div className='row d-flex justify-content-evenly' >
-                                            <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Anonimus" className="custom-checkbox">
-                                                    Anonimo/a
-                                                    <input
-                                                        type="checkbox"
-                                                        id="Anonimus"
-                                                        className="checkbox"
-                                                        name="Relation"
-                                                        onChange={() => handleCheckboxChange("Anonimus")}
-                                                        checked={checkboxState.Anonimus}
-                                                    />
-                                                    <span className="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="GrandMother" className="custom-checkbox">
-                                                    Abuela
-                                                    <input
-                                                        type="checkbox"
-                                                        id="GrandMother"
-                                                        className="checkbox"
-                                                        name="Relation"
-                                                        onChange={() => handleCheckboxChange("GrandMother")}
-                                                        checked={checkboxState.GrandMother}
-                                                    />
-                                                    <span className="checkmark"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className='row d-flex justify-content-evenly' >
-                                            <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Father" className="custom-checkbox">
-                                                    Padre
-                                                    <input
-                                                        type="checkbox"
-                                                        id="Father"
-                                                        className="checkbox"
-                                                        name="Relation"
-                                                        onChange={() => handleCheckboxChange("Father")}
-                                                        checked={checkboxState.Father}
-                                                    />
-                                                    <span className="checkmark"></span>
-                                                </label>
-
-                                            </div>
-                                            <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="GrandFather" className="custom-checkbox">
-                                                    Abuelo
-                                                    <input
-                                                        type="checkbox"
-                                                        id="GrandFather"
-                                                        className="checkbox"
-                                                        name="Relation"
-                                                        onChange={() => handleCheckboxChange("GrandFather")}
-                                                        checked={checkboxState.GrandFather}
-                                                    />
-                                                    <span className="checkmark"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div className='row d-flex justify-content-evenly' >
-                                            <div className='col-3 mb-3 py-3 d-flex  align-items-center ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Mother" className="custom-checkbox">
-                                                    Madre
-                                                    <input
-                                                        type="checkbox"
-                                                        id="Mother"
-                                                        className="checkbox"
-                                                        name="Relation"
-                                                        onChange={() => handleCheckboxChange("Mother")}
-                                                        checked={checkboxState.Mother}
-                                                    />
-                                                    <span className="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div className='col-3 mb-3 p-0 '>
-                                                <CustomInputButton
-                                                    buttonText="Ingresar Nueva Relacion NNya"
-                                                    inputPlaceholder="Nueva Relación"
-                                                    selectedCheckboxes={checkboxState}
-                                                    onCustomCheckboxChange={handleCheckboxChange}
-                                                    inputValue={inputValue}
-                                                    onInputValueChange={handleInputValueChange}
-                                                />
-                                            </div>
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                                            {relacionesConAdulto.map((relacion) => (
+                                                <div
+                                                    key={relacion.id}
+                                                    className="p-2"
+                                                    style={{
+                                                        backgroundColor: window.themeColors.footerColorText,
+                                                        flex: '0 0 calc(50% - 10px)',
+                                                    }}
+                                                >
+                                                    <label htmlFor={relacion.name} className="custom-checkbox">
+                                                        {relacion.name}
+                                                        <input
+                                                            type="checkbox"
+                                                            id={relacion.name}
+                                                            className="checkbox"
+                                                            checked={checkboxValues['relacionesConAdulto']?.[relacion.id] || false}
+                                                            onChange={() => handleCheckboxChange('relacionesConAdulto', relacion.id)}
+                                                            style={{ marginLeft: '10px' }}
+                                                        />
+                                                        <span className="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
-
                                     <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorBluSky }}>
                                         <div className='d-flex justify-content-center'>
                                             <h1>Datos Del Adulto</h1>
@@ -432,251 +211,106 @@ function CaseRecord() {
 
                                 <AccordionComponent buttonText="Datos De la NNyA" buttonClassName="fw-bold LightBeige  custom-btn mt-3 w-100 py-4 fs-4 m-0">
                                     <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightBeige }}>
-                                        <div className='d-flex justify-content-center'>
-                                            <button className='btn w-75 container-fluid mb-3'
-                                                style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
-                                                type='button' onClick={handleShowModal}
-                                            >
-                                                <h6 className='m-0 fw-bold py-2'>BUSCAR Y SELECCIONAR NNYA</h6>
-                                            </button>
-                                            <CustomModal
-                                                title="Datos NNyA"
-                                                show={modalShow}
-                                                handleClose={handleCloseModal}
-                                                body={
-                                                    <div className='d-flex justify-content-around flex-column flex-wrap'>
-                                                        <div>
-                                                            <Searcher query={query} handleInputChange={handleInputChange} />
+                                        <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightBeige }}>
+                                            <div className='d-flex justify-content-center'>
+                                                <button className='btn w-75 container-fluid mb-3'
+                                                    style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
+                                                    type='button' onClick={handleShowModal}
+                                                >
+                                                    <h6 className='m-0 fw-bold py-2'>BUSCAR Y SELECCIONAR NNYA</h6>
+                                                </button>
+                                                <CustomModal
+                                                    title="Datos NNyA"
+                                                    show={modalShow}
+                                                    handleClose={handleCloseModal}
+                                                    body={
+                                                        <div className='d-flex justify-content-around flex-column flex-wrap'>
+                                                            <div>
+                                                                <Searcher query={query} handleInputChange={handleInputChange} />
+                                                            </div>
+                                                            <DataTable data={data} headerBackgroundColor="#F2A57F" />
                                                         </div>
-                                                        <DataTable data={data} headerBackgroundColor="#F2A57F" />
-                                                    </div>
-                                                }
-                                            />
+                                                    }
+                                                />
+                                            </div>
+
+                                            <div className='d-flex justify-content-evenly mb-3  row' >
+                                                <input className='col-2 form-control md' type="text" placeholder='Nombre Completo' />
+                                                <input className='col-2 form-control md' type="number" name="" id="" placeholder='DNI' />
+                                            </div>
+                                            <div className='d-flex justify-content-evenly mb-3  row' >
+                                                <input className='col-2 form-control md' type="number" name="" id="" placeholder='Domicilio' />
+                                                <input className='col-2 form-control md' type="date" name="" id="" />
+                                            </div>
+                                            <div className='d-flex justify-content-evenly  row' >
+                                                <input className='col-2 form-control md' type="number" name="" id="" placeholder='Edad' />
+                                                <input className='col-2 form-control md' type="text" name="" id="" placeholder='Escuela' />
+                                            </div>
                                         </div>
 
-                                        <div className='d-flex justify-content-evenly mb-3  row' >
-                                            <input className='col-2 form-control md' type="text" placeholder='Nombre Completo' />
-                                            <input className='col-2 form-control md' type="number" name="" id="" placeholder='DNI' />
-                                        </div>
-                                        <div className='d-flex justify-content-evenly mb-3  row' >
-                                            <input className='col-2 form-control md' type="number" name="" id="" placeholder='Domicilio' />
-                                            <input className='col-2 form-control md' type="date" name="" id="" />
-                                        </div>
-                                        <div className='d-flex justify-content-evenly  row' >
-                                            <input className='col-2 form-control md' type="number" name="" id="" placeholder='Edad' />
-                                            <input className='col-2 form-control md' type="text" name="" id="" placeholder='Escuela' />
-                                        </div>
-                                    </div>
-
-                                    <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightBeige }}>
-                                        <div>
+                                        <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightBeige }}>
                                             <div className='d-flex justify-content-center'>
                                                 <h1>Motivo Del Reclamo</h1>
                                             </div>
 
-                                            <div className='row d-flex justify-content-evenly' >
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="PhysicalViolence" className="custom-checkbox">
-                                                        Violencia Física
-                                                        <input
-                                                            type="checkbox"
-                                                            id="PhysicalViolence"
-                                                            className="checkbox"
-                                                            name="Relation"
-                                                            onChange={() => handleCheckboxChange("PhysicalViolence")}
-                                                            checked={checkboxState.PhysicalViolence}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="SexualAbuse" className="custom-checkbox">
-                                                        Abuso Sexual
-                                                        <input
-                                                            type="checkbox"
-                                                            id="SexualAbuse"
-                                                            className="checkbox"
-                                                            name="Relation"
-                                                            onChange={() => handleCheckboxChange("SexualAbuse")}
-                                                            checked={checkboxState.SexualAbuse}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div className='row d-flex justify-content-evenly' >
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                    <label htmlFor="Relinking" className="custom-checkbox">
-                                                        Revinculación
-                                                        <input
-                                                            type="checkbox"
-                                                            id="Relinking"
-                                                            className="checkbox"
-                                                            name="Relation"
-                                                            onChange={() => handleCheckboxChange("Relinking")}
-                                                            checked={checkboxState.Relinking}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Adoptability" className="custom-checkbox">
-                                                       Adoptabilidad
-                                                        <input
-                                                            type="checkbox"
-                                                            id="Adoptability"
-                                                            className="checkbox"
-                                                            name="Relation"
-                                                            onChange={() => handleCheckboxChange("Adoptability")}
-                                                            checked={checkboxState.Adoptability}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div className='row d-flex justify-content-evenly' >
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Abandonment" className="custom-checkbox">
-                                                       Abandono
-                                                        <input
-                                                            type="checkbox"
-                                                            id="Abandonment"
-                                                            className="checkbox"
-                                                            name="Relation"
-                                                            onChange={() => handleCheckboxChange("Abandonment")}
-                                                            checked={checkboxState.Abandonment}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="AbsenceFromSchool" className="custom-checkbox">
-                                                       Ausencia de la Escuela
-                                                        <input
-                                                            type="checkbox"
-                                                            id="AbsenceFromSchool"
-                                                            className="checkbox"
-                                                            name="Relation"
-                                                            onChange={() => handleCheckboxChange("AbsenceFromSchool")}
-                                                            checked={checkboxState.AbsenceFromSchool}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div className='row d-flex justify-content-evenly' >
-                                                <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="HealthCondition" className="custom-checkbox">
-                                                    Estado de Salud
-                                                        <input
-                                                            type="checkbox"
-                                                            id="HealthCondition"
-                                                            className="checkbox"
-                                                            name="Relation"
-                                                            onChange={() => handleCheckboxChange("HealthCondition")}
-                                                            checked={checkboxState.HealthCondition}
-                                                        />
-                                                        <span className="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                                <div className='col-3 mb-3 p-0 '>
-                                                    <CustomInputButton
-                                                        buttonText="Agregar Motivo"
-                                                        inputPlaceholder="Nuevo Motivo"
-                                                        selectedCheckboxes={checkboxState}
-                                                        onCustomCheckboxChange={handleCheckboxChange}
-                                                        inputValue={inputValue}
-                                                        onInputValueChange={handleInputValueChange}
-                                                    />
-                                                </div>
+                                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                                                {motivos.map((motivo) => (
+                                                    <div
+                                                        key={motivo.id}
+                                                        className="p-2"
+                                                        style={{
+                                                            backgroundColor: window.themeColors.footerColorText,
+                                                            flex: '0 0 calc(50% - 10px)',
+                                                        }}
+                                                    >
+                                                        <label htmlFor={motivo.nombre} className="custom-checkbox">
+                                                            {motivo.nombre}
+                                                            <input
+                                                                type="checkbox"
+                                                                id={motivo.nombre}
+                                                                className="checkbox"
+                                                                checked={checkboxValues['motivos']?.[motivo.id] || false}
+                                                                onChange={() => handleCheckboxChange('motivos', motivo.id)}
+                                                                style={{ marginLeft: '10px' }}
+                                                            />
+                                                            <span className="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                ))}
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div className='d-flex justify-content-center'>
-                                        <button className='btn w-75 container-fluid py-3 mb-3 fw-bold'
-                                            style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
-                                            type='button'
-                                            onClick={() => {
-                                                const newIndex = formularios.length;
-                                                toggleFormulario(newIndex);
-                                            }}
-                                        >
-                                            {formularios.includes(formularios.length) ? "Anular Formulario" : "Agregar Formulario"}
-                                        </button>
-                                    </div>
-
-                                    {formularios.map((index) => (
-                                        <div key={index}>
-                                            <FormularioNnya />
-                                            <div className='d-flex justify-content-center'>
-                                                <button className='btn w-75 container-fluid py-3 fw-bold mb-3'
-                                                    style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
-                                                    onClick={() => toggleFormulario(index)}
-                                                >
-                                                    {formularios.includes(index) ? "Anular Formulario" : "Agregar Formulario"}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ))}
                                 </AccordionComponent>
 
                                 <AccordionComponent buttonText="Estado Del Caso" buttonClassName="fw-bold custom-btn LightLavender mt-3 w-100 py-4 fs-4 m-0">
                                     <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
-
-                                        <div className='row d-flex  justify-content-evenly' >
-                                            <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Record with Follow-up" className="custom-checkbox px-0">
-                                                    Grave con Seguimiento
-                                                    <input type="checkbox" id="Record with Follow-up" className="checkbox" name="Case-with-Follow-up" />
-                                                    <span className="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Follow-up" className="custom-checkbox px-0">
-                                                    En Seguimiento
-                                                    <input type="checkbox" id="Follow-up" className="checkbox" name="Case-with-Follow-up" />
-                                                    <span className="checkmark"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className='row d-flex  justify-content-evenly' >
-                                            <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Record-without-Follow-up" className="custom-checkbox px-0">
-                                                    Grave sin Seguimiento
-                                                    <input type="checkbox" id="Record-without-Follow-up" className="checkbox" name="Untracked Case" />
-                                                    <span className="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div className='col-3 mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="Untracked" className="custom-checkbox px-0">
-                                                    Sin Seguimiento
-                                                    <input type="checkbox" id="Untracked" className="checkbox" name="Untracked Case" />
-                                                    <span className="checkmark"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='container' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
-                                        <div className='d-flex justify-content-center'>
-                                            <h1>Tipo Del Caso</h1>
-                                        </div>
-
-                                        <div className='row d-flex justify-content-evenly'>
-                                            <div
-                                                className={`col-3 mb-3 py-3 text-center caso-individual ${formularios.length === 0 ? 'active' : ''}`}
-                                            >
-                                                CASO INDIVIDUAL
-                                            </div>
-                                            <div
-                                                className={`col-3 mb-3 py-3 text-center caso-grupal ${formularios.length > 0 ? 'active' : ''}`}
-                                            >
-                                                CASO GRUPAL
-                                            </div>
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                                            {estadosDelCaso.map((estado) => (
+                                                <div
+                                                    key={estado.id}
+                                                    className="p-2"
+                                                    style={{
+                                                        backgroundColor: window.themeColors.footerColorText,
+                                                        flex: '0 0 calc(50% - 10px)',
+                                                    }}
+                                                >
+                                                    <label htmlFor={estado.name} className="custom-checkbox">
+                                                        {estado.name}
+                                                        <input
+                                                            type="checkbox"
+                                                            id={estado.name}
+                                                            className="checkbox"
+                                                            checked={checkboxValues['estadosDelCaso']?.[estado.id] || false}
+                                                            onChange={() => handleCheckboxChange('estadosDelCaso', estado.id)}
+                                                            style={{ marginLeft: '10px' }}
+                                                        />
+                                                        <span className="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </AccordionComponent>
-
                                 <div className='container w-75 d-flex flex-column justify-content-evenly mt-3'>
                                     <input type="submit" value="REGISTRAR CASO" className='btn register btn-lg mb-3'
                                         style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }} />
@@ -684,14 +318,13 @@ function CaseRecord() {
                                         style={{ backgroundColor: window.themeColors.buttonColorTransparent, color: window.themeColors.footerColorText }} >CANCELAR CASO</button>
                                 </div>
                             </div>
-                        </form>
+                        </Form>
                     </div>
-                </div >
+                </div>
                 <Footer />
-            </div >
-
+            </div>
         </>
-    )
-}
+    );
+};
 
-export default CaseRecord
+export default CaseRecord;
