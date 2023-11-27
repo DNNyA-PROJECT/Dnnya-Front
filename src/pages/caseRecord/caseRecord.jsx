@@ -171,7 +171,7 @@ const CaseRecord = () => {
                                             {relacionesConAdulto.map((relacion) => (
                                                 <div
                                                     key={relacion.id}
-                                                    className="p-2"
+                                                    className="p-3"
                                                     style={{
                                                         backgroundColor: window.themeColors.footerColorText,
                                                         flex: '0 0 calc(50% - 10px)',
@@ -193,6 +193,7 @@ const CaseRecord = () => {
                                             ))}
                                         </div>
                                     </div>
+
                                     <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorBluSky }}>
                                         <div className='d-flex justify-content-center'>
                                             <h1>Datos Del Adulto</h1>
@@ -248,39 +249,40 @@ const CaseRecord = () => {
                                                 <input className='col-2 form-control md' type="text" name="" id="" placeholder='Escuela' />
                                             </div>
                                         </div>
+                                    </div>
+                                    
+                                    <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightBeige }}>
+                                        <div className='d-flex justify-content-center'>
+                                            <h1>Motivo Del Reclamo</h1>
+                                        </div>
 
-                                        <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightBeige }}>
-                                            <div className='d-flex justify-content-center'>
-                                                <h1>Motivo Del Reclamo</h1>
-                                            </div>
-
-                                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                                                {motivos.map((motivo) => (
-                                                    <div
-                                                        key={motivo.id}
-                                                        className="p-2"
-                                                        style={{
-                                                            backgroundColor: window.themeColors.footerColorText,
-                                                            flex: '0 0 calc(50% - 10px)',
-                                                        }}
-                                                    >
-                                                        <label htmlFor={motivo.nombre} className="custom-checkbox">
-                                                            {motivo.nombre}
-                                                            <input
-                                                                type="checkbox"
-                                                                id={motivo.nombre}
-                                                                className="checkbox"
-                                                                checked={checkboxValues['motivos']?.[motivo.id] || false}
-                                                                onChange={() => handleCheckboxChange('motivos', motivo.id)}
-                                                                style={{ marginLeft: '10px' }}
-                                                            />
-                                                            <span className="checkmark"></span>
-                                                        </label>
-                                                    </div>
-                                                ))}
-                                            </div>
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                                            {motivos.map((motivo) => (
+                                                <div
+                                                    key={motivo.id}
+                                                    className="p-3"
+                                                    style={{
+                                                        backgroundColor: window.themeColors.footerColorText,
+                                                        flex: '0 0 calc(50% - 10px)',
+                                                    }}
+                                                >
+                                                    <label htmlFor={motivo.nombre} className="custom-checkbox">
+                                                        {motivo.nombre}
+                                                        <input
+                                                            type="checkbox"
+                                                            id={motivo.nombre}
+                                                            className="checkbox"
+                                                            checked={checkboxValues['motivos']?.[motivo.id] || false}
+                                                            onChange={() => handleCheckboxChange('motivos', motivo.id)}
+                                                            style={{ marginLeft: '10px' }}
+                                                        />
+                                                        <span className="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
+
                                 </AccordionComponent>
 
                                 <AccordionComponent buttonText="Estado Del Caso" buttonClassName="fw-bold custom-btn LightLavender mt-3 w-100 py-4 fs-4 m-0">
@@ -289,7 +291,7 @@ const CaseRecord = () => {
                                             {estadosDelCaso.map((estado) => (
                                                 <div
                                                     key={estado.id}
-                                                    className="p-2"
+                                                    className="p-3"
                                                     style={{
                                                         backgroundColor: window.themeColors.footerColorText,
                                                         flex: '0 0 calc(50% - 10px)',
