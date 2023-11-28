@@ -10,6 +10,7 @@ import DataTable from '../../components/dataTable/dataTable.jsx';
 import Searcher from '../../components/searcher/searcher.jsx'
 
 const CaseRecord = () => {
+    /* useStates / variables */
     const [modalShow, setModalShow] = useState(false);
     const [checkboxValues, setCheckboxValues] = useState({});
     const [estadosDelCaso, setEstadosDelCaso] = useState([]);
@@ -18,7 +19,7 @@ const CaseRecord = () => {
     const [relacionesConAdulto, setRelacionesConAdulto] = useState([]);
     const [fecha, setFecha] = useState(obtenerFechaActual);
 
-
+/* Funcionalidad de Fecha obtencion de datos */
     function obtenerFechaActual() {
         const fechaActual = new Date();
         const day = fechaActual.getDate().toString().padStart(2, '0');
@@ -27,17 +28,17 @@ const CaseRecord = () => {
         return `${year}-${month}-${day}`;
     }
 
-    
+
     useEffect(() => {
         setFecha(obtenerFechaActual());
     }, []);
 
-  
+
     const handleFechaChange = (e) => {
         setFecha(e.target.value);
     };
 
-
+/* Axios get datos de checkboxes */
     useEffect(() => {
         axios.get('http://localhost:8080/api/informacion')
             .then(response => {
