@@ -16,6 +16,27 @@ const CaseRecord = () => {
     const [tiposAsesoramiento, setTiposAsesoramiento] = useState([]);
     const [motivos, setMotivos] = useState([]);
     const [relacionesConAdulto, setRelacionesConAdulto] = useState([]);
+    const [fecha, setFecha] = useState(obtenerFechaActual);
+
+
+    function obtenerFechaActual() {
+        const fechaActual = new Date();
+        const day = fechaActual.getDate().toString().padStart(2, '0');
+        const month = (fechaActual.getMonth() + 1).toString().padStart(2, '0');
+        const year = fechaActual.getFullYear();
+        return `${year}-${month}-${day}`;
+    }
+
+    
+    useEffect(() => {
+        setFecha(obtenerFechaActual());
+    }, []);
+
+  
+    const handleFechaChange = (e) => {
+        setFecha(e.target.value);
+    };
+
 
     useEffect(() => {
         axios.get('http://localhost:8080/api/informacion')
@@ -124,7 +145,13 @@ const CaseRecord = () => {
                                         </div>
                                         <div className='d-flex justify-content-evenly mb-3  row' >
                                             <input className='col-2  form-control md' type="number" name="" id="" placeholder='Número' />
-                                            <input className='col-2  form-control md' type="month" name="" id="" />
+                                            <input
+                                                className='col-2 form-control md'
+                                                type="date"
+                                                id="fecha"
+                                                value={fecha}
+                                                onChange={handleFechaChange}
+                                            />
                                         </div>
                                         <div className='d-flex justify-content-evenly  row' >
                                             <input className='col-2 form-control md' type="text" name="" id="" placeholder='Nombre' />
