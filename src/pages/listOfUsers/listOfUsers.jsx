@@ -41,6 +41,8 @@ function ListOfUsers() {
     ["Nombre y Apellido", "Información del Usuario", "Dar de Alta / Dar Baja ",]
   ]);
 
+  let userData = [];
+
   const [filteredData, setFilteredData] = useState(data);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedOption, setSelectedOption] = useState('solicitantesActivos');
@@ -49,7 +51,9 @@ function ListOfUsers() {
   const [correo, setCorreo] = useState("");
   const [username, setUsername] = useState("");
   const [ids, setIds] = useState([]);
+  const [currentUserId, setCurrentUserId] = useState(null);
 
+  /* peticiones axios */
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -79,30 +83,36 @@ function ListOfUsers() {
         
         if (response.status === 200) {
           console.log('Solicitud exitosa');
-          const userData = response.data;
+          userData = response.data;
           console.log('Datos obtenidos:', userData);
 
           const header = data[0];
           const newData = [header];
-
+          const userIds = userData.map(user => user.id);
           userData.forEach(user => {
             const fullName = `${user.name} ${user.surname}`;
             setFullName(fullName);
             const usuario = user.username;
             setUsername(usuario);
-            const userIds = userData.map(user => user.id);
-            setIds(userIds);
             const correo = user.correo;
             setCorreo(correo);
+        
+            const handleButtonClick = () => {
+              handleFolderClick(user.id);
+            };
+        
             const buttonsFolder = [
-              <ButtonFolder key="folder" />,
+              <ButtonFolder key="folder" userId={user.id} />,
             ];
+        
             const buttonsCheck = [
               <ButtonList key="ButtonsList" />,
             ];
-
+        
             newData.push([fullName, buttonsFolder, ...buttonsCheck]);
           });
+        
+          setIds(userIds);
           setData(newData);
           setFilteredData(newData);
           setIsLoading(false);
@@ -122,17 +132,29 @@ function ListOfUsers() {
   const [showModal, setShowModal] = useState(false);
   const [currentModal, setCurrentModal] = useState(1);
 
-  const ButtonFolder = () => {
-    const handleFolderClick = (modalNumber) => {
-      setShowModal(true);
-      setCurrentModal(modalNumber);
-    }
-    return (
-      <button className='folderButton' onClick={handleFolderClick}>
-        <i className="bi bi-folder-fill"></i>
-      </button>
-    );
+ const ButtonFolder = ({ userId }) => {
+  const handleFolderClick = () => {
+    console.log('Usuario ID:', userId);
+
+    const selectedUser = userData.find(user => user.id === userId);
+
+    setFullName(`${selectedUser.name} ${selectedUser.surname}`);
+    setUsername(selectedUser.username);
+    setCorreo(selectedUser.correo);
+
+
+    setShowModal(true);
+    setCurrentModal(2);
+    setCurrentUserId(userId);
   };
+
+  return (
+    <button className='folderButton' onClick={handleFolderClick}>
+      <i className="bi bi-folder-fill"></i>
+    </button>
+  );
+};
+
   
   const handleCloseModal = () => {
     setShowModal(false);
