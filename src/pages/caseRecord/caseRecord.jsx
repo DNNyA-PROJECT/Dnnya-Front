@@ -19,7 +19,7 @@ const CaseRecord = () => {
     const [relacionesConAdulto, setRelacionesConAdulto] = useState([]);
     const [fecha, setFecha] = useState(obtenerFechaActual);
 
-/* Funcionalidad de Fecha obtencion de datos */
+
     function obtenerFechaActual() {
         const fechaActual = new Date();
         const day = fechaActual.getDate().toString().padStart(2, '0');
@@ -33,12 +33,15 @@ const CaseRecord = () => {
         setFecha(obtenerFechaActual());
     }, []);
 
+    useEffect(() => {
+        setFormData((prevData) => ({ ...prevData, fecha: obtenerFechaActual() }));
+    }, [])
 
     const handleFechaChange = (e) => {
         setFecha(e.target.value);
     };
 
-/* Axios get datos de checkboxes */
+    /* Axios get datos de checkboxes */
     useEffect(() => {
         axios.get('http://localhost:8080/api/informacion')
             .then(response => {
@@ -112,15 +115,62 @@ const CaseRecord = () => {
     };
 
     const handleCheckboxChange = (type, id) => {
-        setCheckboxValues((prevValues) => ({
-            ...prevValues,
-            [type]: { ...prevValues[type], [id]: !prevValues[type]?.[id] },
-        }));
+        setFormData((prevData) => {
+          const newCheckboxValues = {
+            ...prevData.checkboxValues,
+            [type]: { ...prevData.checkboxValues[type], [id]: !prevData.checkboxValues[type]?.[id] },
+          };
+      
+          console.log('Nuevo estado de checkboxValues:', newCheckboxValues);
+      
+          setCheckboxValues(newCheckboxValues); 
+      
+          return { ...prevData, checkboxValues: newCheckboxValues };
+        });
+      };
+      
 
-
-        console.log('Nuevo estado de checkboxValues:', checkboxValues);
+    const enviarDatosAlBackend = () => {
+        axios.post('URL_DEL_BACKEND', formData)
+            .then(response => {
+                // Manejar la respuesta del backend según sea necesario
+                if (response.status === 200) {
+                    console.log('Datos enviados exitosamente al backend');
+                } else {
+                    console.error('Error al enviar los datos al backend');
+                }
+            })
+            .catch(error => {
+                console.error('Error al enviar los datos al backend:', error);
+            });
     };
 
+    const handleAdditionalInputChange = (e, field) => {
+        setFormData((prevData) => ({ ...prevData, [field]: e.target.value }));
+    };
+
+    const [formData, setFormData] = useState({
+        fecha: obtenerFechaActual(),
+        checkboxValues: {},
+        dniAdulto: '',
+        nameAdulto: '',
+        telephone: '',
+        addressAdulto: '',
+        idNnya: '',
+        nameNnya: '',
+        dniNnya: '',
+        address: '',
+        age: '',
+        school: '',
+        birthdate: '',
+    });
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Datos a enviar al backend:', formData);
+        enviarDatosAlBackend();
+    };
     return (
         <>
             <div className=' container-fluid row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
@@ -152,6 +202,7 @@ const CaseRecord = () => {
                                                 id="fecha"
                                                 value={fecha}
                                                 onChange={handleFechaChange}
+                                                readOnly
                                             />
                                         </div>
                                         <div className='d-flex justify-content-evenly  row' >
@@ -199,7 +250,7 @@ const CaseRecord = () => {
                                             {relacionesConAdulto.map((relacion) => (
                                                 <div
                                                     key={relacion.id}
-                                                    className="p-3"
+                                                    className={`p-3 ${checkboxValues['relacionesConAdulto']?.[relacion.id] ? 'active-checkbox' : ''}`}
                                                     style={{
                                                         backgroundColor: window.themeColors.footerColorText,
                                                         flex: '0 0 calc(50% - 10px)',
@@ -228,12 +279,36 @@ const CaseRecord = () => {
                                         </div>
 
                                         <div className='d-flex justify-content-evenly mb-3  row' >
-                                            <input className='col-2 form-control md' type="number" name="" id="" placeholder='DNI' />
-                                            <input className='col-2 form-control md' type="text" name="" id="" placeholder='Nombre Completo' />
+                                            <input
+                                                className='col-2 form-control md'
+                                                type="number"
+                                                placeholder='DNI Adulto'
+                                                value={formData.dniAdulto}
+                                                onChange={(e) => handleAdditionalInputChange(e, 'dniAdulto')}
+                                            />
+                                            <input
+                                                className='col-2 form-control md'
+                                                type="text"
+                                                placeholder='Nombre Completo Adulto'
+                                                value={formData.nameAdulto}
+                                                onChange={(e) => handleAdditionalInputChange(e, 'nameAdulto')}
+                                            />
                                         </div>
                                         <div className='d-flex justify-content-evenly  row' >
-                                            <input className='col-2 form-control md' type="number" name="" id="" placeholder='Telefono' />
-                                            <input className='col-2 form-control md' type="text" name="" id="" placeholder='Domicilio' />
+                                            <input
+                                                className='col-2 form-control md'
+                                                type="number"
+                                                placeholder='Teléfono'
+                                                value={formData.telephone}
+                                                onChange={(e) => handleAdditionalInputChange(e, 'telephone')}
+                                            />
+                                            <input
+                                                className='col-2 form-control md'
+                                                type="text"
+                                                placeholder='Domicilio Adulto'
+                                                value={formData.addressAdulto}
+                                                onChange={(e) => handleAdditionalInputChange(e, 'addressAdulto')}
+                                            />
                                         </div>
                                     </div>
                                 </AccordionComponent>
@@ -265,16 +340,56 @@ const CaseRecord = () => {
                                             </div>
 
                                             <div className='d-flex justify-content-evenly mb-3  row' >
-                                                <input className='col-2 form-control md' type="text" placeholder='Nombre Completo' />
-                                                <input className='col-2 form-control md' type="number" name="" id="" placeholder='DNI' />
+                                                <input
+                                                    className='col-2 form-control md'
+                                                    type="text"
+                                                    placeholder='Nombre Completo'
+                                                    value={formData.nameNnya}
+                                                    onChange={(e) => handleAdditionalInputChange(e, 'nameNnya')}
+                                                />
+                                                <input
+                                                    className='col-2 form-control md'
+                                                    type="number"
+                                                    id=""
+                                                    placeholder='DNI'
+                                                    value={formData.dniNnya}
+                                                    onChange={(e) => handleAdditionalInputChange(e, 'dniNnya')}
+                                                />
                                             </div>
                                             <div className='d-flex justify-content-evenly mb-3  row' >
-                                                <input className='col-2 form-control md' type="number" name="" id="" placeholder='Domicilio' />
-                                                <input className='col-2 form-control md' type="date" name="" id="" />
+                                                <input
+                                                    className='col-2 form-control md'
+                                                    type="text"
+                                                    id=""
+                                                    placeholder='Domicilio'
+                                                    value={formData.address}
+                                                    onChange={(e) => handleAdditionalInputChange(e, 'address')}
+                                                />
+                                                <input
+                                                    className='col-2 form-control md'
+                                                    type="date"
+                                                    id=""
+                                                    value={formData.birthdate}
+                                                    onChange={(e) => handleAdditionalInputChange(e, 'birthdate')}
+                                                />
                                             </div>
                                             <div className='d-flex justify-content-evenly  row' >
-                                                <input className='col-2 form-control md' type="number" name="" id="" placeholder='Edad' />
-                                                <input className='col-2 form-control md' type="text" name="" id="" placeholder='Escuela' />
+                                                <input
+                                                    className='col-2 form-control md'
+                                                    type="number"
+                                                    id=""
+                                                    placeholder='Edad'
+                                                    value={formData.age}
+                                                    onChange={(e) => handleAdditionalInputChange(e, 'age')}
+                                                />
+                                                <input
+                                                    className='col-2 form-control md'
+                                                    type="text"
+                                                    id=""
+                                                    placeholder='Escuela'
+                                                    value={formData.school}
+                                                    onChange={(e) => handleAdditionalInputChange(e, 'school')}
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -343,7 +458,7 @@ const CaseRecord = () => {
                                     </div>
                                 </AccordionComponent>
                                 <div className='container w-75 d-flex flex-column justify-content-evenly mt-3'>
-                                    <input type="submit" value="REGISTRAR CASO" className='btn register btn-lg mb-3'
+                                    <input type="submit" onClick={handleSubmit} value="REGISTRAR CASO" className='btn register btn-lg mb-3'
                                         style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }} />
                                     <button type='button' className='btn register btn-lg mb-3'
                                         style={{ backgroundColor: window.themeColors.buttonColorTransparent, color: window.themeColors.footerColorText }} >CANCELAR CASO</button>
