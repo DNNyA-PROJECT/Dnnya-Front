@@ -56,7 +56,6 @@ const CaseFollowUp = () => {
     const [isDerivate, setIsDerivate] = useState(false);
     const [isSingle, setIsSingle] = useState(false);
     const [isGrupal, setIsGrupal] = useState(false);
-
     const [data, setData] = useState(customData);
 
     const handleInputChange = (e) => {
