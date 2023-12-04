@@ -131,9 +131,9 @@ const CaseRecord = () => {
       
 
     const enviarDatosAlBackend = () => {
-        axios.post('URL_DEL_BACKEND', formData)
+        axios.post('http://localhost:8080/api/guardarDatos', formData)
             .then(response => {
-                // Manejar la respuesta del backend según sea necesario
+
                 if (response.status === 200) {
                     console.log('Datos enviados exitosamente al backend');
                 } else {
