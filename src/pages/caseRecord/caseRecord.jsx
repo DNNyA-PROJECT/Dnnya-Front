@@ -113,17 +113,29 @@ const CaseRecord = () => {
         });
         setData(filteredData);
     };
-
+    
     const handleCheckboxChange = (type, id) => {
         setFormData((prevData) => {
           const newCheckboxValues = {
             ...prevData.checkboxValues,
-            [type]: { ...prevData.checkboxValues[type], [id]: !prevData.checkboxValues[type]?.[id] },
+            [type]: { ...prevData.checkboxValues[type] }
           };
+      
+          // Si se presiona el mismo checkbox, alternar estado
+          newCheckboxValues[type][id] = !newCheckboxValues[type][id];
+      
+          // Si se presiona otro checkbox, deshabilitar los demás
+          if (type === 'relacionesConAdulto' && newCheckboxValues[type][id]) {
+            Object.keys(newCheckboxValues[type]).forEach((key) => {
+              if (key !== id.toString()) {
+                newCheckboxValues[type][key] = false;
+              }
+            });
+          }
       
           console.log('Nuevo estado de checkboxValues:', newCheckboxValues);
       
-          setCheckboxValues(newCheckboxValues); 
+          setCheckboxValues(newCheckboxValues);
       
           return { ...prevData, checkboxValues: newCheckboxValues };
         });
@@ -247,7 +259,7 @@ const CaseRecord = () => {
                                 <AccordionComponent buttonText="Relación Del Adulto con NNyA" buttonClassName="fw-bold lightblue  custom-btn mt-3 w-100 py-4 fs-4 m-0">
                                     <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorBluSky }}>
                                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                                            {relacionesConAdulto.map((relacion) => (
+                                            {relacionesConAdulto.map((relacion, index) => (
                                                 <div
                                                     key={relacion.id}
                                                     className={`p-3 ${checkboxValues['relacionesConAdulto']?.[relacion.id] ? 'active-checkbox' : ''}`}
@@ -265,6 +277,7 @@ const CaseRecord = () => {
                                                             checked={checkboxValues['relacionesConAdulto']?.[relacion.id] || false}
                                                             onChange={() => handleCheckboxChange('relacionesConAdulto', relacion.id)}
                                                             style={{ marginLeft: '10px' }}
+                                                            disabled={checkboxValues['relacionesConAdulto']?.[relacion.id]}
                                                         />
                                                         <span className="checkmark"></span>
                                                     </label>
