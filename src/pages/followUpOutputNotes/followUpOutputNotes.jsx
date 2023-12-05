@@ -3,7 +3,7 @@ import Header from '../../components/partials/header.jsx';
 import Footer from '../../components/partials/footer.jsx';
 import ComponentComment from '../../components/componentComment/componentComment.jsx';
 
-function trackEntryNotes() {
+function followUpOutputNotes() {
   return (
     <>
       <div className=' container-fluid row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
@@ -18,7 +18,7 @@ function trackEntryNotes() {
           </div>
           <div className='container-fluid'>
             <h4 className='fs-3 fw-bolder mb-5 d-flex justify-content-center'>
-              Seguimiento notas de entrada
+              Seguimiento notas de Salida
             </h4>
             <form action="">
               <div className='row'>
@@ -62,4 +62,4 @@ function trackEntryNotes() {
   )
 }
 
-export default trackEntryNotes;
+export default followUpOutputNotes;

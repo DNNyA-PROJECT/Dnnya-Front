@@ -3,7 +3,7 @@ import Header from '../../components/partials/header.jsx';
 import Footer from '../../components/partials/footer.jsx';
 import ComponentComment from '../../components/componentComment/componentComment.jsx';
 
-function trackEntryNotes() {
+function registerOutputNotes() {
   return (
     <>
       <div className=' container-fluid row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
@@ -12,13 +12,13 @@ function trackEntryNotes() {
           <Menu />
         </div>
 
-        <div className='container-fluid d-flex align-items-center flex-column col-12 col-md-9 justify-content-between'>
+        <div className='container-fluid d-flex align-items-center flex-column col-12 col-md-9'>
           <div className='homeHead py-5 px-5 container-fluid'>
             <Header />
           </div>
           <div className='container-fluid'>
             <h4 className='fs-3 fw-bolder mb-5 d-flex justify-content-center'>
-              Seguimiento notas de entrada
+              Registro notas de Salida
             </h4>
             <form action="">
               <div className='row'>
@@ -38,20 +38,24 @@ function trackEntryNotes() {
                 </div>
               </div>
 
-              <div className='my-5'>
-              <div className='container w-75 py-4' style={{ backgroundColor: window.themeColors.boxnewColor }}>
+              <div className='d-flex mx-5 my-3 justify-content-center'>
+                <div className='col-10'>
+                  <select className='form-control' name="" id="">
+                    <option value="Pendiente">pendiente</option>
+                    <option value="Aprobado">Aprobado</option>
+                    <option value="Rechazado">Rechazado</option>
+                    <option value="Cerrado">Cerrado</option>
+                  </select>
+                </div>
               </div>
-              <div className='container d-flex justify-content-center'>
-                  <textarea name="" id="" cols="93" rows="10"></textarea>
-              </div>
-              </div>
-              <ComponentComment titulo="Comentarios" placeholder="Escribe aquí tus comentarios" />
+              <ComponentComment titulo="Nota de Entrada Comentario" placeholder="Escribe aquí tus comentarios" />
               <div className='d-flex justify-content-center my-3'>
                 <button className='btn fs-4 fw-bolder' type='submit' style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}>ENVIAR</button>
               </div>
             </form>
           </div>
         </div>
+
       </div>
 
 
@@ -62,4 +66,4 @@ function trackEntryNotes() {
   )
 }
 
-export default trackEntryNotes;
+export default registerOutputNotes;

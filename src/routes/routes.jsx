@@ -16,7 +16,9 @@ import SearcherCase from '../pages/searcherCase/searcherCase.jsx'
 import entryNotesFinder from '../pages/entryNoteFinder/entryNoteFinder.jsx';
 import entryNotesRegister from '../pages/entryNotesRegister/entryNotesRegister.jsx'
 import trackEntryNotes from '../pages/trackEntryNotes/trackEntryNotes.jsx'
-
+import RegisterOutputNotes from '../pages/registerOutputNotes/registerOutputNotes.jsx'
+import followUpOutputNotes from '../pages/followUpOutputNotes/followUpOutputNotes.jsx'
+import searchOutputNotes from '../pages/searchOutputNotes/searchOutputNotes.jsx'
 
 function Routes() {
   return (
@@ -39,7 +41,9 @@ function Routes() {
           <Route exact path='/Buscador_de_Notas_de_Entrada' component={entryNotesFinder} />
           <Route exact path='/Registro_de_Notas_de_Entrada' component={entryNotesRegister} />
           <Route exact path='/Seguimiento_de_Notas_de_Entrada' component={trackEntryNotes} />
-
+          <Route exact path='/Registro-de-Notas_de_Salida' component = {RegisterOutputNotes}/>
+          <Route exact path='/Seguimiento-de-Notas_de_Salida' component = {followUpOutputNotes}/>
+          <Route exact path='/Buscador-de-Notas_de_Salida' component = {searchOutputNotes}/>
         </Switch>
       </div>
     </Router>

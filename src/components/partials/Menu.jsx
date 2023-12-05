@@ -245,6 +245,72 @@ function Menu() {
             </Link>
           </li>
           </AccordionComponent>
+
+          <AccordionComponent buttonText="Notas de Salida" buttonClassName="w-100 fs-3 fw-900 align-items-center justify-content-center d-flex">
+          <li
+            className={`mb-3 text-center`}
+            style={{
+              ...backgroundStyle('/Buscador-de-Notas_de_Salida'),
+              ':hover': {
+                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                color: 'white',
+              },
+            }}
+          >
+            <Link to="/Buscador-de-Notas_de_Salida" className={` ${location.pathname === '/Buscador-de-Notas_de_Salida' ? 'active' : ''} ${textClass('/Buscador-de-Notas_de_Salida')}`}
+              style={{
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                padding: '1rem',
+              }}
+            >
+              <h3 className={`text-link  text-center ${textClass('/Buscador-de-Notas_de_Salida')}`}>Buscador de Notas de Salida</h3>
+            </Link>
+          </li>
+          <li
+            className={`mb-3 text-center`}
+            style={{
+              ...backgroundStyle('/Registro-de-Notas_de_Salida'),
+              ':hover': {
+                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                color: 'white',
+              },
+            }}
+          >
+            <Link to="/Registro-de-Notas_de_Salida" className={` ${location.pathname === '/Registro-de-Notas_de_Salida' ? 'active' : ''} ${textClass('/Registro-de-Notas_de_Salida')}`}
+              style={{
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                padding: '1rem',
+              }}
+            >
+              <h3 className={`text-link  text-center ${textClass('/Registro-de-Notas_de_Salida')}`}>Registro de Notas de Salida</h3>
+            </Link>
+          </li>
+          <li
+            className={`mb-3 text-center`}
+            style={{
+              ...backgroundStyle('/Seguimiento-de-Notas_de_Salida'),
+              ':hover': {
+                backgroundColor: window.themeColors.footerBackground.darkFooterBackground,
+                color: 'white',
+              },
+            }}
+          >
+            <Link to="/Seguimiento-de-Notas_de_Salida" className={` ${location.pathname === '/Seguimiento-de-Notas_de_Salida' ? 'active' : ''} ${textClass('/Seguimiento-de-Notas_de_Salida')}`}
+              style={{
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                padding: '1rem',
+              }}
+            >
+              <h3 className={`text-link  text-center ${textClass('/Seguimiento-de-Notas_de_Salida')}`}>Seguimiento de Notas de Salida</h3>
+            </Link>
+          </li>
+          </AccordionComponent>
         </ul>
       </div>
     </>
