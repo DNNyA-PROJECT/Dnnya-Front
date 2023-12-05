@@ -113,34 +113,34 @@ const CaseRecord = () => {
         });
         setData(filteredData);
     };
-    
+
     const handleCheckboxChange = (type, id) => {
         setFormData((prevData) => {
-          const newCheckboxValues = {
-            ...prevData.checkboxValues,
-            [type]: { ...prevData.checkboxValues[type] }
-          };
-      
-          // Si se presiona el mismo checkbox, alternar estado
-          newCheckboxValues[type][id] = !newCheckboxValues[type][id];
-      
-          // Si se presiona otro checkbox, deshabilitar los demás
-          if (type === 'relacionesConAdulto' && newCheckboxValues[type][id]) {
-            Object.keys(newCheckboxValues[type]).forEach((key) => {
-              if (key !== id.toString()) {
-                newCheckboxValues[type][key] = false;
-              }
-            });
-          }
-      
-          console.log('Nuevo estado de checkboxValues:', newCheckboxValues);
-      
-          setCheckboxValues(newCheckboxValues);
-      
-          return { ...prevData, checkboxValues: newCheckboxValues };
+            const newCheckboxValues = {
+                ...prevData.checkboxValues,
+                [type]: { ...prevData.checkboxValues[type] }
+            };
+
+            const isChecked = !newCheckboxValues[type][id];
+
+
+            if (type === 'relacionesConAdulto' && isChecked) {
+                Object.keys(newCheckboxValues[type]).forEach((key) => {
+                    if (key !== id.toString()) {
+                        newCheckboxValues[type][key] = false;
+                    }
+                });
+            }
+
+            newCheckboxValues[type][id] = isChecked;
+
+            console.log('Nuevo estado de checkboxValues:', newCheckboxValues);
+
+            setCheckboxValues(newCheckboxValues);
+
+            return { ...prevData, checkboxValues: newCheckboxValues };
         });
-      };
-      
+    };
 
     const enviarDatosAlBackend = () => {
         axios.post('http://localhost:8080/api/guardarDatos', formData)
@@ -277,7 +277,11 @@ const CaseRecord = () => {
                                                             checked={checkboxValues['relacionesConAdulto']?.[relacion.id] || false}
                                                             onChange={() => handleCheckboxChange('relacionesConAdulto', relacion.id)}
                                                             style={{ marginLeft: '10px' }}
-                                                            disabled={checkboxValues['relacionesConAdulto']?.[relacion.id]}
+                                                            disabled={
+                                                              checkboxValues['relacionesConAdulto'] && 
+                                                              Object.values(checkboxValues['relacionesConAdulto']).some((value) => value) &&
+                                                              !checkboxValues['relacionesConAdulto'][relacion.id] 
+                                                            }
                                                         />
                                                         <span className="checkmark"></span>
                                                     </label>
