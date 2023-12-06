@@ -142,20 +142,7 @@ const CaseRecord = () => {
         });
     };
 
-    const enviarDatosAlBackend = () => {
-        axios.post('http://localhost:8080/api/guardarDatos', formData)
-            .then(response => {
-
-                if (response.status === 200) {
-                    console.log('Datos enviados exitosamente al backend');
-                } else {
-                    console.error('Error al enviar los datos al backend');
-                }
-            })
-            .catch(error => {
-                console.error('Error al enviar los datos al backend:', error);
-            });
-    };
+    
 
     const handleAdditionalInputChange = (e, field) => {
         setFormData((prevData) => ({ ...prevData, [field]: e.target.value }));
@@ -180,8 +167,48 @@ const CaseRecord = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         console.log('Datos a enviar al backend:', formData);
-        enviarDatosAlBackend();
+
+        // Verifica si relacionesConAdulto es un objeto y conviértelo a un array si es necesario
+    const relacionesConAdultoArray = Array.isArray(formData.checkboxValues.relacionesConAdulto)
+    ? formData.checkboxValues.relacionesConAdulto
+    : Object.entries(formData.checkboxValues.relacionesConAdulto);
+
+    console.log('Tipo de dato de relacionesConAdulto:', typeof relacionesConAdultoArray);
+
+        // Convertir Map a objeto antes de enviar al backend
+        const formDataToSend = {
+            ...formData,
+            checkboxValues: {
+                ...formData.checkboxValues,
+                
+                relacionesConAdulto: {
+                    // Convierte las claves a Long y los valores a Boolean
+            ...Object.entries(formData.checkboxValues.relacionesConAdulto).reduce((acc, [key, value]) => {
+                acc[parseInt(key, 10)] = Boolean(value);
+                return acc;
+            }, {}),
+                }
+            },
+        //enviarDatosAlBackend();
+    };
+    console.log('Datos a enviar al backend:', formDataToSend);
+
+    
+    
+        axios.post('http://localhost:8080/api/guardarDatos', formDataToSend)
+            .then(response => {
+
+                if (response.status === 200) {
+                    console.log('Datos enviados exitosamente al backend');
+                } else {
+                    console.error('Error al enviar los datos al backend');
+                }
+            })
+            .catch(error => {
+                console.error('Error al enviar los datos al backend:', error);
+            });
     };
     return (
         <>
