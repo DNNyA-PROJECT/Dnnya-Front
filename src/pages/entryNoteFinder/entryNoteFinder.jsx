@@ -8,7 +8,7 @@ import AccordionComponent from '../../components/AccordionComponent/AccordionCom
 const entryNotesFinder = () => {
 
   const Header = [
-    ["Nota", "Número","Fecha", "Responsable Registro", "Responsable Seguimiento", "Estado Nota"],
+    ["Fecha", "Responsable Registro", "Responsable Seguimiento", "Estado Nota"],
 ];
 
 const customData = [

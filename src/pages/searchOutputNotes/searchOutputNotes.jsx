@@ -8,11 +8,13 @@ import AccordionComponent from '../../components/AccordionComponent/AccordionCom
 const entryNotesFinder = () => {
 
   const Header = [
-    ["Nota", "Número","Fecha", "Responsable Registro", "Responsable Seguimiento", "Estado Nota"],
+    ["Fecha", "Responsable Registro"],
 ];
 
 const customData = [
-  ["Nota", "Número","Fecha", "Responsable Registro", "Responsable Seguimiento", "Estado Nota"],
+  ["Nota", "Número Único","Fecha", "Responsable Registro", "Dirgido A"],
+  ["Nota", "Número Único","Fecha", "Responsable Registro", "Municipalidad de Garupa"],
+  ["Nota", "Número Único","Fecha", "Responsable Registro", "Municipalidad de Posadas"],
 ];
 
 const [data, setData] = useState(customData);

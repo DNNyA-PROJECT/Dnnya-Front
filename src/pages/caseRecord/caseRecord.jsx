@@ -170,21 +170,21 @@ const CaseRecord = () => {
         
         console.log('Datos a enviar al backend:', formData);
 
-        // Verifica si relacionesConAdulto es un objeto y conviértelo a un array si es necesario
+      
     const relacionesConAdultoArray = Array.isArray(formData.checkboxValues.relacionesConAdulto)
     ? formData.checkboxValues.relacionesConAdulto
     : Object.entries(formData.checkboxValues.relacionesConAdulto);
 
     console.log('Tipo de dato de relacionesConAdulto:', typeof relacionesConAdultoArray);
 
-        // Convertir Map a objeto antes de enviar al backend
+   
         const formDataToSend = {
             ...formData,
             checkboxValues: {
                 ...formData.checkboxValues,
                 
                 relacionesConAdulto: {
-                    // Convierte las claves a Long y los valores a Boolean
+                
             ...Object.entries(formData.checkboxValues.relacionesConAdulto).reduce((acc, [key, value]) => {
                 acc[parseInt(key, 10)] = Boolean(value);
                 return acc;
