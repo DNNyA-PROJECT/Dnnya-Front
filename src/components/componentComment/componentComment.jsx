@@ -26,7 +26,7 @@ const componentComment = ({ titulo, placeholder }) => {
                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                         </svg>
                     </button>
-                    <textarea name="mensaje" className='form-control rounded-0 w-75 container-fluid align-items-center' rows="4" cols="50" placeholder={placeholder}></textarea>
+                    <textarea name="mensaje" className='form-control rounded-0 w-75 container-fluid align-items-center' rows="10" cols="60" placeholder={placeholder}></textarea>
                     <div className='d-flex' style={{ position: "absolute", bottom: '1vw', right: '30vw' }}>
                         <div className="px-3">
                             <input

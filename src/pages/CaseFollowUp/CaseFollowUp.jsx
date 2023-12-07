@@ -57,7 +57,8 @@ const CaseFollowUp = () => {
 
     const customData = [
         ["Comentario", "Responsable", "NNyA", "Fecha de alta", "Archivos", "Modificaciones", " "],
-        [<ButtonCommentary />, "Fabricio Saucedo", "Soynara Frost", "17/08/23", <ButtonPDF />, <ButtonHistory />, " "]
+        [<ButtonCommentary />, "Fabricio Saucedo", "Soynara Frost", "17/08/23", <ButtonPDF />, <ButtonHistory />, " "],
+        [<ButtonCommentary />, "Joel Ramos", "Soynara Frost", "17/07/23", <ButtonPDF />, <ButtonHistory />, " "]
     ]
     return (
         <div>
@@ -74,39 +75,39 @@ const CaseFollowUp = () => {
                     <div className='container px-5 py-3' style={{ backgroundColor: window.themeColors.boxBorder }}>
                         <AccordionComponent buttonText="Información Situación Actual del Caso" buttonClassName="w-100 fs-3 fw-bold align-items-center justify-content-center d-flex">
                             <div className='py-2 yellowbg' >
-                                <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.boxColorGreen }}>
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-900 w-100' style={{ backgroundColor: window.themeColors.boxColorGreen }}>
                                     Registro de intervención
                                 </div>
 
                                 <div className='container-fluid'>
                                     <div className='row d-flex px-5'>
                                         <div className='col-5 py-3'>
-                                            <input type="text" name="" id="" className='form-control md mb-3' />
-                                            <input type="text" name="" id="" className='form-control md' />
+                                            <input type="Text" name="" id="" placeholder='Nro. Identificador del Caso: 540' className='form-control md mb-3' />
+                                            <input type="Text" name="" placeholder='Nro Del Expediente: 2540' id="" className='form-control md' />
                                         </div>
 
                                         <div className='col-5 py-3'>
-                                            <input type="text" name="" id="" className='form-control md mb-3' />
-                                            <input type="text" name="" id="" className='form-control md' />
+                                            <input type="Date" name="" id="" className='form-control md mb-3' />
+                                            <input type="Text" placeholder='Nro. Derivación: 5243'  name="" id="" className='form-control md' />
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.boxColorGreen }}>
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-900 w-100' style={{ backgroundColor: window.themeColors.boxColorGreen }}>
                                     Responsable del registro
                                 </div>
 
                                 <div className='row d-flex px-5'>
                                     <div className='col-5 py-3'>
-                                        <input type="text" name="" id="" className='form-control md' />
+                                        <input type="text" placeholder='Alejandro Bianchi' name="" id="" className='form-control md' />
                                     </div>
 
                                     <div className='col-5 py-3'>
-                                        <input type="text" name="" id="" className='form-control md' />
+                                        <input type="text" placeholder='Psicosocial' name="" id="" className='form-control md' />
                                     </div>
                                 </div>
 
-                                <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.boxColorGreen }}>
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-900 w-100' style={{ backgroundColor: window.themeColors.boxColorGreen }}>
                                     Tipo de Caso
                                 </div>
                                 <div className='row px-5'>
@@ -123,17 +124,17 @@ const CaseFollowUp = () => {
                                     </div>
                                 </div>
 
-                                <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-900 w-100' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
                                     Responsable del Seguimiento
                                 </div>
 
                                 <div className='row d-flex px-5'>
                                     <div className='col-5 py-3'>
-                                        <input type="text" name="" id="" className='form-control md' />
+                                        <input type="text" name="" placeholder='Profesional: Tomas Rack' id="" className='form-control md' />
                                     </div>
 
                                     <div className='col-5 py-3'>
-                                        <input type="text" name="" id="" className='form-control md' />
+                                        <input type="text" name="" placeholder='Área: Juridica' id="" className='form-control md' />
                                     </div>
 
                                     <div className='col-1 d-flex align-items-center'>
@@ -148,13 +149,13 @@ const CaseFollowUp = () => {
                                         </svg>
                                     </div>
                                 </div>
-                                <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-900 w-100' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
                                     Estado el Caso
                                 </div>
 
                                 <div className='row d-flex px-5 py-3'>
                                     <div className='col-5'>
-                                        <input type="text" name="" id="" className='form-control md' />
+                                        <input type="text" name="" placeholder='Grave Con Seguimiento' id="" className='form-control md' />
                                     </div>
 
                                     <div className='col-5 d-flex align-items-center fs-5'>
@@ -170,7 +171,7 @@ const CaseFollowUp = () => {
                                     </div>
                                 </div>
 
-                                <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-900 w-100' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
                                     Plazo de Seguimiento
                                 </div>
                                 <div className='row d-flex px-5'>
@@ -184,7 +185,10 @@ const CaseFollowUp = () => {
                                         <input type="date" name="" id="" className='form-control md' />
                                     </div>
                                 </div>
-                                <ComponentComment titulo="Agregar Comentarios" placeholder="Escribe aquí tus comentarios" />
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-900 w-100' style={{ backgroundColor: window.themeColors.boxnewColor }}>
+                                    Últimos Seguimientos
+                                </div>
+                                <ComponentComment titulo="Últimos Comentarios" placeholder="Escribe aquí tus comentarios" />
                                 <div className='container w-75 mt-5'>
                                     <DataTable data={customData} headerBackgroundColor="#F2A57F" />
                                 </div>
@@ -195,7 +199,7 @@ const CaseFollowUp = () => {
                         </AccordionComponent>
                         <AccordionComponent buttonText="Seguimiento del Caso" buttonClassName="w-100 fs-3 fw-bold align-items-center justify-content-center d-flex">
                             <div className='py-5 yellowbg' >
-                                <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-bold w-100' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
                                     Área Jurídica
                                 </div>
                                 <div className='container  mb-3 py-4 px-5 w-75 mt-5  ' style={{ backgroundColor: window.themeColors.boxColorOrange }}>
@@ -205,26 +209,30 @@ const CaseFollowUp = () => {
                                         </div>
                                     </div>
                                     <div className='d-flex justify-content-evenly mb-3  row' >
-                                        <input className='col-2  form-control md' type="text" name="" id="" placeholder='Judicializado:' />
-                                        <input className='col-2  form-control md' type="number" name="" id="" placeholder='Nro exp. Judicial:' />
+                                        <select name=""  className='col-5 form-control-md' id="">
+                                            <option value="">Judicializado:</option>
+                                            <option value="Si"> Si</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                        <input className='col-2  form-control md' type="number" name="" id="" placeholder='Nro exp. Judicial: 500' />
                                     </div>
                                     <div className='d-flex justify-content-evenly  row' >
-                                        <input className='col-2 form-control md' type="text" name="" id="" placeholder='Juzgado:' />
-                                        <input className='col-2 form-control md' type="text" name="" id="" placeholder='caratula:' />
+                                        <input className='col-2 form-control md' type="text" name="" id="" placeholder='Juzgado: Garupa' />
+                                        <input className='col-2 form-control md' type="text" name="" id="" placeholder='Caratula: a' />
                                     </div>
                                 </div>
                                 <ComponentComment titulo="Agregar Comentarios" placeholder="Escribe aquí tus comentarios" />
                                 <div className='container w-75 mt-5'>
                                     <DataTable data={customData} headerBackgroundColor="#F2A57F" />
                                 </div>
-                                <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-bold w-100' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
                                     Área Psicosocial
                                 </div>
                                 <ComponentComment titulo="Agregar Comentarios" placeholder="Escribe aquí tus comentarios" />
                                 <div className='container w-75 mt-5'>
                                     <DataTable data={customData} headerBackgroundColor="#F2A57F" />
                                 </div>
-                                <div className='container-fluid d-flex justify-content-center fs-3 fw-ligth w-100' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+                                <div className='container-fluid d-flex justify-content-center fs-3 fw-bold w-100' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
                                     Supervisor
                                 </div>
                                 <ComponentComment titulo="Agregar Comentarios" placeholder="Escribe aquí tus comentarios" />

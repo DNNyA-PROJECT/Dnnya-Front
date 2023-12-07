@@ -28,19 +28,19 @@ const CaseFollowUp = () => {
         );
     };
     const customData = [
-        ["NNyA", "DNI", "Tipo de Caso", "Número del Caso","Estado del Caso", "Fecha de Alta", "Caso"],
-        ["Guiin Flynn", "39024532","Individual", "420", "Con Seguimiento", "17/08/23", <ButtonArrow />],
-        ["Lionel Andres Messi", "42124532","Grupal", "350", "Sin Seguimiento", "02/10/23", <ButtonArrow />],
-        ["Cristiano Penaldo", "42124532","Grupal", "460", "Grave con Seguimiento", "02/10/23", <ButtonArrow />],
-        ["Juan Roman Frizelme", "42124532","Individual", "110", "Grave sin Seguimiento", "02/10/23", <ButtonArrow />],
-        ["Ariel Ortega", "42124532", "Individual", "230", "Derivado", "02/10/23", <ButtonArrow />],
-        ["Cesar Aimar", "42124532", "Individual", "980", "Cerrado", "02/10/23", <ButtonArrow />],
-        ["Guiin Flynn", "39024532", "Individual", "130", "Con Seguimiento", "17/08/23", <ButtonArrow />],
-        ["Lionel Andres Messi", "42124532","Individual", "555", "Sin Seguimiento", "02/10/23", <ButtonArrow />],
-        ["Cristiano Penaldo", "42124532", "Individual", "666", "Grave con Seguimiento", "02/10/23", <ButtonArrow />],
-        ["Juan Roman Frizelme", "42124532", "Individual", "661", "Grave sin Seguimiento", "02/10/23", <ButtonArrow />],
-        ["Ariel Ortega", "42124532", "Individual", "669", "Derivado", "02/10/23", <ButtonArrow />],
-        ["Cesar Aimar", "42124532", "Individual", "700", "Cerrado", "02/10/23", <ButtonArrow />],
+        ["Caso" ,"NNyA", "DNI", "Tipo de Caso", "Número del Caso","Estado del Caso", "Fecha de Alta"],
+        [<ButtonArrow />, "Guiin Flynn", "39024532","Individual", "420", "Con Seguimiento", "17/08/23"],
+        [<ButtonArrow />, "Lionel Andres Messi", "42124532","Grupal", "350", "Sin Seguimiento", "02/10/23"],
+        [<ButtonArrow />, "Cristiano Penaldo", "42124532","Grupal", "460", "Grave con Seguimiento", "02/10/23"],
+        [<ButtonArrow />, "Juan Roman Frizelme", "42124532","Individual", "110", "Grave sin Seguimiento", "02/10/23"],
+        [<ButtonArrow />, "Ariel Ortega", "42124532", "Individual", "230", "Derivado", "02/10/23"],
+        [<ButtonArrow />, "Cesar Aimar", "42124532", "Individual", "980", "Cerrado", "02/10/23"],
+        [<ButtonArrow />, "Guiin Flynn", "39024532", "Individual", "130", "Con Seguimiento", "17/08/23"],
+        [<ButtonArrow />, "Lionel Andres Messi", "42124532","Individual", "555", "Sin Seguimiento", "02/10/23"],
+        [<ButtonArrow />, "Cristiano Penaldo", "42124532", "Individual", "666", "Grave con Seguimiento", "02/10/23"],
+        [<ButtonArrow />, "Juan Roman Frizelme", "42124532", "Individual", "661", "Grave sin Seguimiento", "02/10/23"],
+        [<ButtonArrow />, "Ariel Ortega", "42124532", "Individual", "669", "Derivado", "02/10/23"],
+        [<ButtonArrow />, "Cesar Aimar", "42124532", "Individual", "700", "Cerrado", "02/10/23"],
     ];
 
     const Header = [
