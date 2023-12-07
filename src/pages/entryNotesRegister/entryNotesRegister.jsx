@@ -7,18 +7,14 @@ function entryNotesRegister() {
   return (
     <>
       <div className=' container-fluid row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
-
         <div className='col-md-2 m-0 container-fluid p-0 menubox d-none d-md-block' style={{ backgroundColor: window.themeColors.color }}>
           <Menu />
         </div>
 
         <div className='container-fluid d-flex align-items-center flex-column col-12 col-md-9'>
-          <div className='homeHead py-5 px-5 container-fluid'>
-            <Header />
-          </div>
           <div className='container-fluid'>
             <h4 className='fs-3 fw-bolder mb-5 d-flex justify-content-center'>
-              Registro notas de entrada
+              Registro Notas de Entrada
             </h4>
             <form action="">
               <div className='row'>
@@ -55,7 +51,6 @@ function entryNotesRegister() {
             </form>
           </div>
         </div>
-
       </div>
 
 

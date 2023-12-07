@@ -13,9 +13,6 @@ function followUpOutputNotes() {
         </div>
 
         <div className='container-fluid d-flex align-items-center flex-column col-12 col-md-9 justify-content-between'>
-          <div className='homeHead py-5 px-5 container-fluid'>
-            <Header />
-          </div>
           <div className='container-fluid'>
             <h4 className='fs-3 fw-bolder mb-5 d-flex justify-content-center'>
               Seguimiento notas de Salida
