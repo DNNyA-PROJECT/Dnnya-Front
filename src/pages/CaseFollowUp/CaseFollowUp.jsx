@@ -33,13 +33,23 @@ const CaseFollowUp = () => {
     
     const ButtonPDF = () => {
         const handlePDF = (e) => {
-                const fileNameDisplay = document.getElementById('fileName');
-                if (e.target.files.length > 0) {
-                    fileNameDisplay.innerHTML = 'Archivo seleccionado: ' + e.target.files[0].name;
+            const fileNameDisplay = document.getElementById('fileName');
+            const allowedExtensions = /(\.pdf)$/i;  
+
+            if (e.target.files.length > 0) {
+                const fileName = e.target.files[0].name;
+        
+                if (allowedExtensions.test(fileName)) {
+                    fileNameDisplay.innerHTML = 'Archivo seleccionado: ' + fileName;
                 } else {
-                    fileNameDisplay.innerHTML = '';
+                    fileNameDisplay.innerHTML = 'Por favor, selecciona un archivo PDF.';
+                    e.target.value = '';
                 }
-        }
+            } else {
+                fileNameDisplay.innerHTML = '';
+            }
+        };
+        
         return (
             <button className='folderButton' onClick={openFileInput}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-filetype-pdf" viewBox="0 0 16 16">
