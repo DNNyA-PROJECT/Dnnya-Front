@@ -1,5 +1,4 @@
 import Menu from '../../components/partials/Menu.jsx';
-import Header from '../../components/partials/header.jsx';
 import Footer from '../../components/partials/footer.jsx';
 import ComponentComment from '../../components/componentComment/componentComment.jsx';
 

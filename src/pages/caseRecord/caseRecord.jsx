@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form } from 'react-bootstrap';
 import Footer from '../../components/partials/footer.jsx'
-import Header from '../../components/partials/header.jsx'
 import Menu from '../../components/partials/Menu.jsx'
 import AccordionComponent from '../../components/AccordionComponent/AccordionComponent.jsx'
 import CustomModal from '../../components/modal/modal';

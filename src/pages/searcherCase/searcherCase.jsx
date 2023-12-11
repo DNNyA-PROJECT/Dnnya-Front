@@ -28,23 +28,23 @@ const CaseFollowUp = () => {
         );
     };
     const customData = [
-        ["Caso" ,"NNyA", "DNI", "Tipo de Caso", "Número del Caso","Estado del Caso", "Fecha de Alta"],
-        [<ButtonArrow />, "Guiin Flynn", "39024532","Individual", "420", "Con Seguimiento", "17/08/23"],
-        [<ButtonArrow />, "Lionel Andres Messi", "42124532","Grupal", "350", "Sin Seguimiento", "02/10/23"],
-        [<ButtonArrow />, "Cristiano Penaldo", "42124532","Grupal", "460", "Grave con Seguimiento", "02/10/23"],
-        [<ButtonArrow />, "Juan Roman Frizelme", "42124532","Individual", "110", "Grave sin Seguimiento", "02/10/23"],
-        [<ButtonArrow />, "Ariel Ortega", "42124532", "Individual", "230", "Derivado", "02/10/23"],
-        [<ButtonArrow />, "Cesar Aimar", "42124532", "Individual", "980", "Cerrado", "02/10/23"],
-        [<ButtonArrow />, "Guiin Flynn", "39024532", "Individual", "130", "Con Seguimiento", "17/08/23"],
-        [<ButtonArrow />, "Lionel Andres Messi", "42124532","Individual", "555", "Sin Seguimiento", "02/10/23"],
-        [<ButtonArrow />, "Cristiano Penaldo", "42124532", "Individual", "666", "Grave con Seguimiento", "02/10/23"],
-        [<ButtonArrow />, "Juan Roman Frizelme", "42124532", "Individual", "661", "Grave sin Seguimiento", "02/10/23"],
-        [<ButtonArrow />, "Ariel Ortega", "42124532", "Individual", "669", "Derivado", "02/10/23"],
-        [<ButtonArrow />, "Cesar Aimar", "42124532", "Individual", "700", "Cerrado", "02/10/23"],
+        ["Caso", "Identificador" ,"Fecha de Inicio" ,"NNyA", "DNI", "Tipo de Caso","Estado" ,"Plazo de Seguimiento"],
+        [<ButtonArrow /> ,"420" ,"17/08/23" ,"Guiin Flynn","39024532" ,"Individual" ,"Con Seguimiento" ,"17/11/23 - 20/11/23" ],
+        [<ButtonArrow /> ,"350" ,"02/10/23" ,"Lionel Andres Messi" , "42124532","Grupal" ,"Sin Seguimiento","10/03/22 - 02/11/25" ],
+        [<ButtonArrow /> ,"460" ,"02/10/23" ,"Cristiano Penaldo" , "42124532","Grupal" ,"Grave con Seguimiento","10/03/22 - 02/11/25" ],
+        [<ButtonArrow /> ,"110" ,"02/10/23" ,"Juan Roman Frizelme" , "42124532","Individual" ,"Grave sin Seguimiento","10/03/22 - 02/11/25"],
+        [<ButtonArrow /> ,"230" ,"02/10/23" ,"Ariel Ortega" ,"42124532" ,"Individual" ,"Derivado","10/03/22 - 02/11/25"  ],
+        [<ButtonArrow /> ,"980" ,"02/10/23" ,"Cesar Aimar" ,"42124532"  ,"Individual" ,"Cerrado","10/03/22 - 02/11/25"  ],
+        [<ButtonArrow /> ,"130" ,"02/10/23" ,"Guiin Flynn" ,"39024532 " ,"Individual" ,"Con Seguimiento","10/03/22 - 02/11/25" ],
+        [<ButtonArrow /> ,"555" ,"17/08/23" ,"Lionel Andres Messi","42124532","Individual" ,"Sin Seguimiento","10/03/22 - 02/11/25" ],
+        [<ButtonArrow /> ,"666" ,"02/10/23" ,"Cristiano Penaldo", "42124532","Individual" ,"Grave con Seguimiento","10/03/22 - 02/11/25" ],
+        [<ButtonArrow /> ,"661" ,"02/10/23" ,"Juan Roman Frizelme", "42124532","Individual" ,"Grave sin Seguimiento","10/03/22 - 02/11/25" ],
+        [<ButtonArrow /> ,"669" ,"02/10/23" ,"Ariel Ortega", "42124532","Individual" ,"Derivado","10/03/22 - 02/11/25" ],
+        [<ButtonArrow /> ,"700" ,"02/10/23" ,"Cesar Aimar", "42124532","Individual" ,"Cerrado","10/03/22 - 02/11/25" ],
     ];
 
     const Header = [
-        ["Tipo de Caso", "Estado del Caso", "Fecha de Alta"],
+        ["Tipo de Caso", "Estado del Caso", "Plazo de Seguimiento"],
     ];
 
     const [query, setQuery] = useState('');
