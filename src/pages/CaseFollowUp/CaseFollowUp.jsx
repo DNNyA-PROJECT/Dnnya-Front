@@ -87,7 +87,7 @@ const CaseFollowUp = () => {
     };
 
     const dynamicOptions = [
-        { value: "none", label: "Judicializado", color: "#fa7330" },
+        { value: "none", label: "Judicializado:", color: "#fa7330" },
         { value: "Si", label: "Si", color: "#fa7330" },
         { value: "No", label: "No", color: "#fa7330" },
     ];
