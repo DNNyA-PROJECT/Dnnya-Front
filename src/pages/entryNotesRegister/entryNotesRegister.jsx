@@ -1,9 +1,24 @@
+import React, { useState } from 'react';
 import Menu from '../../components/partials/Menu.jsx';
 import Header from '../../components/partials/header.jsx';
 import Footer from '../../components/partials/footer.jsx';
 import ComponentComment from '../../components/componentComment/componentComment.jsx';
+import CustomSelect from '../../components/custom/customSelect.jsx';
+
 
 function entryNotesRegister() {
+  const [selectedOption, setSelectedOption] = useState('Pendiente');
+
+  const handleChange = (selectedOption) => {
+    setSelectedOption(selectedOption.value);
+  };
+
+  const dynamicOptions = [
+    { value: "Pendiente", label: "Pendiente", color: "#fa7330" },
+    { value: "Aprobado", label: "Aprobado", color: "#fa7330" },
+    { value: "Rechazado", label: "Rechazado", color: "#fa7330" },
+    { value: "Cerrado", label: "Cerrado", color: "#fa7330" },
+  ];
   return (
     <>
       <div className=' container-fluid row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
@@ -36,12 +51,11 @@ function entryNotesRegister() {
 
               <div className='d-flex mx-5 my-3 justify-content-center'>
                 <div className='col-10'>
-                  <select className='form-control' name="" id="">
-                    <option value="Pendiente">pendiente</option>
-                    <option value="Aprobado">Aprobado</option>
-                    <option value="Rechazado">Rechazado</option>
-                    <option value="Cerrado">Cerrado</option>
-                  </select>
+                  <CustomSelect
+                    options={dynamicOptions}
+                    defaultValue={dynamicOptions.find((option) => option.value === selectedOption)}
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
               <ComponentComment titulo="Nota de Entrada Comentario" placeholder="Escribe aquí tus comentarios" />
