@@ -7,6 +7,7 @@ import Menu from '../../components/partials/Menu.jsx';
 import DataTable from '../../components/dataTable/dataTable.jsx';
 import CustomModal from '../../components/modal/modal';
 import Searcher from '../../components/searcher/searcher.jsx'
+import CustomSelect from '../../components/custom/customSelect.jsx';
 
 function ListOfUsers() {
 
@@ -58,12 +59,12 @@ function ListOfUsers() {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-/*         const token = localStorage.getItem('token');
-        if (!token) {
-          console.log('Permiso de token no encontrado');
-          setIsLoading(false);
-          return;
-        } */
+        /*         const token = localStorage.getItem('token');
+                if (!token) {
+                  console.log('Permiso de token no encontrado');
+                  setIsLoading(false);
+                  return;
+                } */
 
         let endpoint = '';
 
@@ -76,11 +77,11 @@ function ListOfUsers() {
         }
 
         const response = await axios.get(`http://localhost:8080/Auth/${endpoint}`, {
-         /*  headers: {
-            Authorization: `Bearer ${token}`,
-          }, */
+          /*  headers: {
+             Authorization: `Bearer ${token}`,
+           }, */
         });
-        
+
         if (response.status === 200) {
           console.log('Solicitud exitosa');
           userData = response.data;
@@ -96,22 +97,22 @@ function ListOfUsers() {
             setUsername(usuario);
             const correo = user.correo;
             setCorreo(correo);
-        
+
             const handleButtonClick = () => {
               handleFolderClick(user.id);
             };
-        
+
             const buttonsFolder = [
               <ButtonFolder key="folder" userId={user.id} />,
             ];
-        
+
             const buttonsCheck = [
               <ButtonList key="ButtonsList" />,
             ];
-        
+
             newData.push([fullName, buttonsFolder, ...buttonsCheck]);
           });
-        
+
           setIds(userIds);
           setData(newData);
           setFilteredData(newData);
@@ -128,34 +129,34 @@ function ListOfUsers() {
     fetchData();
   }, [selectedOption]);
 
-    /*  modal */
+  /*  modal */
   const [showModal, setShowModal] = useState(false);
   const [currentModal, setCurrentModal] = useState(1);
 
- const ButtonFolder = ({ userId }) => {
-  const handleFolderClick = () => {
-    console.log('Usuario ID:', userId);
+  const ButtonFolder = ({ userId }) => {
+    const handleFolderClick = () => {
+      console.log('Usuario ID:', userId);
 
-    const selectedUser = userData.find(user => user.id === userId);
+      const selectedUser = userData.find(user => user.id === userId);
 
-    setFullName(`${selectedUser.name} ${selectedUser.surname}`);
-    setUsername(selectedUser.username);
-    setCorreo(selectedUser.correo);
+      setFullName(`${selectedUser.name} ${selectedUser.surname}`);
+      setUsername(selectedUser.username);
+      setCorreo(selectedUser.correo);
 
 
-    setShowModal(true);
-    setCurrentModal(2);
-    setCurrentUserId(userId);
+      setShowModal(true);
+      setCurrentModal(2);
+      setCurrentUserId(userId);
+    };
+
+    return (
+      <button className='folderButton' onClick={handleFolderClick}>
+        <i className="bi bi-folder-fill"></i>
+      </button>
+    );
   };
 
-  return (
-    <button className='folderButton' onClick={handleFolderClick}>
-      <i className="bi bi-folder-fill"></i>
-    </button>
-  );
-};
 
-  
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -196,7 +197,18 @@ function ListOfUsers() {
       No tiene
     </div>
   );
- 
+
+
+  const handleChange = (selectedOption) => {
+    setSelectedOption(selectedOption.value);
+  };
+
+  const dynamicOptions = [
+    { value: "solicitantesActivos", label: "Solicitantes", color: "#fa7330" },
+    { value: "solicitantesDadosDeBaja", label: "Dados de Baja", color: "#fa7330" },
+    { value: "solicitantesDadosDeAlta", label: "Dados de Alta", color: "#fa7330" },
+  ];
+
   /* buscador */
   useEffect(() => {
     handleSearch(query);
@@ -231,7 +243,7 @@ function ListOfUsers() {
 
   return (
     <>
-       <div className=' container-fluid row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+      <div className=' container-fluid row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
         <div className='col-md-2 m-0 container-fluid p-0 menubox d-none d-md-block' style={{ backgroundColor: window.themeColors.color }}>
           <Menu />
         </div>
@@ -239,12 +251,12 @@ function ListOfUsers() {
           <div>
             <h1 className='text-first d-flex justify-content-center'> Listado de Usuarios y Solicitantes </h1>
           </div>
-          <div className='mb-3'>
-            <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
-              <option value="solicitantesActivos">Solicitantes</option>
-              <option value="solicitantesDadosDeBaja">Dados de Baja</option>
-              <option value="solicitantesDadosDeAlta"> Dados de Alta</option>
-            </select>
+          <div className="mb-3 w-25 ">
+            <CustomSelect
+              options={dynamicOptions}
+              defaultValue={dynamicOptions.find((option) => option.value === selectedOption)}
+              onChange={handleChange}
+            />
           </div>
           <div className='mb-3'>
             <Searcher data={data} handleInputChange={handleInputChange} />
