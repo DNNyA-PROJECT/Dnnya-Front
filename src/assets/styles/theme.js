@@ -29,4 +29,8 @@ export const colors = {
     acertColor: '#C2EDBE',
     greyColor:'#A29D9DA6',
     colorHeaderData:"background: #F2A57F",
+    selectColors:{
+        bakgroundOption:'rgba(162, 157, 157, 40%)',
+        hoverOption: 'rgba(250, 115, 48, 80%)'
+    },
   };
