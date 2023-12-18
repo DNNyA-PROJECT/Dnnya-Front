@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { colors } from '../../assets/styles/theme.js';
 import '../../assets/styles/styles.css';
@@ -9,12 +9,13 @@ import AccordionComponent from '../../components/AccordionComponent/AccordionCom
 import CustomModal from '../../components/modal/modal';
 import DataTable from '../../components/dataTable/dataTable.jsx';
 import ComponentComment from '../../components/componentComment/componentComment.jsx';
+import CustomSelect from '../../components/custom/customSelect.jsx';
 
 window.themeColors = colors;
 
 const CaseFollowUp = () => {
 
-    
+
     const ButtonCommentary = () => {
         const handleCommentary = () => {
         }
@@ -30,15 +31,15 @@ const CaseFollowUp = () => {
     const openFileInput = () => {
         document.getElementById('fileInput').click();
     };
-    
+
     const ButtonPDF = () => {
         const handlePDF = (e) => {
             const fileNameDisplay = document.getElementById('fileName');
-            const allowedExtensions = /(\.pdf)$/i;  
+            const allowedExtensions = /(\.pdf)$/i;
 
             if (e.target.files.length > 0) {
                 const fileName = e.target.files[0].name;
-        
+
                 if (allowedExtensions.test(fileName)) {
                     fileNameDisplay.innerHTML = 'Archivo seleccionado: ' + fileName;
                 } else {
@@ -49,7 +50,7 @@ const CaseFollowUp = () => {
                 fileNameDisplay.innerHTML = '';
             }
         };
-        
+
         return (
             <button className='folderButton' onClick={openFileInput}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-filetype-pdf" viewBox="0 0 16 16">
@@ -79,6 +80,17 @@ const CaseFollowUp = () => {
             </button>
         );
     }
+    const [selectedOption, setSelectedOption] = useState('none');
+
+    const handleChange = (selectedOption) => {
+        setSelectedOption(selectedOption.value);
+    };
+
+    const dynamicOptions = [
+        { value: "none", label: "Judicializado", color: "#fa7330" },
+        { value: "Si", label: "Si", color: "#fa7330" },
+        { value: "No", label: "No", color: "#fa7330" },
+    ];
 
     const customData = [
         ["Comentario", "Responsable", "NNyA", "Fecha de alta", "Archivos", "Modificaciones", " "],
@@ -233,12 +245,14 @@ const CaseFollowUp = () => {
                                             Estado Jurídico
                                         </div>
                                     </div>
-                                    <div className='d-flex justify-content-evenly mb-3  row' >
-                                        <select name="" className='col-5 form-control-md' id="">
-                                            <option value="">Judicializado:</option>
-                                            <option value="Si"> Si</option>
-                                            <option value="No">No</option>
-                                        </select>
+                                    <div className='d-flex justify-content-evenly mb-3 row' >
+                                        <div className='col-2 w-50'>
+                                            <CustomSelect
+                                                options={dynamicOptions}
+                                                defaultValue={dynamicOptions.find((option) => option.value === selectedOption)}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
                                         <input className='col-2  form-control md' type="number" name="" id="" placeholder='Nro exp. Judicial: 500' />
                                     </div>
                                     <div className='d-flex justify-content-evenly  row' >
