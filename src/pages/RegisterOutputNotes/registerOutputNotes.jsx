@@ -37,15 +37,9 @@ function registerOutputNotes() {
 
               <div className='d-flex mx-5 my-3 justify-content-center'>
                 <div className='col-10'>
-                  <select className='form-control' name="" id="">
-                    <option value="Pendiente">pendiente</option>
-                    <option value="Aprobado">Aprobado</option>
-                    <option value="Rechazado">Rechazado</option>
-                    <option value="Cerrado">Cerrado</option>
-                  </select>
                 </div>
               </div>
-              <ComponentComment titulo="Nota de Entrada Comentario" placeholder="Escribe aquí tus comentarios" />
+              <ComponentComment titulo="Nota de Salida Comentario" placeholder="Escribe aquí tus comentarios" />
               <div className='d-flex justify-content-center my-3'>
                 <button className='btn fs-4 fw-bolder' type='submit' style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}>ENVIAR</button>
               </div>

@@ -1,5 +1,4 @@
 import Menu from '../../components/partials/Menu.jsx';
-import Header from '../../components/partials/header.jsx';
 import Footer from '../../components/partials/footer.jsx';
 import ComponentComment from '../../components/componentComment/componentComment.jsx';
 
@@ -36,13 +35,15 @@ function trackEntryNotes() {
               </div>
 
               <div className='my-5'>
-              <div className='container w-75 py-4' style={{ backgroundColor: window.themeColors.boxnewColor }}>
+
+                <div>
+                  <ComponentComment titulo="Nota de Entrada" placeholder="Escribe aquí tu Nota de Entrada" />
+                </div>
+                <div>
+                  <ComponentComment titulo="Comentarios" placeholder="Escribe aquí tus comentarios" />
+                </div>
+
               </div>
-              <div className='container d-flex justify-content-center'>
-                  <textarea name="" id="" cols="93" rows="10"></textarea>
-              </div>
-              </div>
-              <ComponentComment titulo="Comentarios" placeholder="Escribe aquí tus comentarios" />
               <div className='d-flex justify-content-center my-3'>
                 <button className='btn fs-4 fw-bolder' type='submit' style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}>ENVIAR</button>
               </div>
