@@ -42,6 +42,8 @@ const CustomSelect = ({ options, defaultValue, onChange }) => {
     <div ref={menuPortalTargetRef}>
       <Select
         defaultValue={defaultValue}
+        closeMenuOnSelect={false}
+        onMenuClose={false}
         options={options}
         styles={colourStyles}
         onChange={onChange}

@@ -128,20 +128,30 @@ const CaseRecord = () => {
                     if (key !== id.toString()) {
                         newCheckboxValues[type][key] = false;
                     }
+
+                    if (id === 1) {
+                        console.log('El ID es verdadero.');
+                     
+                        setFormData((prevData) => ({ ...prevData, dniAdultoDisabled: true }));
+                    } else {
+                        console.log('El ID es falso.');
+                    
+                        setFormData((prevData) => ({ ...prevData, dniAdultoDisabled: false }));
+                    }
                 });
+        
             }
 
             newCheckboxValues[type][id] = isChecked;
 
             console.log('Nuevo estado de checkboxValues:', newCheckboxValues);
-
             setCheckboxValues(newCheckboxValues);
 
             return { ...prevData, checkboxValues: newCheckboxValues };
         });
     };
 
-    
+
 
     const handleAdditionalInputChange = (e, field) => {
         setFormData((prevData) => ({ ...prevData, [field]: e.target.value }));
@@ -166,36 +176,35 @@ const CaseRecord = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         console.log('Datos a enviar al backend:', formData);
 
-      
-    const relacionesConAdultoArray = Array.isArray(formData.checkboxValues.relacionesConAdulto)
-    ? formData.checkboxValues.relacionesConAdulto
-    : Object.entries(formData.checkboxValues.relacionesConAdulto);
 
-    console.log('Tipo de dato de relacionesConAdulto:', typeof relacionesConAdultoArray);
+        const relacionesConAdultoArray = Array.isArray(formData.checkboxValues.relacionesConAdulto)
+            ? formData.checkboxValues.relacionesConAdulto
+            : Object.entries(formData.checkboxValues.relacionesConAdulto);
 
-   
+        console.log('Tipo de dato de relacionesConAdulto:', typeof relacionesConAdultoArray);
+
+
         const formDataToSend = {
             ...formData,
             checkboxValues: {
                 ...formData.checkboxValues,
-                
+
                 relacionesConAdulto: {
-                
-            ...Object.entries(formData.checkboxValues.relacionesConAdulto).reduce((acc, [key, value]) => {
-                acc[parseInt(key, 10)] = Boolean(value);
-                return acc;
-            }, {}),
+
+                    ...Object.entries(formData.checkboxValues.relacionesConAdulto).reduce((acc, [key, value]) => {
+                        acc[parseInt(key, 10)] = Boolean(value);
+                        return acc;
+                    }, {}),
                 }
             },
-        //enviarDatosAlBackend();
-    };
-    console.log('Datos a enviar al backend:', formDataToSend);
+        };
+        console.log('Datos a enviar al backend:', formDataToSend);
 
-    
-    
+
+
         axios.post('http://localhost:8080/api/guardarDatos', formDataToSend)
             .then(response => {
 
@@ -301,9 +310,9 @@ const CaseRecord = () => {
                                                             onChange={() => handleCheckboxChange('relacionesConAdulto', relacion.id)}
                                                             style={{ marginLeft: '10px' }}
                                                             disabled={
-                                                              checkboxValues['relacionesConAdulto'] && 
-                                                              Object.values(checkboxValues['relacionesConAdulto']).some((value) => value) &&
-                                                              !checkboxValues['relacionesConAdulto'][relacion.id] 
+                                                                checkboxValues['relacionesConAdulto'] &&
+                                                                Object.values(checkboxValues['relacionesConAdulto']).some((value) => value) &&
+                                                                !checkboxValues['relacionesConAdulto'][relacion.id]
                                                             }
                                                         />
                                                         <span className="checkmark"></span>
@@ -325,13 +334,16 @@ const CaseRecord = () => {
                                                 placeholder='DNI Adulto'
                                                 value={formData.dniAdulto}
                                                 onChange={(e) => handleAdditionalInputChange(e, 'dniAdulto')}
+                                                disabled={checkboxValues['relacionesConAdulto'] && checkboxValues['relacionesConAdulto']['1']}
                                             />
+
                                             <input
                                                 className='col-2 form-control md'
                                                 type="text"
                                                 placeholder='Nombre Completo Adulto'
                                                 value={formData.nameAdulto}
                                                 onChange={(e) => handleAdditionalInputChange(e, 'nameAdulto')}
+                                                disabled={checkboxValues['relacionesConAdulto'] && checkboxValues['relacionesConAdulto']['1']}
                                             />
                                         </div>
                                         <div className='d-flex justify-content-evenly  row' >
@@ -341,6 +353,7 @@ const CaseRecord = () => {
                                                 placeholder='Teléfono'
                                                 value={formData.telephone}
                                                 onChange={(e) => handleAdditionalInputChange(e, 'telephone')}
+                                                disabled={checkboxValues['relacionesConAdulto'] && checkboxValues['relacionesConAdulto']['1']}
                                             />
                                             <input
                                                 className='col-2 form-control md'
@@ -348,6 +361,7 @@ const CaseRecord = () => {
                                                 placeholder='Domicilio Adulto'
                                                 value={formData.addressAdulto}
                                                 onChange={(e) => handleAdditionalInputChange(e, 'addressAdulto')}
+                                                disabled={checkboxValues['relacionesConAdulto'] && checkboxValues['relacionesConAdulto']['1']}
                                             />
                                         </div>
                                     </div>
