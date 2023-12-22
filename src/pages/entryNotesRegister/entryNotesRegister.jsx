@@ -58,7 +58,14 @@ function entryNotesRegister() {
                   />
                 </div>
               </div>
-              <ComponentComment titulo="Nota de Entrada Comentario" placeholder="Escribe aquí tus comentarios" />
+              <ComponentComment
+               titulo="Nota de Entrada Comentario"
+               placeholder="Escribe aquí tus comentarios"
+               buttons={{
+                selectButtonText: 'Seleccionar Archivo',
+                saveButtonText: 'Guardar Comentario',
+              }}
+                />
               <div className='d-flex justify-content-center my-3'>
                 <button className='btn fs-4 fw-bolder' type='submit' style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}>ENVIAR</button>
               </div>

@@ -22,8 +22,6 @@ const CaseRecord = () => {
         motivo: true,
     });
 
-
-
     function obtenerFechaActual() {
         const fechaActual = new Date();
         const day = fechaActual.getDate().toString().padStart(2, '0');
@@ -188,6 +186,7 @@ const CaseRecord = () => {
         age: '',
         school: '',
         birthdate: '',
+        comentario: '',
     });
 
 
@@ -495,7 +494,10 @@ const CaseRecord = () => {
                                             ))}
                                         </div>
                                         <div className='mt-1'>
-                                            {!textareaVisibility.motivo && <ComponentComment titulo="Comentario y Obserivaciones" placeholder="Escribe Aquí tus Comentarios y Observaciones" />}
+                                            {!textareaVisibility.motivo && <ComponentComment titulo="Comentario y Observaciones" 
+                                            value={formData.comentario}
+                                            onChange={(e) => handleAdditionalInputChange(e, 'comentario')}
+                                             placeholder="Escribe Aquí tus Comentarios y Observaciones" />}
                                         </div>
 
                                     </div>
