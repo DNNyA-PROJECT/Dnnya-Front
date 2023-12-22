@@ -7,6 +7,7 @@ import AccordionComponent from '../../components/AccordionComponent/AccordionCom
 import CustomModal from '../../components/modal/modal';
 import DataTable from '../../components/dataTable/dataTable.jsx';
 import Searcher from '../../components/searcher/searcher.jsx'
+import ComponentComment from '../../components/componentComment/componentComment.jsx';
 
 const CaseRecord = () => {
     /* useStates / variables */
@@ -17,6 +18,10 @@ const CaseRecord = () => {
     const [motivos, setMotivos] = useState([]);
     const [relacionesConAdulto, setRelacionesConAdulto] = useState([]);
     const [fecha, setFecha] = useState(obtenerFechaActual);
+    const [textareaVisibility, setTextareaVisibility] = useState({
+        motivo: true,
+    });
+
 
 
     function obtenerFechaActual() {
@@ -122,36 +127,48 @@ const CaseRecord = () => {
 
             const isChecked = !newCheckboxValues[type][id];
 
+            let key;
 
             if (type === 'relacionesConAdulto' && isChecked) {
-                Object.keys(newCheckboxValues[type]).forEach((key) => {
-                    if (key !== id.toString()) {
-                        newCheckboxValues[type][key] = false;
+                Object.keys(newCheckboxValues[type]).forEach((k) => {
+                    key = k;
+                    if (k !== id.toString()) {
+                        newCheckboxValues[type][k] = false;
                     }
 
                     if (id === 1) {
-                        console.log('El ID es verdadero.');
-                     
                         setFormData((prevData) => ({ ...prevData, dniAdultoDisabled: true }));
                     } else {
-                        console.log('El ID es falso.');
-                    
                         setFormData((prevData) => ({ ...prevData, dniAdultoDisabled: false }));
                     }
                 });
-        
+            }
+
+            if (type === 'motivos') {
+
+                newCheckboxValues[type][id] = isChecked;
+
+
+                const todosMotivosFalse = Object.values(newCheckboxValues[type]).every(value => value === false);
+
+
+                const algunMotivoTrue = Object.values(newCheckboxValues[type]).some(value => value === true);
+
+
+                if (todosMotivosFalse) {
+                    setTextareaVisibility({ motivo: true });
+                } else if (algunMotivoTrue) {
+                    setTextareaVisibility({ motivo: false });
+                }
             }
 
             newCheckboxValues[type][id] = isChecked;
 
-            console.log('Nuevo estado de checkboxValues:', newCheckboxValues);
             setCheckboxValues(newCheckboxValues);
 
             return { ...prevData, checkboxValues: newCheckboxValues };
         });
     };
-
-
 
     const handleAdditionalInputChange = (e, field) => {
         setFormData((prevData) => ({ ...prevData, [field]: e.target.value }));
@@ -239,19 +256,19 @@ const CaseRecord = () => {
                                         <div className='d-flex justify-content-center'>
                                         </div>
                                         <div className='d-flex justify-content-evenly mb-3  row' >
-                                            <input className='col-2  form-control md' type="number" name="" id="" placeholder='Número' />
+                                            <input className='col-2  form-control md' type="number" name="" id="" placeholder='Número' disabled />
                                             <input
                                                 className='col-2 form-control md'
                                                 type="date"
                                                 id="fecha"
                                                 value={fecha}
                                                 onChange={handleFechaChange}
-                                                readOnly
+                                                disabled
                                             />
                                         </div>
                                         <div className='d-flex justify-content-evenly  row' >
-                                            <input className='col-2 form-control md' type="text" name="" id="" placeholder='Nombre' />
-                                            <input className='col-2 form-control md' type="text" name="" id="" placeholder='Registrador' />
+                                            <input className='col-2 form-control md' type="text" name="" id="" placeholder='Nombre' disabled />
+                                            <input className='col-2 form-control md' type="text" name="" id="" placeholder='Registrador' disabled />
                                         </div>
                                     </div>
 
@@ -281,7 +298,6 @@ const CaseRecord = () => {
                                                         />
                                                         <span className="checkmark"></span>
                                                     </label>
-
                                                 </div>
                                             ))}
                                         </div>
@@ -291,7 +307,7 @@ const CaseRecord = () => {
                                 <AccordionComponent buttonText="Relación Del Adulto con NNyA" buttonClassName="fw-bold lightblue  custom-btn mt-3 w-100 py-4 fs-4 m-0">
                                     <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorBluSky }}>
                                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                                            {relacionesConAdulto.map((relacion, index) => (
+                                            {relacionesConAdulto.map((relacion) => (
                                                 <div
                                                     key={relacion.id}
                                                     className={`p-3 ${checkboxValues['relacionesConAdulto']?.[relacion.id] ? 'active-checkbox' : ''}`}
@@ -478,6 +494,10 @@ const CaseRecord = () => {
                                                 </div>
                                             ))}
                                         </div>
+                                        <div className='mt-1'>
+                                            {!textareaVisibility.motivo && <ComponentComment titulo="Comentario y Obserivaciones" placeholder="Escribe Aquí tus Comentarios y Observaciones" />}
+                                        </div>
+
                                     </div>
 
                                 </AccordionComponent>
