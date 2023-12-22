@@ -262,7 +262,6 @@ const CaseRecord = () => {
                                                 id="fecha"
                                                 value={fecha}
                                                 onChange={handleFechaChange}
-                                                disabled
                                             />
                                         </div>
                                         <div className='d-flex justify-content-evenly  row' >
