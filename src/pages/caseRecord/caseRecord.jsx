@@ -11,22 +11,21 @@ import Searcher from '../../components/searcher/searcher.jsx'
 import ComponentComment from '../../components/componentComment/componentComment.jsx';
 
 const CaseRecord = () => {
-    /* useStates / variables */
+    /* Estados / Variables */
     const [modalShow, setModalShow] = useState(false);
     const [checkboxValues, setCheckboxValues] = useState({});
     const [estadosDelCaso, setEstadosDelCaso] = useState([]);
     const [tiposAsesoramiento, setTiposAsesoramiento] = useState([]);
     const [motivos, setMotivos] = useState([]);
     const [relacionesConAdulto, setRelacionesConAdulto] = useState([]);
-    const [fecha, setFecha] = useState(obtenerFechaActual);
+    const [fecha, setFecha] = useState(obtenerFechaActual());
     const [textareaVisibility, setTextareaVisibility] = useState({
         motivo: true,
     });
     const [formularios, setFormularios] = useState([]);
     const [esCasoGrupal, setEsCasoGrupal] = useState(false);
 
-
-    //Fecha de el Caso
+    /* Funciones de Utilidad */
     function obtenerFechaActual() {
         const fechaActual = new Date();
         const day = fechaActual.getDate().toString().padStart(2, '0');
@@ -35,7 +34,6 @@ const CaseRecord = () => {
         return `${year}-${month}-${day}`;
     }
 
-    //Edad del nnya
     const calcularFechaNacimiento = (edad) => {
         const hoy = new Date();
         const fechaNacimientoCalculada = new Date(
@@ -46,16 +44,15 @@ const CaseRecord = () => {
         return fechaNacimientoCalculada.toISOString().split("T")[0];
     };
 
+    /* Efectos */
     useEffect(() => {
         setFecha(obtenerFechaActual());
-        setFormData((prevData) => ({ ...prevData, fecha: obtenerFechaActual() }));
     }, []);
 
     const handleFechaChange = (e) => {
         setFecha(e.target.value);
     };
 
-    /* Axios get datos de checkboxes */
     useEffect(() => {
         axios.get('http://localhost:8080/api/informacion')
             .then(response => {
@@ -79,32 +76,20 @@ const CaseRecord = () => {
             });
     }, []);
 
-    const toggleFormulario = (index) => {
-        const isFormularioPresente = formularios.includes(index);
-
-        if (isFormularioPresente) {
-            const nuevosFormularios = formularios.filter((item) => item !== index);
-            const formulariosAjustados = nuevosFormularios.map((_, i) => i + 1);
-
-            setFormularios(formulariosAjustados);
-        } else {
-            setFormularios([...formularios, formularios.length + 1]);
-        }
-
-        console.log("Índice actual:", isFormularioPresente ? index - 1 : index);
-    };
     useEffect(() => {
         setEsCasoGrupal(formularios.length !== 0);
     }, [formularios]);
-    //modal
+
+    /* Modal */
     const handleShowModal = () => {
         setModalShow(true);
-    }
+    };
 
     const handleCloseModal = () => {
         setModalShow(false);
-    }
-    //tabla del modal
+    };
+
+    /* Tabla del Modal */
     const Checkbox = () => {
         return (
             <button className='folderButton' onClick={() => handleShowModal(2)}>
@@ -138,11 +123,12 @@ const CaseRecord = () => {
         setData(filteredData);
     };
 
+    /* Manejo de Checkbox */
     const handleCheckboxChange = (type, id) => {
-        setFormData((prevData) => {
+        setCheckboxValues((prevCheckboxValues) => {
             const newCheckboxValues = {
-                ...prevData.checkboxValues,
-                [type]: { ...prevData.checkboxValues[type] }
+                ...prevCheckboxValues,
+                [type]: { ...prevCheckboxValues[type] }
             };
 
             const isChecked = !newCheckboxValues[type][id];
@@ -165,15 +151,10 @@ const CaseRecord = () => {
             }
 
             if (type === 'motivos') {
-
                 newCheckboxValues[type][id] = isChecked;
 
-
                 const todosMotivosFalse = Object.values(newCheckboxValues[type]).every(value => value === false);
-
-
                 const algunMotivoTrue = Object.values(newCheckboxValues[type]).some(value => value === true);
-
 
                 if (todosMotivosFalse) {
                     setTextareaVisibility({ motivo: true });
@@ -184,12 +165,31 @@ const CaseRecord = () => {
 
             newCheckboxValues[type][id] = isChecked;
 
-            setCheckboxValues(newCheckboxValues);
-
-            return { ...prevData, checkboxValues: newCheckboxValues };
+            return newCheckboxValues;
         });
     };
 
+    /* Manejo de Formularios Grupales */
+    const toggleFormulario = (index) => {
+        setFormularios((prevFormularios) => {
+            const nuevosFormularios = prevFormularios.includes(index)
+                ? prevFormularios.filter((item) => item !== index)
+                : [...prevFormularios, index];
+
+            const esCasoGrupalActualizado = nuevosFormularios.length !== 0;
+
+            setFormData((prevData) => ({
+                ...prevData,
+                formularios: nuevosFormularios,
+                esCasoGrupal: esCasoGrupalActualizado,
+            }));
+
+            return nuevosFormularios;
+        });
+    };
+
+
+    /* Manejo de Inputs Adicionales */
     const handleAdditionalInputChange = (e, field) => {
         const value = e.target.value;
         setFormData((prevData) => ({ ...prevData, [field]: value }));
@@ -217,6 +217,7 @@ const CaseRecord = () => {
         return edadCalculada;
     };
 
+    /* Estado del Formulario */
     const [formData, setFormData] = useState({
         fecha: obtenerFechaActual(),
         checkboxValues: {},
@@ -232,42 +233,37 @@ const CaseRecord = () => {
         school: '',
         birthdate: '',
         comentario: '',
+        esCasoGrupal: false,
     });
 
-
+    /* Envío de Datos al Backend */
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Datos a enviar al backend:', formData);
 
-        console.log("esCasoGrupal:", esCasoGrupal);
-        
         const relacionesConAdultoArray = Array.isArray(formData.checkboxValues.relacionesConAdulto)
             ? formData.checkboxValues.relacionesConAdulto
             : Object.entries(formData.checkboxValues.relacionesConAdulto);
 
         console.log('Tipo de dato de relacionesConAdulto:', typeof relacionesConAdultoArray);
 
-
         const formDataToSend = {
             ...formData,
             esCasoGrupal: esCasoGrupal.toString(),
             checkboxValues: {
-              ...formData.checkboxValues,
-              relacionesConAdulto: Object.entries(
-                formData.checkboxValues.relacionesConAdulto
-              ).reduce((acc, [key, value]) => {
-                acc[parseInt(key, 10)] = Boolean(value);
-                return acc;
-              }, {}),
+                ...formData.checkboxValues,
+                relacionesConAdulto: Object.entries(
+                    formData.checkboxValues.relacionesConAdulto
+                ).reduce((acc, [key, value]) => {
+                    acc[parseInt(key, 10)] = Boolean(value);
+                    return acc;
+                }, {}),
             },
-          };
+        };
         console.log('Datos a enviar al backend:', formDataToSend);
-
-
 
         axios.post('http://localhost:8080/api/guardarDatos', formDataToSend)
             .then(response => {
-
                 if (response.status === 200) {
                     console.log('Datos enviados exitosamente al backend');
                 } else {
@@ -278,6 +274,7 @@ const CaseRecord = () => {
                 console.error('Error al enviar los datos al backend:', error);
             });
     };
+
 
     return (
         <>
