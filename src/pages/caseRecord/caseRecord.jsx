@@ -4,6 +4,7 @@ import { Form } from 'react-bootstrap';
 import Footer from '../../components/partials/footer.jsx'
 import Menu from '../../components/partials/Menu.jsx'
 import AccordionComponent from '../../components/AccordionComponent/AccordionComponent.jsx'
+import FormularioNnya from '../../components/addnnya/FormualrioNnya.jsx'
 import CustomModal from '../../components/modal/modal';
 import DataTable from '../../components/dataTable/dataTable.jsx';
 import Searcher from '../../components/searcher/searcher.jsx'
@@ -21,7 +22,11 @@ const CaseRecord = () => {
     const [textareaVisibility, setTextareaVisibility] = useState({
         motivo: true,
     });
+    const [formularios, setFormularios] = useState([]);
+    const [esCasoGrupal, setEsCasoGrupal] = useState(false);
 
+
+    //Fecha de el Caso
     function obtenerFechaActual() {
         const fechaActual = new Date();
         const day = fechaActual.getDate().toString().padStart(2, '0');
@@ -30,14 +35,21 @@ const CaseRecord = () => {
         return `${year}-${month}-${day}`;
     }
 
+    //Edad del nnya
+    const calcularFechaNacimiento = (edad) => {
+        const hoy = new Date();
+        const fechaNacimientoCalculada = new Date(
+            hoy.getFullYear() - edad,
+            hoy.getMonth(),
+            hoy.getDate()
+        );
+        return fechaNacimientoCalculada.toISOString().split("T")[0];
+    };
 
     useEffect(() => {
         setFecha(obtenerFechaActual());
-    }, []);
-
-    useEffect(() => {
         setFormData((prevData) => ({ ...prevData, fecha: obtenerFechaActual() }));
-    }, [])
+    }, []);
 
     const handleFechaChange = (e) => {
         setFecha(e.target.value);
@@ -68,13 +80,23 @@ const CaseRecord = () => {
     }, []);
 
     const toggleFormulario = (index) => {
-        if (formularios.includes(index)) {
-            setFormularios(formularios.filter((item) => item !== index));
-        } else {
-            setFormularios([...formularios, index]);
-        }
-    };
+        const isFormularioPresente = formularios.includes(index);
 
+        if (isFormularioPresente) {
+            const nuevosFormularios = formularios.filter((item) => item !== index);
+            const formulariosAjustados = nuevosFormularios.map((_, i) => i + 1);
+
+            setFormularios(formulariosAjustados);
+        } else {
+            setFormularios([...formularios, formularios.length + 1]);
+        }
+
+        console.log("Índice actual:", isFormularioPresente ? index - 1 : index);
+    };
+    useEffect(() => {
+        setEsCasoGrupal(formularios.length !== 0);
+    }, [formularios]);
+    //modal
     const handleShowModal = () => {
         setModalShow(true);
     }
@@ -82,7 +104,7 @@ const CaseRecord = () => {
     const handleCloseModal = () => {
         setModalShow(false);
     }
-
+    //tabla del modal
     const Checkbox = () => {
         return (
             <button className='folderButton' onClick={() => handleShowModal(2)}>
@@ -169,7 +191,30 @@ const CaseRecord = () => {
     };
 
     const handleAdditionalInputChange = (e, field) => {
-        setFormData((prevData) => ({ ...prevData, [field]: e.target.value }));
+        const value = e.target.value;
+        setFormData((prevData) => ({ ...prevData, [field]: value }));
+        if (field === "birthdate") {
+            const edadCalculada = calcularEdad(value);
+            setFormData({
+                ...formData,
+                birthdate: value,
+                age: edadCalculada.toString(),
+            });
+        } else if (field === "age") {
+            const fechaNacimientoCalculada = calcularFechaNacimiento(value);
+            setFormData({
+                ...formData,
+                age: value,
+                birthdate: fechaNacimientoCalculada,
+            });
+        }
+    };
+
+    const calcularEdad = (fechaNacimiento) => {
+        const fechaNacimientoDate = new Date(fechaNacimiento);
+        const hoy = new Date();
+        const edadCalculada = hoy.getFullYear() - fechaNacimientoDate.getFullYear();
+        return edadCalculada;
     };
 
     const [formData, setFormData] = useState({
@@ -192,10 +237,10 @@ const CaseRecord = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         console.log('Datos a enviar al backend:', formData);
 
-
+        console.log("esCasoGrupal:", esCasoGrupal);
+        
         const relacionesConAdultoArray = Array.isArray(formData.checkboxValues.relacionesConAdulto)
             ? formData.checkboxValues.relacionesConAdulto
             : Object.entries(formData.checkboxValues.relacionesConAdulto);
@@ -205,18 +250,17 @@ const CaseRecord = () => {
 
         const formDataToSend = {
             ...formData,
+            esCasoGrupal: esCasoGrupal.toString(),
             checkboxValues: {
-                ...formData.checkboxValues,
-
-                relacionesConAdulto: {
-
-                    ...Object.entries(formData.checkboxValues.relacionesConAdulto).reduce((acc, [key, value]) => {
-                        acc[parseInt(key, 10)] = Boolean(value);
-                        return acc;
-                    }, {}),
-                }
+              ...formData.checkboxValues,
+              relacionesConAdulto: Object.entries(
+                formData.checkboxValues.relacionesConAdulto
+              ).reduce((acc, [key, value]) => {
+                acc[parseInt(key, 10)] = Boolean(value);
+                return acc;
+              }, {}),
             },
-        };
+          };
         console.log('Datos a enviar al backend:', formDataToSend);
 
 
@@ -234,6 +278,7 @@ const CaseRecord = () => {
                 console.error('Error al enviar los datos al backend:', error);
             });
     };
+
     return (
         <>
             <div className=' container-fluid row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
@@ -493,18 +538,49 @@ const CaseRecord = () => {
                                             ))}
                                         </div>
                                         <div className='mt-1'>
-                                            {!textareaVisibility.motivo && <ComponentComment titulo="Comentario y Observaciones" 
-                                            value={formData.comentario}
-                                            onChange={(e) => handleAdditionalInputChange(e, 'comentario')}
-                                             placeholder="Escribe Aquí tus Comentarios y Observaciones" />}
+                                            {!textareaVisibility.motivo && <ComponentComment titulo="Comentario y Observaciones"
+                                                value={formData.comentario}
+                                                onChange={(e) => handleAdditionalInputChange(e, 'comentario')}
+                                                placeholder="Escribe Aquí tus Comentarios y Observaciones" />}
                                         </div>
-
                                     </div>
+
+                                    <div className="d-flex justify-content-center">
+                                        <button
+                                            type='Button'
+                                            style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
+                                            className="btn w-75 container-fluid mb-3 py-3 fw-bold"
+                                            onClick={() => {
+                                                const newIndex = formularios.length + 1;
+                                                toggleFormulario(newIndex);
+                                            }}
+                                        >
+                                            Agregar Formulario
+                                        </button>
+                                    </div>
+
+                                    {formularios.map((index) => (
+                                        <div key={index}>
+                                            <div className="d-flex justify-content-center">
+                                                <button
+                                                    type='Button'
+                                                    style={{ backgroundColor: window.themeColors.buttonColor, color: window.themeColors.footerColorText }}
+                                                    className="btn w-75 container-fluid py-3 fw-bold mb-3"
+                                                    onClick={() => toggleFormulario(index)}
+                                                >
+                                                    {formularios.includes(index)
+                                                        ? "Anular Formulario"
+                                                        : "Agregar Formulario"}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
 
                                 </AccordionComponent>
 
+
                                 <AccordionComponent buttonText="Estado Del Caso" buttonClassName="fw-bold custom-btn LightLavender mt-3 w-100 py-4 fs-4 m-0">
-                                    <div className='container mb-3 p-5' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
+                                    <div className='container  p-5' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
                                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                                             {estadosDelCaso.map((estado) => (
                                                 <div
@@ -529,6 +605,24 @@ const CaseRecord = () => {
                                                     </label>
                                                 </div>
                                             ))}
+                                        </div>
+                                    </div>
+                                    <div className='container mt-3' style={{ backgroundColor: window.themeColors.boxColorLightLavender }}>
+                                        <div className='d-flex justify-content-center'>
+                                            <h1>Tipo Del Caso</h1>
+                                        </div>
+
+                                        <div className='row d-flex justify-content-evenly'>
+                                            <div
+                                                className={`col-3 mb-3 py-3 text-center caso-individual ${formularios.length === 0 ? 'active' : ''}`}
+                                            >
+                                                CASO INDIVIDUAL
+                                            </div>
+                                            <div
+                                                className={`col-3 mb-3 py-3 text-center caso-grupal ${formularios.length > 0 ? 'active' : ''}`}
+                                            >
+                                                CASO GRUPAL
+                                            </div>
                                         </div>
                                     </div>
                                 </AccordionComponent>
