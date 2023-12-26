@@ -558,6 +558,9 @@ const CaseRecord = () => {
 
                                     {formularios.map((index) => (
                                         <div key={index}>
+                                            <FormularioNnya>
+                                                
+                                            </FormularioNnya>
                                             <div className="d-flex justify-content-center">
                                                 <button
                                                     type='Button'

@@ -6,51 +6,74 @@ import { colors } from '../../assets/styles/theme.js';
 import '../../assets/styles/styles.css';
 import '../../assets/styles/normalize.css';
 import Footer from '../../components/partials/footer.jsx';
-import Conections from '../../components/conections/conections';
+import { Alert } from 'react-bootstrap';
+import Conections from '../../components/conections/conections.jsx'
+
 
 window.themeColors = colors;
 
 function Login() {
+  const [showAlert, setshowAlert] = useState(false);
+  const [messageAlert, setmessageAlert] = useState("");
+  const [alertType, setalertType] = useState("success"); 
   const [showPassword, setShowPassword] = useState(false);
-
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
-  }
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
+  const handleResponse = async () => {
     try {
-      const response = await Conections.post('/Auth/login', {
+      const response = await Conections.post("/Auth/Login", {
         username: formData.username,
         password: formData.password,
       });
 
-      if (response.status === 200) {       
-        const token = response.data.token;
-        
-        // Almacena el token JWT en localStorage
-        localStorage.setItem('token', token);
-        
-        window.location.href = 'http://localhost:5173';
-        
+      if (response.status === 200) {
+        //const token = response.data.token;
+        setshowAlert(true);
+        setalertType("success");
+        setmessageAlert("Inicio de sesión exitoso");
+       // localStorage.setItem("token", token);
+         window.location.href = 'http://localhost:5173';
+        return "Éxito"; 
       } else {
-        console.log('Login failed');
+        console.log("Login failed");
+        setshowAlert(true);
+        setalertType("danger");
+        setmessageAlert("Email o contraseña incorrectos. Vuelve a intentarlo.");
+        throw "Failed";
       }
     } catch (error) {
-      console.error('Network error:', error);
+      console.error("Error de red:", error);
+      setshowAlert(true);
+      setalertType("danger");
+      setmessageAlert("  Hubo un error en nuestra parte. Inténtalo de nuevo más tarde.");
+      throw "Error";
     }
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      await handleResponse();
+      // Realiza acciones adicionales después de que la promesa se resuelva
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      // Maneja el error si la promesa es rechazada
+    }
+  };
+
 
   return (
     <>
@@ -84,7 +107,7 @@ function Login() {
                   onChange={(e) => handleChange(e)}
                   className='form-control md'
                   placeholder="Contraseña"
-                  autoComplete="current-password" 
+                  autoComplete="current-password"
                 />
                 <i
                   className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'}`}
@@ -104,6 +127,11 @@ function Login() {
             </button>
             <a href="/Recuperacion_de_Credenciales" className='text-secondary  mb-3'><p>RECUPERAR CREDENCIALES</p></a>
           </div>
+          {showAlert && (
+            <Alert variant={alertType} onClose={() => setshowAlert(false)} dismissible>
+              {messageAlert}
+            </Alert>
+          )}
         </form>
       </div>
       <Footer />
