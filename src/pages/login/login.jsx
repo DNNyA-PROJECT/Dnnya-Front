@@ -65,7 +65,7 @@ function Login() {
         setmessageAlert(
           <div>
          <i className="bi bi-x-circle-fill"></i>
-           <n></n>   Hubo un error en nuestra parte. Inténtalo de nuevo más tarde.
+           <n></n>   Hubo un ERROR en el sistema. Inténtalo de nuevo más tarde.
         </div>);
       }
   
