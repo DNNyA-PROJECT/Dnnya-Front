@@ -43,9 +43,9 @@ function Login() {
         setalertType("success");
         setmessageAlert( <div>
           <i className="bi bi-check-circle-fill text-success"></i>
-            <n/>  Inicio de sesión exitoso
+           <n></n>  Inicio de sesión exitoso
         </div>);
-     //   window.location.href = 'http://localhost:5173';
+        window.location.href = 'http://localhost:5173';
         return "Éxito";
       }else {
         console.log("Login failed");
@@ -55,8 +55,8 @@ function Login() {
         setshowAlert(true);
         setalertType("danger");
         setmessageAlert(<div>
-         <i class="bi bi-x-circle-fill"></i>
-            <n/>  Credenciales inválidas. Por favor, verifique su email y contraseña.
+         <i className="bi bi-x-circle-fill"></i>
+           <n></n>   Credenciales inválidas. Por favor, verifique su email y contraseña.
         </div>);
       } else {
         console.error("Error de red:", error);
@@ -64,8 +64,8 @@ function Login() {
         setalertType("danger");
         setmessageAlert(
           <div>
-         <i class="bi bi-x-circle-fill"></i>
-            <n/>  Hubo un error en nuestra parte. Inténtalo de nuevo más tarde.
+         <i className="bi bi-x-circle-fill"></i>
+           <n></n>   Hubo un error en nuestra parte. Inténtalo de nuevo más tarde.
         </div>);
       }
   
