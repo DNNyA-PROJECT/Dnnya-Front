@@ -37,31 +37,32 @@ function Login() {
         username: formData.username,
         password: formData.password,
       });
-
+  
       if (response.status === 200) {
-        //const token = response.data.token;
         setshowAlert(true);
         setalertType("success");
         setmessageAlert("Inicio de sesión exitoso");
-       // localStorage.setItem("token", token);
-         window.location.href = 'http://localhost:5173';
-        return "Éxito"; 
-      } else {
+        window.location.href = 'http://localhost:5173';
+        return "Éxito";
+      }else {
         console.log("Login failed");
-        setshowAlert(true);
-        setalertType("danger");
-        setmessageAlert("Email o contraseña incorrectos. Vuelve a intentarlo.");
-        throw "Failed";
       }
     } catch (error) {
-      console.error("Error de red:", error);
-      setshowAlert(true);
-      setalertType("danger");
-      setmessageAlert("  Hubo un error en nuestra parte. Inténtalo de nuevo más tarde.");
+      if (error.response && error.response.status === 401) {
+        setshowAlert(true);
+        setalertType("danger");
+        setmessageAlert("Credenciales inválidas. Por favor, verifique su email y contraseña.");
+      } else {
+        console.error("Error de red:", error);
+        setshowAlert(true);
+        setalertType("danger");
+        setmessageAlert("Hubo un error en nuestra parte. Inténtalo de nuevo más tarde.");
+      }
+  
       throw "Error";
     }
   };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
