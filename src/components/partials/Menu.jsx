@@ -48,7 +48,7 @@ function Menu() {
             </Link>
           </li>
 
-          <AccordionComponent buttonText="Caso" buttonClassName="w-100 fs-3 fw-900 align-items-center justify-content-center d-flex">
+          <AccordionComponent buttonText="Caso" buttonClassName="w-100 fs-2 fs-xl fw-bolder  align-items-center justify-content-center d-flex">
             <li
               className={`mb-3 text-center`}
               style={{
