@@ -81,8 +81,8 @@ const Register = () => {
 
   return (
     <>
-      <div className=' container-fluid  row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
-        <div className='container-fluid m-0 p-0 d-flex flex-column justify-content-between'>
+      <div className=' container-fluid vh-100  row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+        <div className='container-fluid h-100 p-0 d-flex flex-column justify-content-between'>
           <div className='homeHead container-fluid justify-content-between  py-5 px-5'>
             <div className='d-flex justify-content-between content'>
               <div className='DFlogo'>

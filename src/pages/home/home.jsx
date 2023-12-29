@@ -19,7 +19,7 @@ function Home() {
           <Menu />
         </div>
 
-        <div className='container-fluid d-flex align-items-center flex-column col-12 col-md-9 justify-content-between'>
+        <div className='container-fluid vh-100 d-flex align-items-center flex-column col-12 col-md-9 justify-content-between'>
           <div className='homeHead py-5 px-5 container-fluid'>
             <Header />
           </div>
