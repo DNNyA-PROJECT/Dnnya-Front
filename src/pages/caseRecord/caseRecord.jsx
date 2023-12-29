@@ -279,19 +279,22 @@ const CaseRecord = () => {
 
     return (
         <>
-            <div className=' container-fluid vh-100 row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
-                <div className='col-md-2 m-0 container-fluid p-0 menubox d-none d-md-block' style={{ backgroundColor: window.themeColors.color }}>
-                    <Menu />
-                </div>
+<>
+  <div className='container-fluid d-flex flex-column min-vh-100 p-0 m-0' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+    <div className='row p-0 m-0 flex-grow-1'>
+      <div className='col-md-2 m-0 p-0 menubox d-none d-md-block' style={{ backgroundColor: window.themeColors.color }}>
+        <Menu />
+      </div>
 
-                <div className='container-fluid d-flex align-items-center flex-column col-12 col-md-9 justify-content-between'>
-
-                    <div className='container-fluid'>
-                        <div className='d-flex flex-column align-items-center' >
+      <div className='col-md-10 p-0 d-flex flex-column'>
+      <div className='d-flex flex-column align-items-center' >
                             <h1>REGISTRO DEL CASO</h1>
                             <h3>Detalles de Registro e Identificación del Caso</h3>
                         </div>
-                        <Form>
+        <div className='container-fluid d-flex align-items-center flex-column justify-content-between flex-grow-1'>
+            
+          <div className='container-fluid'>
+          <Form>
                             <div className='container py-5 px-3 mb-3 ' style={{ backgroundColor: window.themeColors.boxBorder }}>
                                 <AccordionComponent buttonText="Registro De aserorías E intervenciones" buttonClassName="fw-bold greenColor custom-btn w-100 py-4 fs-4 m-0">
                                     <div className='container  mb-3 p-5 ' style={{ backgroundColor: window.themeColors.boxColorGreen }}>
@@ -635,10 +638,14 @@ const CaseRecord = () => {
                                 </div>
                             </div>
                         </Form>
-                    </div>
-                </div>
-            </div>
-            <Footer />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <Footer />
+</>
+
         </>
     );
 };
