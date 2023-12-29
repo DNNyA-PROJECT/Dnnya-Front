@@ -10,6 +10,7 @@ import DataTable from '../../components/dataTable/dataTable.jsx';
 import Searcher from '../../components/searcher/searcher.jsx'
 import ComponentComment from '../../components/componentComment/componentComment.jsx';
 
+
 const CaseRecord = () => {
     /* Estados / Variables */
     const [modalShow, setModalShow] = useState(false);
