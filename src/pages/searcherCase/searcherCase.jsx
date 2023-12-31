@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { colors } from '../../assets/styles/theme.js';
 import '../../assets/styles/styles.css';
@@ -8,12 +8,13 @@ import DataTable from '../../components/dataTable/dataTable.jsx';
 import Menu from '../../components/partials/Menu.jsx';
 import Footer from '../../components/partials/footer.jsx';
 import AccordionComponent from '../../components/AccordionComponent/AccordionComponent.jsx'
+import axios from 'axios';
 
 window.themeColors = colors;
 
 const CaseFollowUp = () => {
 
-    const ButtonArrow = () => {
+    const ButtonArchive = () => {
         const handleFolderClick = () => {
 
         }
@@ -28,19 +29,7 @@ const CaseFollowUp = () => {
         );
     };
     const customData = [
-        ["Caso", "Identificador" ,"Fecha de Inicio" ,"NNyA", "DNI", "Tipo de Caso","Estado" ,"Plazo de Seguimiento"],
-        [<ButtonArrow /> ,"420" ,"17/08/23" ,"Guiin Flynn","39024532" ,"Individual" ,"Con Seguimiento" ,"17/11/23 - 20/11/23" ],
-        [<ButtonArrow /> ,"350" ,"02/10/23" ,"Lionel Andres Messi" , "42124532","Grupal" ,"Sin Seguimiento","10/03/22 - 02/11/25" ],
-        [<ButtonArrow /> ,"460" ,"02/10/23" ,"Cristiano Penaldo" , "42124532","Grupal" ,"Grave con Seguimiento","10/03/22 - 02/11/25" ],
-        [<ButtonArrow /> ,"110" ,"02/10/23" ,"Juan Roman Frizelme" , "42124532","Individual" ,"Grave sin Seguimiento","10/03/22 - 02/11/25"],
-        [<ButtonArrow /> ,"230" ,"02/10/23" ,"Ariel Ortega" ,"42124532" ,"Individual" ,"Derivado","10/03/22 - 02/11/25"  ],
-        [<ButtonArrow /> ,"980" ,"02/10/23" ,"Cesar Aimar" ,"42124532"  ,"Individual" ,"Cerrado","10/03/22 - 02/11/25"  ],
-        [<ButtonArrow /> ,"130" ,"02/10/23" ,"Guiin Flynn" ,"39024532 " ,"Individual" ,"Con Seguimiento","10/03/22 - 02/11/25" ],
-        [<ButtonArrow /> ,"555" ,"17/08/23" ,"Lionel Andres Messi","42124532","Individual" ,"Sin Seguimiento","10/03/22 - 02/11/25" ],
-        [<ButtonArrow /> ,"666" ,"02/10/23" ,"Cristiano Penaldo", "42124532","Individual" ,"Grave con Seguimiento","10/03/22 - 02/11/25" ],
-        [<ButtonArrow /> ,"661" ,"02/10/23" ,"Juan Roman Frizelme", "42124532","Individual" ,"Grave sin Seguimiento","10/03/22 - 02/11/25" ],
-        [<ButtonArrow /> ,"669" ,"02/10/23" ,"Ariel Ortega", "42124532","Individual" ,"Derivado","10/03/22 - 02/11/25" ],
-        [<ButtonArrow /> ,"700" ,"02/10/23" ,"Cesar Aimar", "42124532","Individual" ,"Cerrado","10/03/22 - 02/11/25" ],
+        ["Caso", "NNyA", "DNI", "Tipo de Caso"],
     ];
 
     const Header = [
@@ -48,6 +37,7 @@ const CaseFollowUp = () => {
     ];
 
     const [query, setQuery] = useState('');
+    const [filteredData, setFilteredData] = useState(customData);
     const [isChecked, setIsChecked] = useState(false);
     const [isGraveWithoutFollowUp, setIsGraveWithoutFollowUp] = useState(false);
     const [isfollowUp, setIsfollowUp] = useState(false);
@@ -57,6 +47,8 @@ const CaseFollowUp = () => {
     const [isSingle, setIsSingle] = useState(false);
     const [isGrupal, setIsGrupal] = useState(false);
     const [data, setData] = useState(customData);
+    const [isLoading, setIsLoading] = useState(false);
+    const [ids, setIds] = useState([]);
 
     const handleInputChange = (e) => {
         const inputValue = e.target.value.toLowerCase();
@@ -67,7 +59,7 @@ const CaseFollowUp = () => {
             (!isChecked || row[3].toLowerCase().includes("grave")) &&
             (!isGraveWithoutFollowUp || row[3].toLowerCase().includes("grave sin seguimiento")) &&
             (!isfollowUp || row[3].toLowerCase().includes("Con Seguimiento")) &&
-            (!isUntracked || row[3].toLowerCase().includes("sin seguimiento")) &&
+            (!isUntracked || row[3].toLowerCase().includes("Sin seguimiento")) &&
             (!isClose || row[3].toLowerCase().includes("Cerrado")) &&
             (!isDerivate || row[3].toLowerCase().includes("Derivado")) &&
             (!isSingle || row[2].toLowerCase().includes("Individual")) &&
@@ -110,72 +102,111 @@ const CaseFollowUp = () => {
 
     const handleCheckboxfollowUp = () => {
         const updatedIsfollowUp = !isfollowUp;
-    
+
         const filteredData = customData.filter((row, rowIndex) => (
-          rowIndex === 0 || !updatedIsfollowUp || row[4].toLowerCase().includes("con seguimiento")
+            rowIndex === 0 || !updatedIsfollowUp || row[4].toLowerCase().includes("con seguimiento")
         ));
-    
+
         setIsfollowUp(updatedIsfollowUp);
         setData(filteredData);
-      };
+    };
 
-      const handleCheckboxUntracked = () => {
+    const handleCheckboxUntracked = () => {
         const updatedIsUntracked = !isUntracked;
-    
+
         const filteredData = customData.filter((row, rowIndex) => (
-          rowIndex === 0 || !updatedIsUntracked || row[4].toLowerCase().includes("sin seguimiento")
+            rowIndex === 0 || !updatedIsUntracked || row[4].toLowerCase().includes("sin seguimiento")
         ));
-    
+
         setIsUntracked(updatedIsUntracked);
         setData(filteredData);
-      };
-    
-      const handleCheckboxClose = () => {
+    };
+
+    const handleCheckboxClose = () => {
         const updatedIsClose = !isClose;
-    
+
         const filteredData = customData.filter((row, rowIndex) => (
-          rowIndex === 0 || !updatedIsClose || row[4].toLowerCase().includes("cerrado")
+            rowIndex === 0 || !updatedIsClose || row[4].toLowerCase().includes("cerrado")
         ));
-    
+
         setIsClose(updatedIsClose);
         setData(filteredData);
-      };
+    };
 
-      const handleCheckboxDerivate = () => {
+    const handleCheckboxDerivate = () => {
         const updatedIsDerivate = !isDerivate;
-    
+
         const filteredData = customData.filter((row, rowIndex) => (
-          rowIndex === 0 || !updatedIsDerivate || row[4].toLowerCase().includes("derivado")
+            rowIndex === 0 || !updatedIsDerivate || row[4].toLowerCase().includes("derivado")
         ));
-    
+
         setIsDerivate(updatedIsDerivate);
         setData(filteredData);
-      };
+    };
 
-      const handleCheckboxSingle = () => {
+    const handleCheckboxSingle = () => {
         const updatedIsSingle = !isSingle;
-    
+
         const filteredData = customData.filter((row, rowIndex) => (
-          rowIndex === 0 || !updatedIsSingle || row[2].toLowerCase().includes("individual")
+            rowIndex === 0 || !updatedIsSingle || row[2].toLowerCase().includes("individual")
         ));
-    
+
         setIsSingle(updatedIsSingle);
         setData(filteredData);
-      };
+    };
 
-      const handleCheckboxGrupal = () => {
+
+    const handleCheckboxGrupal = () => {
         const updatedIsGrupal = !isGrupal;
-    
+
         const filteredData = customData.filter((row, rowIndex) => (
-          rowIndex === 0 || !updatedIsGrupal || row[2].toLowerCase().includes("grupal")
+            rowIndex === 0 || !updatedIsGrupal || row[2].toLowerCase().includes("grupal")
         ));
-    
+
         setIsGrupal(updatedIsGrupal);
         setData(filteredData);
-      };
+    };
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setIsLoading(true);
 
+                const response = await axios.get("http://localhost:8080/api/caseRecord/list");
 
+                if (response.status === 200) {
+                    console.log('Solicitud exitosa');
+                    const caseData = response.data;
+                    console.log('Datos obtenidos:', caseData);
+
+                    const newData = [customData];
+                    const caseIds = caseData.map(caseItem => caseItem.idcase);
+
+                    caseData.forEach(caseItem => {
+                        const nnyaName = caseItem.nnya.nombreNnya;
+                        const nnyaDni = caseItem.nnya.dniNnya;
+                        const caseType = caseItem.estadoCaso;
+
+                        newData.push([nnyaName,nnyaDni ,caseType]);
+                    });
+
+                    setIds(caseIds);
+                    setData(newData);
+                    setFilteredData(newData);
+                    setIsLoading(false);
+                } else {
+                    console.error('Error en la solicitud de datos');
+                    setIsLoading(false);
+                }
+            } catch (error) {
+                console.error('Error en la solicitud de datos:', error);
+                setIsLoading(false);
+            }
+        };
+
+        fetchData();
+
+    }, []);
 
 
     return (
@@ -213,7 +244,7 @@ const CaseFollowUp = () => {
                                             <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                 <label htmlFor="Grupal" className="custom-checkbox">
                                                     Grupal
-                                                    <input type="checkbox" id="Grupal" checked={isGrupal} onChange={handleCheckboxGrupal}  className="checkbox" name="filter" />
+                                                    <input type="checkbox" id="Grupal" checked={isGrupal} onChange={handleCheckboxGrupal} className="checkbox" name="filter" />
                                                     <span className="checkmark"></span>
                                                 </label>
                                             </div>
@@ -245,7 +276,7 @@ const CaseFollowUp = () => {
                                                 </label>
                                             </div>
                                             <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
-                                                <label htmlFor="followUp" checked={isfollowUp}  onChange={handleCheckboxfollowUp} className="custom-checkbox p-0">
+                                                <label htmlFor="followUp" checked={isfollowUp} onChange={handleCheckboxfollowUp} className="custom-checkbox p-0">
                                                     Con Seguimiento
                                                     <input type="checkbox" id="followUp" className="checkbox" name="filter" />
                                                     <span className="checkmark"></span>
@@ -268,7 +299,7 @@ const CaseFollowUp = () => {
                                             <div className='col-3 w-100  mb-3 py-3 ' style={{ backgroundColor: window.themeColors.footerColorText }}>
                                                 <label htmlFor="Close" className="custom-checkbox p-0">
                                                     Cerrado
-                                                    <input type="checkbox" id="Close" checked={isClose}  onChange={handleCheckboxClose} className="checkbox" name="filter" />
+                                                    <input type="checkbox" id="Close" checked={isClose} onChange={handleCheckboxClose} className="checkbox" name="filter" />
                                                     <span className="checkmark"></span>
                                                 </label>
                                             </div>
@@ -286,7 +317,11 @@ const CaseFollowUp = () => {
                         </AccordionComponent>
                     </div>
                     <div className='container-fluid table-container p-0 my-5 mx-0' style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '25vw' }}>
-                        <DataTable data={data} headerBackgroundColor="#F2A57F" />
+                        {isLoading ? (
+                            <div>Cargando...</div>
+                        ) : (
+                            <DataTable data={data} headerBackgroundColor="#F2A57F" />
+                        )}
                     </div>
                 </div>
             </div>
