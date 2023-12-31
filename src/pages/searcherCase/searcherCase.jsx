@@ -92,6 +92,8 @@ const CaseFollowUp = () => {
                 return fila.some((item) => {
                     if (typeof item === 'string') {
                         return item.toLowerCase().includes(filtro);
+                    } else if (typeof item === 'number') {
+                        return item.toString().includes(filtro);
                     }
                     return false;
                 });
