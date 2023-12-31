@@ -171,25 +171,23 @@ const CaseFollowUp = () => {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
-
+    
                 const response = await axios.get("http://localhost:8080/api/caseRecord/list");
-
+    
                 if (response.status === 200) {
                     console.log('Solicitud exitosa');
                     const caseData = response.data;
                     console.log('Datos obtenidos:', caseData);
-
-                    const newData = [customData];
+                    const newData = [...customData];
                     const caseIds = caseData.map(caseItem => caseItem.idcase);
-
                     caseData.forEach(caseItem => {
                         const nnyaName = caseItem.nnya.nombreNnya;
                         const nnyaDni = caseItem.nnya.dniNnya;
                         const caseType = caseItem.estadoCaso;
-
-                        newData.push([nnyaName,nnyaDni ,caseType]);
+    
+                        newData.push([nnyaName, nnyaDni, caseType]);
                     });
-
+    
                     setIds(caseIds);
                     setData(newData);
                     setFilteredData(newData);
@@ -203,10 +201,11 @@ const CaseFollowUp = () => {
                 setIsLoading(false);
             }
         };
-
+    
         fetchData();
-
+    
     }, []);
+    
 
 
     return (
