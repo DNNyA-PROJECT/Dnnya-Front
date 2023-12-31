@@ -56,7 +56,7 @@ const CaseFollowUp = () => {
         const inputValue = e.target.value;
         setQuery(inputValue);
     
-        const filteredData = data.filter((row, rowIndex) => (
+        const filteredData = customData.filter((row, rowIndex) => (
             rowIndex === 0 ||
             (!isChecked || row[3].toLowerCase().includes("grave")) &&
             (!isGraveWithoutFollowUp || row[3].toLowerCase().includes("grave sin seguimiento")) &&
