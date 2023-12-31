@@ -13,24 +13,22 @@ import axios from 'axios';
 window.themeColors = colors;
 
 const CaseFollowUp = () => {
-
     const ButtonArchive = () => {
         const handleFolderClick = () => {
-
-        }
+            // Lógica del botón de archivo
+        };
         return (
             <button className='folderButton' onClick={handleFolderClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-journal-medical" viewBox="0 0 16 16">
-                    <path fillRule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v.634l.549-.317a.5.5 0 1 1 .5.866L9 6l.549.317a.5.5 0 1 1-.5.866L8.5 6.866V7.5a.5.5 0 0 1-1 0v-.634l-.549.317a.5.5 0 1 1-.5-.866L7 6l-.549-.317a.5.5 0 0 1 .5-.866l.549.317V4.5A.5.5 0 0 1 8 4zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
-                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
-                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                    {/* Icono del botón de archivo */}
                 </svg>
             </button>
         );
     };
-    const customData = [
+
+    const [customData, setCustomData] = useState([
         ["Caso", "NNyA", "DNI", "Tipo de Caso"],
-    ];
+    ]);
 
     const Header = [
         ["Tipo de Caso", "Estado del Caso", "Plazo de Seguimiento"],
@@ -46,102 +44,126 @@ const CaseFollowUp = () => {
     const [isDerivate, setIsDerivate] = useState(false);
     const [isSingle, setIsSingle] = useState(false);
     const [isGrupal, setIsGrupal] = useState(false);
-    const [data, setData] = useState(customData);
     const [isLoading, setIsLoading] = useState(false);
     const [ids, setIds] = useState([]);
 
-    const handleInputChange = (e) => {
-        const inputValue = e.target.value.toLowerCase();
-        setQuery(inputValue);
+    useEffect(() => {
+        handleSearch(query);
+      }, [query]);
+    
 
-        const filteredData = customData.filter((row, rowIndex) => (
+    const handleInputChange = (e) => {
+        const inputValue = e.target.value;
+        setQuery(inputValue);
+    
+        const filteredData = data.filter((row, rowIndex) => (
             rowIndex === 0 ||
             (!isChecked || row[3].toLowerCase().includes("grave")) &&
             (!isGraveWithoutFollowUp || row[3].toLowerCase().includes("grave sin seguimiento")) &&
-            (!isfollowUp || row[3].toLowerCase().includes("Con Seguimiento")) &&
-            (!isUntracked || row[3].toLowerCase().includes("Sin seguimiento")) &&
-            (!isClose || row[3].toLowerCase().includes("Cerrado")) &&
-            (!isDerivate || row[3].toLowerCase().includes("Derivado")) &&
-            (!isSingle || row[2].toLowerCase().includes("Individual")) &&
-            (!isGrupal || row[2].toLowerCase().includes("Grupal")) &&
-            row.some((cell) => {
+            (!isfollowUp || row[3].toLowerCase().includes("con seguimiento")) &&
+            (!isUntracked || row[3].toLowerCase().includes("sin seguimiento")) &&
+            (!isClose || row[3].toLowerCase().includes("cerrado")) &&
+            (!isDerivate || row[3].toLowerCase().includes("derivado")) &&
+            (!isSingle || row[3].toLowerCase().includes("individual")) &&
+            (!isGrupal || row[3].toLowerCase().includes("grupal")) &&
+            row.slice(1).some((cell) => {
                 if (typeof cell === 'string') {
                     const cellValue = cell.toLowerCase();
                     const searchWords = inputValue.split(' ').filter(word => word.trim() !== '');
-
+    
                     return searchWords.every(word => cellValue.includes(word));
                 }
                 return false;
             })
         ));
+    
+        setFilteredData(filteredData);
+    };
 
-        setData(filteredData);
+    const handleSearch = (query) => {
+        const filtro = query.toLowerCase().trim();
+        if (filtro === '') {
+            setFilteredData(customData);
+        } else {
+            const resultados = customData.filter((fila, rowIndex) => {
+                if (rowIndex === 0) {
+                    return true;
+                }
+                return fila.some((item) => {
+                    if (typeof item === 'string') {
+                        return item.toLowerCase().includes(filtro);
+                    }
+                    return false;
+                });
+            });
+            setFilteredData(resultados);
+        }
     };
 
     const handleCheckboxWithFollowUpChange = () => {
         const updatedIsChecked = !isChecked;
 
         const filteredData = customData.filter((row, rowIndex) => (
-            rowIndex === 0 || !updatedIsChecked || row[4].toLowerCase().includes("grave con seguimiento")
+            rowIndex === 0 || !updatedIsChecked || row[2].toLowerCase().includes("grave con seguimiento")
         ));
 
         setIsChecked(updatedIsChecked);
-        setData(filteredData);
+        setFilteredData(filteredData);
     };
 
     const handleCheckboxWithoutFollowUpChange = () => {
         const updatedIsGraveWithoutFollowUp = !isGraveWithoutFollowUp;
 
         const filteredData = customData.filter((row, rowIndex) => (
-            rowIndex === 0 || !updatedIsGraveWithoutFollowUp || row[4].toLowerCase().includes("grave sin seguimiento")
+            rowIndex === 0 || !updatedIsGraveWithoutFollowUp || row[2].toLowerCase().includes("grave sin seguimiento")
         ));
 
         setIsGraveWithoutFollowUp(updatedIsGraveWithoutFollowUp);
-        setData(filteredData);
+        setFilteredData(filteredData);
     };
 
     const handleCheckboxfollowUp = () => {
         const updatedIsfollowUp = !isfollowUp;
 
         const filteredData = customData.filter((row, rowIndex) => (
-            rowIndex === 0 || !updatedIsfollowUp || row[4].toLowerCase().includes("con seguimiento")
+            rowIndex === 0 || !updatedIsfollowUp || row[2].toLowerCase().includes("con seguimiento")
         ));
 
         setIsfollowUp(updatedIsfollowUp);
-        setData(filteredData);
+        setFilteredData(filteredData);
     };
 
     const handleCheckboxUntracked = () => {
         const updatedIsUntracked = !isUntracked;
 
         const filteredData = customData.filter((row, rowIndex) => (
-            rowIndex === 0 || !updatedIsUntracked || row[4].toLowerCase().includes("sin seguimiento")
+            rowIndex === 0 || !updatedIsUntracked || row[2].toLowerCase().includes("sin seguimiento")
         ));
 
         setIsUntracked(updatedIsUntracked);
-        setData(filteredData);
+        setFilteredData(filteredData);
     };
 
     const handleCheckboxClose = () => {
         const updatedIsClose = !isClose;
 
         const filteredData = customData.filter((row, rowIndex) => (
-            rowIndex === 0 || !updatedIsClose || row[4].toLowerCase().includes("cerrado")
+            rowIndex === 0 || !updatedIsClose || row[2].toLowerCase().includes("cerrado")
         ));
 
         setIsClose(updatedIsClose);
-        setData(filteredData);
+        setFilteredData(filteredData);
     };
 
     const handleCheckboxDerivate = () => {
         const updatedIsDerivate = !isDerivate;
 
         const filteredData = customData.filter((row, rowIndex) => (
-            rowIndex === 0 || !updatedIsDerivate || row[4].toLowerCase().includes("derivado")
+            rowIndex === 0 || !updatedIsDerivate || row[2].toLowerCase().includes("derivado")
         ));
 
         setIsDerivate(updatedIsDerivate);
-        setData(filteredData);
+        setFilteredData(filteredData);
     };
 
     const handleCheckboxSingle = () => {
@@ -152,9 +174,8 @@ const CaseFollowUp = () => {
         ));
 
         setIsSingle(updatedIsSingle);
-        setData(filteredData);
+        setFilteredData(filteredData);
     };
-
 
     const handleCheckboxGrupal = () => {
         const updatedIsGrupal = !isGrupal;
@@ -164,32 +185,24 @@ const CaseFollowUp = () => {
         ));
 
         setIsGrupal(updatedIsGrupal);
-        setData(filteredData);
+        setFilteredData(filteredData);
     };
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
-    
+
                 const response = await axios.get("http://localhost:8080/api/caseRecord/list");
-    
+
                 if (response.status === 200) {
                     console.log('Solicitud exitosa');
                     const caseData = response.data;
                     console.log('Datos obtenidos:', caseData);
-                    const newData = [...customData];
-                    const caseIds = caseData.map(caseItem => caseItem.idcase);
-                    caseData.forEach(caseItem => {
-                        const nnyaName = caseItem.nnya.nombreNnya;
-                        const nnyaDni = caseItem.nnya.dniNnya;
-                        const caseType = caseItem.estadoCaso;
-    
-                        newData.push([nnyaName, nnyaDni, caseType]);
-                    });
-    
-                    setIds(caseIds);
-                    setData(newData);
+                    const newData = [["Caso", "NNyA", "DNI", "Tipo de Caso"], ...caseData.map(caseItem => [caseItem.nnya.nombreNnya, caseItem.nnya.dniNnya, caseItem.estadoCaso])];
+
+                    setIds(caseData.map(caseItem => caseItem.idcase));
+                    setCustomData(newData);
                     setFilteredData(newData);
                     setIsLoading(false);
                 } else {
@@ -201,13 +214,10 @@ const CaseFollowUp = () => {
                 setIsLoading(false);
             }
         };
-    
+
         fetchData();
-    
     }, []);
     
-
-
     return (
         <div>
             <div className=' container-fluid row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
@@ -319,7 +329,7 @@ const CaseFollowUp = () => {
                         {isLoading ? (
                             <div>Cargando...</div>
                         ) : (
-                            <DataTable data={data} headerBackgroundColor="#F2A57F" />
+                            <DataTable data={filteredData} headerBackgroundColor="#F2A57F" />
                         )}
                     </div>
                 </div>
