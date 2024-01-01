@@ -278,7 +278,6 @@ const CaseRecord = () => {
 
 
     return (
-        <>
 <>
   <div className='container-fluid d-flex flex-column min-vh-100 p-0 m-0' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
     <div className='row p-0 m-0 flex-grow-1'>
@@ -292,6 +291,7 @@ const CaseRecord = () => {
                             <h3>Detalles de Registro e Identificación del Caso</h3>
                         </div>
         <div className='container-fluid d-flex align-items-center flex-column justify-content-between flex-grow-1'>
+            
             
           <div className='container-fluid'>
           <Form>
@@ -644,8 +644,6 @@ const CaseRecord = () => {
     </div>
   </div>
   <Footer />
-</>
-
         </>
     );
 };

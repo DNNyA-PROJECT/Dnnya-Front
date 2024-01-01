@@ -221,27 +221,29 @@ const CaseFollowUp = () => {
     }, []);
     
     return (
-        <div>
-            <div className=' container-fluid vh-100 row p-0 m-0 ' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
-
-                <div className='col-md-2 m-0 container-fluid p-0 menubox d-none d-md-block' style={{ backgroundColor: window.themeColors.color }}>
+<>
+  <div className='container-fluid row vh-100 d-flex flex-column p-0 m-0' style={{ backgroundColor: window.themeColors.footerBackground.bakgroundFColor }}>
+  <div className='col-md-2 m-0 container-fluid h-100 p-0 menubox d-none d-md-block' style={{ backgroundColor: window.themeColors.color }}>
                     <Menu />
                 </div>
 
-                <div className='container-fluid d-flex flex-column col-lg-10 m-0 p-0 col-md-6 '>
-                    <div className='py-3 d-flex fs-3 justify-content-center fw-bold'>
-                        Buscador
-                    </div>
-                    <div className='d-flex py-3 container-fluid' style={{ backgroundColor: window.themeColors.gris }}>
-                        <div className='d-flex align-items-center'>
-                            Busqueda
-                        </div>
-                        <Searcher query={query} className="br-0" handleInputChange={handleInputChange} />
-                    </div>
-                    <div className='py-3 d-flex justify-content-center'>
-                        <AccordionComponent buttonText="Filtros" buttonClassName="py-2 fs-3 fw-bold align-items-center justify-content-center d-flex">
-                            <DataTable data={Header} headerBackgroundColor="#F2A57F" />
-                            <form action="">
+    <div className='container-fluid h-100 d-flex flex-column col-lg-10 m-0 p-0 col-md-6 overflow-auto'>
+      <div className='py-3 d-flex fs-3 justify-content-center fw-bold'>
+        Buscador
+      </div>
+      <div className='d-flex py-3 container-fluid' style={{ backgroundColor: window.themeColors.gris }}>
+        <div className='d-flex align-items-center'>
+          Busqueda
+        </div>
+        <Searcher query={query} className="br-0" handleInputChange={handleInputChange} />
+      </div>
+
+      {/* Acordeón */}
+      <div className='py-3 d-flex justify-content-center'>
+        <AccordionComponent buttonText="Filtros" buttonClassName="py-2 fs-3 fw-bold align-items-center justify-content-center d-flex">
+          <div className="container-fluid">
+            <DataTable data={Header} headerBackgroundColor="#F2A57F" />
+            <form action="">
                                 <div className='row d-flex justify-content-between mx-3'>
                                     <div className='col-3'>
                                         <div className='container-fluid flex-column d-flex justify-content-evenly' >
@@ -325,22 +327,26 @@ const CaseFollowUp = () => {
                                     </div>
                                 </div>
                             </form>
-                        </AccordionComponent>
-                    </div>
-                    <div className='container-fluid table-container p-0 my-5 mx-0' style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '25vw' }}>
-                        {isLoading ? (
-                            <div>Cargando...</div>
-                        ) : (
-                            <DataTable data={filteredData} headerBackgroundColor="#F2A57F" />
-                        )}
-                    </div>
-                </div>
-            </div>
+          </div>
+        </AccordionComponent>
+      </div>
 
-            <div className='container-fluid p-0 m-0'>
-                <Footer />
-            </div>
-        </div>
+      {/* Contenedor de la tabla */}
+      <div className='container-fluid table-container p-0 my-5 mx-0 flex-grow-1 d-flex flex-column'>
+        {isLoading ? (
+          <div>Cargando...</div>
+        ) : (
+          <DataTable data={filteredData} headerBackgroundColor="#F2A57F" />
+        )}
+      </div>
+    </div>
+  </div>
+
+  <div className='container-fluid p-0 m-0'>
+    <Footer />
+  </div>
+</>
+
     );
 };
 
