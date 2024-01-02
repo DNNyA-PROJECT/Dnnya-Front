@@ -106,7 +106,7 @@ const CaseFollowUp = () => {
         const updatedIsChecked = !isChecked;
 
         const filteredData = customData.filter((row, rowIndex) => (
-            rowIndex === 0 || !updatedIsChecked || row[2].toLowerCase().includes("grave con seguimiento")
+            rowIndex === 0 || !updatedIsChecked || row[3].toLowerCase().includes("grave con seguimiento")
         ));
 
         setIsChecked(updatedIsChecked);
@@ -117,7 +117,7 @@ const CaseFollowUp = () => {
         const updatedIsGraveWithoutFollowUp = !isGraveWithoutFollowUp;
 
         const filteredData = customData.filter((row, rowIndex) => (
-            rowIndex === 0 || !updatedIsGraveWithoutFollowUp || row[2].toLowerCase().includes("grave sin seguimiento")
+            rowIndex === 0 || !updatedIsGraveWithoutFollowUp || row[3].toLowerCase().includes("grave sin seguimiento")
         ));
 
         setIsGraveWithoutFollowUp(updatedIsGraveWithoutFollowUp);
@@ -128,7 +128,7 @@ const CaseFollowUp = () => {
         const updatedIsfollowUp = !isfollowUp;
 
         const filteredData = customData.filter((row, rowIndex) => (
-            rowIndex === 0 || !updatedIsfollowUp || row[2].toLowerCase().includes("con seguimiento")
+            rowIndex === 0 || !updatedIsfollowUp || row[3].toLowerCase().includes("con seguimiento")
         ));
 
         setIsfollowUp(updatedIsfollowUp);
@@ -139,7 +139,7 @@ const CaseFollowUp = () => {
         const updatedIsUntracked = !isUntracked;
 
         const filteredData = customData.filter((row, rowIndex) => (
-            rowIndex === 0 || !updatedIsUntracked || row[2].toLowerCase().includes("sin seguimiento")
+            rowIndex === 0 || !updatedIsUntracked || row[3].toLowerCase().includes("sin seguimiento")
         ));
 
         setIsUntracked(updatedIsUntracked);
@@ -150,7 +150,7 @@ const CaseFollowUp = () => {
         const updatedIsClose = !isClose;
 
         const filteredData = customData.filter((row, rowIndex) => (
-            rowIndex === 0 || !updatedIsClose || row[2].toLowerCase().includes("cerrado")
+            rowIndex === 0 || !updatedIsClose || row[3].toLowerCase().includes("cerrado")
         ));
 
         setIsClose(updatedIsClose);
@@ -161,7 +161,7 @@ const CaseFollowUp = () => {
         const updatedIsDerivate = !isDerivate;
 
         const filteredData = customData.filter((row, rowIndex) => (
-            rowIndex === 0 || !updatedIsDerivate || row[2].toLowerCase().includes("derivado")
+            rowIndex === 0 || !updatedIsDerivate || row[3].toLowerCase().includes("derivado")
         ));
 
         setIsDerivate(updatedIsDerivate);
@@ -201,7 +201,7 @@ const CaseFollowUp = () => {
                     console.log('Solicitud exitosa');
                     const caseData = response.data;
                     console.log('Datos obtenidos:', caseData);
-                    const newData = [["Caso", "NNyA", "DNI", "Tipo de Caso"], ...caseData.map(caseItem => [caseItem.nnya.nombreNnya, caseItem.nnya.dniNnya, caseItem.estadoCaso])];
+                    const newData = [["Caso", "NNyA", "DNI", "Tipo de Caso"], ...caseData.map(caseItem => [" "  ,caseItem.nnya.nombreNnya, caseItem.nnya.dniNnya, caseItem.estadoCaso])];
 
                     setIds(caseData.map(caseItem => caseItem.idcase));
                     setCustomData(newData);

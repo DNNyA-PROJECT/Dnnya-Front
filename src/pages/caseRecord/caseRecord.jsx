@@ -126,10 +126,10 @@ const CaseRecord = () => {
 
     /* Manejo de Checkbox */
     const handleCheckboxChange = (type, id) => {
-        setCheckboxValues((prevCheckboxValues) => {
+        setFormData((prevData) => {
             const newCheckboxValues = {
-                ...prevCheckboxValues,
-                [type]: { ...prevCheckboxValues[type] }
+                ...prevData.checkboxValues,
+                [type]: { ...prevData.checkboxValues[type] }
             };
 
             const isChecked = !newCheckboxValues[type][id];
@@ -165,8 +165,8 @@ const CaseRecord = () => {
             }
 
             newCheckboxValues[type][id] = isChecked;
-
-            return newCheckboxValues;
+            setCheckboxValues(newCheckboxValues);
+            return { ...prevData, checkboxValues: newCheckboxValues };
         });
     };
 
