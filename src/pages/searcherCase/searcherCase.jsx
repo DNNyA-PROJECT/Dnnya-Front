@@ -27,7 +27,7 @@ const CaseFollowUp = () => {
     };
 
     const [customData, setCustomData] = useState([
-        ["Caso", "NNyA", "DNI", "Tipo de Caso"],
+        ["Caso", "Fecha de Inicio" , "NNyA", "DNI", "Tipo De Caso"],
     ]);
 
     const Header = [
@@ -201,7 +201,7 @@ const CaseFollowUp = () => {
                     console.log('Solicitud exitosa');
                     const caseData = response.data;
                     console.log('Datos obtenidos:', caseData);
-                    const newData = [["Caso", "NNyA", "DNI", "Tipo de Caso"], ...caseData.map(caseItem => [" "  ,caseItem.nnya.nombreNnya, caseItem.nnya.dniNnya, caseItem.estadoCaso])];
+                    const newData = [["Caso", "Fecha de Inicio",  "NNyA", "DNI", "Tipo de Caso"], ...caseData.map(caseItem => [" "  , caseItem.fecha ,caseItem.nnya.nombreNnya, caseItem.nnya.dniNnya, caseItem.estadoCaso])];
 
                     setIds(caseData.map(caseItem => caseItem.idcase));
                     setCustomData(newData);
